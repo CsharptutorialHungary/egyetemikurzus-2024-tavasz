@@ -1,0 +1,17 @@
+﻿<MudGrid Justify="Justify.Center">
+    <MudItem>
+        <MudCard>
+            <MudForm @ref="form">
+                <MudCardContent>
+                    <MudTextField T="string" Label="Surname"></MudTextField>
+                    <MudTextField T="string" Label="Lastname"></MudTextField>
+                    <MudTextField T="string" Label="Email"></MudTextField>
+                    <MudNumericField @bind-Value="Year" T="int" Label="Year" Min="1" MaxLength="4"></MudNumericField>
+                    <MudNumericField @bind-Value="Month" T="int" Label="Month" Min="1" Max="12"></MudNumericField>
+                    <MudNumericField @bind-Value="Day" T="int" Label="Day" Min="1" Max="31"></MudNumericField>
+                </MudCardContent>
+                <MudButton ButtonType="ButtonType.Submit">Submit</MudButton>
+            </MudForm>
+        </MudCard>
+    </MudItem>
+</MudGrid>
