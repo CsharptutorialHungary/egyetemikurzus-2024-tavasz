@@ -1,17 +1,23 @@
-﻿<MudGrid Justify="Justify.Center">
+﻿@using FluentValidation
+@inject ISnackbar Snackbar
+
+<MudGrid Justify="Justify.Center">
     <MudItem>
         <MudCard>
-            <MudForm @ref="form">
-                <MudCardContent>
-                    <MudTextField T="string" Label="Surname"></MudTextField>
-                    <MudTextField T="string" Label="Lastname"></MudTextField>
-                    <MudTextField T="string" Label="Email"></MudTextField>
-                    <MudNumericField @bind-Value="Year" T="int" Label="Year" Min="1" MaxLength="4"></MudNumericField>
-                    <MudNumericField @bind-Value="Month" T="int" Label="Month" Min="1" Max="12"></MudNumericField>
-                    <MudNumericField @bind-Value="Day" T="int" Label="Day" Min="1" Max="31"></MudNumericField>
-                </MudCardContent>
-                <MudButton ButtonType="ButtonType.Submit">Submit</MudButton>
-            </MudForm>
+            <MudCardContent>
+                <MudForm Model="@_userViewModel" @ref="_form" Validation="@(validationRules.ValidateValue)" ValidationDelay="0">
+                    <MudTextField @bind-Value="_userViewModel.SurName" For="@(() => _userViewModel.SurName)" Label="Surname"></MudTextField>
+                    <MudTextField @bind-Value="_userViewModel.LastName" For="@(() => _userViewModel.LastName)" Label="Lastname"></MudTextField>
+                    <MudTextField @bind-Value="_userViewModel.Email" For="@(() => _userViewModel.Email)" Label="Email"></MudTextField>
+                    <MudTextField InputType="InputType.Password" @bind-Value="_userViewModel.Passwords" For="@(() => _userViewModel.Passwords)" Label="Password"></MudTextField>
+                    <MudNumericField @bind-Value="_userViewModel.BirthYear" For="@(() => _userViewModel.BirthYear)" Label="Year" Min="1" MaxLength="4"></MudNumericField>
+                    <MudNumericField @bind-Value="_userViewModel.BirthMonth" For="@(() => _userViewModel.BirthMonth)" Label="Month" Min="1" Max="12"></MudNumericField>
+                    <MudNumericField @bind-Value="_userViewModel.BirthDay" For="@(() => _userViewModel.BirthDay)" Label="Day" Min="1" Max="31"></MudNumericField>
+                </MudForm>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await Submit())">Order</MudButton>
+            </MudCardActions>
         </MudCard>
     </MudItem>
 </MudGrid>

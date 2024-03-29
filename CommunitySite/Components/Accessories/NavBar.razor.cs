@@ -2,5 +2,10 @@
 {
     public partial class NavBar
     {
+
+        private void Login()
+        {
+            
+        }
     }
 }

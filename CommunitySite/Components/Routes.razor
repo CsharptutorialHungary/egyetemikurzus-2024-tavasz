@@ -1,15 +1,14 @@
-﻿<Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
-    <Router AppAssembly="typeof(App).Assembly">
-        <Found Context="routeData">
-            <RouteView RouteData="routeData" DefaultLayout="typeof(CommunitySite.Components.Layout.MainLayout)" />
-            <FocusOnNavigate RouteData="routeData" Selector="h1" />
-        </Found>
-        <NotFound>
-            <PageTitle>Page not found</PageTitle>
-            <LayoutView Layout="@typeof(CommunitySite.Components.Layout.MainLayout)">
-                <p role="alert">Sorry, there is nothing at this address!</p>
-            </LayoutView>
-        </NotFound>
-    </Router>
-</Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
+﻿
+<Router AppAssembly="typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="typeof(CommunitySite.Components.Layout.MainLayout)" />
+    </Found>
+    <NotFound>
+        <PageTitle>Page not found</PageTitle>
+        <LayoutView Layout="@typeof(CommunitySite.Components.Layout.MainLayout)">
+            <p role="alert">Sorry, there is nothing at this address!</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
 
