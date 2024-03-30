@@ -1,0 +1,4 @@
+chocolate
+elephant
+truck
+calculator
