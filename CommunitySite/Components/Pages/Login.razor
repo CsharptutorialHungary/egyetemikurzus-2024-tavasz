@@ -1,0 +1,13 @@
+﻿<MudItem>
+    <MudCard>
+        <MudCardContent>
+            <MudForm Model="@_userViewModel" @ref="_form" Validation="@(validationRules.ValidateValue)" ValidationDelay="0">
+                <MudTextField @bind-Value="_userViewModel.Email" For="@(() => _userViewModel.Email)" Label="Email"></MudTextField>
+                <MudTextField InputType="InputType.Password" @bind-Value="_userViewModel.Passwords" For="@(() => _userViewModel.Passwords)" Label="Password"></MudTextField>
+            </MudForm>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await Submit())">Login</MudButton>
+        </MudCardActions>
+    </MudCard>
+</MudItem>

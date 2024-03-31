@@ -1,0 +1,10 @@
+﻿@inject NavigationManager navmanager
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudText>Community site</MudText>
+        <MudSpacer />
+        <MudButton StartIcon="@Icons.Material.Outlined.Login" >Sign in</MudButton>
+        <MudButton StartIcon="@Icons.Material.Outlined.HowToReg" OnClick="@(() => NavigateToRegisterPage())">Register</MudButton>
+    </MudToolBar>
+</MudPaper>

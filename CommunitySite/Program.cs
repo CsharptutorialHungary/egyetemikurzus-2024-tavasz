@@ -1,10 +1,12 @@
-using CommunitySite.CommunitySiteEntities;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 using MudBlazor.Components;
 using CommunitySite.Extensions;
 using CommunitySite.Components.Accessories;
 using CommunitySite.Components;
+using System.Reflection;
+using CommunitySite.Extensions.Mapper;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddRazorComponents()
 builder.Services.RegisterDatabaseContexts(builder.Configuration);
 builder.Services.RegisterApplicationServices();
 builder.Services.AddRazorPages();
+builder.Services.AddAutoMapper(typeof(MapperProfile));
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
 

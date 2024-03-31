@@ -1,12 +1,16 @@
 ﻿using CommunitySite.Data.ViewModels;
+using CommunitySite.Services.UserServices;
 using FluentValidation;
 
 namespace CommunitySite.Extensions.Validators
 {
     public class RegisterValidatior : AbstractValidator<UserViewModel>
     {
-        public RegisterValidatior()
+        private readonly IUserService _userService;
+        public RegisterValidatior(IUserService userService)
         {
+            _userService = userService;
+
             RuleFor(x => x.SurName)
                 .NotEmpty().WithMessage("Your surname cannot be empty")
                 .Length(1, 99);
@@ -18,7 +22,10 @@ namespace CommunitySite.Extensions.Validators
             RuleFor(x => x.Email)
             .NotEmpty().WithMessage("Your email cannot be empty")
             .EmailAddress().WithMessage("This not a valid email adress")
-            .Length(1, 99);
+            .Length(1, 99)
+            .MustAsync(async (email, _) =>
+                await _userService.ExistUser(email)
+            ).WithMessage("An email already exist");
 
             RuleFor(x => x.Passwords)
                 .NotEmpty().WithMessage("Your password cannot be empty")
@@ -39,8 +46,6 @@ namespace CommunitySite.Extensions.Validators
             RuleFor(x => x.BirthDay)
                 .NotEmpty()
                 .InclusiveBetween(1, 31).WithMessage("Your birthday not valid");
-
-
         }
 
         public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>

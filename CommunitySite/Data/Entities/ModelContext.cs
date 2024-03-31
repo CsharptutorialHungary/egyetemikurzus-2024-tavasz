@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace CommunitySite.CommunitySiteEntities;
+namespace CommunitySite.Data.Entities;
 
 public partial class ModelContext : DbContext
 {
@@ -53,23 +53,27 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("FRIEND_START_DATE");
-            entity.Property(e => e.Friendid1)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("FRIENDID1");
-            entity.Property(e => e.Friendid2)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("FRIENDID2");
+            entity.Property(e => e.Friendemail1)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("FRIENDEMAIL1");
+            entity.Property(e => e.Friendemail2)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("FRIENDEMAIL2");
             entity.Property(e => e.IsFriend)
-                .HasPrecision(1)
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("IS_FRIEND");
 
-            entity.HasOne(d => d.Friendid1Navigation).WithMany()
-                .HasForeignKey(d => d.Friendid1)
-                .HasConstraintName("SYS_C0010186");
+            entity.HasOne(d => d.Friendemail1Navigation).WithMany()
+                .HasForeignKey(d => d.Friendemail1)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010500");
 
-            entity.HasOne(d => d.Friendid2Navigation).WithMany()
-                .HasForeignKey(d => d.Friendid2)
-                .HasConstraintName("SYS_C0010187");
+            entity.HasOne(d => d.Friendemail2Navigation).WithMany()
+                .HasForeignKey(d => d.Friendemail2)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010501");
         });
 
         modelBuilder.Entity<Include>(entity =>
@@ -87,11 +91,13 @@ public partial class ModelContext : DbContext
 
             entity.HasOne(d => d.Comment).WithMany()
                 .HasForeignKey(d => d.Commentid)
-                .HasConstraintName("SYS_C0010210");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010524");
 
             entity.HasOne(d => d.Post).WithMany()
                 .HasForeignKey(d => d.Postid)
-                .HasConstraintName("SYS_C0010209");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010523");
         });
 
         modelBuilder.Entity<Managegroup>(entity =>
@@ -100,6 +106,10 @@ public partial class ModelContext : DbContext
                 .HasNoKey()
                 .ToTable("MANAGEGROUPS");
 
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
             entity.Property(e => e.Groupid)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
@@ -107,62 +117,65 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("JOIN_DATE");
-            entity.Property(e => e.Userid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("USERID");
+
+            entity.HasOne(d => d.EmailNavigation).WithMany()
+                .HasForeignKey(d => d.Email)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010509");
 
             entity.HasOne(d => d.Group).WithMany()
                 .HasForeignKey(d => d.Groupid)
-                .HasConstraintName("SYS_C0010196");
-
-            entity.HasOne(d => d.User).WithMany()
-                .HasForeignKey(d => d.Userid)
-                .HasConstraintName("SYS_C0010195");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010510");
         });
 
         modelBuilder.Entity<Message>(entity =>
         {
-            entity.HasKey(e => e.Messageid).HasName("SYS_C0010189");
+            entity.HasKey(e => e.Messageid).HasName("SYS_C0010503");
 
             entity.ToTable("MESSAGES");
 
             entity.Property(e => e.Messageid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("MESSAGEID");
             entity.Property(e => e.MessageText)
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("MESSAGE_TEXT");
-            entity.Property(e => e.Receiverid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("RECEIVERID");
+            entity.Property(e => e.Receiveremail)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("RECEIVEREMAIL");
             entity.Property(e => e.SendDate)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("SEND_DATE");
-            entity.Property(e => e.Senderid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("SENDERID");
+            entity.Property(e => e.Senderemail)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("SENDEREMAIL");
 
-            entity.HasOne(d => d.Receiver).WithMany(p => p.MessageReceivers)
-                .HasForeignKey(d => d.Receiverid)
-                .HasConstraintName("SYS_C0010191");
+            entity.HasOne(d => d.ReceiveremailNavigation).WithMany(p => p.MessageReceiveremailNavigations)
+                .HasForeignKey(d => d.Receiveremail)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010505");
 
-            entity.HasOne(d => d.Sender).WithMany(p => p.MessageSenders)
-                .HasForeignKey(d => d.Senderid)
-                .HasConstraintName("SYS_C0010190");
+            entity.HasOne(d => d.SenderemailNavigation).WithMany(p => p.MessageSenderemailNavigations)
+                .HasForeignKey(d => d.Senderemail)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010504");
         });
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Permissionid).HasName("SYS_C0010182");
+            entity.HasKey(e => e.Permissionid).HasName("SYS_C0010497");
 
             entity.ToTable("PERMISSIONS");
 
             entity.Property(e => e.Permissionid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PERMISSIONID");
             entity.Property(e => e.PermissionName)
                 .HasMaxLength(100)
@@ -172,14 +185,18 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<Photo>(entity =>
         {
-            entity.HasKey(e => e.Photoid).HasName("SYS_C0010198");
+            entity.HasKey(e => e.Photoid).HasName("SYS_C0010512");
 
             entity.ToTable("PHOTOS");
 
             entity.Property(e => e.Photoid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PHOTOID");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
             entity.Property(e => e.PhotoSize)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("PHOTO_SIZE");
@@ -191,25 +208,27 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("PHOTO_URL");
-            entity.Property(e => e.Userid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("USERID");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Photos)
-                .HasForeignKey(d => d.Userid)
-                .HasConstraintName("SYS_C0010199");
+            entity.HasOne(d => d.EmailNavigation).WithMany(p => p.Photos)
+                .HasForeignKey(d => d.Email)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010513");
         });
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Postid).HasName("SYS_C0010201");
+            entity.HasKey(e => e.Postid).HasName("SYS_C0010515");
 
             entity.ToTable("POSTS");
 
             entity.Property(e => e.Postid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
             entity.Property(e => e.Groupid)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
@@ -224,32 +243,32 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("POST_TEXT");
-            entity.Property(e => e.Userid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("USERID");
+
+            entity.HasOne(d => d.EmailNavigation).WithMany(p => p.Posts)
+                .HasForeignKey(d => d.Email)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010516");
 
             entity.HasOne(d => d.Group).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.Groupid)
-                .HasConstraintName("SYS_C0010204");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010518");
 
             entity.HasOne(d => d.Photo).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.Photoid)
-                .HasConstraintName("SYS_C0010203");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Posts)
-                .HasForeignKey(d => d.Userid)
-                .HasConstraintName("SYS_C0010202");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010517");
         });
 
         modelBuilder.Entity<Sitecomment>(entity =>
         {
-            entity.HasKey(e => e.Commentid).HasName("SYS_C0010206");
+            entity.HasKey(e => e.Commentid).HasName("SYS_C0010520");
 
             entity.ToTable("SITECOMMENTS");
 
             entity.Property(e => e.Commentid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("COMMENTID");
             entity.Property(e => e.CommentDate)
                 .HasMaxLength(100)
@@ -259,68 +278,69 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("COMMENT_TEXT");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
             entity.Property(e => e.Postid)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
-            entity.Property(e => e.Userid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("USERID");
+
+            entity.HasOne(d => d.EmailNavigation).WithMany(p => p.Sitecomments)
+                .HasForeignKey(d => d.Email)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010522");
 
             entity.HasOne(d => d.Post).WithMany(p => p.Sitecomments)
                 .HasForeignKey(d => d.Postid)
-                .HasConstraintName("SYS_C0010207");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Sitecomments)
-                .HasForeignKey(d => d.Userid)
-                .HasConstraintName("SYS_C0010208");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010521");
         });
 
         modelBuilder.Entity<Sitegroup>(entity =>
         {
-            entity.HasKey(e => e.Groupid).HasName("SYS_C0010193");
+            entity.HasKey(e => e.Groupid).HasName("SYS_C0010507");
 
             entity.ToTable("SITEGROUPS");
 
             entity.Property(e => e.Groupid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("NAME");
-            entity.Property(e => e.Ownerid)
-                .HasColumnType("NUMBER(38)")
-                .HasColumnName("OWNERID");
+            entity.Property(e => e.Owneremail)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("OWNEREMAIL");
 
-            entity.HasOne(d => d.Owner).WithMany(p => p.Sitegroups)
-                .HasForeignKey(d => d.Ownerid)
-                .HasConstraintName("SYS_C0010194");
+            entity.HasOne(d => d.OwneremailNavigation).WithMany(p => p.Sitegroups)
+                .HasForeignKey(d => d.Owneremail)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010508");
         });
 
         modelBuilder.Entity<Siteuser>(entity =>
         {
-            entity.HasKey(e => e.Userid).HasName("SYS_C0010184");
+            entity.HasKey(e => e.Email).HasName("SYS_C0010498");
 
             entity.ToTable("SITEUSERS");
 
-            entity.Property(e => e.Userid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER")
-                .HasColumnName("USERID");
-            entity.Property(e => e.BirthDay)
-                .HasPrecision(2)
-                .HasColumnName("BIRTH_DAY");
-            entity.Property(e => e.BirthMonth)
-                .HasPrecision(2)
-                .HasColumnName("BIRTH_MONTH");
-            entity.Property(e => e.BirthYear)
-                .HasPrecision(4)
-                .HasColumnName("BIRTH_YEAR");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("EMAIL");
+            entity.Property(e => e.BirthDay)
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("BIRTH_DAY");
+            entity.Property(e => e.BirthMonth)
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("BIRTH_MONTH");
+            entity.Property(e => e.BirthYear)
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("BIRTH_YEAR");
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -347,7 +367,8 @@ public partial class ModelContext : DbContext
 
             entity.HasOne(d => d.Permission).WithMany(p => p.Siteusers)
                 .HasForeignKey(d => d.Permissionid)
-                .HasConstraintName("SYS_C0010185");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("SYS_C0010499");
         });
         modelBuilder.HasSequence("FELHASZNALO_SEQ");
 

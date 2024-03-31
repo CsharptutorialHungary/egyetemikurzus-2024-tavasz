@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.CommunitySiteEntities;
+namespace CommunitySite.Data.Entities;
 
 public partial class Include
 {

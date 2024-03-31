@@ -4,7 +4,7 @@
     {
         public int Userid { get; set; }
 
-        public int? Permissionid { get; set; }
+        public int? PermissionId { get; set; }
 
         public string? SurName { get; set; }
 
