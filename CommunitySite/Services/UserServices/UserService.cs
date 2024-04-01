@@ -37,10 +37,17 @@ namespace CommunitySite.Services.UserServices
 
         public async Task<bool> ExistUserEmailAndPasswordInDatabase(string email, string password)
         {
+            if(password == null || email == null)
+            {
+                return false;
+            }
+
+            var encryptedPassword = PasswordHasher.EncodePasswordToBase64(password);
+
             using (var dbcx = new ModelContext())
             {
-                var result = await dbcx.Siteusers.AsNoTracking().Where(x => x.Email == email && x.Passwords == password).AnyAsync();
-                return !result;
+                var result = await dbcx.Siteusers.AsNoTracking().Where(x => x.Email == email && x.Passwords == encryptedPassword).AnyAsync();
+                return result;
             }
         } 
 
@@ -59,6 +66,15 @@ namespace CommunitySite.Services.UserServices
             {
                 var users = await dbcx.Siteusers.ToListAsync();
                 return users.Select(_mapper.Map<UserViewModel>).ToList();
+            }
+        }
+
+        public async Task<UserViewModel> GetUser(string email)
+        {
+            using (var dbcx = new ModelContext())
+            {
+                var user = await dbcx.Siteusers.Where(x => x.Email == email).FirstOrDefaultAsync();
+                return _mapper.Map<UserViewModel>(user);
             }
         }
     }

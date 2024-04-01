@@ -1,15 +1,15 @@
 ﻿@page "/Register"
-
 @using FluentValidation
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ISnackbar Snackbar
 @inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager navmanager
 
 <MudGrid Justify="Justify.Center">
     <MudItem>
         <MudCard>
             <MudCardContent>
-                <MudForm Model="@_userViewModel" @ref="_form" Validation="@(validationRules.ValidateValue)" ValidationDelay="0">
+                <MudForm Model="@_userViewModel" @ref="_form" Validation="@(validationRules.ValidateValue)">
                     <MudTextField @bind-Value="_userViewModel.SurName" For="@(() => _userViewModel.SurName)" Label="Surname"></MudTextField>
                     <MudTextField @bind-Value="_userViewModel.LastName" For="@(() => _userViewModel.LastName)" Label="Lastname"></MudTextField>
                     <MudTextField @bind-Value="_userViewModel.Email"  For="@(() => _userViewModel.Email)" Label="Email"></MudTextField>

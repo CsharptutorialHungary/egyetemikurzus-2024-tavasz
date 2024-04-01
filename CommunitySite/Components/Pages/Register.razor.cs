@@ -21,11 +21,10 @@ namespace CommunitySite.Components.Pages
             await _form.Validate();
             if (_form.IsValid)
             {
-                var valami = userService.SetUserToDatabase(_userViewModel);
-                var valami2 = userService.GetUsers();
+                await userService.SetUserToDatabase(_userViewModel);
                 await ProtectedSessionStore.SetAsync("LoggedUser", _userViewModel);
+                navmanager.NavigateTo("/MainPage");
             }
-
             var asd = await ProtectedSessionStore.GetAsync<UserViewModel>("LoggedUser");
         }
     }

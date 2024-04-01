@@ -1,4 +1,6 @@
-﻿namespace CommunitySite.Data.ViewModels
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+
+namespace CommunitySite.Data.ViewModels
 {
     public class UserViewModel
     {
@@ -23,5 +25,10 @@
         public int? BirthMonth { get; set; }
 
         public int? BirthDay { get; set; }
+
+        public static explicit operator UserViewModel(ValueTask<ProtectedBrowserStorageResult<UserViewModel>> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

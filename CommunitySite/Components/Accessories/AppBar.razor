@@ -1,10 +1,26 @@
-﻿@inject NavigationManager navmanager
+﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ISnackbar Snackbar
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager navmanager
 
 <MudPaper Elevation="25">
-    <MudToolBar>
-        <MudText>Community site</MudText>
-        <MudSpacer />
-        <MudButton StartIcon="@Icons.Material.Outlined.Login" >Sign in</MudButton>
-        <MudButton StartIcon="@Icons.Material.Outlined.HowToReg" OnClick="@(() => NavigateToRegisterPage())">Register</MudButton>
-    </MudToolBar>
+    
+    @if (_loggedUser.Value == null)
+    {
+        <MudToolBar>
+            <MudText>Community site</MudText>
+            <MudSpacer />
+            <MudButton Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Login" OnClick="@(() => NavigateToLoginPage())">Sign in</MudButton>
+            <MudButton Color="Color.Primary" StartIcon="@Icons.Material.Outlined.HowToReg" OnClick="@(() => NavigateToRegisterPage())">Register</MudButton>
+        </MudToolBar>
+    }
+    else 
+    {
+        <MudToolBar>
+            <MudIconButton Icon="@Icons.Material.Filled.Home"></MudIconButton>
+            <MudSpacer />
+            <MudIconButton Icon="@Icons.Material.Filled.AccountCircle"></MudIconButton>
+            <MudIconButton Icon="@Icons.Material.Filled.Settings"></MudIconButton>
+        </MudToolBar>
+    } 
 </MudPaper>
