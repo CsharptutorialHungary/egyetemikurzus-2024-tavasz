@@ -23,7 +23,7 @@ namespace CommunitySite.Components.Pages
             {
                 await userService.SetUserToDatabase(_userViewModel);
                 await ProtectedSessionStore.SetAsync("LoggedUser", _userViewModel);
-                navmanager.NavigateTo("/MainPage");
+                navmanager.NavigateTo("/");
             }
             var asd = await ProtectedSessionStore.GetAsync<UserViewModel>("LoggedUser");
         }
