@@ -1,16 +1,10 @@
-using Oracle.EntityFrameworkCore;
 using MudBlazor.Services;
-using MudBlazor.Components;
 using CommunitySite.Extensions;
-using CommunitySite.Components.Accessories;
 using CommunitySite.Components;
 using System.Reflection;
 using CommunitySite.Extensions.Mapper;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using CommunitySite.Data.ViewModels;
-using CommunitySite.Data.Entities;
-using CommunitySite.Services.UserServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
