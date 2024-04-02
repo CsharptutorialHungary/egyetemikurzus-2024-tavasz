@@ -4,9 +4,6 @@
 @inject NavigationManager navmanager
 
 <MudPaper Elevation="25">
-    
-    @if (_loggedUser.Value == null)
-    {
         <MudToolBar>
             <MudText>Community site</MudText>
             <MudSpacer />
@@ -14,13 +11,4 @@
             <MudButton Color="Color.Primary" StartIcon="@Icons.Material.Outlined.HowToReg" OnClick="@(() => NavigateToRegisterPage())">Register</MudButton>
         </MudToolBar>
     }
-    else 
-    {
-        <MudToolBar>
-            <MudIconButton Icon="@Icons.Material.Filled.Home"></MudIconButton>
-            <MudSpacer />
-            <MudIconButton Icon="@Icons.Material.Filled.AccountCircle"></MudIconButton>
-            <MudIconButton Icon="@Icons.Material.Filled.Settings"></MudIconButton>
-        </MudToolBar>
-    } 
 </MudPaper>

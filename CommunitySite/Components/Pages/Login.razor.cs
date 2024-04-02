@@ -20,7 +20,7 @@ namespace CommunitySite.Components.Pages
             {
                 var user = await userService.GetUser(Email);
                 await ProtectedSessionStore.SetAsync("LoggedUser", user);
-                navmanager.NavigateTo("/MainPage");
+                navmanager.NavigateTo("/");
             }
             else
             {
