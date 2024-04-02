@@ -25,10 +25,5 @@ namespace CommunitySite.Data.ViewModels
         public int? BirthMonth { get; set; }
 
         public int? BirthDay { get; set; }
-
-        public static explicit operator UserViewModel(ValueTask<ProtectedBrowserStorageResult<UserViewModel>> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

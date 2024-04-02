@@ -1,6 +1,9 @@
 ﻿using CommunitySite.Data.Entities;
+using CommunitySite.Data.ViewModels;
 using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunitySite.Extensions

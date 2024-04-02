@@ -16,5 +16,12 @@ namespace CommunitySite.Components.Accessories
         {
             navmanager.NavigateTo("");
         }
+
+        //TODO: nem hívódik meg minden betöltésnél.
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            _loggedUser = await ProtectedSessionStore.GetAsync<UserViewModel>("LoggedUser");
+        }
     }
 }
