@@ -56,6 +56,10 @@ namespace CVBNMY
             }
             return tempWords;
         }
-
+        public override string ToString()
+        {
+            string wordList = string.Join(", ", words.Select(word => word.WholeWord));
+            return $"Guesses remaining: {guesses}\nWords: {wordList}";
+        }
     }
 }
