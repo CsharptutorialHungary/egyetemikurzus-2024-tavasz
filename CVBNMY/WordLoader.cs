@@ -8,11 +8,10 @@ namespace CVBNMY
 {
     internal static class WordLoader
     {
-        private const string WORD_FILES_PATH =          @"\..\..\..\WordFiles\";
         private const string EASY_WORD_FILE_PATH =      "EasyWords.txt";
         private const string MEDIUM_WORD_FILE_PATH =    "MediumWords.txt";
         private const string HARD_WORD_FILE_PATH =      "HardWords.txt";
-        public static string[]? ReadWords(string filePath)
+        public static string[] ReadWords(string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
             {
@@ -23,21 +22,16 @@ namespace CVBNMY
             try
             {
                 words = File.ReadAllLines(filePath);
-
-                foreach (string word in words)
-                {
-                    Console.WriteLine(word);
-                }
             }
             catch(FileNotFoundException)
             {
                 Console.WriteLine("Unable to access file");
-                words = null;
+                words = [];
             }
             catch(IOException) 
             {
                 Console.WriteLine("I/O exception occured while reading the file");
-                words = null;
+                words = [];
 
             }
             return words;

@@ -8,10 +8,10 @@ namespace CVBNMY
 {
     internal static class WordRandomizer
     {
-        public static string PickWord(string[] words)
+        public static Word PickWord(List<Word> words)
         {
             Random r = new Random();
-            int index = r.Next(words.Length);
+            int index = r.Next(words.Count);
             return words[index];
         }
     }
