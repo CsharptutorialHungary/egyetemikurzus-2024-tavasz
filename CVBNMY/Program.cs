@@ -5,10 +5,12 @@ namespace CVBNMY
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            HangmanGame hangmanGame = new HangmanGame(Difficulty.EASY);
+            HangmanGame hangmanGame = new HangmanGame(Difficulty.HARD);
             Console.WriteLine(hangmanGame.ToString());
+            Console.WriteLine();
+            await hangmanGame.HangmanGameTask();
         }
     }
 }
