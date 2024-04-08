@@ -14,6 +14,7 @@ namespace WHBNDL.Infrastructure
         private readonly char[] _answerOptions = ['A', 'B', 'C', 'D'];
         private int _correctAnswersCount = 0;
         private  char _currentCorrectAnswer = 'A'; // Lényegtelen, csak hogy ne legyen hiba
+        private bool _gameOver = false;
 
         public QuizManager(Question[] questions)
         {
@@ -22,8 +23,12 @@ namespace WHBNDL.Infrastructure
 
         public void StartQuiz()
         {
+            Console.WriteLine("Welcome to the quiz! Press E to exit, R to restart the quiz.");
             foreach (var question in _questions)
             {
+                if (_gameOver)
+                    break;
+
                 DisplayQuestion(question);
                 EvaluateAnswer(question);
                 Console.WriteLine();
@@ -61,8 +66,22 @@ namespace WHBNDL.Infrastructure
 
             if (string.IsNullOrEmpty(userInput) || userInput.Length != 1 || !_answerOptions.Contains(userInput[0]))
             {
-                Console.WriteLine("Invalid input!\nGive a valid input!");
-                EvaluateAnswer(question);
+                switch(userInput)
+                {
+                    case "E":
+                        _gameOver = true;
+
+                        break;
+                    case "R":
+                        _correctAnswersCount = 0;
+                        StartQuiz();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input!\nGive a valid input!");
+                        EvaluateAnswer(question);
+                        break;
+                }
+                
             }
             else
             {
