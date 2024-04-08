@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WHBNDL.Domain
 {
-    public sealed record class Question
+    public sealed record class Answer
     {
-        public required string QuestionText { get; set; }
-        public required Answer Answers { get; set; }
+        public required string CorrectAnswer { get; set; }
+        public required string[] WrongAnswers  { get; set; }
     }
 }

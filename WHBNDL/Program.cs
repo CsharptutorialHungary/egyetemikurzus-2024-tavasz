@@ -11,8 +11,6 @@ namespace WHBNDL
             var textsDeserializer = new AppTextsDeserializer();
             Texts constTexts = AppTextsDeserializer.Deserialize();
             Console.WriteLine(constTexts.Welcome);
-
-
             var ui = new UI(new CommandProvider(), new Host());
             ui.Run();
         }
