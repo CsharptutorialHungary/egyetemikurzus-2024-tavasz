@@ -20,7 +20,14 @@ namespace WHBNDL.Infrastructure
             {
                 PropertyNameCaseInsensitive = true
             };
-            return JsonSerializer.Deserialize<Question[]>(reader.ReadToEnd(), options);
+            Question[] questions = JsonSerializer.Deserialize<Question[]>(reader.ReadToEnd(), options);
+
+            Random random = new Random();
+            questions = questions.OrderBy(x => random.Next()).ToArray();
+
+            questions = questions.Take(10).ToArray();
+
+            return questions;
         }
     }
 }

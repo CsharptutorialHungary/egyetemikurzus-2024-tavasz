@@ -22,7 +22,7 @@ namespace WHBNDL.UserInterface
                 new ExitCommand(),
                 new HelpCommand(),
                 new DescriptionCommand(),
-
+                new StartCommand()
             };
         }
     }
