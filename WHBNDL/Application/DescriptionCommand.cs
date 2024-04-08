@@ -9,16 +9,15 @@ using WHBNDL.Infrastructure;
 
 namespace WHBNDL.Application
 {
-    internal class ExitCommand : IShellCommand
+    internal class DescriptionCommand : IShellCommand
     {
-        public string Name => "exit";
+        public string Name => "description";
 
         public void Execute(IHost host, string[] args)
         {
             var textsDeserializer = new AppTextsDeserializer();
             Texts constTexts = AppTextsDeserializer.Deserialize();
-            host.WriteLine(constTexts.End);
-            host.Exit();
+            host.WriteLine(constTexts.Description);
         }
     }
 }

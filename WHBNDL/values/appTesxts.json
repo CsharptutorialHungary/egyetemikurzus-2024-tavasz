@@ -1,6 +1,0 @@
-{
-  "welcome": "Üdvözöllek! Ez egy kvíz applikáció!",
-  "help": "A következő kommandok használhatóak:\n",
-  "description": "Ez egy kvíz alkalmazás. Tíz kérdésre kell válaszolnod!\n A választ A, B, C, D formában kell megadnod (kis- és nagybetű nem számít).\n A betúk és a hozzá tartotó válaszok fel lesznek sorolva",
-  "end":  "Köszönöm, hogy kipróbáltad az alkalmazásomat. További szép napot!"
-}

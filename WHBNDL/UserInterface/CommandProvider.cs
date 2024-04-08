@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using WHBNDL.Application;
 using WHBNDL.Infrastructure;
 
 namespace WHBNDL.UserInterface
@@ -18,7 +19,10 @@ namespace WHBNDL.UserInterface
         {
             Commands = new IShellCommand[]
             {
-                
+                new ExitCommand(),
+                new HelpCommand(),
+                new DescriptionCommand(),
+
             };
         }
     }
