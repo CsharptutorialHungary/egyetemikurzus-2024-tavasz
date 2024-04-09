@@ -1,26 +1,27 @@
 using DownloadManager.Infrastructure;
 
-namespace DownloadManager.UserInterface;
-
-internal class Host : IHost
+namespace DownloadManager.UserInterface
 {
-    public string ReadLine()
+    internal class Host : IHost
     {
-        return Console.ReadLine() ?? throw new IOException("User input is empty");
-    }
+        public string ReadLine()
+        {
+            return Console.ReadLine() ?? throw new IOException("User input is empty");
+        }
 
-    public void WriteLine(string message)
-    {
-        Console.WriteLine(message);
-    }
+        public void WriteLine(string message)
+        {
+            Console.WriteLine(message);
+        }
 
-    public void Write(string message)
-    {
-        Console.Write(message);
-    }
+        public void Write(string message)
+        {
+            Console.Write(message);
+        }
 
-    public void Exit()
-    {
-        Environment.Exit(0);
+        public void Exit()
+        {
+            Environment.Exit(0);
+        }
     }
 }
