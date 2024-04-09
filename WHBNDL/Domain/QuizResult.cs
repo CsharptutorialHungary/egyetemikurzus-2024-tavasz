@@ -8,9 +8,9 @@ namespace WHBNDL.Domain
 {
     internal class QuizResult
     {
-        public int CorrectAnswers { get; }
-        public int TotalQuestions { get; }
-        public DateTime Timestamp { get; }
+        public int CorrectAnswers { get; set; }
+        public int TotalQuestions { get; set; }
+        public DateTime Timestamp { get; set; }
 
         public QuizResult(int correctAnswers, int totalQuestions, DateTime timestamp)
         {

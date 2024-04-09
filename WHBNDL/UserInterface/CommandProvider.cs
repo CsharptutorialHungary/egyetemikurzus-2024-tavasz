@@ -24,7 +24,8 @@ namespace WHBNDL.UserInterface
                 new HelpCommand(),
                 new DescriptionCommand(),
                 new StartCommand(database),
-                new ListCommand(database)
+                new ListCommand(database),
+                new BestResultCommand(database)
             };
         }
     }

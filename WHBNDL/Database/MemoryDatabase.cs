@@ -78,6 +78,33 @@ namespace WHBNDL.Database
 
             return results;
         }
+        public async Task<QuizResult> GetBestQuizResultAsync()
+        {
+            string selectQuery = @"
+                SELECT * FROM QuizResults;
+            ";
+
+            List<QuizResult> quizResults = new List<QuizResult>();
+
+            using (var command = new SQLiteCommand(selectQuery, _connection))
+            {
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        quizResults.Add(new QuizResult(
+                        Convert.ToInt32(reader["CorrectAnswers"]),
+                        Convert.ToInt32(reader["TotalQuestions"]),
+                        Convert.ToDateTime(reader["Timestamp"])
+                        ));
+                    }
+                }
+            }
+
+            var bestResult = quizResults.OrderByDescending(q => (double)q.CorrectAnswers / q.TotalQuestions).FirstOrDefault();
+
+            return bestResult;
+        }
 
         public void Close()
         {
