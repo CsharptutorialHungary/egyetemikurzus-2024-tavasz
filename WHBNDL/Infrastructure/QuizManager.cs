@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Data.SQLite;
 
+using WHBNDL.Database;
 using WHBNDL.Domain;
 
 namespace WHBNDL.Infrastructure
@@ -13,17 +11,19 @@ namespace WHBNDL.Infrastructure
         private readonly Question[] _questions;
         private readonly char[] _answerOptions = ['A', 'B', 'C', 'D'];
         private int _correctAnswersCount = 0;
-        private  char _currentCorrectAnswer = 'A'; // Lényegtelen, csak hogy ne legyen hiba
+        private char _currentCorrectAnswer = 'A'; // Lényegtelen, csak hogy ne legyen hiba
         private bool _gameOver = false;
+        private readonly MemoryDatabase _database;
 
-        public QuizManager(Question[] questions)
+        public QuizManager(Question[] questions, MemoryDatabase database)
         {
             _questions = questions;
+            _database = database;
         }
 
         public void StartQuiz()
         {
-            Console.WriteLine("Welcome to the quiz! Press E to exit, R to restart the quiz.");
+            Console.WriteLine("Kezdődik a quiz! Nyomd meg az E gombot a kilépéshez, vagy az R gombot az újrakezdéshez.");
             foreach (var question in _questions)
             {
                 if (_gameOver)
@@ -35,6 +35,7 @@ namespace WHBNDL.Infrastructure
             }
 
             Console.WriteLine($"You got {_correctAnswersCount} out of {_questions.Length} questions correct.");
+            _ = _database.SaveQuizResultAsync(_correctAnswersCount, _questions.Length);
         }
 
         private void DisplayQuestion(Question question)
@@ -66,7 +67,7 @@ namespace WHBNDL.Infrastructure
 
             if (string.IsNullOrEmpty(userInput) || userInput.Length != 1 || !_answerOptions.Contains(userInput[0]))
             {
-                switch(userInput)
+                switch (userInput)
                 {
                     case "E":
                         _gameOver = true;
@@ -81,11 +82,11 @@ namespace WHBNDL.Infrastructure
                         EvaluateAnswer(question);
                         break;
                 }
-                
+
             }
             else
             {
-                
+
                 if (userInput[0] == _currentCorrectAnswer)
                 {
                     Console.WriteLine("Correct!");

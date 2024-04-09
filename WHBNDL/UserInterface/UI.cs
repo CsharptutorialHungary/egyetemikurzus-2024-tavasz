@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using WHBNDL.Infrastructure;
+﻿using WHBNDL.Infrastructure;
 
 namespace WHBNDL.UserInterface
 {
@@ -19,7 +13,7 @@ namespace WHBNDL.UserInterface
         }
         public void Run()
         {
-            while(true)
+            while (true)
             {
                 string input = _host.ReadLine();
                 string[] splittedInput = input.Split(' ');
@@ -34,7 +28,7 @@ namespace WHBNDL.UserInterface
         {
             foreach (var command in _commandProvider.Commands)
             {
-                if(command.Name.Equals(commandName, StringComparison.CurrentCultureIgnoreCase))
+                if (command.Name.Equals(commandName, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return command;
                 }

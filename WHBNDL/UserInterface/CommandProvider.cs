@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using WHBNDL.Application;
+using WHBNDL.Database;
 using WHBNDL.Infrastructure;
 
 namespace WHBNDL.UserInterface
@@ -15,14 +16,15 @@ namespace WHBNDL.UserInterface
         {
             get;
         }
-       public CommandProvider()
+       public CommandProvider(MemoryDatabase database)
         {
             Commands = new IShellCommand[]
             {
                 new ExitCommand(),
                 new HelpCommand(),
                 new DescriptionCommand(),
-                new StartCommand()
+                new StartCommand(database),
+                new ListCommand(database)
             };
         }
     }
