@@ -1,0 +1,41 @@
+﻿<MudDialog>
+    <DialogContent>
+        <MudForm @ref="@userForm" Model="@userViewModel" Validation="@(validationRules.ValidateValue)">
+            <MudTextField @bind-Value="userViewModel.Username"
+                          Label="Username"
+                          ReadOnly="true"
+                          Immediate="true">
+            </MudTextField>
+            <MudDatePicker @bind-Date="userViewModel.BirthDate"
+                           Label="BirthDate" ImmediateText="true"
+                           DateFormat="yyyy.MM.dd"
+                           MaxDate="DateTime.Now"
+                           For="@(() => userViewModel.BirthDate)">
+            </MudDatePicker>
+            <MudTextField @bind-Value="userViewModel.SurName"
+                          Label="Surname"
+                          Immediate="true"
+                          For="@(() => userViewModel.SurName)">
+            </MudTextField>
+            <MudTextField @bind-Value="userViewModel.LastName"
+                          Label="Lastname"
+                          Immediate="true"
+                          For="@(() => userViewModel.LastName)">
+            </MudTextField>
+            <MudTextField @bind-Value="userViewModel.Workplace"
+                          Label="Workplace"
+                          Immediate="true"
+                          For="@(() => userViewModel.Workplace)">
+            </MudTextField>
+            <MudTextField @bind-Value="userViewModel.School"
+                          Label="School"
+                          Immediate="true"
+                          For="@(() => userViewModel.School)">
+            </MudTextField>
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Save</MudButton>
+    </DialogActions>
+</MudDialog>

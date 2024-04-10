@@ -23,6 +23,7 @@ namespace CommunitySite.Data.ViewModels
         public string? Workplace { get; set; }
 
         public string? School { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public int? BirthYear { get; set; }
 

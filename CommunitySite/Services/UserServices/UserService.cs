@@ -4,6 +4,7 @@ using CommunitySite.Data.Util;
 using CommunitySite.Data.ViewModels;
 using CommunitySite.Extensions.Validators;
 using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
 
 namespace CommunitySite.Services.UserServices
 {
@@ -40,6 +41,43 @@ namespace CommunitySite.Services.UserServices
             }
         }
 
+        public async Task<bool> UpdateUserAsync(UserViewModel userViewModel)
+        {
+            return await Task.Run(() => UpdateUser(userViewModel));
+        }
+
+        private bool UpdateUser(UserViewModel userViewModel)
+        {
+            if(userViewModel == null || userViewModel.Username == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                using (var dbcx =  _dbContextFactory.CreateDbContext())
+                {
+                    var res = dbcx.Siteusers.AsNoTracking().SingleOrDefault(x => x.Username == userViewModel.Username);
+                    if (res == null)
+                    {
+                        return false;
+                    }
+
+                    var entity = _mapper.Map<Siteuser>(userViewModel);
+                    dbcx.Siteusers.Update(entity);
+                    dbcx.SaveChanges();
+                    dbcx.Entry(entity).State = EntityState.Detached;
+                }
+
+                return true;
+            }
+            catch (OracleException e)
+            {
+                //TODO: logger
+                return false;
+            }
+        }
+
         public async Task<bool> ExistUser(string userName)
         {
             using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
@@ -52,7 +90,7 @@ namespace CommunitySite.Services.UserServices
         {
             using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
-                var users = await dbcx.Siteusers.ToListAsync();
+                var users = await dbcx.Siteusers.AsNoTracking().ToListAsync();
                 return users.Select(_mapper.Map<UserViewModel>).ToList();
             }
         }
@@ -61,7 +99,7 @@ namespace CommunitySite.Services.UserServices
         {
             using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
-                var user = await dbcx.Siteusers.Where(x => x.Username == userName).SingleOrDefaultAsync();
+                var user = await dbcx.Siteusers.AsNoTracking().Where(x => x.Username == userName).SingleOrDefaultAsync();
                 return _mapper.Map<UserViewModel>(user);
             }
         }

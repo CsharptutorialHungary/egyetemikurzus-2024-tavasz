@@ -1,14 +1,13 @@
 ﻿@using CommunitySite.Data.ViewModels
 @inject ISnackbar Snackbar
 @inject NavigationManager navmanager
-@inject IDialogService DialogService
 
 <MudPaper>
     <MudAppBar Style="@($"color:{Theme.Palette.Black}; background:{Theme.Palette.White};")">
         <MudNavLink Match="NavLinkMatch.All" Href="/">Community site</MudNavLink>
         <MudSpacer />
         <MudTooltip ShowOnHover="true" Text="Profile">
-            <MudIconButton OnClick="GoToProfilePage" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
+            <MudIconButton OnClick="@(() => OpenDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
         </MudTooltip>
     </MudAppBar>
     <MudDrawer Open="true" Style="@($"color:{Theme.Palette.White}; background:{Theme.Palette.Black};")">

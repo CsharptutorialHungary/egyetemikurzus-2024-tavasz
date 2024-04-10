@@ -1,18 +1,8 @@
 using MudBlazor.Services;
 using CommunitySite.Extensions;
-using MudBlazor.Components;
-using CommunitySite.Extensions;
-using CommunitySite.Components.Accessories;
 using Microsoft.AspNetCore.Authentication.Negotiate;
-using MudBlazor.Services;
-using FluentValidation;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using CommunitySite.Data.ViewModels;
-using CommunitySite.Data.Entities;
-using CommunitySite.Services.UserServices;
-using CommunitySite.Data.ViewModels;
-using CommunitySite.Data.Entities;
-using CommunitySite.Services.UserServices;
+using CommunitySite.Extensions.Mapper;
+using CommunitySite.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +13,16 @@ builder.Services.RegisterDatabaseContexts(builder.Configuration);
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddServerSideBlazor();
-builder.Services.AddMudServices();
+
+builder.Services.AddMudServices(config =>
+{
+    config.SnackbarConfiguration.VisibleStateDuration = 3000;
+    config.SnackbarConfiguration.HideTransitionDuration = 1000;
+    config.SnackbarConfiguration.ShowTransitionDuration = 1000;
+    config.SnackbarConfiguration.ShowCloseIcon = true;
+    config.SnackbarConfiguration.NewestOnTop = true;
+});
+
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
 builder.Services.RegisterApplicationServices();
 builder.Services.AddAuthorization();

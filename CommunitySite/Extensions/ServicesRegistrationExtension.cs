@@ -2,6 +2,7 @@
 using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor;
 
 namespace CommunitySite.Extensions
 {
@@ -22,6 +23,8 @@ namespace CommunitySite.Extensions
             services.AddMemoryCache();
             services.AddTransient<IClaimsTransformation, ClaimsTransformation>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDialogService, DialogService>();
+            services.AddScoped<IUserViewService, UserViewService>();
 
             return services;
         }
