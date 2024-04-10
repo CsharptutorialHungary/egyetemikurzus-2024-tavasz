@@ -9,6 +9,7 @@ namespace CommunitySite.Extensions.Mapper
         public MapperProfile()
         {
             CreateMap<Siteuser, UserViewModel>().ReverseMap();
+                //.ForMember(o => o.Email, x => x.MapFrom(y => y.Email));
         }
     }
 }
