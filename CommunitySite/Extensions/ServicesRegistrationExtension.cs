@@ -1,9 +1,6 @@
 ﻿using CommunitySite.Data.Entities;
-using CommunitySite.Data.ViewModels;
 using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunitySite.Extensions
@@ -16,12 +13,14 @@ namespace CommunitySite.Extensions
             services.AddPooledDbContextFactory<ModelContext>(options => options
                 .UseOracle(defaultConns)
             );
+
             return services;
         }
 
         public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
         {
             services.AddMemoryCache();
+            services.AddTransient<IClaimsTransformation, ClaimsTransformation>();
             services.AddScoped<IUserService, UserService>();
 
             return services;

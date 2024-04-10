@@ -1,16 +1,8 @@
-using Oracle.EntityFrameworkCore;
-using MudBlazor.Services;
-using MudBlazor.Components;
-using CommunitySite.Extensions;
-using CommunitySite.Components.Accessories;
 using CommunitySite.Components;
-using System.Reflection;
+using CommunitySite.Extensions;
 using CommunitySite.Extensions.Mapper;
-using FluentValidation;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using CommunitySite.Data.ViewModels;
-using CommunitySite.Data.Entities;
-using CommunitySite.Services.UserServices;
+using Microsoft.AspNetCore.Authentication.Negotiate;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,16 +10,16 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.RegisterDatabaseContexts(builder.Configuration);
-builder.Services.RegisterApplicationServices();
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(typeof(MapperProfile));
-builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
+builder.Services.RegisterApplicationServices();
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 string baseHref = builder.Configuration.GetValue<string>("Base") ?? "";
 
@@ -50,6 +42,8 @@ app.UseAuthorization();
 app.UseAuthentication();
 app.UseStaticFiles();
 app.UseAntiforgery();
+app.UseSession();
+app.MapDefaultControllerRoute();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

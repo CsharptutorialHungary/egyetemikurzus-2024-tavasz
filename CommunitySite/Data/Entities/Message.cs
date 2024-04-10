@@ -7,15 +7,15 @@ public partial class Message
 {
     public decimal Messageid { get; set; }
 
-    public string? Senderemail { get; set; }
+    public decimal? Senderid { get; set; }
 
-    public string? Receiveremail { get; set; }
+    public decimal? Receiverid { get; set; }
 
     public string? MessageText { get; set; }
 
     public string? SendDate { get; set; }
 
-    public virtual Siteuser? ReceiveremailNavigation { get; set; }
+    public virtual Siteuser? Receiver { get; set; }
 
-    public virtual Siteuser? SenderemailNavigation { get; set; }
+    public virtual Siteuser? Sender { get; set; }
 }

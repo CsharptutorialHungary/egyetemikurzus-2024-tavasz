@@ -9,13 +9,13 @@ public partial class Sitecomment
 
     public decimal? Postid { get; set; }
 
-    public string? Email { get; set; }
+    public decimal? Userid { get; set; }
 
     public string? CommentText { get; set; }
 
     public string? CommentDate { get; set; }
 
-    public virtual Siteuser? EmailNavigation { get; set; }
-
     public virtual Post? Post { get; set; }
+
+    public virtual Siteuser? User { get; set; }
 }

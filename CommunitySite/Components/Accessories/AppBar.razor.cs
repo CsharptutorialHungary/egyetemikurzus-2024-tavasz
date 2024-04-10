@@ -1,27 +1,25 @@
-﻿using CommunitySite.Data.ViewModels;
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using MudBlazor;
 
 namespace CommunitySite.Components.Accessories
 {
     public partial class AppBar
     {
-        private ProtectedBrowserStorageResult<UserViewModel> _loggedUser;
+        [CascadingParameter] private Task<AuthenticationState>? authenticationStateTask { get; set; }
 
-        private void NavigateToRegisterPage()
+        private string userName = "";
+        private MudTheme Theme = new MudTheme();
+
+        protected override async Task OnInitializedAsync()
         {
-            navmanager.NavigateTo("/Register");
+            var authState = await authenticationStateTask!;
+            userName = authState.User.Identity?.Name?.Split('\\').Last() ?? "";
         }
 
-        private void NavigateToLoginPage()
+        private void GoToProfilePage()
         {
-            navmanager.NavigateTo("");
-        }
-
-        //TODO: nem hívódik meg minden betöltésnél.
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            _loggedUser = await ProtectedSessionStore.GetAsync<UserViewModel>("LoggedUser");
+            navmanager.NavigateTo("/Profile");
         }
     }
 }

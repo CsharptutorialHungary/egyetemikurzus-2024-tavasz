@@ -1,14 +1,17 @@
-﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+﻿@using CommunitySite.Data.ViewModels
 @inject ISnackbar Snackbar
-@inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager navmanager
+@inject IDialogService DialogService
 
-<MudPaper Elevation="25">
-        <MudToolBar>
-            <MudText>Community site</MudText>
-            <MudSpacer />
-            <MudButton Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Login" OnClick="@(() => NavigateToLoginPage())">Sign in</MudButton>
-            <MudButton Color="Color.Primary" StartIcon="@Icons.Material.Outlined.HowToReg" OnClick="@(() => NavigateToRegisterPage())">Register</MudButton>
-        </MudToolBar>
-    }
+<MudPaper>
+    <MudAppBar Style="@($"color:{Theme.Palette.Black}; background:{Theme.Palette.White};")">
+        <MudNavLink Match="NavLinkMatch.All" Href="/">Community site</MudNavLink>
+        <MudSpacer />
+        <MudTooltip ShowOnHover="true" Text="Profile">
+            <MudIconButton OnClick="GoToProfilePage" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
+        </MudTooltip>
+    </MudAppBar>
+    <MudDrawer Open="true" Style="@($"color:{Theme.Palette.White}; background:{Theme.Palette.Black};")">
+
+    </MudDrawer>
 </MudPaper>

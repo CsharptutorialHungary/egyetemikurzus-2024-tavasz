@@ -4,14 +4,14 @@ namespace CommunitySite.Services.UserServices
 {
     public interface IUserService
     {
-        Task SetUserToDatabase(UserViewModel userViewModel);
+        Task CreateUser(UserViewModel userViewModel);
 
         Task<List<UserViewModel>> GetUsers();
 
-        Task<UserViewModel> GetUser(string email);
+        Task<UserViewModel> GetUser(string userName);
 
-        Task<bool> ExistUser(string email);
+        Task<bool> ExistUser(string userName);
 
-        Task<bool> ExistUserEmailAndPasswordInDatabase(string email, string password);
+        Task EnsureUserExist(string userName);
     }
 }

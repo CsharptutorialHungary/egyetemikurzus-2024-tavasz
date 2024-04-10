@@ -5,15 +5,15 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Friend
 {
-    public string? Friendemail1 { get; set; }
+    public decimal? Friendid1 { get; set; }
 
-    public string? Friendemail2 { get; set; }
+    public decimal? Friendid2 { get; set; }
 
     public string? FriendStartDate { get; set; }
 
     public decimal? IsFriend { get; set; }
 
-    public virtual Siteuser? Friendemail1Navigation { get; set; }
+    public virtual Siteuser? Friendid1Navigation { get; set; }
 
-    public virtual Siteuser? Friendemail2Navigation { get; set; }
+    public virtual Siteuser? Friendid2Navigation { get; set; }
 }

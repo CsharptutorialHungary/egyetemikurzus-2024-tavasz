@@ -7,7 +7,7 @@ public partial class Post
 {
     public decimal Postid { get; set; }
 
-    public string? Email { get; set; }
+    public decimal? Userid { get; set; }
 
     public decimal? Photoid { get; set; }
 
@@ -17,11 +17,11 @@ public partial class Post
 
     public string? PostDate { get; set; }
 
-    public virtual Siteuser? EmailNavigation { get; set; }
-
     public virtual Sitegroup? Group { get; set; }
 
     public virtual Photo? Photo { get; set; }
 
     public virtual ICollection<Sitecomment> Sitecomments { get; set; } = new List<Sitecomment>();
+
+    public virtual Siteuser? User { get; set; }
 }

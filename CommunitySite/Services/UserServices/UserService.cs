@@ -10,10 +10,12 @@ namespace CommunitySite.Services.UserServices
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
+        private readonly IDbContextFactory<ModelContext> _dbContextFactory;
 
-        public UserService(IMapper mapper)
+        public UserService(IMapper mapper, IDbContextFactory<ModelContext> dbContextFactory)
         {
             _mapper = mapper;
+            _dbContextFactory = dbContextFactory;
         }
 
         public void SetPermission(ref UserViewModel model, PermissionEnum permission)
@@ -21,61 +23,63 @@ namespace CommunitySite.Services.UserServices
             model.PermissionId = (int)permission;
         }
 
-        public async Task SetUserToDatabase(UserViewModel userViewModel)
+        public async Task CreateUser(UserViewModel userViewModel)
         {
-            SetPermission(ref userViewModel, PermissionEnum.DEFAULT);
-            userViewModel.Passwords = PasswordHasher.EncodePasswordToBase64(userViewModel.Passwords!);
-
-            Siteuser siteuser = _mapper.Map<Siteuser>(userViewModel);
-           
-            using (var dbcx = new ModelContext())
+            if(userViewModel.Username is null || await ExistUser(userViewModel.Username))
             {
+                return;
+            }
+
+            SetPermission(ref userViewModel, PermissionEnum.DEFAULT);
+
+            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+            {
+                var siteuser = _mapper.Map<Siteuser>(userViewModel);
                 await dbcx.Siteusers.AddAsync(siteuser);
                 await dbcx.SaveChangesAsync();
             }
         }
 
-        public async Task<bool> ExistUserEmailAndPasswordInDatabase(string email, string password)
+        public async Task<bool> ExistUser(string userName)
         {
-            if(password == null || email == null)
+            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
-                return false;
-            }
-
-            var encryptedPassword = PasswordHasher.EncodePasswordToBase64(password);
-
-            using (var dbcx = new ModelContext())
-            {
-                var result = await dbcx.Siteusers.AsNoTracking().Where(x => x.Email == email && x.Passwords == encryptedPassword).AnyAsync();
-                return result;
-            }
-        } 
-
-        public async Task<bool> ExistUser(string email)
-        {
-            using (var dbcx = new ModelContext())
-            {
-                var result = await dbcx.Siteusers.AsNoTracking().Where(x => x.Email == email).AnyAsync();
-                return !result;
+                return await dbcx.Siteusers.AsNoTracking().Where(x => x.Username == userName).AnyAsync();
             }
         }
 
         public async Task<List<UserViewModel>> GetUsers()
         {
-            using (var dbcx = new ModelContext())
+            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
                 var users = await dbcx.Siteusers.ToListAsync();
                 return users.Select(_mapper.Map<UserViewModel>).ToList();
             }
         }
 
-        public async Task<UserViewModel> GetUser(string email)
+        public async Task<UserViewModel> GetUser(string userName)
         {
-            using (var dbcx = new ModelContext())
+            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
-                var user = await dbcx.Siteusers.Where(x => x.Email == email).FirstOrDefaultAsync();
+                var user = await dbcx.Siteusers.Where(x => x.Username == userName).SingleOrDefaultAsync();
                 return _mapper.Map<UserViewModel>(user);
             }
+        }
+
+        public async Task EnsureUserExist(string userName)
+        {
+            if(await ExistUser(userName))
+            {
+                return;
+            }
+
+            var userViewModel = new UserViewModel()
+            {
+                Username = userName,
+                ShortName = userName.Split('\\').Last(),
+            };
+
+            await CreateUser(userViewModel);
         }
     }
 }

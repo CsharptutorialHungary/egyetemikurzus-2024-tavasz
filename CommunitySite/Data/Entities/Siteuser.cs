@@ -5,13 +5,15 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Siteuser
 {
+    public decimal Userid { get; set; }
+
     public decimal? Permissionid { get; set; }
+
+    public string? Username { get; set; }
 
     public string? SurName { get; set; }
 
     public string? LastName { get; set; }
-
-    public string Email { get; set; } = null!;
 
     public string? Passwords { get; set; }
 
@@ -25,9 +27,9 @@ public partial class Siteuser
 
     public decimal? BirthDay { get; set; }
 
-    public virtual ICollection<Message> MessageReceiveremailNavigations { get; set; } = new List<Message>();
+    public virtual ICollection<Message> MessageReceivers { get; set; } = new List<Message>();
 
-    public virtual ICollection<Message> MessageSenderemailNavigations { get; set; } = new List<Message>();
+    public virtual ICollection<Message> MessageSenders { get; set; } = new List<Message>();
 
     public virtual Permission? Permission { get; set; }
 

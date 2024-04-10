@@ -8,6 +8,10 @@ namespace CommunitySite.Data.ViewModels
 
         public int? PermissionId { get; set; }
 
+        public string? Username { get; set; }
+
+        public string? ShortName { get; set; }
+
         public string? SurName { get; set; }
 
         public string? LastName { get; set; }
