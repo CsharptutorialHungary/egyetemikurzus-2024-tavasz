@@ -13,7 +13,7 @@ namespace CVBNMY
         HARD
     }
     
-    internal class HangmanGame
+    internal class HangmanGame : IRenderer
     {
         private const int EASY_GUESSES   =    7;
 
@@ -43,15 +43,13 @@ namespace CVBNMY
 
         public async Task HangmanGameTask()
         {
-            var hiddenWord = string.Concat(Enumerable.Repeat("_", wordToGuess.WholeWord.Length));
+            var hiddenWord = wordToGuess.GuessedCharacters;
             var characterGuesses = new List<char>();
             var falseGuesses = 0;
 
             while (falseGuesses < MaxGuesses && !hiddenWord.Equals(wordToGuess.WholeWord))
             {
-                Console.WriteLine($"Jelenlegi állás: {hiddenWord}");
-                Console.WriteLine($"Tippek: {string.Join(", ", characterGuesses)}");
-                Console.WriteLine($"{MaxGuesses - falseGuesses} tipp lehetőséged maradt.");
+                RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
 
                 // Start a new task on different thread, read the input character asynchronously
                 var inputTask = Task.Run(() => Console.ReadKey(false));
@@ -88,7 +86,7 @@ namespace CVBNMY
                 {
                     falseGuesses++;
                 }
-                Console.WriteLine();
+                RenderClear();
             }
 
             if (hiddenWord.Equals(WordToGuess.WholeWord))
@@ -140,7 +138,19 @@ namespace CVBNMY
         public override string ToString()
         {
             string wordList = string.Join(", ", words.Select(word => word.WholeWord));
-            return $"Number of guesses: {MaxGuesses}\nWords: {wordList}\nRandomized word: {wordToGuess.WholeWord}";
+            return $"Number of guesses: {MaxGuesses}\nWords: {wordList}\nRandomized word: {wordToGuess.WholeWord}\nWord strucutre: {wordToGuess.GuessedCharacters}";
+        }
+
+        public void RenderGameState(string currentHiddenWord, List<char> characterGuesses, int remainingGuesses)
+        {
+            Console.WriteLine($"Jelenlegi állás: {currentHiddenWord}");
+            Console.WriteLine($"Tippek: {string.Join(", ", characterGuesses)}");
+            Console.WriteLine($"{remainingGuesses} tipp lehetőséged maradt.");
+        }
+
+        public void RenderClear()
+        {
+            Console.Clear();
         }
     }
 }
