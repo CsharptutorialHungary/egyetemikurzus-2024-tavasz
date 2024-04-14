@@ -51,28 +51,25 @@ namespace CVBNMY
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
 
-                // Start a new task on different thread, read the input character asynchronously
-                var inputTask = Task.Run(() => Console.ReadKey(false));
-                var inputCharacter = await inputTask;
+                char inputCharacter = await GetValidLetterInputAsync();
 
-                if (characterGuesses.Contains(inputCharacter.KeyChar))
+                if (characterGuesses.Contains(inputCharacter))
                 {
-                    Console.WriteLine("Már beírtad ezt a betűt!");
+                    RenderClear();
                     continue;
                 }
-
-                characterGuesses.Add(inputCharacter.KeyChar);
+                characterGuesses.Add(inputCharacter);
 
                 // If the player has guessed a correct letter(even if it appears multiple time in the word), refresh the fields accordingly.
-                if (WordToGuess.WholeWord.Contains(inputCharacter.KeyChar))
+                if (WordToGuess.WholeWord.Contains(inputCharacter))
                 {
                     var newHiddenWord = "";
                     for (var i = 0; i < WordToGuess.WholeWord.Length; i++)
                     {
 
-                        if (WordToGuess.WholeWord[i] == inputCharacter.KeyChar)
+                        if (WordToGuess.WholeWord[i] == inputCharacter)
                         {
-                            newHiddenWord += inputCharacter.KeyChar;
+                            newHiddenWord += inputCharacter;
                         }
                         else
                         {
@@ -91,6 +88,7 @@ namespace CVBNMY
 
             if (hiddenWord.Equals(WordToGuess.WholeWord))
             {
+                RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
                 Console.WriteLine("Gratulálok, kitaláltad a szót!");
             }
             else
@@ -135,10 +133,20 @@ namespace CVBNMY
             return tempWords;
         }
 
-        public override string ToString()
+        // This task is used to wait for the user input asynchronously separately, without blocking
+        private static async Task<char> GetValidLetterInputAsync()
         {
-            string wordList = string.Join(", ", words.Select(word => word.WholeWord));
-            return $"Number of guesses: {MaxGuesses}\nWords: {wordList}\nRandomized word: {wordToGuess.WholeWord}\nWord strucutre: {wordToGuess.GuessedCharacters}";
+            char inputCharacter;
+            do
+            {
+                var inputTask = Task.Run(() => Console.ReadKey());
+                var inputKey = await inputTask;
+                if (char.IsLetter(inputKey.KeyChar))
+                {
+                    inputCharacter = char.IsUpper(inputKey.KeyChar) ? char.ToLower(inputKey.KeyChar) : inputKey.KeyChar;
+                    return inputCharacter;
+                }
+            } while (true);
         }
 
         public void RenderGameState(string currentHiddenWord, List<char> characterGuesses, int remainingGuesses)
@@ -152,5 +160,13 @@ namespace CVBNMY
         {
             Console.Clear();
         }
+
+        public override string ToString()
+        {
+            string wordList = string.Join(", ", words.Select(word => word.WholeWord));
+            return $"Number of guesses: {MaxGuesses}\nWords: {wordList}\nRandomized word: {wordToGuess.WholeWord}\nWord strucutre: {wordToGuess.GuessedCharacters}";
+        }
+
+
     }
 }
