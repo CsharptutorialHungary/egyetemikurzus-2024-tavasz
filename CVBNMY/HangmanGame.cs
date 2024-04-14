@@ -139,13 +139,16 @@ namespace CVBNMY
             char inputCharacter;
             do
             {
-                var inputTask = Task.Run(() => Console.ReadKey());
-                var inputKey = await inputTask;
-                if (char.IsLetter(inputKey.KeyChar))
+                using (var inputTask = Task.Run(() => Console.ReadKey()))
                 {
-                    inputCharacter = char.IsUpper(inputKey.KeyChar) ? char.ToLower(inputKey.KeyChar) : inputKey.KeyChar;
-                    return inputCharacter;
+                    var inputKey = await inputTask;
+                    if (char.IsLetter(inputKey.KeyChar))
+                    {
+                        inputCharacter = char.IsUpper(inputKey.KeyChar) ? char.ToLower(inputKey.KeyChar) : inputKey.KeyChar;
+                        return inputCharacter;
+                    }
                 }
+               
             } while (true);
         }
 
