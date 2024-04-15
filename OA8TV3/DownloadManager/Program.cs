@@ -1,4 +1,5 @@
-﻿using DownloadManager.UserInterface;
+﻿using DownloadManager.Application;
+using DownloadManager.UserInterface;
 
 namespace DownloadManager
 {
@@ -6,7 +7,7 @@ namespace DownloadManager
     {
         static void Main(string[] args)
         {
-            UI ui = new UI(new Host());
+            UI ui = new UI(new Host(), new Controller(), null);
             ui.Run();
         }
     }

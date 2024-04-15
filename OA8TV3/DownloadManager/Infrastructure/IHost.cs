@@ -3,7 +3,7 @@ namespace DownloadManager.Infrastructure
     /// <summary>
     /// Definiálja a felhasználói input, illetve a kiíratásokhoz használt metódusokat.
     /// </summary>
-    public interface IHost
+    internal interface IHost
     {
         /// <summary>
         /// Beolvas egy sort a felhasználótól.
