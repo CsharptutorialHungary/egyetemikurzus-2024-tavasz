@@ -7,7 +7,7 @@ namespace DownloadManager
     {
         static void Main(string[] args)
         {
-            UI ui = new UI(new Host(), new Controller(), null);
+            UI ui = new UI(new Host(), new Controller(), new ReflectionCommandLoader());
             ui.Run();
         }
     }
