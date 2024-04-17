@@ -28,6 +28,9 @@ namespace CVBNMY
                 // Refresh the key-value pairs
                 scores.Add(new PlayerScore(word, score));
 
+                // Sort the record in ABC-order and by scores in descending order using LINQ
+                scores = scores.OrderBy(score => score.Word).ThenByDescending(score => score.Score).ToList();
+
                 // Serialize the list of PlayerScores to JSON text
                 string jsonText = JsonSerializer.Serialize(scores, new JsonSerializerOptions { WriteIndented = true });
 
