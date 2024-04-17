@@ -1,72 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
+
+using static System.Formats.Asn1.AsnWriter;
 
 namespace CVBNMY
 {
     internal static class PlayerScoreSerializer
     {
-        private static void SerializeScoreListToJSON(Stream target, List<PlayerScore> instance)
-        {
-            JsonSerializer.Serialize(target, instance, new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            });
-        }
 
-        private static void SerializeScoreToJSON(Stream target, PlayerScore instance)
-        {
-            JsonSerializer.Serialize(target, instance, new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            });
-        }
+        private static readonly string _logFileName = "player_score.json";
 
-
+        private static readonly string _logFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), _logFileName);
+     
         public static void UpdatePlayerScoreJsonFile(string word, int score)
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "player_score.json");
-
-            string currentJsonContent = File.ReadAllText(path);
-
-            if (File.Exists(path))
+            try
             {
-                using (var stream = File.Create(path))
-                {
-                    List<PlayerScore> scores = new List<PlayerScore>();
-                    try
-                    {
-                        scores = JsonSerializer.Deserialize<List<PlayerScore>>(currentJsonContent);
-                        JsonSerializer.Serialize(stream, scores, new JsonSerializerOptions
-                        {
-                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                        });
+                // Deserialize the existing JSON key-value pairs from the log file
+                List<PlayerScore> scores = LoadScoresFromFile();
 
-                    }
-                    catch (IOException)
-                    {
-                        Console.WriteLine("IOException at JSON-Serialization");
-                    }
-                    catch (JsonException)
-                    {
-                        scores = new List<PlayerScore>();
-                    }
+                // Refresh the key-value pairs
+                scores.Add(new PlayerScore(word, score));
 
-                    scores.Add(new PlayerScore(word, score));
-                    SerializeScoreListToJSON(stream, scores);
-                }
+                // Serialize the list of PlayerScores to JSON text
+                string jsonText = JsonSerializer.Serialize(scores, new JsonSerializerOptions { WriteIndented = true });
+
+                //Debug purpose only
+                //Console.WriteLine(json);
+
+                // Append the logfile 
+                WriteToJSONFile(jsonText);
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"An error occurred while writing to log file: {ex.Message}");
+            }
+        }
+
+        private static List<PlayerScore> LoadScoresFromFile()
+        {
+            List<PlayerScore> scores;
+
+            if (File.Exists(_logFilePath))
+            {
+                string jsonText = File.ReadAllText(_logFilePath);
+                scores = JsonSerializer.Deserialize<List<PlayerScore>>(jsonText);
             }
             else
             {
-                using (var stream = File.Create(path))
-                {
-                    SerializeScoreToJSON(stream, new PlayerScore(word, score));
-                }
+                scores = new List<PlayerScore>();
             }
 
+            return scores;
         }
+
+        private static void WriteToJSONFile(string json)
+        {
+             File.WriteAllText(_logFilePath, json);
+        }
+
+
+
     }
 }
