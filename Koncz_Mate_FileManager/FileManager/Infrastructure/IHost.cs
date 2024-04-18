@@ -1,5 +1,5 @@
 namespace Filemanager.Infrastructure{
-    internal interface Host{
+    internal interface IHost{
         string ReadL();
         
         void WriteL(string toWrite);

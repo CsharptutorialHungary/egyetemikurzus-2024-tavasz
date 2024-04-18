@@ -2,10 +2,10 @@ using Filemanager.Infrastructure;
 
 namespace Filemanager{
     internal class UI{
-        private  readonly CommandProvider _commandProvider;
-        private readonly Host _host;
+        private  readonly ICommandProvider _commandProvider;
+        private readonly IHost _host;
 
-        public UI(CommandProvider commandProvider, Host host){
+        public UI(ICommandProvider commandProvider, IHost host){
             _commandProvider = commandProvider;
             _host = host;
             
