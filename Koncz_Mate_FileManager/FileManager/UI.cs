@@ -10,5 +10,10 @@ namespace Filemanager{
             _host = host;
             
         }
+
+        public void Run(){
+            _host.WriteLine("FileManager is running.");
+            _host.WriteLine("> ");
+        }
     }
 }

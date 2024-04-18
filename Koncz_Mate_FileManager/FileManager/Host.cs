@@ -5,7 +5,7 @@ namespace Filemanager{
     {
         public void Exit(string exitMsg)
         {
-            WriteL(exitMsg);
+            WriteLine(exitMsg);
             Environment.Exit(0);
         }
 
@@ -14,7 +14,7 @@ namespace Filemanager{
             return Console.ReadLine() ?? throw new Exception("enter a command");
         }
 
-        public void WriteL(string toWrite)
+        public void WriteLine(string toWrite)
         {
             Console.WriteLine(toWrite);
         }
