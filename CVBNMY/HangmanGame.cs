@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CVBNMY;
+
 namespace CVBNMY
 {
     enum Difficulty
@@ -15,22 +17,25 @@ namespace CVBNMY
     
     internal class HangmanGame : IRenderer
     {
-        private const int EASY_GUESSES   =    7;
+        private const int EASY_GUESSES   = 7;
 
-        private const int MEDIUM_GUESSES =    6;
+        private const int MEDIUM_GUESSES = 6;
 
-        private const int HARD_GUESSES   =    5;
+        private const int HARD_GUESSES   = 5;
 
         private static readonly int[] GuessesPerDifficulty = { EASY_GUESSES, MEDIUM_GUESSES, HARD_GUESSES};
+
+        private static readonly string[] difficultyTexts = { "Könnyű  (7 tippelési lehetőseg)", "Közepes (6 tippelési lehetőség)", "Nehéz   (5 tippelési lehetőség)" };
 
         private readonly List<Word> words;
 
         private readonly Word wordToGuess;
 
-        private int maxGuesses;
+        private readonly int maxGuesses;
 
-        public HangmanGame(Difficulty difficulty)
+        public HangmanGame()
         {
+            Difficulty difficulty = GetSelectedDifficulty();
 
             words = LoadWordList(difficulty);
             if(words.Count == 0)
@@ -38,7 +43,7 @@ namespace CVBNMY
                 throw new ListEmptyException("Unable to load words.");
             }
             wordToGuess = WordRandomizer.PickWord(words);
-            SetGuesses(GuessesPerDifficulty[Convert.ToInt32(difficulty)]);
+            maxGuesses = GuessesPerDifficulty[(int)(difficulty)];
         }
 
         public async Task HangmanGameTask()
@@ -90,6 +95,7 @@ namespace CVBNMY
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
                 Console.WriteLine("Gratulálok, kitaláltad a szót!");
+                PlayerScoreSerializer.UpdatePlayerScoreJsonFile(WordToGuess.WholeWord, MaxGuesses - falseGuesses);
             }
             else
             {
@@ -101,15 +107,7 @@ namespace CVBNMY
         {
             get { return words; }
         }
-        private void SetGuesses(int newGuesses) 
-        {
-            if(newGuesses < 0)
-            {
-                throw new ArgumentException("Number of guessses cannot be negative.");
-            }
-            maxGuesses = newGuesses;
-        }
-
+       
         public int MaxGuesses
         {
             get { return maxGuesses; }
@@ -152,11 +150,51 @@ namespace CVBNMY
             } while (true);
         }
 
+        private Difficulty GetSelectedDifficulty()
+        {
+      
+            int selectedDifficulty = (int)Difficulty.EASY;
+
+            ConsoleKeyInfo pressedKey;
+
+            do
+            {
+                RenderClear();
+                RenderDifficultyOptions((Difficulty)selectedDifficulty, difficultyTexts);
+
+                pressedKey = Console.ReadKey(true);
+                switch (pressedKey.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        selectedDifficulty = (selectedDifficulty - 1 + Enum.GetValues(typeof(Difficulty)).Length) % Enum.GetValues(typeof(Difficulty)).Length;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        selectedDifficulty = (selectedDifficulty + 1) % Enum.GetValues(typeof(Difficulty)).Length;
+                        break;
+                    case ConsoleKey.Enter:
+                        RenderClear();
+                        return (Difficulty)selectedDifficulty;
+                }
+            } while (true);
+        }
+
         public void RenderGameState(string currentHiddenWord, List<char> characterGuesses, int remainingGuesses)
         {
             Console.WriteLine($"Jelenlegi állás: {currentHiddenWord}");
             Console.WriteLine($"Tippek: {string.Join(", ", characterGuesses)}");
             Console.WriteLine($"{remainingGuesses} tipp lehetőséged maradt.");
+        }
+
+        public void RenderDifficultyOptions(Difficulty selectedDifficulty, string[] optionTexts)
+        {
+            Console.WriteLine("Üdvözöllek az Akasztófa Játékban! Kérlek válassz nehézségi szintet.");
+            Console.WriteLine();
+            for (int i = 0; i < Enum.GetValues(typeof(Difficulty)).Length; i++)
+            {
+                string prefix = (i == (int)selectedDifficulty) ? "->" : "  ";
+                Console.WriteLine($"{prefix}{optionTexts[i]}");
+                Console.WriteLine();
+            }
         }
 
         public void RenderClear()

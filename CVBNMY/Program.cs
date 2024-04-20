@@ -7,10 +7,10 @@ namespace CVBNMY
     {
         public static async Task Main(string[] args)
         {
-            HangmanGame hangmanGame = new HangmanGame(Difficulty.HARD);
-            Console.WriteLine(hangmanGame.ToString());
-            Console.WriteLine();
-            await hangmanGame.HangmanGameTask();
+            HangmanGame hg = new HangmanGame();
+            await hg.HangmanGameTask();
+            
         }
     }
 }
+
