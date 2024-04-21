@@ -27,9 +27,7 @@ namespace CVBNMY
 
         private static readonly string[] difficultyTexts = { "Könnyű  (7 tippelési lehetőseg)", "Közepes (6 tippelési lehetőség)", "Nehéz   (5 tippelési lehetőség)" };
 
-        private readonly List<Word> words;
-
-        private readonly Word wordToGuess;
+        private readonly string wordToGuess;
 
         private readonly int maxGuesses;
 
@@ -37,7 +35,7 @@ namespace CVBNMY
         {
             Difficulty difficulty = GetSelectedDifficulty();
 
-            words = LoadWordList(difficulty);
+            List<string> words = LoadWordList(difficulty);
             if(words.Count == 0)
             {
                 throw new ListEmptyException("Unable to load words.");
@@ -48,11 +46,11 @@ namespace CVBNMY
 
         public async Task HangmanGameTask()
         {
-            var hiddenWord = wordToGuess.GuessedCharacters;
+            var hiddenWord = string.Concat(Enumerable.Repeat("_", wordToGuess.Length));
             var characterGuesses = new List<char>();
             var falseGuesses = 0;
 
-            while (falseGuesses < MaxGuesses && !hiddenWord.Equals(wordToGuess.WholeWord))
+            while (falseGuesses < MaxGuesses && (hiddenWord.Equals(wordToGuess) == false))
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
 
@@ -66,13 +64,13 @@ namespace CVBNMY
                 characterGuesses.Add(inputCharacter);
 
                 // If the player has guessed a correct letter(even if it appears multiple time in the word), refresh the fields accordingly.
-                if (WordToGuess.WholeWord.Contains(inputCharacter))
+                if (WordToGuess.Contains(inputCharacter))
                 {
                     var newHiddenWord = "";
-                    for (var i = 0; i < WordToGuess.WholeWord.Length; i++)
+                    for (var i = 0; i < WordToGuess.Length; i++)
                     {
 
-                        if (WordToGuess.WholeWord[i] == inputCharacter)
+                        if (WordToGuess[i] == inputCharacter)
                         {
                             newHiddenWord += inputCharacter;
                         }
@@ -91,21 +89,16 @@ namespace CVBNMY
                 RenderClear();
             }
 
-            if (hiddenWord.Equals(WordToGuess.WholeWord))
+            if (hiddenWord.Equals(WordToGuess))
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
                 Console.WriteLine("Gratulálok, kitaláltad a szót!");
-                PlayerScoreSerializer.UpdatePlayerScoreJsonFile(WordToGuess.WholeWord, MaxGuesses - falseGuesses);
+                PlayerScoreSerializer.UpdatePlayerScoreJsonFile(WordToGuess, MaxGuesses - falseGuesses);
             }
             else
             {
-                Console.WriteLine("Sajnos nem sikerült kitalálnod a szót. A szó: {0}", WordToGuess.WholeWord);
+                Console.WriteLine("Sajnos nem sikerült kitalálnod a szót. A szó: {0}", WordToGuess);
             }
-        }
-
-        public List<Word> Words 
-        {
-            get { return words; }
         }
        
         public int MaxGuesses
@@ -113,22 +106,17 @@ namespace CVBNMY
             get { return maxGuesses; }
         }
 
-        public Word WordToGuess
+        public string WordToGuess
         {
              get { return wordToGuess; }
         }
 
-        private static List<Word> LoadWordList(Difficulty difficulty) 
+        private static List<string> LoadWordList(Difficulty difficulty) 
         {
             int difficultyValue = Convert.ToInt32(difficulty);
-            string[] strWords;
-            strWords = WordLoader.ReadWords(WordLoader.WordFilePath(difficultyValue));
-            List<Word> tempWords = new List<Word>();
-            foreach (string strWord in strWords)
-            {
-                tempWords.Add(new Word(strWord, string.Concat(Enumerable.Repeat("_", strWord.Length))));
-            }
-            return tempWords;
+            string[] words;
+            words = WordLoader.ReadWords(WordLoader.WordFilePath(difficultyValue));
+            return words.ToList();
         }
 
         // This task is used to wait for the user input asynchronously separately, without blocking
@@ -204,8 +192,7 @@ namespace CVBNMY
 
         public override string ToString()
         {
-            string wordList = string.Join(", ", words.Select(word => word.WholeWord));
-            return $"Number of guesses: {MaxGuesses}\nWords: {wordList}\nRandomized word: {wordToGuess.WholeWord}\nWord strucutre: {wordToGuess.GuessedCharacters}";
+            return $"Number of guesses: {MaxGuesses}\nRandomized word: {WordToGuess}\n";
         }
 
 
