@@ -15,7 +15,7 @@ class Program
         string beolvasSzoveg="";
         while (beolvasSzoveg != "k")
         {
-            Hamburger burger = g.kovetkezoSzint(szint);
+            Hamburger burger = g.KovetkezoSzint(szint);
             String[] aktualisBurger = burger.Ingredients.ToArray();
             int i = 0;
             Console.Clear();
@@ -33,7 +33,7 @@ class Program
                     Console.Write("{0}. elem:", i + 1);
                     beolvasSzoveg = Console.ReadLine();
                 }
-                if (beolvasSzoveg == aktualisBurger[i])
+                else if (beolvasSzoveg == aktualisBurger[i])
                 {
                     i++;
                     Console.WriteLine("\n");

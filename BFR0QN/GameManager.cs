@@ -8,10 +8,8 @@ using BFR0QN.Burger;
 
 namespace BFR0QN
 {
-    internal class GameManager
+    public class GameManager
     {
-        BeolvasJson BeolvasJson = new BeolvasJson();
-
         public void Betolt()
         {
             Console.WriteLine("Siti Hamburgerezője!");
@@ -51,24 +49,10 @@ namespace BFR0QN
                 Console.Clear();
             }
         }
-        public Hamburger kovetkezoSzint(int szint)
+        public Hamburger KovetkezoSzint(int szint)
         {
-            Hamburger aktualisBurger=null;
             List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("hamburgers.json");
-            foreach (var burger in burgerek)
-            {
-                if (burger.Level == szint)
-                {
-                    aktualisBurger = new Hamburger
-                    {
-                        Name = burger.Name,
-                        Kcal = burger.Kcal,
-                        Ingredients = burger.Ingredients
-                    };
-                    break;
-                }
-               
-            }
+            Hamburger aktualisBurger = burgerek.FirstOrDefault(x => x.Level == szint) ?? new Hamburger();
             return aktualisBurger;
         }
         public void help(String[] aktualisBurger)

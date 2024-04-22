@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace BFR0QN
 {
-    internal class BeolvasJson
+    public static class BeolvasJson
     {
         public static List<Hamburger> ReadJsonFile(string jsonFileName)
         {

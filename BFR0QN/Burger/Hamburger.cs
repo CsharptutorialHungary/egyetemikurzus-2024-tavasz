@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BFR0QN.Burger
 {
-    internal class Hamburger
+    public class Hamburger
     {
-        public string Name { get; set; }
-        public int Kcal { get; set; }
-        public int Level { get; set; }
-        public List<string> Ingredients { get; set; }
+        public string Name { get; }
+        public int Kcal { get; }
+        public int Level { get; }
+        public List<string> Ingredients { get; }
     }
+
 }
