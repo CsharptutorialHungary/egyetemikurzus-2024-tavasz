@@ -1,4 +1,6 @@
-﻿namespace BFR0QN;
+﻿using BFR0QN.Burger;
+
+namespace BFR0QN;
 
 class Program
 {
@@ -6,29 +8,42 @@ class Program
     {
         GameManager g = new GameManager();
         g.Betolt();
-        Console.WriteLine("Anita - Szeretnék kérni egy Sajtburgert!");
-        //Sajtburger: zsemle, marhahúspogácsa, sajtszelet, uborka, hagyma, ketchup, mustár
-        string beolvasSzoveg=Console.ReadLine();
-        String[] sajturger = ["zsemle", "marhahúspogácsa", "sajtszelet", "uborka", "hagyma", "ketchup", "mustár"];
-        if(beolvasSzoveg == ("?sajtburger"))
-        {
-            Console.WriteLine("zsemle, marhahúspogácsa, sajtszelet, uborka, hagyma, ketchup, mustár");
-           
-            Thread.Sleep(3000);
-            Console.Clear();
-        }
-        for (int i = 0; i < sajturger.Length; i++)
-        {
-            Console.Write("{0}. elem:",i+1);
-            string aktualisElem = Console.ReadLine();
-            if (aktualisElem != sajturger[i])
+        int szint = 0;
+        Hamburger burger= g.kovetkezoSzint(szint);
+        String[] aktualisBurger = burger.tomb();
+        Console.WriteLine("Anita - Szeretnék kérni egy "+burger.nev());
+        string beolvasSzoveg;
+        int i = 0;
+        while (i<aktualisBurger.Length) {
+            Console.Write("{0}. elem:", i + 1);
+            beolvasSzoveg= Console.ReadLine();
+            if (beolvasSzoveg == ("?pistiBurger"))
+            {
+                for (int k = 0; k < aktualisBurger.Length; k++)
+                {
+                    int utolsoElemE = k + 1;
+                    if (utolsoElemE == aktualisBurger.Length)
+                    {
+                        Console.Write(aktualisBurger.Length);
+                    }
+                    Console.Write(aktualisBurger[k] + " ");
+                }
+                Thread.Sleep(3000);
+                Console.Clear();
+                beolvasSzoveg = Console.ReadLine();
+            }
+            if (beolvasSzoveg == aktualisBurger[i])
+            {
+                i++;
+                Console.WriteLine("\n");
+            }
+            else
             {
                 Console.WriteLine("Elbasztad");
-                i = 0;
             }
-            Console.WriteLine("\n");
         }
-        Console.WriteLine("Hurrá! Sikeresen teljesítetted a szintet!");
-        Console.ReadKey();
+        Console.WriteLine("Hurrá, Sikeresen teljesítetted a szintet!");
+        szint++;
+        g.kovetkezoSzint(szint);
     }
 }
