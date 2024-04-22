@@ -34,8 +34,6 @@ namespace BFR0QN
         public void UjJatek()
         {
             Bevezetes();
-
-
         }
         public void Bevezetes()
         {
@@ -72,6 +70,23 @@ namespace BFR0QN
                
             }
             return aktualisBurger;
+        }
+        public void help(String[] aktualisBurger)
+        {
+            for (int k = 0; k < aktualisBurger.Length; k++)
+            {
+                int utolsoElemE = k + 1;
+                if (utolsoElemE == aktualisBurger.Length)
+                {
+                    Console.Write(aktualisBurger[k]);
+                }
+                else
+                {
+                    Console.Write(aktualisBurger[k] + " ");
+                }
+            }
+            Thread.Sleep(3000);
+            Console.Clear();
         }
     }
 }
