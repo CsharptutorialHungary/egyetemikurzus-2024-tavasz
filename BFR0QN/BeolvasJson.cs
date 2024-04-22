@@ -14,7 +14,7 @@ namespace BFR0QN
     {
         public static List<Hamburger> ReadJsonFile(string jsonFileName)
         {
-            List<Hamburger> burgers = new List<Hamburger>(); // Alapértelmezett érték, ha valami hiba történik
+            List<Hamburger> burgers = new List<Hamburger>();
             try
             {
                 string jsonText = File.ReadAllText(jsonFileName);
@@ -34,6 +34,5 @@ namespace BFR0QN
             }
             return burgers;
         }
-    }
     }
 }
