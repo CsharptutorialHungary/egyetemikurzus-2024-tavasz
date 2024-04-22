@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BFR0QN.Burger
 {
-    internal class Hamburger
+    internal class Burger
     {
         public string Name { get; set; }
         public int Kcal { get; set; }
