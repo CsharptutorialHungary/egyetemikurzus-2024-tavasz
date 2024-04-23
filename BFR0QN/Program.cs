@@ -1,6 +1,6 @@
 ﻿using System;
 
-using BFR0QN.Burger;
+using BFR0QN.Etelek;
 
 namespace BFR0QN;
 
@@ -24,14 +24,11 @@ class Program
             g.help(aktualisBurger);
             while (i < aktualisBurger.Length)
             {
-
                 Console.Write("{0}. elem:", i + 1);
                 beolvasSzoveg = Console.ReadLine();
                 if (beolvasSzoveg == ("?Burger"))
                 {
                     g.help(aktualisBurger);
-                    Console.Write("{0}. elem:", i + 1);
-                    beolvasSzoveg = Console.ReadLine();
                 }
                 else if (beolvasSzoveg == aktualisBurger[i])
                 {

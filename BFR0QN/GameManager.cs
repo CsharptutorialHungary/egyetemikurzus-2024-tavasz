@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BFR0QN.Burger;
+using BFR0QN.Etelek;
 
 namespace BFR0QN
 {
