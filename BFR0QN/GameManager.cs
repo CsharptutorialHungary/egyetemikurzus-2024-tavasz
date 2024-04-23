@@ -51,8 +51,8 @@ namespace BFR0QN
         }
         public Hamburger KovetkezoSzint(int szint)
         {
-            List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("hamburgers.json");
-            Hamburger aktualisBurger = burgerek.FirstOrDefault(x => x.Level == szint) ?? new Hamburger();
+            List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
+            Hamburger aktualisBurger = burgerek.FirstOrDefault(x => x.Level == szint);
             return aktualisBurger;
         }
         public void help(String[] aktualisBurger)

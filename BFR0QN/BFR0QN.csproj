@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastruktura\" />
+    <Compile Remove="Infrastruktura\**" />
+    <EmbeddedResource Remove="Infrastruktura\**" />
+    <None Remove="Infrastruktura\**" />
   </ItemGroup>
 
   <ItemGroup>

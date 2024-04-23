@@ -12,6 +12,13 @@ namespace BFR0QN.Burger
         public int Kcal { get; }
         public int Level { get; }
         public List<string> Ingredients { get; }
-    }
 
+        public Hamburger(string name, int kcal, int level, List<string> ingredients)
+        {
+            Name = name;
+            Kcal = kcal;
+            Level = level;
+            Ingredients = ingredients;
+        }
+    }
 }

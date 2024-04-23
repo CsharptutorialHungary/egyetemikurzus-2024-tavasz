@@ -16,7 +16,7 @@ class Program
         while (beolvasSzoveg != "k")
         {
             Hamburger burger = g.KovetkezoSzint(szint);
-            String[] aktualisBurger = burger.Ingredients.ToArray();
+           String[] aktualisBurger = burger.Ingredients.ToArray();
             int i = 0;
             Console.Clear();
             Console.WriteLine("Anita - Szeretnék kérni egy " + burger.Name);
