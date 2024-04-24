@@ -1,0 +1,49 @@
+﻿@page "/UsersAdminPage"
+@using CommunitySite.Data.ViewModels
+
+<MudTable Items="@Users"
+    T="UserViewModel"
+    Dense="true"
+    Hover="true"
+    @bind-SelectedItem="selectedUser"
+    SelectOnRowClick="true"
+    OnRowClick="EditSelectedUserDetails"
+    >
+
+    <ToolBarContent>
+        <MudText>Users</MudText>
+        <MudSpacer></MudSpacer>
+        <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+
+    <ColGroup>
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+        <col style="width:14%;" />
+    </ColGroup>
+
+    <HeaderContent>
+        <MudTh>Username</MudTh>
+        <MudTh>Permission</MudTh>
+        <MudTh>Surname</MudTh>
+        <MudTh>Lastname</MudTh>
+        <MudTh>Workplace</MudTh>
+        <MudTh>School</MudTh>
+        <MudTh>Birthdate</MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+        <MudTd DataLabel="Username">@context.Username</MudTd>
+        <MudTd DataLabel="Permission">@context.PermissionId</MudTd>
+        <MudTd DataLabel="Surname">@context.SurName</MudTd>
+        <MudTd DataLabel="Lastname">@context.LastName</MudTd>
+        <MudTd DataLabel="Workplace">@context.Workplace</MudTd>
+        <MudTd DataLabel="School">@context.School</MudTd>
+        <MudTd DataLabel="Birthdate">@context.BirthDate</MudTd>
+    </RowTemplate>
+
+</MudTable>

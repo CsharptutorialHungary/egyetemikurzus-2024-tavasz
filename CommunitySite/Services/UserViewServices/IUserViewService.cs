@@ -1,6 +1,6 @@
 ﻿using CommunitySite.Data.ViewModels;
 
-namespace CommunitySite.Services.UserServices
+namespace CommunitySite.Services.UserViewServices
 {
     public interface IUserViewService
     {

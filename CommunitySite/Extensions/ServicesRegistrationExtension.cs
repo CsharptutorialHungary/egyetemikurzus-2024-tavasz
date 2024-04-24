@@ -1,8 +1,14 @@
 ﻿using CommunitySite.Data.Entities;
+using CommunitySite.Services.AdminServices;
+using CommunitySite.Services.AdminViewServices;
+using CommunitySite.Services.ClaimsServices;
 using CommunitySite.Services.UserServices;
+using CommunitySite.Services.UserViewServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor;
+using System.Data;
+using System.Data.Common;
 
 namespace CommunitySite.Extensions
 {
@@ -25,6 +31,8 @@ namespace CommunitySite.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDialogService, DialogService>();
             services.AddScoped<IUserViewService, UserViewService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IAdminViewService, AdminViewService>();
 
             return services;
         }

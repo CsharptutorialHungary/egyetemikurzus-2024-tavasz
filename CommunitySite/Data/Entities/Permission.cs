@@ -5,7 +5,7 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Permission
 {
-    public decimal Permissionid { get; set; }
+    public int Permissionid { get; set; }
 
     public string? PermissionName { get; set; }
 

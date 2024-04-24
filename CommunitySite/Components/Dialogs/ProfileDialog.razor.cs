@@ -4,7 +4,7 @@ using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace CommunitySite.Components.Accessories
+namespace CommunitySite.Components.Dialogs
 {
     public partial class ProfileDialog
     {

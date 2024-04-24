@@ -1,8 +1,9 @@
 ﻿using CommunitySite.Components.Accessories;
+using CommunitySite.Components.Dialogs;
 using CommunitySite.Data.ViewModels;
 using MudBlazor;
 
-namespace CommunitySite.Services.UserServices
+namespace CommunitySite.Services.UserViewServices
 {
     public class UserViewService : IUserViewService
     {

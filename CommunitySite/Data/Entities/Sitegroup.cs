@@ -5,9 +5,9 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Sitegroup
 {
-    public decimal Groupid { get; set; }
+    public int Groupid { get; set; }
 
-    public decimal? Ownerid { get; set; }
+    public int? Ownerid { get; set; }
 
     public string? Name { get; set; }
 

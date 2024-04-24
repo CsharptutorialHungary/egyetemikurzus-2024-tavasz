@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using CommunitySite.Services.UserServices;
+using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 
-namespace CommunitySite.Services.UserServices
+namespace CommunitySite.Services.ClaimsServices
 {
     public class ClaimsTransformation : IClaimsTransformation
     {

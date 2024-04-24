@@ -57,4 +57,6 @@ app.MapDefaultControllerRoute();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+await app.Services.MigrateDatabases();
+
 app.Run();

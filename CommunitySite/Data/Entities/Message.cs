@@ -5,11 +5,11 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Message
 {
-    public decimal Messageid { get; set; }
+    public int Messageid { get; set; }
 
-    public decimal? Senderid { get; set; }
+    public int? Senderid { get; set; }
 
-    public decimal? Receiverid { get; set; }
+    public int? Receiverid { get; set; }
 
     public string? MessageText { get; set; }
 

@@ -5,13 +5,13 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Post
 {
-    public decimal Postid { get; set; }
+    public int Postid { get; set; }
 
-    public decimal? Userid { get; set; }
+    public int? Userid { get; set; }
 
-    public decimal? Photoid { get; set; }
+    public int? Photoid { get; set; }
 
-    public decimal? Groupid { get; set; }
+    public int? Groupid { get; set; }
 
     public string? PostText { get; set; }
 

@@ -3,6 +3,6 @@
     public enum PermissionEnum
     {
         DEFAULT = 1,
-        ADMIN
+        ADMIN = 2,
     }
 }

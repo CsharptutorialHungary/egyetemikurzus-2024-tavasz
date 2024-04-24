@@ -5,9 +5,9 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Managegroup
 {
-    public decimal? Userid { get; set; }
+    public int? Userid { get; set; }
 
-    public decimal? Groupid { get; set; }
+    public int? Groupid { get; set; }
 
     public string? JoinDate { get; set; }
 

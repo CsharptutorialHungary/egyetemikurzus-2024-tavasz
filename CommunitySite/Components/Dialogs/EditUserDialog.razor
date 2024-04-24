@@ -1,0 +1,19 @@
+﻿@using CommunitySite.Data.Util
+
+<MudDialog>
+    <DialogContent>
+        <MudForm @ref="@MudForm" Model="@UserViewModel">
+            <MudSelect @bind-Value="selectedRole" Label="Select role" AdornmentIcon="@Icons.Material.TwoTone.AdminPanelSettings">
+                @foreach (PermissionEnum item in Roles)
+                {
+                    <MudSelectItem Value="@(item)">@item</MudSelectItem>
+                }
+            </MudSelect>
+        </MudForm>
+        <MudButton OnClick="DeleteUserButton">Delete User</MudButton>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Save</MudButton>
+    </DialogActions>
+</MudDialog>

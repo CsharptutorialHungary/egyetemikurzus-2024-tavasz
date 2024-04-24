@@ -5,9 +5,9 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Include
 {
-    public decimal? Postid { get; set; }
+    public int? Postid { get; set; }
 
-    public decimal? Commentid { get; set; }
+    public int? Commentid { get; set; }
 
     public virtual Sitecomment? Comment { get; set; }
 

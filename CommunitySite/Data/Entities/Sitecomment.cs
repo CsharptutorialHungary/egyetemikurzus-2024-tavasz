@@ -5,11 +5,11 @@ namespace CommunitySite.Data.Entities;
 
 public partial class Sitecomment
 {
-    public decimal Commentid { get; set; }
+    public int Commentid { get; set; }
 
-    public decimal? Postid { get; set; }
+    public int? Postid { get; set; }
 
-    public decimal? Userid { get; set; }
+    public int? Userid { get; set; }
 
     public string? CommentText { get; set; }
 
