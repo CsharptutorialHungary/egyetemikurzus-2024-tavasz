@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TruthOrDare.UserInterface.Entities
+namespace TruthOrDare.UserInterface.Domain
 {
     public sealed record Option
     {

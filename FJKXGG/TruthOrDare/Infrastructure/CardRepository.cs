@@ -15,8 +15,12 @@ namespace TruthOrDare.Infrastructure
 {
     internal class CardRepository : ICardRepositoryPort
     {
+        // TODO: Make environmental variables settable for testability
+        // TODO: Move environmental variables to other file, like config file
         private readonly string _defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TruthOrDare");
-        // Find for the source variable a better place, like a configuration file
+        private readonly string _defaultTruthCardsFile = "TruthCards.json";
+        private readonly string _defaultDareCardsFile = "DareCards.json";
+
 
         private readonly JsonCardLoader loader;
         private readonly JsonCardWriter writer;
@@ -27,52 +31,43 @@ namespace TruthOrDare.Infrastructure
             this.writer = writer;
         }
 
-        public void GenerateDefaultCards()
+        public async Task GenerateDefaultCardsAsync()
         {
-            writer.GenerateDefaultCards();
+            await Task.Run(() => writer.GenerateDefaultCards(_defaultFolder, _defaultTruthCardsFile, _defaultDareCardsFile));
         }
 
-        public IEnumerable<Card> GetAllCards()
+        public async Task<IEnumerable<ICard>> GetAllCardsAsync()
         {
-            var truthCardsPath = Path.Combine(_defaultFolder, "TruthCards.json");
-            var dareCardsPath = Path.Combine(_defaultFolder, "DareCards.json");
+            // TODO: use list to store tasks
+            Task<IEnumerable<TruthCard>> truthCardsTask = GetCardsByTypeAsync<TruthCard>();
+            Task<IEnumerable<DareCard>> dareCardsTask = GetCardsByTypeAsync<DareCard>();
 
-            return GetCardsByType<TruthCard>(truthCardsPath).Concat<Card>(GetCardsByType<DareCard>(dareCardsPath));
+            await Task.WhenAll(truthCardsTask, dareCardsTask);
+
+            IEnumerable<TruthCard> truthCards = truthCardsTask.Result;
+            IEnumerable<DareCard> dareCards = dareCardsTask.Result;
+
+            return truthCards.Concat<ICard>(dareCards);
         }
 
-        private IEnumerable<T> GetCardsByType<T>(string path) where T : Card
-        {
-            // TODO: Null check
-            var cards = loader.LoadCards(path) as IEnumerable<T>;
-            return cards;
-        }
 
-       
-        public IEnumerable<T> GetCardsByType<T>() where T : Card
+        public async Task<IEnumerable<T>> GetCardsByTypeAsync<T>() where T : ICard
         {
-            var truthCardsPath = Path.Combine(_defaultFolder, "TruthCards.json");
-            var dareCardsPath = Path.Combine(_defaultFolder, "DareCards.json");
-
+            // TODO: use reflections to load available card types
             if (typeof(T) == typeof(DareCard))
             {
-                return GetCardsByType<T>(dareCardsPath);
+                string dareCardsPath = Path.Combine(_defaultFolder, _defaultDareCardsFile);
+                return await Task.Run(() => loader.LoadCards<DareCard>(dareCardsPath) as IEnumerable<T> ?? throw new SafeException("No card found."));
             }
             else if (typeof(T) == typeof(TruthCard))
             {
-                return GetCardsByType<T>(truthCardsPath);
+                string truthCardsPath = Path.Combine(_defaultFolder, _defaultTruthCardsFile);
+                return await Task.Run(() => loader.LoadCards<TruthCard>(truthCardsPath) as IEnumerable<T> ?? throw new SafeException("No card found."));
             }
             else
             {
-                throw new ArgumentException("Invalid card type");
+                throw new SafeException("Invalid Card type.");
             }
         }
-
-        public Card GetCardById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool HasCards() => loader.HasCards(Path.Combine(_defaultFolder, "TruthCards.json")) && loader.HasCards(Path.Combine(_defaultFolder, "DareCards.json"));
-
     }
 }

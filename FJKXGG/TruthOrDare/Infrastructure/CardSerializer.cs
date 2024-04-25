@@ -6,7 +6,7 @@ namespace TruthOrDare.Infrastructure
 {
     internal class CardSerializer
     {
-        public void Serialize(Stream target, IEnumerable<Card> instance)
+        public void Serialize<T>(Stream target, IEnumerable<T> instance) where T : ICard
         {
             JsonSerializer.Serialize(target, instance, new JsonSerializerOptions
             {
@@ -14,9 +14,9 @@ namespace TruthOrDare.Infrastructure
             });
         }
 
-        public IEnumerable<Card> Deserialize(string json)
+        public IEnumerable<T> Deserialize<T>(string json) where T : ICard
         {
-            return JsonSerializer.Deserialize<IEnumerable<Card>>(json, new JsonSerializerOptions
+            return JsonSerializer.Deserialize<IEnumerable<T>>(json, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.KebabCaseLower
             }) ?? throw new ArgumentNullException();

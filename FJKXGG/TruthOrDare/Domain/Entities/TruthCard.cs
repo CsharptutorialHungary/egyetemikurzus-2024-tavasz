@@ -1,12 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace TruthOrDare.Domain.Entities;
 
-namespace TruthOrDare.Domain.Entities
-{
-    public record TruthCard: Card
-    {
-    }
-}
+public sealed record TruthCard(int Id, string Text, GameMode GameMode) : Card(Id, Text, GameMode), ICard;

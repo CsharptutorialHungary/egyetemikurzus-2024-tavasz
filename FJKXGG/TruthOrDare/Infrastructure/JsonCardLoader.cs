@@ -14,30 +14,25 @@ namespace TruthOrDare.Infrastructure
 {
     internal class JsonCardLoader
     {
-
-        private readonly string _jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TruthOrDare");
-
-        public IEnumerable<Card> LoadCards(string path)
+        public IEnumerable<T> LoadCards<T>(string filePath) where T : ICard
         {
             try
             {
-                var json = File.ReadAllText(path);
-                IEnumerable<Card> cards = new CardSerializer().Deserialize(json);
+                var json = File.ReadAllText(filePath);
+
+                IEnumerable<T> cards = new CardSerializer().Deserialize<T>(json);
+                if (!cards.Any())
+                    throw new SafeException("Failed to load cards. No cards found.");
                 return cards;
             }
-            catch (IOException ex)
+            catch (IOException)
             {
-                throw new PublicException("Failed to load cards. Cards file or folder not found.", ex);
+                throw new SafeException("Failed to load cards. Cards file or folder not found.");
             }
-            catch (JsonException ex)
+            catch (JsonException)
             {
-                throw new PublicException("Failed to load cards. JSON parsing failed.", ex);
+                throw new SafeException("Failed to load cards. JSON parsing failed.");
             }
-        }
-
-        public bool HasCards(string path)
-        {
-            return LoadCards(path).Any();
         }
     }
 }

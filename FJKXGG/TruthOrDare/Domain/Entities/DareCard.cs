@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace TruthOrDare.Domain.Entities
 {
-    public record DareCard : Card
-    {
-    }
+    public sealed record DareCard(int Id, string Text, GameMode GameMode) : Card(Id, Text, GameMode), ICard;
 }

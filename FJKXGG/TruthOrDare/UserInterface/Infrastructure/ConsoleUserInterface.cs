@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 using TruthOrDare.Domain.Entities;
 using TruthOrDare.UserInterface.Application.Ports;
-using TruthOrDare.UserInterface.Entities;
+using TruthOrDare.UserInterface.Domain;
+
 namespace TruthOrDare.UserInterface.Infrastructure
 {
     public class ConsoleUserInterface : IUserInterface
@@ -64,14 +65,38 @@ namespace TruthOrDare.UserInterface.Infrastructure
             }
         }
 
-        public void DisplayCard(Card card)
+        public void DisplayCard(ICard card)
         {
+            // TODO: move the style selection to parameter
+            string separator;
+            if (card is DareCard)
+            {
+                separator = "++++++++++++++++++++++++++++++DARE++++++++++++++++++++++++++++++++";
+            }
+            else if (card is TruthCard)
+            {
+                separator = "----------------------------TRUTH----------------------------------";
+            }
+            else
+            {
+                separator = "";
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(separator);
             Console.WriteLine(card.Text);
+            Console.WriteLine(separator);
         }
 
         public void DisplayMessage(string text)
         {
             Console.WriteLine("Message: " + text);
+        }
+
+        public void Exit(int exitCode)
+        {
+            DisplayMessage("Goode bye.");
+            Environment.Exit(exitCode);
         }
     }
 }

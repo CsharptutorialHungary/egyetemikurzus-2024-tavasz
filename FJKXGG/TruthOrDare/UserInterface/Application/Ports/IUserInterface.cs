@@ -1,5 +1,5 @@
 ﻿using TruthOrDare.Domain.Entities;
-using TruthOrDare.UserInterface.Entities;
+using TruthOrDare.UserInterface.Domain;
 
 namespace TruthOrDare.UserInterface.Application.Ports
 {
@@ -10,7 +10,8 @@ namespace TruthOrDare.UserInterface.Application.Ports
         object AskOptionSelectionQuestion(string question, IEnumerable<Option> options);
 
         GameMode AskGameModeSelectionQuestion(IEnumerable<GameMode> gameModes);
-        void DisplayCard(Card card);
+        void DisplayCard(ICard card);
         void DisplayMessage(string v);
+        void Exit(int exitCode);
     }
 }

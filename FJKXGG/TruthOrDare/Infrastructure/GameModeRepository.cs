@@ -15,7 +15,7 @@ namespace TruthOrDare.Infrastructure
             new GameMode
             {
                 Id = 0,
-                Name = "Classic",
+                Name = "Friends",
                 Description = "The classic game mode."
             },
             new GameMode

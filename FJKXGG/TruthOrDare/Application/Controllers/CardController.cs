@@ -1,7 +1,6 @@
 ﻿using TruthOrDare.Application.Ports;
 using TruthOrDare.Domain.Entities;
-using TruthOrDare.Domain.Enums;
-
+using TruthOrDare.Domain.Exceptions;
 namespace TruthOrDare.Application.Controllers
 {
     internal class CardController : ICardPort
@@ -14,64 +13,62 @@ namespace TruthOrDare.Application.Controllers
 
         public void GenerateDefaultCards()
         {
-            _cardDbPort.GenerateDefaultCards();
+            _cardDbPort.GenerateDefaultCardsAsync();
             return;
         }
 
-        public IEnumerable<Card> GetAllCards()
+        public IEnumerable<ICard> GetAllCards()
         {
-            var cards = _cardDbPort.GetAllCards();
+            IEnumerable<ICard> cards = _cardDbPort.GetAllCardsAsync().Result;
             return cards;
         }
 
-        public Card GetCardById(int id)
+        public IEnumerable<ICard> GetCardsByGameMode(GameMode gameMode)
         {
-            throw new NotImplementedException();
+            return _cardDbPort.GetAllCardsAsync().Result.Where(c => c.GameMode == gameMode);
         }
 
-        public IEnumerable<Card> GetCardsByGameMode(GameMode gameMode)
-        {
-            return _cardDbPort.GetAllCards().Where(c => c.GameMode == gameMode);
-        }
-
-        public Card GetNextCard()
+        public ICard GetNextCard()
         {
             return GetRandomCard();
         }
 
-        public Card GetNextCard(GameMode gameMode)
+        public ICard GetNextCard(GameMode gameMode)
         {
             return GetRandomCard(gameMode);
         }
 
-        public Card GetNextCard<T>(GameMode gameMode) where T : Card
+        public T GetNextCard<T>(GameMode gameMode) where T : ICard
         {
             return GetRandomCard<T>(gameMode);
         }
 
-        public Card GetRandomCard() => _cardDbPort.GetAllCards()
+        public ICard GetRandomCard() => _cardDbPort.GetAllCardsAsync().Result
                 .ElementAtOrDefault(new Random()
-                .Next(0, _cardDbPort.GetAllCards()
-                .Count()));
+                .Next(0, _cardDbPort.GetAllCardsAsync()
+                .Result.Count()))
+                ?? throw new SafeException("Failed to get random card.");
 
-        public Card GetRandomCard(GameMode gameMode)
+        public ICard GetRandomCard(GameMode gameMode)
         {
-            var cardsByGameMode = _cardDbPort.GetAllCards()
+            IEnumerable<ICard> cardsByGameMode =  _cardDbPort.GetAllCardsAsync().Result
             .Where(c => c.GameMode == gameMode);
             return cardsByGameMode
                 .ElementAtOrDefault(new Random()
-                .Next(0, cardsByGameMode.Count()));
+                .Next(0, cardsByGameMode.Count()))
+                ?? throw new SafeException("Failed to get random card by game mode.");
         }
 
-        public Card GetRandomCard<T>(GameMode gameMode) where T : Card
+        public T GetRandomCard<T>(GameMode gameMode) where T : ICard
         {
             
-            var cardsByGameMode = _cardDbPort.GetCardsByType<T>()
+            var cardsByGameMode = _cardDbPort.GetCardsByTypeAsync<T>().Result
                 .Where(c => c.GameMode == gameMode);
 
             return cardsByGameMode
                 .ElementAtOrDefault(new Random()
-                .Next(0, cardsByGameMode.Count()));
+                .Next(0, cardsByGameMode.Count()))
+                ?? throw new SafeException("Failed to get random card by type and game mode.");
         }
     }
 }
