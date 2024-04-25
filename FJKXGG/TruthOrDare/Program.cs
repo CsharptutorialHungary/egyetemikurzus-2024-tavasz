@@ -1,13 +1,15 @@
-﻿using TruthOrDare.Application.Ports;
-using TruthOrDare.Application.Controllers;
+﻿using TruthOrDare.Application.Controllers;
 using TruthOrDare.Infrastructure;
+using TruthOrDare.Infrastructure.Repositories;
 using TruthOrDare.UserInterface.Application;
-using TruthOrDare.UserInterface.Domain;
 using TruthOrDare.UserInterface.Infrastructure;
 
 // DONE: Exception handling: https://www.reddit.com/r/csharp/comments/ns7m5g/java_exceptions_vs_c_ones_how_do_i_know_ive/
 // DONE: use null checks where required
-// TODO: Check design principles
+// DONE: Check Messages and Warnings
+// DONE: Check design principles
+// TODO: Fix design principles
+// TODO: Create unit tests
 
 internal class Program
 {
@@ -15,7 +17,7 @@ internal class Program
     {
         try
         {
-            // TODO: Refactor it to auto dependency injection pattern: https://www.youtube.com/watch?v=M1jxLQu40qo
+            // TODO: Refactor it to use auto dependency injection pattern: https://www.youtube.com/watch?v=M1jxLQu40qo
             var userInterfaceController = new UserInterfaceController(
                 new ConsoleUserInterface(),
                 new CardController(new CardRepository(new JsonCardLoader(), new JsonCardWriter(new GameModeRepository()))),

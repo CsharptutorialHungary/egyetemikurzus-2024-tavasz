@@ -2,22 +2,12 @@
 using TruthOrDare.Domain.Entities;
 
 namespace TruthOrDare.Application.Controllers;
-internal class GameModeController : IGameModePort
+internal class GameModeController(IGameModeRepositoryPort gameModeDbPort) : IGameModePort
 {
-    private readonly IGameModeRepositoryPort _gameModeDbPort;
-    public GameModeController(IGameModeRepositoryPort gameModeDbPort)
-    {
-        _gameModeDbPort = gameModeDbPort;
-    }
+    private readonly IGameModeRepositoryPort _gameModeDbPort = gameModeDbPort;
 
     public IEnumerable<GameMode> GetAllGameModes()
     {
-        var gameModes = _gameModeDbPort.GetAllGameModes();
-        return gameModes;
-    }
-
-    public GameMode GetGameModeById(int id)
-    {
-        throw new NotImplementedException();
+        return _gameModeDbPort.GetAllGameModes();
     }
 }

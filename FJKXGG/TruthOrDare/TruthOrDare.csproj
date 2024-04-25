@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EditorConfigFiles Remove="C:\Users\gery\source\repos\BarnaGergely\egyetemikurzus-2024-tavasz\FJKXGG\TruthOrDare\.editorconfig" />
   </ItemGroup>
 

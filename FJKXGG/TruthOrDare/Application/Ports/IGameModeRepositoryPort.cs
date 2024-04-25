@@ -22,5 +22,5 @@ internal interface IGameModeRepositoryPort
     /// <param name="id">identifier number of the needed GameMode</param>
     /// <returns>The needed GameMode object</returns>
     /// <exception cref="SafeException">Thrown when the game mode with the specified id is not found</exception>"
-    public GameMode GetGameModeById(int id);
+    GameMode GetGameModeById(int id);
 }

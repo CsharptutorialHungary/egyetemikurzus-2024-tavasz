@@ -6,6 +6,10 @@
 
 namespace TruthOrDare.Application.Ports;
 
+// TODO: Violates the Interface Segregation Principle
+// TODO: Violates the CQRS pattern
+// TODO: Violates the CQS
+
 /// <summary>
 /// Outgoing port for card database repository. The database module can implement this.
 /// </summary>

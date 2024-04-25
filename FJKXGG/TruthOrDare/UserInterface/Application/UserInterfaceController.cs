@@ -1,23 +1,14 @@
 ﻿using TruthOrDare.Application.Ports;
 using TruthOrDare.Domain.Entities;
 using TruthOrDare.Domain.Exceptions;
-using TruthOrDare.UserInterface.Application.Ports;
-using TruthOrDare.UserInterface.Domain;
 
 namespace TruthOrDare.UserInterface.Application
 {
-    internal class UserInterfaceController
+    internal class UserInterfaceController(IUserInterfacePort userInterface, ICardPort cardPort, IGameModePort gameModePort)
     {
-        private readonly IUserInterface _ui;
-        private readonly ICardPort _cardPort;
-        private readonly IGameModePort _gameModePort;
-
-        public UserInterfaceController(IUserInterface userInterface, ICardPort cardPort, IGameModePort gameModePort)
-        {
-            _ui = userInterface;
-            _cardPort = cardPort;
-            _gameModePort = gameModePort;
-        }
+        private readonly IUserInterfacePort _ui = userInterface;
+        private readonly ICardPort _cardPort = cardPort;
+        private readonly IGameModePort _gameModePort = gameModePort;
 
         public int NamedInt { get; set; }
 
@@ -105,8 +96,6 @@ namespace TruthOrDare.UserInterface.Application
                     _ui.Exit(0);
                     return;
             }
-
-            List<ICard> cards = _cardPort.GetAllCards().ToList();
         }
     }
 }
