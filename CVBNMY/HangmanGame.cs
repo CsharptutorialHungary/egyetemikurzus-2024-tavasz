@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using CVBNMY;
 
+using static System.Net.Mime.MediaTypeNames;
+
 namespace CVBNMY
 {
     enum Difficulty
@@ -47,6 +49,7 @@ namespace CVBNMY
         public async Task HangmanGameTask()
         {
             var hiddenWord = string.Concat(Enumerable.Repeat("_", wordToGuess.Length));
+            var charactersOfWord = WordToGuess.Distinct().ToList();
             var characterGuesses = new List<char>();
             var falseGuesses = 0;
 
@@ -64,7 +67,7 @@ namespace CVBNMY
                 characterGuesses.Add(inputCharacter);
 
                 // If the player has guessed a correct letter(even if it appears multiple time in the word), refresh the fields accordingly.
-                if (WordToGuess.Contains(inputCharacter))
+                if (charactersOfWord.Contains(inputCharacter))
                 {
                     var newHiddenWord = "";
                     for (var i = 0; i < WordToGuess.Length; i++)
@@ -119,7 +122,7 @@ namespace CVBNMY
             return words.ToList();
         }
 
-        // This task is used to wait for the user input asynchronously separately, without blocking
+        // This task is used to wait for the user input in separete, independent thread
         private static async Task<char> GetValidLetterInputAsync()
         {
             char inputCharacter;
@@ -150,7 +153,7 @@ namespace CVBNMY
                 RenderClear();
                 RenderDifficultyOptions((Difficulty)selectedDifficulty, difficultyTexts);
 
-                pressedKey = Console.ReadKey(true);
+                pressedKey = Console.ReadKey();
                 switch (pressedKey.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -168,7 +171,12 @@ namespace CVBNMY
 
         public void RenderGameState(string currentHiddenWord, List<char> characterGuesses, int remainingGuesses)
         {
-            Console.WriteLine($"Jelenlegi állás: {currentHiddenWord}");
+            Console.Write($"Jelenlegi állás: ");
+            foreach (var character in currentHiddenWord)
+            {
+                Console.Write($"{character} ");
+            }
+            Console.WriteLine();
             Console.WriteLine($"Tippek: {string.Join(", ", characterGuesses)}");
             Console.WriteLine($"{remainingGuesses} tipp lehetőséged maradt.");
         }
