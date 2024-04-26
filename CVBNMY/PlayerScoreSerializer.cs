@@ -7,7 +7,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
 
-using static System.Formats.Asn1.AsnWriter;
 
 namespace CVBNMY
 {
@@ -22,22 +21,10 @@ namespace CVBNMY
         {
             try
             {
-                // Deserialize the existing JSON key-value pairs from the log file
                 List<PlayerScore> scores = LoadScoresFromFile();
-
-                // Refresh the key-value pairs
                 scores.Add(new PlayerScore(word, score));
-
-                // Sort the record in ABC-order and by scores in descending order using LINQ
                 scores = scores.OrderBy(score => score.Word).ThenByDescending(score => score.Score).ToList();
-
-                // Serialize the list of PlayerScores to JSON text
                 string jsonText = JsonSerializer.Serialize(scores, new JsonSerializerOptions { WriteIndented = true });
-
-                //Debug purpose only
-                //Console.WriteLine(json);
-
-                // Append the logfile 
                 WriteToJSONFile(jsonText);
 
             }
@@ -54,7 +41,15 @@ namespace CVBNMY
             if (File.Exists(_logFilePath))
             {
                 string jsonText = File.ReadAllText(_logFilePath);
-                scores = JsonSerializer.Deserialize<List<PlayerScore>>(jsonText);
+                try
+                {
+                    scores = JsonSerializer.Deserialize<List<PlayerScore>>(jsonText);
+                }
+                catch(JsonException)
+                {
+                    // JsonException is able to occur if the file exists, but it's empty
+                    scores = new List<PlayerScore>();
+                }
             }
             else
             {
