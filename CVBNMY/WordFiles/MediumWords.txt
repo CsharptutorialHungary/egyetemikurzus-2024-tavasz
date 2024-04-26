@@ -2,3 +2,5 @@ chocolate
 elephant
 truck
 calculator
+telephone
+academy

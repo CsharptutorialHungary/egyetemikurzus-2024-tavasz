@@ -7,9 +7,10 @@ namespace CVBNMY
     {
         public static async Task Main(string[] args)
         {
+        
             HangmanGame hg = new HangmanGame();
             await hg.HangmanGameTask();
-            
+
         }
     }
 }

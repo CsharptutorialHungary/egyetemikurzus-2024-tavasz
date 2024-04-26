@@ -8,7 +8,7 @@ namespace CVBNMY
 {
     internal static class WordRandomizer
     {
-        public static Word PickWord(List<Word> words)
+        public static string PickWord(List<string> words)
         {
             Random r = new Random();
             int index = r.Next(words.Count);

@@ -2,3 +2,5 @@ jazz
 phenomenon
 axe
 rural
+pen
+smoke
