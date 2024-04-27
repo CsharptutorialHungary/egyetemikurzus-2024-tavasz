@@ -1,14 +1,13 @@
-﻿using CommunitySite.Data.Entities;
+﻿using CommunitySite.Data.Context;
 using CommunitySite.Services.AdminServices;
 using CommunitySite.Services.AdminViewServices;
 using CommunitySite.Services.ClaimsServices;
+using CommunitySite.Services.ImageServices;
 using CommunitySite.Services.UserServices;
 using CommunitySite.Services.UserViewServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor;
-using System.Data;
-using System.Data.Common;
 
 namespace CommunitySite.Extensions
 {
@@ -17,8 +16,9 @@ namespace CommunitySite.Extensions
         public static IServiceCollection RegisterDatabaseContexts(this IServiceCollection services, IConfiguration configuration)
         {
             var defaultConns = configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<ModelContext>(options => options
+            services.AddPooledDbContextFactory<CommunitySiteContext>(options => options
                 .UseOracle(defaultConns)
+                .EnableSensitiveDataLogging()
             );
 
             return services;
@@ -28,11 +28,13 @@ namespace CommunitySite.Extensions
         {
             services.AddMemoryCache();
             services.AddTransient<IClaimsTransformation, ClaimsTransformation>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDialogService, DialogService>();
             services.AddScoped<IUserViewService, UserViewService>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAdminViewService, AdminViewService>();
+            services.AddScoped<IImageService, ImageService>();
 
             return services;
         }

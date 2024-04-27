@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using CommunitySite.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Context;
 
-public partial class ModelContext : DbContext
+public partial class CommunitySiteContext : DbContext
 {
-    public ModelContext()
+    public CommunitySiteContext()
     {
     }
 
-    public ModelContext(DbContextOptions<ModelContext> options)
+    public CommunitySiteContext(DbContextOptions<CommunitySiteContext> options)
         : base(options)
     {
     }
@@ -45,18 +46,22 @@ public partial class ModelContext : DbContext
                 .HasNoKey()
                 .ToTable("FRIENDS");
 
+            entity.HasIndex(e => e.Friendid1, "IX_FRIENDS_FRIENDID1");
+
+            entity.HasIndex(e => e.Friendid2, "IX_FRIENDS_FRIENDID2");
+
             entity.Property(e => e.FriendStartDate)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("FRIEND_START_DATE");
             entity.Property(e => e.Friendid1)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("FRIENDID1");
             entity.Property(e => e.Friendid2)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("FRIENDID2");
             entity.Property(e => e.IsFriend)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("IS_FRIEND");
 
             entity.HasOne(d => d.Friendid1Navigation).WithMany()
@@ -76,11 +81,15 @@ public partial class ModelContext : DbContext
                 .HasNoKey()
                 .ToTable("INCLUDES");
 
+            entity.HasIndex(e => e.Commentid, "IX_INCLUDES_COMMENTID");
+
+            entity.HasIndex(e => e.Postid, "IX_INCLUDES_POSTID");
+
             entity.Property(e => e.Commentid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("COMMENTID");
             entity.Property(e => e.Postid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
 
             entity.HasOne(d => d.Comment).WithMany()
@@ -100,15 +109,19 @@ public partial class ModelContext : DbContext
                 .HasNoKey()
                 .ToTable("MANAGEGROUPS");
 
+            entity.HasIndex(e => e.Groupid, "IX_MANAGEGROUPS_GROUPID");
+
+            entity.HasIndex(e => e.Userid, "IX_MANAGEGROUPS_USERID");
+
             entity.Property(e => e.Groupid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
             entity.Property(e => e.JoinDate)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("JOIN_DATE");
             entity.Property(e => e.Userid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
 
             entity.HasOne(d => d.Group).WithMany()
@@ -128,23 +141,27 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("MESSAGES");
 
+            entity.HasIndex(e => e.Receiverid, "IX_MESSAGES_RECEIVERID");
+
+            entity.HasIndex(e => e.Senderid, "IX_MESSAGES_SENDERID");
+
             entity.Property(e => e.Messageid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("MESSAGEID");
             entity.Property(e => e.MessageText)
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("MESSAGE_TEXT");
             entity.Property(e => e.Receiverid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("RECEIVERID");
             entity.Property(e => e.SendDate)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("SEND_DATE");
             entity.Property(e => e.Senderid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("SENDERID");
 
             entity.HasOne(d => d.Receiver).WithMany(p => p.MessageReceivers)
@@ -166,7 +183,7 @@ public partial class ModelContext : DbContext
 
             entity.Property(e => e.Permissionid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PERMISSIONID");
             entity.Property(e => e.PermissionName)
                 .HasMaxLength(100)
@@ -180,23 +197,28 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("PHOTOS");
 
+            entity.HasIndex(e => e.Userid, "IX_PHOTOS_USERID");
+
             entity.Property(e => e.Photoid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PHOTOID");
+            entity.Property(e => e.PhotoInByte)
+                .HasColumnType("BLOB")
+                .HasColumnName("PHOTO_IN_BYTE");
+            entity.Property(e => e.PhotoName)
+                .HasMaxLength(1000)
+                .IsUnicode(false)
+                .HasColumnName("PHOTO_NAME");
             entity.Property(e => e.PhotoSize)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PHOTO_SIZE");
             entity.Property(e => e.PhotoType)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("PHOTO_TYPE");
-            entity.Property(e => e.PhotoUrl)
-                .HasMaxLength(1000)
-                .IsUnicode(false)
-                .HasColumnName("PHOTO_URL");
             entity.Property(e => e.Userid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
 
             entity.HasOne(d => d.User).WithMany(p => p.Photos)
@@ -211,15 +233,21 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("POSTS");
 
+            entity.HasIndex(e => e.Groupid, "IX_POSTS_GROUPID");
+
+            entity.HasIndex(e => e.Photoid, "IX_POSTS_PHOTOID");
+
+            entity.HasIndex(e => e.Userid, "IX_POSTS_USERID");
+
             entity.Property(e => e.Postid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
             entity.Property(e => e.Groupid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
             entity.Property(e => e.Photoid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("PHOTOID");
             entity.Property(e => e.PostDate)
                 .HasMaxLength(100)
@@ -230,7 +258,7 @@ public partial class ModelContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("POST_TEXT");
             entity.Property(e => e.Userid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
 
             entity.HasOne(d => d.Group).WithMany(p => p.Posts)
@@ -255,9 +283,13 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("SITECOMMENTS");
 
+            entity.HasIndex(e => e.Postid, "IX_SITECOMMENTS_POSTID");
+
+            entity.HasIndex(e => e.Userid, "IX_SITECOMMENTS_USERID");
+
             entity.Property(e => e.Commentid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("COMMENTID");
             entity.Property(e => e.CommentDate)
                 .HasMaxLength(100)
@@ -268,10 +300,10 @@ public partial class ModelContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("COMMENT_TEXT");
             entity.Property(e => e.Postid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
             entity.Property(e => e.Userid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
 
             entity.HasOne(d => d.Post).WithMany(p => p.Sitecomments)
@@ -291,16 +323,18 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("SITEGROUPS");
 
+            entity.HasIndex(e => e.Ownerid, "IX_SITEGROUPS_OWNERID");
+
             entity.Property(e => e.Groupid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("NAME");
             entity.Property(e => e.Ownerid)
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("OWNERID");
 
             entity.HasOne(d => d.Owner).WithMany(p => p.Sitegroups)
@@ -315,18 +349,20 @@ public partial class ModelContext : DbContext
 
             entity.ToTable("SITEUSERS");
 
+            entity.HasIndex(e => e.Permissionid, "IX_SITEUSERS_PERMISSIONID");
+
             entity.Property(e => e.Userid)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INT")
+                .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("LAST_NAME");
             entity.Property(e => e.Permissionid)
-                .HasColumnType("INT")
-                .HasColumnName("PERMISSIONID")
-                .HasDefaultValue(1);
+                .HasDefaultValueSql("(1)")
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("PERMISSIONID");
             entity.Property(e => e.School)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -339,6 +375,9 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("USERNAME");
+            entity.Property(e => e.Usertechnicalname)
+                .HasDefaultValueSql("(sys_guid()) ")
+                .HasColumnName("USERTECHNICALNAME");
             entity.Property(e => e.Workplace)
                 .HasMaxLength(100)
                 .IsUnicode(false)

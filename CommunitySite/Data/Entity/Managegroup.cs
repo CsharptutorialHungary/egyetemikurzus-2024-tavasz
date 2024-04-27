@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Managegroup
 {
-    public int? Userid { get; set; }
+    public decimal? Userid { get; set; }
 
-    public int? Groupid { get; set; }
+    public decimal? Groupid { get; set; }
 
     public string? JoinDate { get; set; }
 

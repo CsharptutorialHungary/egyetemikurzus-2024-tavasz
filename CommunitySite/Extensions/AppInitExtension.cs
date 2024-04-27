@@ -1,4 +1,4 @@
-﻿using CommunitySite.Data.Entities;
+﻿using CommunitySite.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunitySite.Extensions
@@ -9,7 +9,7 @@ namespace CommunitySite.Extensions
         {
             using (var serviceScope = provider.CreateScope())
             {
-                var dbcx = await serviceScope!.ServiceProvider.GetService<IDbContextFactory<ModelContext>>()!.CreateDbContextAsync();
+                var dbcx = await serviceScope!.ServiceProvider.GetService<IDbContextFactory<CommunitySiteContext>>()!.CreateDbContextAsync();
 
                 dbcx?.Database.Migrate();
             }

@@ -1,17 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
+@using CommunitySite.Components.Pages
 
 <CascadingAuthenticationState>
-    <Router AppAssembly="typeof(App).Assembly">
-        <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="typeof(CommunitySite.Components.Layout.MainLayout)" />
-        </Found>
-        <NotFound>
-            <PageTitle>Page not found</PageTitle>
-            <LayoutView Layout="@typeof(CommunitySite.Components.Layout.MainLayout)">
-                <p role="alert">Sorry, there is nothing at this address!</p>
-            </LayoutView>
-        </NotFound>
-    </Router>
+    <Error>
+        <Router AppAssembly="typeof(App).Assembly">
+            <Found Context="routeData">
+                <RouteView RouteData="@routeData" DefaultLayout="typeof(CommunitySite.Components.Layout.MainLayout)" />
+            </Found>
+        </Router>
+    </Error>
 </CascadingAuthenticationState>
 
 

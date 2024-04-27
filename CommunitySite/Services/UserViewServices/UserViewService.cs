@@ -1,5 +1,4 @@
-﻿using CommunitySite.Components.Accessories;
-using CommunitySite.Components.Dialogs;
+﻿using CommunitySite.Components.Dialogs;
 using CommunitySite.Data.ViewModels;
 using MudBlazor;
 

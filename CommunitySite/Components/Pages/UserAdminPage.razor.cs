@@ -18,12 +18,18 @@ namespace CommunitySite.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
-           Users = await UserService.GetUsers();
+            await ListUsers();
+        }
+
+        private async Task ListUsers()
+        {
+            Users = await UserService.GetUsers();
         }
 
         private async Task EditSelectedUserDetails(TableRowClickEventArgs<UserViewModel> tableRowClickEventArgs)
         {
             await AdminViewService.CreateAdminDialog(selectedUser);
+            await ListUsers();
         }
     }
 }

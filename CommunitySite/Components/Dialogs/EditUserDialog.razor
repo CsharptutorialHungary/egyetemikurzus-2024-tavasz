@@ -2,7 +2,7 @@
 
 <MudDialog>
     <DialogContent>
-        <MudForm @ref="@MudForm" Model="@UserViewModel">
+        <MudForm Model="@UserViewModel">
             <MudSelect @bind-Value="selectedRole" Label="Select role" AdornmentIcon="@Icons.Material.TwoTone.AdminPanelSettings">
                 @foreach (PermissionEnum item in Roles)
                 {

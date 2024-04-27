@@ -10,9 +10,11 @@
         <MudTooltip ShowOnHover="true" Text="Profile">
             <MudIconButton OnClick="@(() => OpenDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
         </MudTooltip>
+        <MudIconButton OnClick="@(() => GoToProfilePage())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Add"></MudIconButton>
     </MudAppBar>
     <MudDrawer Open="true" Style="@($"color:{Theme.Palette.White}; background:{Theme.Palette.Black};")">
         <MudNavLink Href="/databaseConnection">Database</MudNavLink>
+        <MudNavLink Href="/UploadImage">Upload image</MudNavLink>
 
         @if(userViewModel.PermissionId == (int)PermissionEnum.ADMIN)
         {

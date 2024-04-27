@@ -6,7 +6,7 @@ namespace CommunitySite.Services.UserServices
     {
         Task CreateUser(UserViewModel userViewModel);
 
-        Task<bool> UpdateUserAsync(UserViewModel userViewModel);
+        Task UpdateUserAsync(UserViewModel userViewModel);
 
         Task<List<UserViewModel>> GetUsers();
 

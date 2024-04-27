@@ -1,49 +1,62 @@
 ﻿using AutoMapper;
-using CommunitySite.Data.Entities;
+using CommunitySite.Data.Entity;
+using CommunitySite.Data.Context;
 using CommunitySite.Data.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using CommunitySite.Extensions.Exceptions;
 
 namespace CommunitySite.Services.AdminServices
 {
     public class AdminService : IAdminService
     {
-        private readonly IDbContextFactory<ModelContext> _dbContextFactory;
+        private readonly IDbContextFactory<CommunitySiteContext> _dbContextFactory;
         private readonly IMapper _mapper;
 
-        public AdminService(IDbContextFactory<ModelContext> dbContextFactory, IMapper mapper)
+        public AdminService(IDbContextFactory<CommunitySiteContext> dbContextFactory, IMapper mapper)
         {
             _dbContextFactory = dbContextFactory;
             _mapper = mapper;
         }
 
-        public async Task<bool> UpdateUserRoleAsync(UserViewModel userViewModel)
+        public async Task UpdateUserRoleAsync(UserViewModel userViewModel)
         {
-            return await Task.Run(() => UpdateUserRole(userViewModel));
+            try
+            {
+                await Task.Run(() => UpdateUserRole(userViewModel));
+            }
+            catch
+            {
+                throw new CommunitySiteException("Somethng went wrong while update user!");
+            }
         }
 
-        public async Task<bool> DeleteUserAsync(UserViewModel userViewModel)
+        public async Task DeleteUserAsync(UserViewModel userViewModel)
         {
             try
             {
                 using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
                 {
-                    await dbcx.Siteusers.Where(x => x.Userid == userViewModel.Userid).ExecuteDeleteAsync();
-                    return true;
+                    await dbcx.Siteusers
+                        .AsNoTracking()
+                        .Include(x => x.MessageReceivers)
+                        .Include(x => x.MessageSenders)
+                        .Include(x => x.Permission)
+                        .Include(x => x.Photos)
+                        .Include(x => x.Posts)
+                        .Include(x => x.Sitecomments)
+                        .Include(x => x.Sitegroups)
+                        .Where(x => x.Userid == userViewModel.Userid)
+                        .ExecuteDeleteAsync();
                 }
             }
             catch
             {
-                return false;
+                throw new CommunitySiteException("Somethng went wrong while delete user!");
             }
         }
 
-        private bool UpdateUserRole(UserViewModel userViewModel)
+        private void UpdateUserRole(UserViewModel userViewModel)
         {
-            if (userViewModel == null || userViewModel.Userid == 0 || userViewModel.Username == null)
-            {
-                return false;
-            }
-
             try
             {
                 using (var dbcx = _dbContextFactory.CreateDbContext())
@@ -57,12 +70,10 @@ namespace CommunitySite.Services.AdminServices
                     dbcx.SaveChanges();
                     dbcx.Entry(entity).State = EntityState.Detached;
                 }
-
-                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                return false;
+                throw;
             }
         }
     }

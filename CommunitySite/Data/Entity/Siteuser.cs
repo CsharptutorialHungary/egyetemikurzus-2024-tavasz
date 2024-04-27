@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CommunitySite.Data.Entities;
+﻿namespace CommunitySite.Data.Entity;
 
 public partial class Siteuser
 {
-    public int Userid { get; set; }
+    public decimal Userid { get; set; }
 
-    public int? Permissionid { get; set; }
+    public decimal? Permissionid { get; set; }
 
     public string? Username { get; set; }
 
@@ -20,6 +17,8 @@ public partial class Siteuser
     public string? School { get; set; }
 
     public string? BirthDate { get; set; }
+
+    public Guid Usertechnicalname { get; set; }
 
     public virtual ICollection<Message> MessageReceivers { get; set; } = new List<Message>();
 

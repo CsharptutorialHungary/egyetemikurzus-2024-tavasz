@@ -4,7 +4,8 @@ namespace CommunitySite.Services.AdminServices
 {
     public interface IAdminService
     {
-        Task<bool> UpdateUserRoleAsync(UserViewModel userViewModel);
-        Task<bool> DeleteUserAsync(UserViewModel userViewModel);
+        Task UpdateUserRoleAsync(UserViewModel userViewModel);
+
+        Task DeleteUserAsync(UserViewModel userViewModel);
     }
 }
