@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text.Json;
 
@@ -39,7 +40,7 @@ namespace BFR0QN
                 return new Dictionary<string, int>();
             }
             var mentesekJson = File.ReadAllText(filePath);
-            var mentesek = JsonSerializer.Deserialize<Dictionary<string, int>>(mentesekJson);
+            Dictionary<string, int> mentesek = JsonSerializer.Deserialize<Dictionary<string, int>>(mentesekJson);
             return mentesek;
         }
     }

@@ -10,8 +10,9 @@ namespace BFR0QN
 {
     public class GameManager
     {
+        int szint;
         List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
-        Dictionary<string,int> mentesekLista = new Dictionary<string,int>();
+        Dictionary<string, int> mentesekLista = BeolvasJson.Betolt();
         public void Betolt()
         {
             Console.WriteLine("Siti Hamburgerezője!");
@@ -19,17 +20,48 @@ namespace BFR0QN
             string beolvas = Console.ReadLine();
             if (beolvas == "uj")
             {
+                szint = 1;
                 UjJatek();
             }
             else if (beolvas == "be")
             {
-                //TODO
+                MeglevoBeolvasasa();
             }
             else
             {
                 Console.WriteLine("Rossz kifejezés");
                 Betolt();
             }
+        }
+        public void MeglevoBeolvasasa()
+        {
+            if (mentesekLista.Count > 0)
+            {
+                foreach (var mentes in mentesekLista)
+                {
+                    Console.WriteLine(mentes.Key);
+                }
+                Console.Write("Az alábbiak közül melyiket szeretnéd betölteni? : ");
+                string nev = Console.ReadLine();
+                if (mentesekLista.Keys.Contains(nev))
+                {
+                    szint = mentesekLista[nev];
+                }
+                else
+                {
+                    Console.WriteLine("Nem megfelelően írtad be!");
+                    MeglevoBeolvasasa();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Jelenleg nincs megkezdett játék!");
+                Betolt();
+            }
+        }
+        public int getSzint()
+        {
+            return szint;
         }
         public void UjJatek()
         {
@@ -109,8 +141,7 @@ namespace BFR0QN
             }
             else
             {
-                mentesekLista.Add(mentesNeve, aktualisSzint);
-                Console.WriteLine(mentesNeve.Length);
+                mentesekLista.Add(mentesNeve, aktualisSzint); 
                 return true;
             }
         }

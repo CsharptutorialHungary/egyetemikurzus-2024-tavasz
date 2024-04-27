@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 using BFR0QN.Etelek;
 
@@ -13,7 +14,7 @@ class Program
         Console.WriteLine(g.AtlagKcal());
         g.Betolt();
         
-        int szint = 1;
+        int szint = g.getSzint();
         string beolvasSzoveg="";
         while (beolvasSzoveg != "k")
         {
