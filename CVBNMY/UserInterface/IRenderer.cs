@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVBNMY
+using CVBNMY.Application;
+
+namespace CVBNMY.UserInterface
 {
     internal interface IRenderer
     {

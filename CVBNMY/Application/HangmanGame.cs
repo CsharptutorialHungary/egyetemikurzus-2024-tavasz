@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using CVBNMY;
+using CVBNMY.Infrastructure;
+using CVBNMY.UserInterface;
+using CVBNMY.Domain;
 
 using static System.Net.Mime.MediaTypeNames;
 
-namespace CVBNMY
+namespace CVBNMY.Application
 {
     enum Difficulty
     {
@@ -16,16 +18,16 @@ namespace CVBNMY
         MEDIUM,
         HARD
     }
-    
+
     internal class HangmanGame : IRenderer
     {
-        private const int EASY_GUESSES   = 7;
+        private const int EASY_GUESSES = 7;
 
         private const int MEDIUM_GUESSES = 6;
 
-        private const int HARD_GUESSES   = 5;
+        private const int HARD_GUESSES = 5;
 
-        private static readonly int[] GuessesPerDifficulty = { EASY_GUESSES, MEDIUM_GUESSES, HARD_GUESSES};
+        private static readonly int[] GuessesPerDifficulty = { EASY_GUESSES, MEDIUM_GUESSES, HARD_GUESSES };
 
         private static readonly string[] difficultyTexts = { "Könnyű  (7 tippelési lehetőseg)", "Közepes (6 tippelési lehetőség)", "Nehéz   (5 tippelési lehetőség)" };
 
@@ -38,12 +40,12 @@ namespace CVBNMY
             Difficulty difficulty = GetSelectedDifficulty();
 
             List<string> words = LoadWordList(difficulty);
-            if(words.Count == 0)
+            if (words.Count == 0)
             {
                 throw new ListEmptyException("Unable to load words.");
             }
             wordToGuess = WordRandomizer.PickWord(words);
-            maxGuesses = GuessesPerDifficulty[(int)(difficulty)];
+            maxGuesses = GuessesPerDifficulty[(int)difficulty];
         }
 
         public async Task HangmanGameTask()
@@ -53,7 +55,7 @@ namespace CVBNMY
             var characterGuesses = new List<char>();
             var falseGuesses = 0;
 
-            while (falseGuesses < MaxGuesses && (hiddenWord.Equals(wordToGuess) == false))
+            while (falseGuesses < MaxGuesses && hiddenWord.Equals(wordToGuess) == false)
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
 
@@ -103,7 +105,7 @@ namespace CVBNMY
                 Console.WriteLine("Sajnos nem sikerült kitalálnod a szót. A szó: {0}", WordToGuess);
             }
         }
-       
+
         public int MaxGuesses
         {
             get { return maxGuesses; }
@@ -111,10 +113,10 @@ namespace CVBNMY
 
         public string WordToGuess
         {
-             get { return wordToGuess; }
+            get { return wordToGuess; }
         }
 
-        private static List<string> LoadWordList(Difficulty difficulty) 
+        private static List<string> LoadWordList(Difficulty difficulty)
         {
             int difficultyValue = Convert.ToInt32(difficulty);
             string[] words;
@@ -137,13 +139,13 @@ namespace CVBNMY
                         return inputCharacter;
                     }
                 }
-               
+
             } while (true);
         }
 
         private Difficulty GetSelectedDifficulty()
         {
-      
+
             int selectedDifficulty = (int)Difficulty.EASY;
 
             ConsoleKeyInfo pressedKey;
@@ -187,7 +189,7 @@ namespace CVBNMY
             Console.WriteLine();
             for (int i = 0; i < Enum.GetValues(typeof(Difficulty)).Length; i++)
             {
-                string prefix = (i == (int)selectedDifficulty) ? "->" : "  ";
+                string prefix = i == (int)selectedDifficulty ? "->" : "  ";
                 Console.WriteLine($"{prefix}{optionTexts[i]}");
                 Console.WriteLine();
             }

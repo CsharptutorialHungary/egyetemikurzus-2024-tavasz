@@ -7,8 +7,10 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
 
+using CVBNMY.Domain;
 
-namespace CVBNMY
+
+namespace CVBNMY.Infrastructure
 {
     internal static class PlayerScoreSerializer
     {
@@ -16,7 +18,7 @@ namespace CVBNMY
         private static readonly string _logFileName = "player_score.json";
 
         private static readonly string _logFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), _logFileName);
-     
+
         public static void UpdatePlayerScoreJsonFile(string word, int score)
         {
             try
@@ -45,7 +47,7 @@ namespace CVBNMY
                 {
                     scores = JsonSerializer.Deserialize<List<PlayerScore>>(jsonText);
                 }
-                catch(JsonException)
+                catch (JsonException)
                 {
                     // JsonException is able to occur if the file exists, but it's empty
                     scores = new List<PlayerScore>();
@@ -61,7 +63,7 @@ namespace CVBNMY
 
         private static void WriteToJSONFile(string json)
         {
-             File.WriteAllText(_logFilePath, json);
+            File.WriteAllText(_logFilePath, json);
         }
 
 

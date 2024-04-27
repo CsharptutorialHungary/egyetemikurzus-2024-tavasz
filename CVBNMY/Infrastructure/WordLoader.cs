@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVBNMY
+namespace CVBNMY.Infrastructure
 {
     internal static class WordLoader
     {
-        private const string EASY_WORD_FILE_PATH =      "EasyWords.txt";
-        private const string MEDIUM_WORD_FILE_PATH =    "MediumWords.txt";
-        private const string HARD_WORD_FILE_PATH =      "HardWords.txt";
+        private const string EASY_WORD_FILE_PATH = "EasyWords.txt";
+        private const string MEDIUM_WORD_FILE_PATH = "MediumWords.txt";
+        private const string HARD_WORD_FILE_PATH = "HardWords.txt";
         public static string[] ReadWords(string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
@@ -23,12 +23,12 @@ namespace CVBNMY
             {
                 words = File.ReadAllLines(filePath);
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Unable to access file");
                 words = [];
             }
-            catch(IOException) 
+            catch (IOException)
             {
                 Console.WriteLine("I/O exception occured while reading the file");
                 words = [];
@@ -48,24 +48,24 @@ namespace CVBNMY
             switch (difficulty)
             {
                 case 0:
-                {
-                    sFile = Path.Combine(sFile, EASY_WORD_FILE_PATH);
-                    break;
-                }
+                    {
+                        sFile = Path.Combine(sFile, EASY_WORD_FILE_PATH);
+                        break;
+                    }
                 case 1:
-                {
+                    {
                         sFile = Path.Combine(sFile, MEDIUM_WORD_FILE_PATH);
                         break;
-                }
+                    }
                 case 2:
-                {
+                    {
                         sFile = Path.Combine(sFile, HARD_WORD_FILE_PATH);
                         break;
-                }
+                    }
             }
             return Path.GetFullPath(sFile);
         }
     }
 
-  
+
 }

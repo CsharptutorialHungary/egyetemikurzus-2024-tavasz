@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVBNMY
+namespace CVBNMY.Domain
 {
     internal sealed record PlayerScore
     {
