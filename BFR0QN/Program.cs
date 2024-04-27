@@ -37,6 +37,20 @@ class Program
                     i++;
                     Console.WriteLine("\n");
                 }
+                else if (beolvasSzoveg == "mentés")
+                {
+                    Console.Write("Mentés neve: ");
+                    string mentesNeve = Console.ReadLine();
+                    if (g.Mentes(mentesNeve,szint))
+                    {
+                        Console.WriteLine("Sikeres mentés");
+                        g.JsonFileLetrehoz();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sikertelen mentés");
+                    }
+                }
                 else
                 {
                     Console.WriteLine("Elbasztad");

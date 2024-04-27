@@ -11,6 +11,7 @@ namespace BFR0QN
     public class GameManager
     {
         List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
+        Dictionary<string,int> mentesekLista = new Dictionary<string,int>();
         public void Betolt()
         {
             Console.WriteLine("Siti Hamburgerezője!");
@@ -82,6 +83,39 @@ namespace BFR0QN
             }
             Thread.Sleep(3000);
             Console.Clear();
+        }
+        public bool Mentes(string mentesNeve, int aktualisSzint)
+        {
+            string Szoveg = mentesNeve.Trim();
+            if (Szoveg == null || Szoveg.Length == 0)
+            {
+                Console.WriteLine("Nem adtál meg nevet");
+                return false;
+
+            }
+            if (mentesekLista.Keys.Contains(mentesNeve))
+            {
+                Console.Write("Van már ilyen mentés, Szeretnéd felülirni? igen (i), nem (n) : ");
+                string beovasottSzoveg = Console.ReadLine();
+                if (beovasottSzoveg == "i")
+                {
+                    mentesekLista[mentesNeve] = aktualisSzint;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                mentesekLista.Add(mentesNeve, aktualisSzint);
+                Console.WriteLine(mentesNeve.Length);
+                return true;
+            }
+        }
+        public void JsonFileLetrehoz() {
+            MentesJson.Mentes(mentesekLista);
         }
     }
 }

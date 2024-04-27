@@ -31,5 +31,16 @@ namespace BFR0QN
             }
             return burgers;
         }
+        public static Dictionary<string, int> Betolt()
+        {
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "mentesek.json");
+            if (!File.Exists(filePath))
+            {
+                return new Dictionary<string, int>();
+            }
+            var mentesekJson = File.ReadAllText(filePath);
+            var mentesek = JsonSerializer.Deserialize<Dictionary<string, int>>(mentesekJson);
+            return mentesek;
+        }
     }
 }
