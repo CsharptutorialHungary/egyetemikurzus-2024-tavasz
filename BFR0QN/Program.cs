@@ -10,7 +10,9 @@ class Program
     {
         
         GameManager g = new GameManager();
+        Console.WriteLine(g.AtlagKcal());
         g.Betolt();
+        
         int szint = 1;
         string beolvasSzoveg="";
         while (beolvasSzoveg != "k")

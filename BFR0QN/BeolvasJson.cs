@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 using BFR0QN.Etelek;
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 namespace BFR0QN
 {
     public static class BeolvasJson
@@ -18,7 +15,7 @@ namespace BFR0QN
             try
             {
                 string jsonText = File.ReadAllText(jsonFileName);
-                burgers = JsonConvert.DeserializeObject<List<Hamburger>>(jsonText);
+                burgers = JsonSerializer.Deserialize<List<Hamburger>>(jsonText,new JsonSerializerOptions(JsonSerializerDefaults.Web));
             }
             catch (FileNotFoundException ex)
             {

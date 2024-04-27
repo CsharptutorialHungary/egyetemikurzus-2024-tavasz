@@ -10,6 +10,7 @@ namespace BFR0QN
 {
     public class GameManager
     {
+        List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
         public void Betolt()
         {
             Console.WriteLine("Siti Hamburgerezője!");
@@ -51,9 +52,19 @@ namespace BFR0QN
         }
         public Hamburger KovetkezoSzint(int szint)
         {
-            List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
             Hamburger aktualisBurger = burgerek.FirstOrDefault(x => x.Level == szint);
             return aktualisBurger;
+        }
+        public double AtlagKcal()
+        {
+            int[] tomb=new int[burgerek.Count];
+            int i = 0;
+            foreach (var item in burgerek)
+            {
+                tomb[i]=item.Kcal; i++;
+            }
+            double atlag=tomb.Average();
+            return atlag;
         }
         public void help(String[] aktualisBurger)
         {
