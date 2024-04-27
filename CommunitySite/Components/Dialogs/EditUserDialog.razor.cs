@@ -1,7 +1,8 @@
-﻿using CommunitySite.Data.Util;
+﻿using CommunitySite.Components.Pages;
+using CommunitySite.Data.Util;
 using CommunitySite.Data.ViewModels;
+using CommunitySite.Extensions.Exceptions;
 using CommunitySite.Services.AdminServices;
-using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Collections;
@@ -13,12 +14,11 @@ namespace CommunitySite.Components.Dialogs
         [Inject] private IAdminService AdminService { get; set; } = default!;
         [Inject] private ISnackbar SnackBar { get; set; } = default!;
         [CascadingParameter] private MudDialogInstance MudDialog { get; set; } = default!;
+        [CascadingParameter] private Error CommuitySiteError { get; set; } = default!;
         [Parameter] public UserViewModel UserViewModel { get; set; } = default!;
 
-        private MudForm MudForm { get; set; } = default!;
-        private string userPermission = default!;
         private IEnumerable Roles { get; set; } = default!;
-        private PermissionEnum selectedRole { get; set; }
+        private PermissionEnum selectedRole { get; set; } = default!;
 
         protected override void OnInitialized()
         {
@@ -28,36 +28,31 @@ namespace CommunitySite.Components.Dialogs
 
         private async Task DeleteUserButton()
         {
-            var result = await AdminService.DeleteUserAsync(UserViewModel);
-
-            if (result)
+            try
             {
+                await AdminService.DeleteUserAsync(UserViewModel);
                 SnackBar.Add("Successfully deleted", Severity.Success);
                 MudDialog.Close(DialogResult.Ok(true));
             }
-            else
+            catch (CommunitySiteException ex)
             {
-                SnackBar.Add("Something went wrong.", Severity.Error);
+                CommuitySiteError.ErrorHandler(ex);
             }
-
         }
 
         private async Task Submit()
         {
-            UserViewModel.PermissionId = (int)selectedRole;
-            var result = await AdminService.UpdateUserRoleAsync(UserViewModel);
-
-            if (result)
+            try
             {
+                UserViewModel.PermissionId = (int)selectedRole;
+                await AdminService.UpdateUserRoleAsync(UserViewModel);
                 SnackBar.Add("Successfully updated", Severity.Success);
             }
-            else
+            catch (CommunitySiteException ex)
             {
-                SnackBar.Add("Something went wrong.", Severity.Error);
+                CommuitySiteError.ErrorHandler(ex);
             }
-            
         }
-
 
         void Cancel() => MudDialog!.Cancel();
     }

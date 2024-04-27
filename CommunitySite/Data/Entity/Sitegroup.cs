@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Sitegroup
 {
-    public int Groupid { get; set; }
+    public decimal Groupid { get; set; }
 
-    public int? Ownerid { get; set; }
+    public decimal? Ownerid { get; set; }
 
     public string? Name { get; set; }
 

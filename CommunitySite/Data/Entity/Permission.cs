@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Permission
 {
-    public int Permissionid { get; set; }
+    public decimal Permissionid { get; set; }
 
     public string? PermissionName { get; set; }
 

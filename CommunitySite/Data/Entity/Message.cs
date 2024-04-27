@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Message
 {
-    public int Messageid { get; set; }
+    public decimal Messageid { get; set; }
 
-    public int? Senderid { get; set; }
+    public decimal? Senderid { get; set; }
 
-    public int? Receiverid { get; set; }
+    public decimal? Receiverid { get; set; }
 
     public string? MessageText { get; set; }
 

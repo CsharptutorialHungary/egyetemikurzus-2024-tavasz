@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Include
 {
-    public int? Postid { get; set; }
+    public decimal? Postid { get; set; }
 
-    public int? Commentid { get; set; }
+    public decimal? Commentid { get; set; }
 
     public virtual Sitecomment? Comment { get; set; }
 

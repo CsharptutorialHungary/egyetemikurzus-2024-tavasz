@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Post
 {
-    public int Postid { get; set; }
+    public decimal Postid { get; set; }
 
-    public int? Userid { get; set; }
+    public decimal? Userid { get; set; }
 
-    public int? Photoid { get; set; }
+    public decimal? Photoid { get; set; }
 
-    public int? Groupid { get; set; }
+    public decimal? Groupid { get; set; }
 
     public string? PostText { get; set; }
 

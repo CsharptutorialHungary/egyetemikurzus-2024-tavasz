@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CommunitySite.Data.Entities;
+using CommunitySite.Data.Entity;
 using CommunitySite.Data.ViewModels;
 
 namespace CommunitySite.Extensions.Mapper
@@ -9,7 +9,8 @@ namespace CommunitySite.Extensions.Mapper
         public MapperProfile()
         {
             CreateMap<Siteuser, UserViewModel>().ReverseMap();
-                //.ForMember(o => o.Email, x => x.MapFrom(y => y.Email));
+            CreateMap<Photo, PhotoViewModel>().ReverseMap();
+                
         }
     }
 }

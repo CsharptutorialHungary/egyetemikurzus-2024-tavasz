@@ -1,19 +1,20 @@
 ﻿using AutoMapper;
-using CommunitySite.Data.Entities;
+using CommunitySite.Data.Entity;
+using CommunitySite.Data.Context;
 using CommunitySite.Data.Util;
 using CommunitySite.Data.ViewModels;
-using CommunitySite.Extensions.Validators;
 using Microsoft.EntityFrameworkCore;
-using Oracle.ManagedDataAccess.Client;
+using CommunitySite.Extensions.Exceptions;
 
 namespace CommunitySite.Services.UserServices
 {
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
-        private readonly IDbContextFactory<ModelContext> _dbContextFactory;
+        private readonly IDbContextFactory<CommunitySiteContext> _dbContextFactory;
 
-        public UserService(IMapper mapper, IDbContextFactory<ModelContext> dbContextFactory)
+
+        public UserService(IMapper mapper, IDbContextFactory<CommunitySiteContext> dbContextFactory)
         {
             _mapper = mapper;
             _dbContextFactory = dbContextFactory;
@@ -26,55 +27,65 @@ namespace CommunitySite.Services.UserServices
 
         public async Task CreateUser(UserViewModel userViewModel)
         {
-            if(userViewModel.Username is null || await ExistUser(userViewModel.Username))
-            {
-                return;
-            }
-
-            SetPermission(ref userViewModel, PermissionEnum.DEFAULT);
-
-            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
-            {
-                var siteuser = _mapper.Map<Siteuser>(userViewModel);
-                await dbcx.Siteusers.AddAsync(siteuser);
-                await dbcx.SaveChangesAsync();
-            }
-        }
-
-        public async Task<bool> UpdateUserAsync(UserViewModel userViewModel)
-        {
-            return await Task.Run(() => UpdateUser(userViewModel));
-        }
-
-        private bool UpdateUser(UserViewModel userViewModel)
-        {
-            if(userViewModel == null || userViewModel.Username == null)
-            {
-                return false;
-            }
-
             try
             {
-                using (var dbcx =  _dbContextFactory.CreateDbContext())
+                SetPermission(ref userViewModel, PermissionEnum.DEFAULT);
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
                 {
-                    var res = dbcx.Siteusers.AsNoTracking().SingleOrDefault(x => x.Username == userViewModel.Username);
-                    if (res == null)
+                    var siteuser = _mapper.Map<Siteuser>(userViewModel);
+                    await dbcx.Siteusers
+                        .AddAsync(siteuser);
+
+                    await dbcx.SaveChangesAsync();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task UpdateUserAsync(UserViewModel userViewModel)
+        {
+            try
+            {
+                await Task.Run(() => UpdateUser(userViewModel));
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while update user");
+            }
+        }
+
+        private void UpdateUser(UserViewModel userViewModel)
+        {
+            try
+            {
+                using (var dbcx = _dbContextFactory.CreateDbContext())
+                {
+                    var user = dbcx.Siteusers
+                        .AsNoTracking()
+                        .Include(x => x.MessageReceivers)
+                        .Include(x => x.MessageSenders)
+                        .Include(x => x.Photos)
+                        .Include(x => x.Posts)
+                        .Include(x => x.Sitecomments)
+                        .Include(x => x.Sitegroups)
+                        .SingleOrDefault(x => x.Username == userViewModel.Username);
+
+                    if (user == null)
                     {
-                        return false;
+                        throw new CommunitySiteException("User does not exist!");
                     }
 
                     var entity = _mapper.Map<Siteuser>(userViewModel);
                     dbcx.Siteusers.Update(entity);
                     dbcx.SaveChanges();
-                    dbcx.Entry(entity).State = EntityState.Detached;
                 }
-
-                return true;
             }
-            catch (OracleException e)
+            catch
             {
-                //TODO: logger
-                return false;
+                throw;
             }
         }
 
@@ -82,25 +93,63 @@ namespace CommunitySite.Services.UserServices
         {
             using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
             {
-                return await dbcx.Siteusers.AsNoTracking().Where(x => x.Username == userName).AnyAsync();
+                return await dbcx.Siteusers
+                    .AsNoTracking()
+                    .Where(x => x.Username == userName)
+                    .AnyAsync();
             }
         }
 
         public async Task<List<UserViewModel>> GetUsers()
         {
-            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+            try
             {
-                var users = await dbcx.Siteusers.AsNoTracking().ToListAsync();
-                return users.Select(_mapper.Map<UserViewModel>).ToList();
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var users = await dbcx.Siteusers
+                        .AsNoTracking()
+                        .Include(x => x.MessageReceivers)
+                        .Include(x => x.MessageSenders)
+                        .Include(x => x.Photos)
+                        .Include(x => x.Posts)
+                        .Include(x => x.Sitecomments)
+                        .Include(x => x.Sitegroups)
+                        .ToListAsync();
+
+                    return users
+                       
+                        .Select(_mapper.Map<UserViewModel>)
+                        .ToList();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while getting users");
             }
         }
 
         public async Task<UserViewModel> GetUser(string userName)
         {
-            using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+            try
             {
-                var user = await dbcx.Siteusers.AsNoTracking().Where(x => x.Username == userName).SingleOrDefaultAsync();
-                return _mapper.Map<UserViewModel>(user);
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var user = await dbcx.Siteusers
+                        .AsNoTracking()
+                        .Include(x => x.MessageReceivers)
+                        .Include(x => x.MessageSenders)
+                        .Include(x => x.Photos)
+                        .Include(x => x.Posts)
+                        .Include(x => x.Sitecomments)
+                        .Include(x => x.Sitegroups)
+                        .Where(x => x.Username == userName)
+                        .SingleOrDefaultAsync();
+                    return _mapper.Map<UserViewModel>(user);
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while getting user");
             }
         }
 
@@ -111,13 +160,19 @@ namespace CommunitySite.Services.UserServices
                 return;
             }
 
-            var userViewModel = new UserViewModel()
+            try
             {
-                Username = userName,
-                ShortName = userName.Split('\\').Last(),
-            };
-
-            await CreateUser(userViewModel);
+                var userViewModel = new UserViewModel()
+                {
+                    Username = userName,
+                    ShortName = userName.Split('\\').Last(),
+                };
+                await CreateUser(userViewModel);
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while create user!");
+            }
         }
     }
 }

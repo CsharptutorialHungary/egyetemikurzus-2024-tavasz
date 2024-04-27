@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CommunitySite.Data.Entities;
+namespace CommunitySite.Data.Entity;
 
 public partial class Sitecomment
 {
-    public int Commentid { get; set; }
+    public decimal Commentid { get; set; }
 
-    public int? Postid { get; set; }
+    public decimal? Postid { get; set; }
 
-    public int? Userid { get; set; }
+    public decimal? Userid { get; set; }
 
     public string? CommentText { get; set; }
 

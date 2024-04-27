@@ -9,8 +9,8 @@ namespace CommunitySite.Components.Accessories
 {
     public partial class AppBar
     {
-        [Inject] IUserService userService { get; set; } = default!;
-        [Inject] IUserViewService userViewService {  get; set; } = default!;
+        [Inject] IUserService UserService { get; set; } = default!;
+        [Inject] IUserViewService UserViewService {  get; set; } = default!;
         [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; } = default!;
 
         private string shortUserName = "";
@@ -22,19 +22,19 @@ namespace CommunitySite.Components.Accessories
         {
             var authState = await authenticationStateTask!;
             userName = authState.User.Identity?.Name ?? "";
-            userViewModel = await userService.GetUser(userName);
+            userViewModel = await UserService.GetUser(userName);
             shortUserName = authState.User.Identity?.Name?.Split('\\').Last() ?? "";
         }
 
         private async Task OpenDialog()
         {
-            var user = await userService.GetUser(userName);
-            await userViewService.CreateUserDialog(user);
+            var user = await UserService.GetUser(userName);
+            await UserViewService.CreateUserDialog(user);
         }
 
         private void GoToProfilePage()
         {
-            navmanager.NavigateTo("/Profile");
+            navmanager.NavigateTo($"user/{userViewModel.Usertechnicalname}/profile");
         }
     }
 }

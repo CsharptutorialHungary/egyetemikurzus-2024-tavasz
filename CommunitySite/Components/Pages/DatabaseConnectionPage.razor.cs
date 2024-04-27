@@ -1,4 +1,5 @@
-﻿using CommunitySite.Data.Entities;
+﻿using CommunitySite.Data.Entity;
+using CommunitySite.Data.Context;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -9,7 +10,7 @@ namespace CommunitySite.Components.Pages
 {
     public partial class DatabaseConnectionPage
     {
-        [Inject] IDbContextFactory<ModelContext> dbContextFactory { get; set; }
+        [Inject] IDbContextFactory<CommunitySiteContext> dbContextFactory { get; set; }
 
         private bool isConnected;
 
