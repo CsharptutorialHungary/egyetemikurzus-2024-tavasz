@@ -4,5 +4,10 @@ using L5Y5D3;
 Console.WriteLine("Hello, World!");
 Random rand = new Random();
 
-Kerdes kerdes = new Kerdes(rand);
-Console.WriteLine(kerdes.ToString);
+List<Kerdes> kerdesek = new List<Kerdes>() ;
+
+for (int i = 0; i < 10; i++)
+{
+    kerdesek.Add(new Kerdes(rand));
+    Console.WriteLine(kerdesek[i].ToString());
+}

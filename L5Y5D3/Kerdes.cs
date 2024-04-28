@@ -17,23 +17,23 @@ namespace L5Y5D3
 
         public Kerdes(Random rand)
         {
-            A = szamGeneralas(rand);
-            B = szamGeneralas(rand);
+            A = SzamGeneralas(rand);
+            B = SzamGeneralas(rand);
 
             int veletlen = rand.Next(0, 4);
 
-            Muvelet = muveletGeneralas(veletlen);
-            Megoldas = valaszGeneralas(this.A, this.B, veletlen);
+            Muvelet = MuveletGeneralas(veletlen);
+            Megoldas = ValaszGeneralas(this.A, this.B, veletlen);
 
         }
 
-        private int szamGeneralas(Random r)
+        private int SzamGeneralas(Random r)
         {
             return r.Next(-100,100);
         }
 
-        private char muveletGeneralas(int muveletszam)
-        {
+        private char MuveletGeneralas(int muveletszam)
+        { 
             switch (muveletszam)
             {
                 case 0: return '+';
@@ -45,7 +45,7 @@ namespace L5Y5D3
             }
         }
 
-        private int valaszGeneralas(int elso, int masodik, int muveletszam)
+        private int ValaszGeneralas(int elso, int masodik, int muveletszam)
         {
             switch (muveletszam) {
                 case 0 : return elso + masodik;
@@ -57,6 +57,9 @@ namespace L5Y5D3
             }
         }
 
-        
+        public override string? ToString()
+        {
+            return $"({A}) {Muvelet} ({B}) = {Megoldas}" ;
+        }
     }
 }
