@@ -23,7 +23,7 @@ namespace L5Y5D3
             int veletlen = rand.Next(0, 4);
 
             Muvelet = MuveletGeneralas(veletlen);
-            Megoldas = ValaszGeneralas(this.A, this.B, veletlen);
+            Megoldas = ValaszGeneralas(A, B, veletlen);
 
         }
 
