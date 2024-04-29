@@ -1,6 +1,9 @@
-﻿using TruthOrDare.Application.Ports;
+﻿using System.Runtime.CompilerServices;
+using TruthOrDare.Application.Ports;
 using TruthOrDare.Domain.Entities;
 using TruthOrDare.Domain.Exceptions;
+
+[assembly: InternalsVisibleTo("TestTruthOrDare")]
 
 namespace TruthOrDare.Infrastructure.Repositories;
 

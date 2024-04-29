@@ -1,5 +1,8 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using TruthOrDare.Domain.Entities;
+
+[assembly: InternalsVisibleTo("TestTruthOrDare")]
 
 namespace TruthOrDare.Infrastructure;
 internal class CardSerializer
