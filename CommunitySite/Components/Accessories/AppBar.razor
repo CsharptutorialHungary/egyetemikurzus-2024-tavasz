@@ -5,16 +5,13 @@
 
 <MudPaper>
     <MudAppBar Style="@($"color:{Theme.Palette.Black}; background:{Theme.Palette.White};")">
-        <MudNavLink Match="NavLinkMatch.All" Href="/">Community site</MudNavLink>
+        <MudNavLink Style="width:fit-content" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All" Href="/">Community site</MudNavLink>
         <MudSpacer />
-        <MudTooltip ShowOnHover="true" Text="Profile">
-            <MudIconButton OnClick="@(() => OpenDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
-        </MudTooltip>
-        <MudIconButton OnClick="@(() => GoToProfilePage())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Add"></MudIconButton>
+        <MudIconButton OnClick="@(() => GoToProfilePage())" Color="Color.Inherit" Icon="@Icons.Material.Filled.AccessibilityNew"></MudIconButton>
     </MudAppBar>
     <MudDrawer Open="true" Style="@($"color:{Theme.Palette.White}; background:{Theme.Palette.Black};")">
         <MudNavLink Href="/databaseConnection">Database</MudNavLink>
-        <MudNavLink Href="/UploadImage">Upload image</MudNavLink>
+        <MudNavLink Href="/UploadPost">Upload image</MudNavLink>
 
         @if(userViewModel.PermissionId == (int)PermissionEnum.ADMIN)
         {

@@ -26,15 +26,9 @@ namespace CommunitySite.Components.Accessories
             shortUserName = authState.User.Identity?.Name?.Split('\\').Last() ?? "";
         }
 
-        private async Task OpenDialog()
-        {
-            var user = await UserService.GetUser(userName);
-            await UserViewService.CreateUserDialog(user);
-        }
-
         private void GoToProfilePage()
         {
-            navmanager.NavigateTo($"user/{userViewModel.Usertechnicalname}/profile");
+            navmanager.NavigateTo($"user/{userViewModel.Usertechnicalname.ToString()}/profile");
         }
     }
 }

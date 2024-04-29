@@ -3,6 +3,8 @@ using CommunitySite.Services.AdminServices;
 using CommunitySite.Services.AdminViewServices;
 using CommunitySite.Services.ClaimsServices;
 using CommunitySite.Services.ImageServices;
+using CommunitySite.Services.PostServices;
+using CommunitySite.Services.PostViewService;
 using CommunitySite.Services.UserServices;
 using CommunitySite.Services.UserViewServices;
 using Microsoft.AspNetCore.Authentication;
@@ -35,6 +37,8 @@ namespace CommunitySite.Extensions
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAdminViewService, AdminViewService>();
             services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<IPostViewService, PostViewService>();
+            services.AddScoped<IPostService, PostService>();
 
             return services;
         }

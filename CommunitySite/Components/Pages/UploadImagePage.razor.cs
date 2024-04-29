@@ -25,11 +25,6 @@ namespace CommunitySite.Components.Pages
             await ShowImages();
         }
 
-        private void UploadFiles(IReadOnlyList<IBrowserFile> files)
-        {
-            //TODO upload the files to the server
-        }
-
         private async Task UploadFiles2(IBrowserFile file)
         {
             var imageInByte = await ImageService.ImageToByteArrayConverter(file);

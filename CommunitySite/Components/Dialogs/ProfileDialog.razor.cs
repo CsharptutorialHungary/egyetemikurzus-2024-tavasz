@@ -28,6 +28,7 @@ namespace CommunitySite.Components.Dialogs
                 {
                     await userService.UpdateUserAsync(userViewModel);
                     Snackbar!.Add("Your profile information has been updated successfully.", Severity.Success);
+                    MudDialog.Close(DialogResult.Ok(true));
                 }
                 catch (Exception ex)
                 {

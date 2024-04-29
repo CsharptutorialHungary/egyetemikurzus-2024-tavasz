@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using CommunitySite.Data.Entity;
 using CommunitySite.Data.Context;
-using CommunitySite.Data.Util;
 using CommunitySite.Data.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using CommunitySite.Extensions.Exceptions;
+using System.Data;
 
 namespace CommunitySite.Services.UserServices
 {
@@ -20,16 +20,10 @@ namespace CommunitySite.Services.UserServices
             _dbContextFactory = dbContextFactory;
         }
 
-        public void SetPermission(ref UserViewModel model, PermissionEnum permission)
-        {
-            model.PermissionId = (int)permission;
-        }
-
         public async Task CreateUser(UserViewModel userViewModel)
         {
             try
             {
-                SetPermission(ref userViewModel, PermissionEnum.DEFAULT);
                 using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
                 {
                     var siteuser = _mapper.Map<Siteuser>(userViewModel);

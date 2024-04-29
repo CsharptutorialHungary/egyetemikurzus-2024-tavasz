@@ -48,6 +48,12 @@ namespace CommunitySite.Services.ImageServices
             {
                 using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
                 {
+                    var profImage = await dbcx.Photos.Where(x => x.Userid == photoViewModel.Userid && x.PhotoType == "Profile").FirstOrDefaultAsync();
+                    if(profImage != null)
+                    {
+                        await DeletePhoto(profImage);
+                    }
+
                     var image = _mapper.Map<Photo>(photoViewModel);
                     await dbcx
                         .AddAsync(image);
@@ -58,6 +64,22 @@ namespace CommunitySite.Services.ImageServices
             catch
             {
                 throw new CommunitySiteException("Something went wrong while saving your image!");
+            }
+        }
+
+        private async Task DeletePhoto(Photo photo)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    await dbcx.Photos.Where(x => x.Photoid == photo.Photoid).ExecuteDeleteAsync();
+                    await dbcx.SaveChangesAsync();
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
 
@@ -78,6 +100,27 @@ namespace CommunitySite.Services.ImageServices
             catch
             {
                 throw new CommunitySiteException("Something went wrong while listing your images!");
+            }
+        }
+
+        public async Task<PhotoViewModel> GetUserProfilePicture(UserViewModel userViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var user = await dbcx.Siteusers
+                        .Include(x => x.Photos)
+                        .Where(x => x.Userid == userViewModel.Userid)
+                        .SingleOrDefaultAsync();
+
+                    var profilePic = user!.Photos.Where(x => x.PhotoType == "Profile").SingleOrDefault();
+                    return _mapper.Map<PhotoViewModel>(profilePic);
+                }
+            }
+            catch
+            {
+                return null!;
             }
         }
     }

@@ -8,5 +8,7 @@ namespace CommunitySite.Services.ImageServices
         Task<byte[]> ImageToByteArrayConverter(IBrowserFile imageFile);
         Task SaveImageInDatabase(PhotoViewModel photoViewModel);
         Task<List<PhotoViewModel>> GetUserImages(UserViewModel userViewModel);
+
+        Task<PhotoViewModel> GetUserProfilePicture(UserViewModel userViewModel);
     }
 }
