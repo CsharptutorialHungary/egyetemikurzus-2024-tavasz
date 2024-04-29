@@ -5,7 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ora3", "Ora3\Ora3.csproj", "{1089268E-DADE-4BAD-976D-7AC1AA0B7A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shell", "Shell\Shell.csproj", "{5FEEEF4C-F16B-4E48-9E26-00010C06D783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shell", "Shell\Shell.csproj", "{5FEEEF4C-F16B-4E48-9E26-00010C06D783}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskDemo", "TaskDemo\TaskDemo.csproj", "{B775DE34-43B3-4081-B7AF-B3DF164929D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2", "Task2\Task2.csproj", "{8E6E09F1-2758-41EF-B4ED-33D6BF5FF773}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,19 @@ Global
 		{5FEEEF4C-F16B-4E48-9E26-00010C06D783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FEEEF4C-F16B-4E48-9E26-00010C06D783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FEEEF4C-F16B-4E48-9E26-00010C06D783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B775DE34-43B3-4081-B7AF-B3DF164929D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B775DE34-43B3-4081-B7AF-B3DF164929D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B775DE34-43B3-4081-B7AF-B3DF164929D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B775DE34-43B3-4081-B7AF-B3DF164929D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6E09F1-2758-41EF-B4ED-33D6BF5FF773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6E09F1-2758-41EF-B4ED-33D6BF5FF773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6E09F1-2758-41EF-B4ED-33D6BF5FF773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6E09F1-2758-41EF-B4ED-33D6BF5FF773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35113853-C33B-4718-A90C-DC4B58719E1F}
 	EndGlobalSection
 EndGlobal
