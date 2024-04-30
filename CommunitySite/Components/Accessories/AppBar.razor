@@ -11,7 +11,19 @@
     </MudAppBar>
     <MudDrawer Open="true" Style="@($"color:{Theme.Palette.White}; background:{Theme.Palette.Black};")">
         <MudNavLink Href="/databaseConnection">Database</MudNavLink>
-        <MudNavLink Href="/UploadPost">Upload image</MudNavLink>
+        <MudNavGroup ExpandedChanged="@(() => ListUsergroups())" Icon="@Icons.Material.Outlined.Group" Title="Your groups">
+            @foreach(var group in userGroups)
+            {
+                <MudNavLink Href="@($"user/{group.GroupTechnicalName}/group")">@group.Name</MudNavLink>
+            }
+        </MudNavGroup>
+
+        <MudNavGroup ExpandedChanged="@(() => ListAllGroup())" Icon="@Icons.Material.Outlined.Group" Title="All groups">
+            @foreach (var group in allGroups)
+            {
+                <MudNavLink Href="@($"user/{group.GroupTechnicalName}/group")">@group.Name</MudNavLink>
+            }
+        </MudNavGroup>
 
         @if(userViewModel.PermissionId == (int)PermissionEnum.ADMIN)
         {

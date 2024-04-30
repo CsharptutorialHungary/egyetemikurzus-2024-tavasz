@@ -11,6 +11,8 @@ public partial class Managegroup
 
     public string? JoinDate { get; set; }
 
+    public decimal Memberrowid { get; set; }
+
     public virtual Sitegroup? Group { get; set; }
 
     public virtual Siteuser? User { get; set; }

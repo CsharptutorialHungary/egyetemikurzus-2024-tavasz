@@ -19,6 +19,8 @@ public partial class Post
 
     public virtual Sitegroup? Group { get; set; }
 
+    public virtual ICollection<Include> Includes { get; set; } = new List<Include>();
+
     public virtual Photo? Photo { get; set; }
 
     public virtual ICollection<Sitecomment> Sitecomments { get; set; } = new List<Sitecomment>();

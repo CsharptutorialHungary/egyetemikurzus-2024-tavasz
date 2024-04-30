@@ -1,4 +1,5 @@
 ﻿using CommunitySite.Data.ViewModels;
+using CommunitySite.Services.GroupViewServices;
 using CommunitySite.Services.PostServices;
 using CommunitySite.Services.PostViewService;
 using CommunitySite.Services.UserServices;
@@ -13,6 +14,7 @@ namespace CommunitySite.Components.Accessories
         [Inject] private IUserService UserService { get; set; } = default!;
         [Inject] IUserViewService UserViewService { get; set; } = default!;
         [Inject] IPostViewService PostViewService { get; set; } = default!;
+        [Inject] IGroupViewService GroupViewService { get; set; } = default!;
         [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; } = default!;
 
         private UserViewModel userViewModel { get; set; } = new();
@@ -40,6 +42,11 @@ namespace CommunitySite.Components.Accessories
         private async Task OpenPostUploadDialog()
         {
             await PostViewService.CreateUploadPostDialog(userViewModel);
+        }
+
+        private async Task OpenGroupAddDialog()
+        {
+            await GroupViewService.CreateGroupDialog(userViewModel);
         }
     }
 }

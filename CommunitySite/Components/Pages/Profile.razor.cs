@@ -18,7 +18,7 @@ namespace CommunitySite.Components.Pages
         [Parameter] public string UserTechnicalId { get; set; } = default!;
 
         private PhotoViewModel profilePhoto = new();
-        private UserViewModel userViewModel = new();
+        private UserViewModel loggedUserViewModel = new();
         private bool _expanded = false;
         private string imageDataUrl = string.Empty;
         private string authUsername = string.Empty;
@@ -28,13 +28,13 @@ namespace CommunitySite.Components.Pages
         {
             var authState = await authenticationStateTask!;
             authUsername = authState.User.Identity?.Name ?? "";
-            userViewModel = await UserService.GetUser(authUsername);
+            loggedUserViewModel = await UserService.GetUser(authUsername);
             await ShowImages();
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            userViewModel = await UserService.GetUser(authUsername);
+            loggedUserViewModel = await UserService.GetUser(authUsername);
         }
 
         private async void OnExpandCollapseClick()
@@ -48,7 +48,7 @@ namespace CommunitySite.Components.Pages
             var imageInByte = await ImageService.ImageToByteArrayConverter(file);
             var image = new PhotoViewModel()
             {
-                Userid = userViewModel.Userid,
+                Userid = loggedUserViewModel.Userid,
                 PhotoSize = file.Size,
                 PhotoName = file.Name,
                 PhotoType = "Profile",
@@ -61,7 +61,7 @@ namespace CommunitySite.Components.Pages
         public async Task ShowImages()
         {
             
-            profilePhoto = await ImageService.GetUserProfilePicture(userViewModel);
+            profilePhoto = await ImageService.GetUserProfilePicture(loggedUserViewModel);
             if(profilePhoto != null)
             {
                 var imagesrc = Convert.ToBase64String(profilePhoto.PhotoInByte!);
@@ -71,7 +71,7 @@ namespace CommunitySite.Components.Pages
 
         private async Task GetUserPosts()
         {
-            posts = await PostService.GetUserPosts(userViewModel);
+            posts = await PostService.GetUserPosts(loggedUserViewModel);
         }
     }
 }

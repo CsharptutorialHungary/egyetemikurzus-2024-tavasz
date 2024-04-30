@@ -1,4 +1,7 @@
-﻿namespace CommunitySite.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+
+namespace CommunitySite.Data.Entity;
 
 public partial class Siteuser
 {
@@ -19,6 +22,12 @@ public partial class Siteuser
     public string? BirthDate { get; set; }
 
     public Guid Usertechnicalname { get; set; }
+
+    public virtual ICollection<Friend> FriendFriendid1Navigations { get; set; } = new List<Friend>();
+
+    public virtual ICollection<Friend> FriendFriendid2Navigations { get; set; } = new List<Friend>();
+
+    public virtual ICollection<Managegroup> Managegroups { get; set; } = new List<Managegroup>();
 
     public virtual ICollection<Message> MessageReceivers { get; set; } = new List<Message>();
 

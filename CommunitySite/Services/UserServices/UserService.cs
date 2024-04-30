@@ -72,8 +72,9 @@ namespace CommunitySite.Services.UserServices
                         throw new CommunitySiteException("User does not exist!");
                     }
 
-                    var entity = _mapper.Map<Siteuser>(userViewModel);
-                    dbcx.Siteusers.Update(entity);
+                    user = _mapper.Map<Siteuser>(userViewModel);
+                    dbcx.Siteusers.Update(user);
+                    dbcx.Entry(user).State = EntityState.Detached;
                     dbcx.SaveChanges();
                 }
             }
@@ -147,6 +148,31 @@ namespace CommunitySite.Services.UserServices
             }
         }
 
+        public async Task<UserViewModel> GetUserByTechnicalId(string userTechnicalId)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var user = await dbcx.Siteusers
+                        .AsNoTracking()
+                        .Include(x => x.MessageReceivers)
+                        .Include(x => x.MessageSenders)
+                        .Include(x => x.Photos)
+                        .Include(x => x.Posts)
+                        .Include(x => x.Sitecomments)
+                        .Include(x => x.Sitegroups)
+                        .Where(x => x.Usertechnicalname == new Guid(userTechnicalId))
+                        .SingleOrDefaultAsync();
+                    return _mapper.Map<UserViewModel>(user);
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while getting user");
+            }
+        }
+
         public async Task EnsureUserExist(string userName)
         {
             if(await ExistUser(userName))
@@ -166,6 +192,63 @@ namespace CommunitySite.Services.UserServices
             catch
             {
                 throw new CommunitySiteException("Something went wrong while create user!");
+            }
+        }
+
+        public async Task<List<GroupViewModel>> ListUserGroupsAsync(UserViewModel userViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var groupIds = await dbcx.Managegroups
+                        .Where(x => x.Userid == userViewModel.Userid)
+                        .OrderByDescending(x => x.JoinDate)
+                        .Select(x => x.Groupid)
+                        .ToArrayAsync();
+
+                    var groups = await dbcx.Sitegroups
+                        .AsNoTracking()
+                        .Include(x => x.Posts)
+                        .Where(x => groupIds.Contains(x.Groupid))
+                        .ToListAsync();
+
+                    return groups.Select(_mapper.Map<GroupViewModel>).ToList();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while listing your groups!");
+            }
+        }
+
+        public async Task<List<GroupViewModel>> ListAllGroupAsync(UserViewModel userViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var groupIds = await dbcx.Managegroups
+                        .AsNoTracking()
+                        .Where(x => x.Userid == userViewModel.Userid)
+                        .Select(x => x.Groupid)
+                        .ToArrayAsync();
+
+                    var allGroup = await dbcx.Sitegroups
+                        .ToListAsync();
+
+                    var userGroups = await dbcx.Sitegroups
+                        .Where(x => groupIds.Contains(x.Groupid))
+                        .ToListAsync();
+
+                    var groups = allGroup.Except(userGroups).ToList();
+
+                    return groups.Select(_mapper.Map<GroupViewModel>).ToList();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while listing all groups!");
             }
         }
     }
