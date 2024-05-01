@@ -9,6 +9,9 @@
                 <MudIconButton OnClick="@(() => OpenPostUploadToGroupDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Add"></MudIconButton>
             </MudPaper>
         </MudStack>
+        <MudStack Class="ma-2" Justify="Justify.FlexStart" AlignItems="AlignItems.Center">
+            <MudText>@($"Number of members: {groupMembers}")</MudText>
+        </MudStack>
     </MudPaper>
 </MudStack>
 

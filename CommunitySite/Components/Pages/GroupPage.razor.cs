@@ -24,6 +24,7 @@ namespace CommunitySite.Components.Pages
         private bool isMemberOfGroup = false;
         private bool _expanded = false;
         private List<PostViewModel> posts = new();
+        private int groupMembers = 0;
 
         protected override async Task OnInitializedAsync()
         {
@@ -32,12 +33,19 @@ namespace CommunitySite.Components.Pages
             loggedUserViewModel = await UserService.GetUser(authUsername);
             isMemberOfGroup = await GroupService.IsUsermemberOfGroup(GroupTechnicalName, loggedUserViewModel);
             currentGroup = await GroupService.GetGroupByTechnicalId(GroupTechnicalName);
+            await CountGroupMembers();
         }
 
         protected override async Task OnParametersSetAsync()
         {
             isMemberOfGroup = await GroupService.IsUsermemberOfGroup(GroupTechnicalName, loggedUserViewModel);
             currentGroup = await GroupService.GetGroupByTechnicalId(GroupTechnicalName);
+            await CountGroupMembers();
+        }
+
+        private async Task CountGroupMembers()
+        {
+            groupMembers = await GroupService.CountGroupMembersAsync(currentGroup);
         }
 
         private async Task JoingroupAsync()

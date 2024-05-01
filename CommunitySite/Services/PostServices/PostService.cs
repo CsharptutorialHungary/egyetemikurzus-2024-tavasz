@@ -89,5 +89,31 @@ namespace CommunitySite.Services.PostServices
                 throw new CommunitySiteException("Something went wrong while getting post!");
             }
         }
+
+        public async Task<List<PostViewModel>> GetFollowedUserPostsAsync(UserViewModel userViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var friednIds = await dbcx.Friends
+                        .Where(x => x.Friendid1 == userViewModel.Userid)
+                        .Select(x => x.Friendid2)
+                        .ToArrayAsync();
+
+                    var friendPosts = await dbcx.Posts
+                        .Include(x => x.Photo)
+                        .Where(x => friednIds.Contains(x.Userid))
+                        .OrderByDescending(x => x.PostDate)
+                        .ToListAsync();
+
+                    return friendPosts.Select(_mapper.Map<PostViewModel>).ToList();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while getting friend posts");
+            }
+        }
     }
 }

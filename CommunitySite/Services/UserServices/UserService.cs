@@ -74,7 +74,7 @@ namespace CommunitySite.Services.UserServices
 
                     user = _mapper.Map<Siteuser>(userViewModel);
                     dbcx.Siteusers.Update(user);
-                    dbcx.Entry(user).State = EntityState.Detached;
+                    dbcx.Entry(user).State = EntityState.Modified;
                     dbcx.SaveChanges();
                 }
             }

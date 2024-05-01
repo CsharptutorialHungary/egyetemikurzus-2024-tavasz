@@ -60,6 +60,23 @@ namespace CommunitySite.Services.GroupServices
             }
         }
 
+        public async Task<int> CountGroupMembersAsync(GroupViewModel groupViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    return await dbcx.Managegroups
+                        .Where(x => x.Groupid == groupViewModel.Groupid)
+                        .CountAsync();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while counting members!");
+            }
+        }
+
         public async Task<bool> IsUsermemberOfGroup(string technicalId, UserViewModel userViewModel)
         {
             try

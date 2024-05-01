@@ -11,5 +11,7 @@ namespace CommunitySite.Services.GroupServices
         Task<GroupViewModel> GetGroupByTechnicalId(string technicalId);
 
         Task AddUserToGroupAsync(UserViewModel userViewModel, GroupViewModel groupViewModel);
+
+        Task<int> CountGroupMembersAsync(GroupViewModel groupViewModel);
     }
 }

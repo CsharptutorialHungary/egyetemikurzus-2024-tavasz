@@ -9,5 +9,7 @@ namespace CommunitySite.Services.PostServices
         Task<List<PostViewModel>> GetUserPosts(UserViewModel userViewModel);
 
         Task<List<PostViewModel>> GetPostsInGroup(GroupViewModel groupViewModel);
+
+        Task<List<PostViewModel>> GetFollowedUserPostsAsync(UserViewModel userViewModel);
     }
 }
