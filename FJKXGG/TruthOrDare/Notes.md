@@ -45,13 +45,14 @@
 - Logging
 - Usage of reflections
 
-## Kérdéseim:
+## KÃ©rdÃ©seim:
 
 - Access modifiers:
-	- Hogy választja szét az assembly-ket a fordító? Egy másik projekt ugyan abban a solution-ben másik assembly?
-	- ha egy internal osztály implementál egy internal interface-t, ami egy másik namespace-ben van, akkor az osztály metódusainak miért kell public-nek lenniük?
-- Hiba kezelés
-	- Hogyan érdemes megoldani a hiba kezelést egy egyszerû adatbázis lekérdezést végrehajtó metódusban?
+	- Hogy vÃ¡lasztja szÃ©t az assembly-ket a fordÃ­tÃ³? Egy mÃ¡sik projekt ugyan abban a solution-ben mÃ¡sik assembly?
+	- ha egy internal osztÃ¡ly implementÃ¡l egy internal interface-t, ami egy mÃ¡sik namespace-ben van, akkor az osztÃ¡ly metÃ³dusainak miÃ©rt kell public-nek lenniÃ¼k?
+- Hiba kezelÃ©s
+ - MiÃ©rt nem lehet nyelvi szinten megadni ha egyetÃ³dus exception-t dob?
+	- Hogyan Ã©rdemes megoldani a hiba kezelÃ©st egy egyszerÃ» adatbÃ¡zis lekÃ©rdezÃ©st vÃ©grehajtÃ³ metÃ³dusban?
 	- Result pattern:
-		- ténylegesen elterjedt a gyakorlatban a Result Pattern?									
-- Mennyire kell a Single Responsibility és interface segregation elvet követni? - Pl. CRUD mûveleteket szét kell bontani?
+		- tÃ©nylegesen elterjedt a gyakorlatban a Result Pattern?									
+- Mennyire kell a Single Responsibility Ã©s interface segregation elvet kÃ¶vetni? - Pl. CRUD mÃ»veleteket szÃ©t kell bontani?
