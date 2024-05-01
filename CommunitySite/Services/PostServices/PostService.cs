@@ -68,5 +68,26 @@ namespace CommunitySite.Services.PostServices
             }
         }
 
+        public async Task<List<PostViewModel>> GetPostsInGroup(GroupViewModel groupViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var posts = await dbcx.Posts
+                        .AsNoTracking()
+                        .Include(x => x.Photo)
+                        .Where(x => x.Groupid == groupViewModel.Groupid)
+                        .OrderByDescending(x => x.PostDate)
+                        .ToListAsync();
+
+                    return posts.Select(_mapper.Map<PostViewModel>).ToList();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while getting post!");
+            }
+        }
     }
 }

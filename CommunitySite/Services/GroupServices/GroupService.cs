@@ -99,5 +99,28 @@ namespace CommunitySite.Services.GroupServices
                 throw new CommunitySiteException("Something went wrong while getting group!");
             }
         }
+
+        public async Task AddUserToGroupAsync(UserViewModel userViewModel, GroupViewModel groupViewModel)
+        {
+            try
+            {
+                using (var dbcx = await _dbContextFactory.CreateDbContextAsync())
+                {
+                    var joinGroup = new Managegroup()
+                    {
+                        Groupid = groupViewModel.Groupid,
+                        Userid = userViewModel.Userid,
+                        JoinDate = DateTime.Now.ToString()
+                    };
+
+                    await dbcx.Managegroups.AddAsync(joinGroup);
+                    await dbcx.SaveChangesAsync();
+                }
+            }
+            catch
+            {
+                throw new CommunitySiteException("Something went wrong while joining group!");
+            }
+        }
     }
 }

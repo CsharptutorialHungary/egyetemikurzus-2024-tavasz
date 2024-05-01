@@ -1,10 +1,53 @@
 ﻿@page "/user/{GroupTechnicalName}/group"
 
+<MudStack Class="ma-2">
+    <MudPaper Width="100%">
+        <MudStack Class="ma-2" Justify="Justify.Center" AlignItems="AlignItems.Center" Row>
+            <MudText Typo="Typo.h2">@currentGroup.Name</MudText>
+            <MudSpacer></MudSpacer>
+            <MudPaper Class="ma-2" Style="width:fit-content; height:fit-content">
+                <MudIconButton OnClick="@(() => OpenPostUploadToGroupDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Add"></MudIconButton>
+            </MudPaper>
+        </MudStack>
+    </MudPaper>
+</MudStack>
+
+
+
 @if(isMemberOfGroup)
 {
-    <MudText>ASD</MudText>
+    <MudPaper Class="ma-2 pa-4">
+        <MudStack Spacing="2">
+            <MudButton OnClick="OnExpandCollapseClick">Posts</MudButton>
+            <MudDivider />
+            <MudCollapse Expanded="_expanded">
+                @foreach (var post in posts)
+                {
+                    <MudStack Class="ma-4" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                        <MudPaper Style="height:fit-content" Class="ma-4" Width="100%">
+                            <MudStack Row>
+                                <MudText>@post.PostDate</MudText>
+                                <MudText>@post.PostText</MudText>
+                            </MudStack>
+
+                            @if (post.Photo != null)
+                            {
+                                <MudImage Alt="@post.Photo.PhotoName" Height="300" ObjectFit="ObjectFit.Cover" Src="@(string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(post.Photo.PhotoInByte)))"></MudImage>
+                            }
+                        </MudPaper>
+                    </MudStack>
+                }
+            </MudCollapse>
+        </MudStack>
+    </MudPaper>
 }
 else
 {
-    <MudText>ASDASD</MudText>
+    <MudStack Class="ma-2">
+        <MudPaper Width="100%">
+            <MudStack AlignItems="AlignItems.Center">
+                <MudButton OnClick="@(() => JoingroupAsync())" Class="ma-2" FullWidth="true">Join group</MudButton>
+            </MudStack>
+        </MudPaper>
+    </MudStack>
 }

@@ -1,5 +1,7 @@
 ﻿using CommunitySite.Data.ViewModels;
+using CommunitySite.Services.GroupPostUploadServices;
 using CommunitySite.Services.GroupServices;
+using CommunitySite.Services.PostServices;
 using CommunitySite.Services.UserServices;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -8,8 +10,11 @@ namespace CommunitySite.Components.Pages
 {
     public partial class GroupPage
     {
+        [Inject] private IGroupPostUploadService GroupPostUploadServices { get; set; } = default!;
+        [Inject] private NavigationManager NavigationManager { get; set; } = default!;
         [Inject] private IUserService UserService { get; set; } = default!;
         [Inject] private IGroupService GroupService { get; set; } = default!;
+        [Inject] private IPostService PostService { get; set; } = default!;
         [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; } = default!;
         [Parameter] public string GroupTechnicalName { get; set; } = default!;
 
@@ -17,6 +22,8 @@ namespace CommunitySite.Components.Pages
         private GroupViewModel currentGroup = new();
         private string authUsername = string.Empty;
         private bool isMemberOfGroup = false;
+        private bool _expanded = false;
+        private List<PostViewModel> posts = new();
 
         protected override async Task OnInitializedAsync()
         {
@@ -33,11 +40,29 @@ namespace CommunitySite.Components.Pages
             currentGroup = await GroupService.GetGroupByTechnicalId(GroupTechnicalName);
         }
 
+        private async Task JoingroupAsync()
+        {
+            await GroupService.AddUserToGroupAsync(loggedUserViewModel, currentGroup);
+            NavigationManager.NavigateTo(NavigationManager.Uri, true);
+        }
 
+        private async Task OpenPostUploadToGroupDialog()
+        {
+            await GroupPostUploadServices.UploadPostToGroupDialog(loggedUserViewModel, currentGroup);
+        }
+
+        private async void OnExpandCollapseClick()
+        {
+            _expanded = !_expanded;
+            await GetGroupPosts();
+        }
+
+        private async Task GetGroupPosts()
+        {
+            posts = await PostService.GetPostsInGroup(currentGroup);
+        }
 
         //TODO :
-        //Csoportokba posztolás
-        //Csoportokba csatlakozás
         //Barátnak jelölés
         //Más felhasználó profiljának megtekintése
         //Üzenet küldés az ismerősnek

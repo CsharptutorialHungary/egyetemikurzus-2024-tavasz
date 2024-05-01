@@ -9,5 +9,7 @@ namespace CommunitySite.Services.GroupServices
         Task<bool> IsUsermemberOfGroup(string technicalId, UserViewModel userViewModel);
 
         Task<GroupViewModel> GetGroupByTechnicalId(string technicalId);
+
+        Task AddUserToGroupAsync(UserViewModel userViewModel, GroupViewModel groupViewModel);
     }
 }

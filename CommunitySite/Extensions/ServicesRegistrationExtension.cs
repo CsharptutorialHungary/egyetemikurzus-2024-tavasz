@@ -2,6 +2,7 @@
 using CommunitySite.Services.AdminServices;
 using CommunitySite.Services.AdminViewServices;
 using CommunitySite.Services.ClaimsServices;
+using CommunitySite.Services.GroupPostUploadServices;
 using CommunitySite.Services.GroupServices;
 using CommunitySite.Services.GroupViewServices;
 using CommunitySite.Services.ImageServices;
@@ -43,6 +44,7 @@ namespace CommunitySite.Extensions
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IGroupViewService, GroupViewService>();
             services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<IGroupPostUploadService, GroupPostUploadService>();
 
             return services;
         }
