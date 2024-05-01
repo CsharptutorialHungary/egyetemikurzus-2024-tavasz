@@ -17,6 +17,8 @@ namespace CommunitySite.Components.Accessories
         private string userName = "";
         private MudTheme Theme = new MudTheme();
         private UserViewModel userViewModel = new();
+        private List<GroupViewModel> userGroups = new();
+        private List<GroupViewModel> allGroups = new();
 
         protected override async Task OnInitializedAsync()
         {
@@ -26,15 +28,19 @@ namespace CommunitySite.Components.Accessories
             shortUserName = authState.User.Identity?.Name?.Split('\\').Last() ?? "";
         }
 
-        private async Task OpenDialog()
-        {
-            var user = await UserService.GetUser(userName);
-            await UserViewService.CreateUserDialog(user);
-        }
-
         private void GoToProfilePage()
         {
-            navmanager.NavigateTo($"user/{userViewModel.Usertechnicalname}/profile");
+            navmanager.NavigateTo($"user/{userViewModel.Usertechnicalname.ToString()}/profile");
+        }
+
+        private async Task ListUsergroups()
+        {
+            userGroups = await UserService.ListUserGroupsAsync(userViewModel);
+        }
+
+        private async Task ListAllGroup()
+        {
+            allGroups = await UserService.ListAllGroupAsync(userViewModel);
         }
     }
 }

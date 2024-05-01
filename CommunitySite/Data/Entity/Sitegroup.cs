@@ -11,6 +11,10 @@ public partial class Sitegroup
 
     public string? Name { get; set; }
 
+    public Guid Grouptechnicalname { get; set; }
+
+    public virtual ICollection<Managegroup> Managegroups { get; set; } = new List<Managegroup>();
+
     public virtual Siteuser? Owner { get; set; }
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();

@@ -2,7 +2,13 @@
 using CommunitySite.Services.AdminServices;
 using CommunitySite.Services.AdminViewServices;
 using CommunitySite.Services.ClaimsServices;
+using CommunitySite.Services.FriendServices;
+using CommunitySite.Services.GroupPostUploadServices;
+using CommunitySite.Services.GroupServices;
+using CommunitySite.Services.GroupViewServices;
 using CommunitySite.Services.ImageServices;
+using CommunitySite.Services.PostServices;
+using CommunitySite.Services.PostViewService;
 using CommunitySite.Services.UserServices;
 using CommunitySite.Services.UserViewServices;
 using Microsoft.AspNetCore.Authentication;
@@ -35,6 +41,12 @@ namespace CommunitySite.Extensions
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAdminViewService, AdminViewService>();
             services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<IPostViewService, PostViewService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IGroupViewService, GroupViewService>();
+            services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<IGroupPostUploadService, GroupPostUploadService>();
+            services.AddScoped<IFriendService, FriendService>();
 
             return services;
         }

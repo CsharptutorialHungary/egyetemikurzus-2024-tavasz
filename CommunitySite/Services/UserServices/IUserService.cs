@@ -15,5 +15,11 @@ namespace CommunitySite.Services.UserServices
         Task<bool> ExistUser(string userName);
 
         Task EnsureUserExist(string userName);
+
+        Task<List<GroupViewModel>> ListUserGroupsAsync(UserViewModel userViewModel);
+
+        Task<List<GroupViewModel>> ListAllGroupAsync(UserViewModel userViewModel);
+
+        Task<UserViewModel> GetUserByTechnicalId(string userTechnicalId);
     }
 }

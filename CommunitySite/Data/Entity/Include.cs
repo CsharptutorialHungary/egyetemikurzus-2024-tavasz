@@ -9,6 +9,8 @@ public partial class Include
 
     public decimal? Commentid { get; set; }
 
+    public decimal Includerowid { get; set; }
+
     public virtual Sitecomment? Comment { get; set; }
 
     public virtual Post? Post { get; set; }

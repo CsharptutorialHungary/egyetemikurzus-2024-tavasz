@@ -42,14 +42,18 @@ public partial class CommunitySiteContext : DbContext
 
         modelBuilder.Entity<Friend>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("FRIENDS");
+            entity.HasKey(e => e.Friendrowid).HasName("FRIENDS_PK");
+
+            entity.ToTable("FRIENDS");
 
             entity.HasIndex(e => e.Friendid1, "IX_FRIENDS_FRIENDID1");
 
             entity.HasIndex(e => e.Friendid2, "IX_FRIENDS_FRIENDID2");
 
+            entity.Property(e => e.Friendrowid)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("FRIENDROWID");
             entity.Property(e => e.FriendStartDate)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -64,12 +68,12 @@ public partial class CommunitySiteContext : DbContext
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("IS_FRIEND");
 
-            entity.HasOne(d => d.Friendid1Navigation).WithMany()
+            entity.HasOne(d => d.Friendid1Navigation).WithMany(p => p.FriendFriendid1Navigations)
                 .HasForeignKey(d => d.Friendid1)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010564");
 
-            entity.HasOne(d => d.Friendid2Navigation).WithMany()
+            entity.HasOne(d => d.Friendid2Navigation).WithMany(p => p.FriendFriendid2Navigations)
                 .HasForeignKey(d => d.Friendid2)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010565");
@@ -77,14 +81,18 @@ public partial class CommunitySiteContext : DbContext
 
         modelBuilder.Entity<Include>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("INCLUDES");
+            entity.HasKey(e => e.Includerowid).HasName("INCLUDES_PK");
+
+            entity.ToTable("INCLUDES");
 
             entity.HasIndex(e => e.Commentid, "IX_INCLUDES_COMMENTID");
 
             entity.HasIndex(e => e.Postid, "IX_INCLUDES_POSTID");
 
+            entity.Property(e => e.Includerowid)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("INCLUDEROWID");
             entity.Property(e => e.Commentid)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("COMMENTID");
@@ -92,12 +100,12 @@ public partial class CommunitySiteContext : DbContext
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("POSTID");
 
-            entity.HasOne(d => d.Comment).WithMany()
+            entity.HasOne(d => d.Comment).WithMany(p => p.Includes)
                 .HasForeignKey(d => d.Commentid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010588");
 
-            entity.HasOne(d => d.Post).WithMany()
+            entity.HasOne(d => d.Post).WithMany(p => p.Includes)
                 .HasForeignKey(d => d.Postid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010587");
@@ -105,14 +113,18 @@ public partial class CommunitySiteContext : DbContext
 
         modelBuilder.Entity<Managegroup>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("MANAGEGROUPS");
+            entity.HasKey(e => e.Memberrowid).HasName("MANAGEGROUPS_PK");
+
+            entity.ToTable("MANAGEGROUPS");
 
             entity.HasIndex(e => e.Groupid, "IX_MANAGEGROUPS_GROUPID");
 
             entity.HasIndex(e => e.Userid, "IX_MANAGEGROUPS_USERID");
 
+            entity.Property(e => e.Memberrowid)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("NUMBER(38)")
+                .HasColumnName("MEMBERROWID");
             entity.Property(e => e.Groupid)
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
@@ -124,12 +136,12 @@ public partial class CommunitySiteContext : DbContext
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("USERID");
 
-            entity.HasOne(d => d.Group).WithMany()
+            entity.HasOne(d => d.Group).WithMany(p => p.Managegroups)
                 .HasForeignKey(d => d.Groupid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010574");
 
-            entity.HasOne(d => d.User).WithMany()
+            entity.HasOne(d => d.User).WithMany(p => p.Managegroups)
                 .HasForeignKey(d => d.Userid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("SYS_C0010573");
@@ -329,6 +341,10 @@ public partial class CommunitySiteContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("GROUPID");
+            entity.Property(e => e.Grouptechnicalname)
+                .HasMaxLength(40)
+                .HasDefaultValueSql("(sys_guid()) ")
+                .HasColumnName("GROUPTECHNICALNAME");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -360,6 +376,7 @@ public partial class CommunitySiteContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("LAST_NAME");
             entity.Property(e => e.Permissionid)
+                .ValueGeneratedOnAdd()
                 .HasDefaultValueSql("(1)")
                 .HasColumnType("NUMBER(38)")
                 .HasColumnName("PERMISSIONID");

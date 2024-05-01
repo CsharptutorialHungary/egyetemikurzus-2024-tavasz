@@ -13,6 +13,8 @@ public partial class Friend
 
     public decimal? IsFriend { get; set; }
 
+    public decimal Friendrowid { get; set; }
+
     public virtual Siteuser? Friendid1Navigation { get; set; }
 
     public virtual Siteuser? Friendid2Navigation { get; set; }

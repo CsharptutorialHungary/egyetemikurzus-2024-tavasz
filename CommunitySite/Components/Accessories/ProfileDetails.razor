@@ -1,0 +1,43 @@
+﻿<MudStack>
+    <MudPaper Class="pa-3">
+        <MudText>Username: @currentUserViewModel.Username</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-3">
+        <MudText>Surname: @((currentUserViewModel.SurName != null) ? currentUserViewModel.SurName : "Not Specified")</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-3">
+        <MudText>LastName: @((currentUserViewModel.LastName != null) ? currentUserViewModel.LastName : "Not Specified")</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-3">
+        <MudText>School: @((currentUserViewModel.School != null) ? currentUserViewModel.School : "Not Specified")</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-3">
+        <MudText>Workplace: @((currentUserViewModel.Workplace != null) ? currentUserViewModel.Workplace : "Not Specified")</MudText>
+    </MudPaper>
+</MudStack>
+<MudSpacer></MudSpacer>
+
+@if(loggedUserViewModel.Userid == currentUserViewModel.Userid)
+{
+    <MudStack>
+        <MudPaper Class="ma-2" Style="width:fit-content; height:fit-content">
+            <MudIconButton OnClick="@(() => OpenProfileEditDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Edit"></MudIconButton>
+        </MudPaper>
+        <MudPaper Class="ma-2" Style="width:fit-content; height:fit-content">
+            <MudIconButton OnClick="@(() => OpenPostUploadDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Add"></MudIconButton>
+        </MudPaper>
+        <MudPaper Class="ma-2" Style="width:fit-content; height:fit-content">
+            <MudIconButton OnClick="@(() => OpenGroupAddDialog())" Color="Color.Inherit" Icon="@Icons.Material.Filled.GroupAdd"></MudIconButton>
+        </MudPaper>
+    </MudStack>
+}
+else
+{
+    <MudStack>
+        <MudPaper Class="ma-2" Style="width:fit-content; height:fit-content">
+            <MudTooltip Text="Follow">
+                <MudIconButton OnClick="@(() => FollowUser())" Color="Color.Inherit" Icon="@Icons.Material.Filled.Face"></MudIconButton>
+            </MudTooltip>
+        </MudPaper>
+    </MudStack>
+}

@@ -1,5 +1,51 @@
 ﻿@page "/user/{UserTechnicalId}/profile"
+<MudPaper Width="100%">
+    <MudContainer Fixed="true">
+        <MudStack Class="ma-2" Row Justify="Justify.FlexStart">
+            <MudStack AlignItems="AlignItems.Center">
+                <MudPaper MinWidth="fit-content" MinHeight="fit-content" MaxWidth="180px" MaxHeight="180px" Square>
+                    <MudStack Class="ma-2" Spacing="0" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                        <MudImage Fluid ObjectFit="ObjectFit.Cover" Src="@imageDataUrl"></MudImage>
+                    </MudStack>
+                </MudPaper>
+                <MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="UploadFiles" MaximumFileCount="100">
+                    <ButtonTemplate>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Outlined"
+                                   Color="Color.Primary"
+                                   StartIcon="@Icons.Material.Filled.ChangeCircle"
+                                   Size="Size.Small"
+                                   for="@context.Id">
+                            Change picture
+                        </MudButton>
+                    </ButtonTemplate>
+                </MudFileUpload>
+            </MudStack>
+            <ProfileDetails CurrentTechnicalId="@UserTechnicalId"></ProfileDetails>
+        </MudStack>
+    </MudContainer>
+    <MudPaper Class="pa-4">
+        <MudStack Spacing="2">
+            <MudButton OnClick="OnExpandCollapseClick">Posts</MudButton>
+            <MudDivider />
+            <MudCollapse Expanded="_expanded">
+                @foreach (var post in posts)
+                {
+                    <MudStack Class="ma-4" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                        <MudPaper Style="height:fit-content" Class="ma-4" Width="100%">
+                                <MudStack Row>
+                                    <MudText>@post.PostDate</MudText>
+                                    <MudText>@post.PostText</MudText>
+                                </MudStack>
 
-<MudPaper Elevation="2" MaxHeight="50%" MaxWidth="100%">
-    <MudText>ASD</MudText>
+                                @if (post.Photo != null)
+                                {
+                                    <MudImage Alt="@post.Photo.PhotoName" Height="300" ObjectFit="ObjectFit.Cover" Src="@(string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(post.Photo.PhotoInByte)))"></MudImage>
+                                }
+                        </MudPaper>
+                    </MudStack>
+                }
+            </MudCollapse>
+        </MudStack>
+    </MudPaper>
 </MudPaper>

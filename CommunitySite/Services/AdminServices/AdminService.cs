@@ -40,7 +40,6 @@ namespace CommunitySite.Services.AdminServices
                         .AsNoTracking()
                         .Include(x => x.MessageReceivers)
                         .Include(x => x.MessageSenders)
-                        .Include(x => x.Permission)
                         .Include(x => x.Photos)
                         .Include(x => x.Posts)
                         .Include(x => x.Sitecomments)

@@ -1,33 +1,34 @@
 ﻿using CommunitySite.Components.Pages;
 using CommunitySite.Data.ViewModels;
 using CommunitySite.Extensions.Validators;
-using CommunitySite.Services.UserServices;
+using CommunitySite.Services.GroupServices;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
 namespace CommunitySite.Components.Dialogs
 {
-    public partial class ProfileDialog
+    public partial class MakeGroupDialog
     {
+        [Inject] private IGroupService GroupService { get; set; } = default!;
         [Inject] private ISnackbar Snackbar { get; set; } = default!;
-        [Inject] private IUserService userService { get; set; } = default!;
         [CascadingParameter] MudDialogInstance MudDialog { get; set; } = default!;
         [CascadingParameter] private Error CommuitySiteError { get; set; } = default!;
         [Parameter] public UserViewModel userViewModel { get; set; } = new();
-
-        private UserValidator validationRules = new();
-        private MudForm userForm = default!;
+        private GroupValidator validationRules = new();
+        private MudForm groupForm = default!;
+        private GroupViewModel groupViewModel = new();
 
         private async Task Submit()
         {
-            await userForm!.Validate();
+            await groupForm!.Validate();
 
-            if(userForm.IsValid)
+            if (groupForm.IsValid)
             {
                 try
                 {
-                    await userService.UpdateUserAsync(userViewModel);
-                    Snackbar!.Add("Your profile information has been updated successfully.", Severity.Success);
+                    groupViewModel.Ownerid = userViewModel.Userid;
+                    await GroupService.CreateGroupAsync(groupViewModel);
+                    Snackbar.Add("Successfully created!", Severity.Success);
                     MudDialog.Close(DialogResult.Ok(true));
                 }
                 catch (Exception ex)

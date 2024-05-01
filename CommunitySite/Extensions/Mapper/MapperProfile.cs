@@ -10,6 +10,8 @@ namespace CommunitySite.Extensions.Mapper
         {
             CreateMap<Siteuser, UserViewModel>().ReverseMap();
             CreateMap<Photo, PhotoViewModel>().ReverseMap();
+            CreateMap<Post, PostViewModel>().ReverseMap();
+            CreateMap<Sitegroup, GroupViewModel>().ReverseMap();
                 
         }
     }

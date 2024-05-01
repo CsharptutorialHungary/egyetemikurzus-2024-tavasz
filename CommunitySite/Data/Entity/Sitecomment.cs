@@ -15,6 +15,8 @@ public partial class Sitecomment
 
     public string? CommentDate { get; set; }
 
+    public virtual ICollection<Include> Includes { get; set; } = new List<Include>();
+
     public virtual Post? Post { get; set; }
 
     public virtual Siteuser? User { get; set; }

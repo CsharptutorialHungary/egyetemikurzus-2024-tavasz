@@ -1,0 +1,31 @@
+﻿<MudDialog Style="width: 50vw">
+    <DialogContent>
+        <MudTextField Class="ma-2" T="string" @bind-Value="@description" Label="Description" Lines="3" AutoGrow="true" Variant="Variant.Outlined"></MudTextField>
+        <MudFileUpload Class="ma-2" T="IBrowserFile" Accept=".png, .jpg" FilesChanged="UploadImage" MaximumFileCount="100">
+            <ButtonTemplate>
+                <MudButton HtmlTag="label"
+                           Variant="Variant.Outlined"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.ChangeCircle"
+                           Size="Size.Small"
+                           for="@context.Id">
+                    Add image
+                </MudButton>
+            </ButtonTemplate>
+        </MudFileUpload>
+
+        @if(photoViewModel != null)
+        {
+            <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+                <MudPaper Class="ma-2" MaxWidth="400px" MaxHeight="400px" Square>
+                    <MudImage Fluid ObjectFit="ObjectFit.Cover" Src="@imageDataUrl"></MudImage>
+                </MudPaper>
+            </MudStack>
+        }
+
+    </DialogContent>
+    <DialogActions>
+        <MudButton Class="ma-2" OnClick="Cancel">Cancel</MudButton>
+        <MudButton Class="ma-2" Color="Color.Primary" OnClick="Submit">Save</MudButton>
+    </DialogActions>
+</MudDialog>

@@ -1,6 +1,32 @@
 ﻿@page "/"
 
 <PageTitle>Home</PageTitle>
-<MudGrid Justify="Justify.Center">
-</MudGrid>
+<MudStack>
+    <ListUserProfiles></ListUserProfiles>
+</MudStack>
+
+<MudPaper Class="pa-4">
+    <MudStack Spacing="2">
+        <MudButton OnClick="OnPostExpandCollapseClick">Followed users posts</MudButton>
+        <MudDivider />
+        <MudCollapse Expanded="_postExpanded">
+            @foreach (var post in followedUserPosts)
+            {
+                <MudStack Class="ma-4" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                    <MudPaper Style="height:fit-content" Class="ma-4" Width="100%">
+                        <MudStack Row>
+                            <MudText>@post.PostDate</MudText>
+                            <MudText>@post.PostText</MudText>
+                        </MudStack>
+
+                        @if (post.Photo != null)
+                        {
+                            <MudImage Alt="@post.Photo.PhotoName" Height="300" ObjectFit="ObjectFit.Cover" Src="@(string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(post.Photo.PhotoInByte)))"></MudImage>
+                        }
+                    </MudPaper>
+                </MudStack>
+            }
+        </MudCollapse>
+    </MudStack>
+</MudPaper>
 
