@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace L5Y5D3
 {
-    internal class Kerdes
+    internal sealed record class Kerdes
     {
         public int A { get; }
         public int B { get; }
