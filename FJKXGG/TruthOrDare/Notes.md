@@ -49,10 +49,12 @@
 
 - Access modifiers:
 	- Hogy választja szét az assembly-ket a fordító? Egy másik projekt ugyan abban a solution-ben másik assembly?
-	- ha egy internal osztály implementál egy internal interface-t, ami egy másik namespace-ben van, akkor az osztály metódusainak miért kell public-nek lenniük?
+	- Ha egy internal osztály implementál egy internal interface-t, ami egy másik namespace-ben van, akkor az osztály metódusainak miért kell public-nek lenniük?
 - Hiba kezelés
- - Miért nem lehet nyelvi szinten megadni ha egyetódus exception-t dob?
 	- Hogyan érdemes megoldani a hiba kezelést egy egyszerû adatbázis lekérdezést végrehajtó metódusban?
 	- Result pattern:
-		- ténylegesen elterjedt a gyakorlatban a Result Pattern?									
-- Mennyire kell a Single Responsibility és interface segregation elvet követni? - Pl. CRUD mûveleteket szét kell bontani?
+		- ténylegesen elterjedt a gyakorlatban a Result Pattern?
+  		- CQS pattern-t sérti
+   	- Miért nem lehet nyelvi szinten megadni ha egyetódus exception-t dob?									
+- Mennyire kell a Single Responsibility és interface segregation elvet követni? - Pl. CRUD mûveleteket szét kell bontani (CQRS)?
+	- YAGNI: You Aint Gonna Need It
