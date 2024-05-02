@@ -13,7 +13,25 @@ namespace Filemanager{
 
         public void Run(){
             _host.WriteLine("FileManager is running.");
-            _host.WriteLine("> ");
+            while(true){
+                _host.WriteLine("> ");
+                string[] input = _host.ReadLine().Split(" ");
+                ICommand? commandToExecute = findCommandByName(input[0]);
+                if(commandToExecute != null){
+                    commandToExecute.Execute(_host,input);
+                } else {
+                    _host.WriteLine("No such command");
+                }
+            }
+        }
+
+        private ICommand? findCommandByName(String name){
+            foreach (ICommand command in _commandProvider.Commands){
+                if(command.Name.Equals(name)){
+                    return command;
+                }
+            }
+            return null;
         }
     }
 }

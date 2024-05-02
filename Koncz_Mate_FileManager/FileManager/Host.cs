@@ -9,7 +9,7 @@ namespace Filemanager{
             Environment.Exit(0);
         }
 
-        public string ReadL()
+        public string ReadLine()
         {
             return Console.ReadLine() ?? throw new Exception("enter a command");
         }
