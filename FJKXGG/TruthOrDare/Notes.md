@@ -58,3 +58,4 @@
    	- Miért nem lehet nyelvi szinten megadni ha egyetódus exception-t dob?									
 - Mennyire kell a Single Responsibility és interface segregation elvet követni? - Pl. CRUD mûveleteket szét kell bontani (CQRS)?
 	- YAGNI: You Aint Gonna Need It
+	- Application layeren belüli Main controller osztály privát metódusait nem service-ba szervezem ki és mennek a Domain rétegbe hanem csak privát metódusokba
