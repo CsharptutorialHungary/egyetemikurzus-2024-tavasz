@@ -16,9 +16,10 @@ namespace DownloadManager.Application
             {
                 if (ValidArgNums.Contains(args.Length))
                 {
-                    if (ValidArguments.Contains(args[0]))
+                    string newMode = char.ToUpper(args[0][0]) + args[0][1..];
+                    if (ValidArguments.Contains(newMode))
                     {
-                        controller.CurrentMode = Enum.Parse<Mode>(args[0]);
+                        controller.CurrentMode = Enum.Parse<Mode>(newMode);
                     }
                     else
                     {
