@@ -15,20 +15,13 @@ namespace DownloadManager.Application
 
         public void Execute(IHost host, Controller controller, ICommandLoader commandLoader, string[] args)
         {
-            if (ValidModes.Length == 0 || ValidModes.Contains(controller.CurrentMode))
+            if (args.Length == 0)
             {
-                if (args.Length == 0)
-                {
-                    host.Exit();
-                }
-                else
-                {
-                    throw new InvalidOperationException("Az argumentumok száma nem megfelelő");
-                }
+                host.Exit();
             }
             else
             {
-                throw new InvalidOperationException("Ebben a módban nem hajtható végre ez a parancs");
+                throw new InvalidOperationException("Az argumentumok száma nem megfelelő");
             }
         }
     }

@@ -24,5 +24,10 @@ namespace DownloadManager.Application
         {
             return _logger.GetLog().Select(row => row).Where(row => row.Contains(pattern));
         }
+
+        public void DeleteLogs()
+        {
+            _logger.DeleteLog();
+        }
     }
 }

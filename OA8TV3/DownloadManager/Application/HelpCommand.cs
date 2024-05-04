@@ -13,55 +13,48 @@ namespace DownloadManager.Application
         {
             ValidArguments = commandLoader.Commands.Select(cmd => cmd.Name).ToArray();
 
-            if (ValidModes.Length == 0 || ValidModes.Contains(controller.CurrentMode))
+            var allCommands = commandLoader.Commands;
+            var validCommands = commandLoader.GetCommandsByMode(controller.CurrentMode);
+            switch (args.Length)
             {
-                var allCommands = commandLoader.Commands;
-                var validCommands = commandLoader.GetCommandsByMode(controller.CurrentMode);
-                switch (args.Length)
-                {
-                    case 0:
+                case 0:
+                    {
+                        host.WriteLine("Jelenleg elérhető parancsok listája:");
+                        foreach (ICommand command in validCommands)
                         {
-                            host.WriteLine("Jelenleg elérhető parancsok listája:");
-                            foreach (ICommand command in validCommands)
+                            host.WriteLine($"{command.Name} - {command.Description}");
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        if (ValidArguments.Contains(args[0]))
+                        {
+                            foreach (ICommand command in allCommands)
                             {
-                                host.WriteLine($"{command.Name} - {command.Description}");
+                                if (command.Name.Equals(args[0]))
+                                {
+                                    host.WriteLine($"{command.Name} - {command.Description}");
+                                    host.WriteLine(command.ValidModes.Length == 0
+                                        ? "Valid modes: all"
+                                        : $"Valid modes: {string.Join(", ", command.ValidModes)}");
+                                    host.WriteLine(command.ValidArguments.Length == 0
+                                        ? "This command does not take any arguments"
+                                        : $"Valid arguments: {string.Join(", ", command.ValidArguments)}");
+                                    break;
+                                }
                             }
                             break;
                         }
-                    case 1:
+                        else
                         {
-                            if (ValidArguments.Contains(args[0]))
-                            {
-                                foreach (ICommand command in allCommands)
-                                {
-                                    if (command.Name.Equals(args[0]))
-                                    {
-                                        host.WriteLine($"{command.Name} - {command.Description}");
-                                        host.WriteLine(command.ValidModes.Length == 0
-                                            ? "Valid modes: all"
-                                            : $"Valid modes: {string.Join(", ", command.ValidModes)}");
-                                        host.WriteLine(command.ValidArguments.Length == 0
-                                            ? "This command does not take any arguments"
-                                            : $"Valid arguments: {string.Join(", ", command.ValidArguments)}");
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
-                            else
-                            {
-                                throw new InvalidOperationException("Ismeretlen argumentum");
-                            }
+                            throw new InvalidOperationException("Ismeretlen argumentum");
                         }
-                    default:
-                        {
-                            throw new InvalidOperationException("Az argumentumok száma nem megfelelő");
-                        }
-                }
-            }
-            else
-            {
-                throw new InvalidOperationException("Ebben a módban nem hajtható végre ez a parancs");
+                    }
+                default:
+                    {
+                        throw new InvalidOperationException("Az argumentumok száma nem megfelelő");
+                    }
             }
         }
     }
