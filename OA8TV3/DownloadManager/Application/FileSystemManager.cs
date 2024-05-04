@@ -1,3 +1,5 @@
+using DownloadManager.Infrastructure;
+
 namespace DownloadManager.Application
 {
     internal class FileSystemManager

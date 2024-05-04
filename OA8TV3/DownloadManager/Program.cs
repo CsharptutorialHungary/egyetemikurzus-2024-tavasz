@@ -1,4 +1,5 @@
 ﻿using DownloadManager.Application;
+using DownloadManager.Infrastructure;
 using DownloadManager.UserInterface;
 
 namespace DownloadManager

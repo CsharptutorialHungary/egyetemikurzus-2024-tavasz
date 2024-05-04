@@ -1,4 +1,4 @@
-namespace DownloadManager.Application
+namespace DownloadManager.Infrastructure
 {
     internal class Logger
     {
@@ -14,7 +14,7 @@ namespace DownloadManager.Application
             File.AppendAllLinesAsync(Path.Combine(_logPath, "logs.txt"), [message]);
         }
 
-        public string[] GetLog()
+        public IEnumerable<string> GetLog()
         {
             return File.ReadAllLines(Path.Combine(_logPath, "logs.txt"));
         }
