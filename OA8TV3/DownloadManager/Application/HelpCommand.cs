@@ -11,10 +11,11 @@ namespace DownloadManager.Application
 
         public void Execute(IHost host, Controller controller, ICommandLoader commandLoader, string[] args)
         {
-            ValidArguments = commandLoader.GetCommandsByMode(controller.CurrentMode).Select(cmd => cmd.Name).ToArray();
+            ValidArguments = commandLoader.Commands.Select(cmd => cmd.Name).ToArray();
 
             if (ValidModes.Length == 0 || ValidModes.Contains(controller.CurrentMode))
             {
+                var allCommands = commandLoader.Commands;
                 var validCommands = commandLoader.GetCommandsByMode(controller.CurrentMode);
                 switch (args.Length)
                 {
@@ -31,12 +32,17 @@ namespace DownloadManager.Application
                         {
                             if (ValidArguments.Contains(args[0]))
                             {
-                                foreach (ICommand command in validCommands)
+                                foreach (ICommand command in allCommands)
                                 {
                                     if (command.Name.Equals(args[0]))
                                     {
                                         host.WriteLine($"{command.Name} - {command.Description}");
-                                        host.WriteLine($"Valid arguments: {string.Join(", ", command.ValidArguments)}");
+                                        host.WriteLine(command.ValidModes.Length == 0
+                                            ? "Valid modes: all"
+                                            : $"Valid modes: {string.Join(", ", command.ValidModes)}");
+                                        host.WriteLine(command.ValidArguments.Length == 0
+                                            ? "This command does not take any arguments"
+                                            : $"Valid arguments: {string.Join(", ", command.ValidArguments)}");
                                         break;
                                     }
                                 }
