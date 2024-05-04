@@ -4,15 +4,15 @@ namespace DownloadManager.Application
 {
     internal class Controller
     {
-        public Logger LogManager { get; }
+        private readonly FileSystemManager _systemManager;
+        private readonly Logger _logger;
         public Mode CurrentMode { get; set; }
 
-        public Controller(Logger logger)
+        public Controller(FileSystemManager systemManager, Logger logger)
         {
-            LogManager = logger;
+            _systemManager = systemManager;
+            _logger = logger;
             CurrentMode = Mode.Home;
-
-            LogManager.DeleteLog();
         }
     }
 }

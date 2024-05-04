@@ -7,10 +7,14 @@ namespace DownloadManager
     {
         static void Main(string[] args)
         {
+            Logger logger = new Logger(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
             UI ui = new UI(
                 new Host(),
                 new Controller(
-                    new Logger(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))),
+                    new FileSystemManager(
+                        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
+                        logger),
+                    logger),
                 new ReflectionCommandLoader());
             ui.Run();
         }
