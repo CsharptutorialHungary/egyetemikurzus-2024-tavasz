@@ -5,12 +5,14 @@ namespace DownloadManager.Application
     internal class Controller
     {
         private readonly FileSystemManager _systemManager;
+        private readonly RuleSerializer _serializer;
         private readonly Logger _logger;
         public Mode CurrentMode { get; set; }
 
-        public Controller(FileSystemManager systemManager, Logger logger)
+        public Controller(FileSystemManager systemManager, RuleSerializer serializer, Logger logger)
         {
             _systemManager = systemManager;
+            _serializer = serializer;
             _logger = logger;
             CurrentMode = Mode.Home;
         }

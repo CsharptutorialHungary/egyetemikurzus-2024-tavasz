@@ -16,7 +16,7 @@ namespace DownloadManager.Application
                 if (args.Length == 0)
                 {
                     controller.DeleteLogs();
-                    host.WriteLine("Logs have been cleared");
+                    host.WriteLine("A log törlésre került");
                 }
                 else
                 {

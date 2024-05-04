@@ -15,6 +15,7 @@ namespace DownloadManager
                     new FileSystemManager(
                         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
                         logger),
+                    new RuleSerializer(),
                     logger),
                 new ReflectionCommandLoader());
             ui.Run();
