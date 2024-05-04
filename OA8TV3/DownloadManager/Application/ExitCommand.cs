@@ -11,14 +11,13 @@ namespace DownloadManager.Application
         public string Name => "exit";
         public string Description => "Az alkalmazás befejezi a működését";
         public Mode[] ValidModes => [];
-        public int[] ValidArgNums => [0];
         public string[] ValidArguments => [];
 
-        public void Execute(IHost host, Controller controller, Mode currentMode, string[] args)
+        public void Execute(IHost host, Controller controller, ICommandLoader commandLoader, string[] args)
         {
-            if (ValidModes.Length == 0 || ValidModes.Contains(currentMode))
+            if (ValidModes.Length == 0 || ValidModes.Contains(controller.CurrentMode))
             {
-                if (ValidArgNums.Contains(args.Length))
+                if (args.Length == 0)
                 {
                     host.Exit();
                 }

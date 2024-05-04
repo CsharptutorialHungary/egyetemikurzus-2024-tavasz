@@ -7,19 +7,17 @@ namespace DownloadManager.Application
         public string Name => "mode";
         public string Description => "Az alkalmazés a megadott módba lép";
         public Mode[] ValidModes => [];
-        public int[] ValidArgNums => [1];
-        public string[] ValidArguments { get; } = Enum.GetNames(typeof(Mode));
+        public string[] ValidArguments { get; } = Enum.GetNames(typeof(Mode)).Select(name => name.ToLower()).ToArray();
 
-        public void Execute(IHost host, Controller controller, Mode currentMode, string[] args)
+        public void Execute(IHost host, Controller controller, ICommandLoader commandLoader, string[] args)
         {
-            if (ValidModes.Length == 0 || ValidModes.Contains(currentMode))
+            if (ValidModes.Length == 0 || ValidModes.Contains(controller.CurrentMode))
             {
-                if (ValidArgNums.Contains(args.Length))
+                if (args.Length == 1)
                 {
-                    string newMode = char.ToUpper(args[0][0]) + args[0][1..];
-                    if (ValidArguments.Contains(newMode))
+                    if (ValidArguments.Contains(args[0]))
                     {
-                        controller.CurrentMode = Enum.Parse<Mode>(newMode);
+                        controller.CurrentMode = Enum.Parse<Mode>(char.ToUpper(args[0][0]) + args[0][1..]);
                     }
                     else
                     {

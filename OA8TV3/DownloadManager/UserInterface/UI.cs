@@ -30,7 +30,7 @@ namespace DownloadManager.UserInterface
                 {
                     try
                     {
-                        commandToExecute.Execute(_host, _controller, _controller.CurrentMode, args);
+                        commandToExecute.Execute(_host, _controller, _commandLoader, args);
                     }
                     catch (InvalidOperationException invalidOperationException)
                     {
