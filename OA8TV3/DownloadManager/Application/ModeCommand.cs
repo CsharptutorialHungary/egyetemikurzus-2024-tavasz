@@ -1,18 +1,14 @@
-using System.Reflection;
-
 using DownloadManager.Infrastructure;
-
-using InvalidOperationException = System.InvalidOperationException;
 
 namespace DownloadManager.Application
 {
-    internal class ExitCommand : ICommand
+    internal class ModeCommand : ICommand
     {
-        public string Name => "exit";
-        public string Description => "Az alkalmazás befejezi a működését";
+        public string Name => "mode";
+        public string Description => "Az alkalmazés a megadott módba lép";
         public Mode[] ValidModes => [];
-        public int[] ValidArgNums => [0];
-        public string[] ValidArguments => [];
+        public int[] ValidArgNums => [1];
+        public string[] ValidArguments { get; } = Enum.GetNames(typeof(Mode));
 
         public void Execute(IHost host, Controller controller, Mode currentMode, string[] args)
         {
@@ -20,7 +16,14 @@ namespace DownloadManager.Application
             {
                 if (ValidArgNums.Contains(args.Length))
                 {
-                    host.Exit();
+                    if (ValidArguments.Contains(args[0]))
+                    {
+                        controller.CurrentMode = Enum.Parse<Mode>(args[0]);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Ismeretlen argumentum");
+                    }
                 }
                 else
                 {

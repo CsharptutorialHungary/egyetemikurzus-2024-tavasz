@@ -10,32 +10,32 @@ namespace DownloadManager.UserInterface
         private readonly IHost _host;
         private readonly Controller _controller;
         private readonly ICommandLoader _commandLoader;
-        private Mode CurrentMode { get; set; }
 
         public UI(IHost host, Controller controller, ICommandLoader commandLoader)
         {
             _host = host;
             _controller = controller;
             _commandLoader = commandLoader;
-            CurrentMode = Mode.Home;
         }
 
         public void Run()
         {
             while (true)
             {
-                _host.Write($"{CurrentMode.ToString()}: ");
-                string[] input = _host.ReadLine().Split(' ');
+                _host.Write($"{_controller.CurrentMode.ToString()}: ");
+                string[] input = _host.ReadLine().Trim().Split(' ');
                 var commandToExecute = FindCommandByName(input[0]);
+                var args = input.Skip(1).ToArray();
                 if (commandToExecute != null)
                 {
                     try
                     {
-                        commandToExecute.Execute(_host, _controller, CurrentMode, input);
+                        commandToExecute.Execute(_host, _controller, _controller.CurrentMode, args);
                     }
                     catch (InvalidOperationException invalidOperationException)
                     {
                         _host.WriteLine(invalidOperationException.Message);
+                        _host.WriteLine("A parancsról több információért írd be, hogy 'help [parancs_neve]'");
                         Trace.WriteLine(invalidOperationException, "commandexception");
                     }
                     catch (Exception exception)
