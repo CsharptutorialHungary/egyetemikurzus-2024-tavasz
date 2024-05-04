@@ -14,5 +14,15 @@ namespace DownloadManager.Application
             _logger = logger;
             CurrentMode = Mode.Home;
         }
+
+        public IEnumerable<string> SearchLogs()
+        {
+            return _logger.GetLog();
+        }
+
+        public IEnumerable<string> SearchLogs(string pattern)
+        {
+            return _logger.GetLog().Select(row => row).Where(row => row.Contains(pattern));
+        }
     }
 }

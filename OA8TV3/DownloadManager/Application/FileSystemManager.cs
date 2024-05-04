@@ -39,7 +39,7 @@ namespace DownloadManager.Application
             return Directory.Exists(path);
         }
 
-        public bool MoveFile(string from, string to)
+        public bool MoveFile(string from, string to, string ruleType)
         {
             if (!CheckPath(to))
             {
@@ -47,6 +47,7 @@ namespace DownloadManager.Application
             }
             string fileName = new FileInfo(from).Name;
             File.Move(from, Path.Combine(to, fileName));
+            _logger.WriteToLog($"{DateTime.Now}: Moved {fileName} to {to} (Matched {ruleType} rule)");
             return true;
         }
     }
