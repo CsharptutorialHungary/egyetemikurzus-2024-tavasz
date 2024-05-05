@@ -24,7 +24,9 @@ namespace V2JQM3.UserInterface
                     new CmdDisplay(),
                     new CmdDownload(),
                     new CmdLoad(),
-                    new CmdHelp()
+                    new CmdHelp(),
+                    new CmdClear(),
+                    new CmdEmpty()
                     };
         }
     }

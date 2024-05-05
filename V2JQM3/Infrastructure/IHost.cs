@@ -16,6 +16,7 @@ namespace V2JQM3.Infrastructure
         public Task DownloadRssFile();
         public void DisplayLastRssFile();
         public void LoadSavedRssFiles();
-        
+        void ClearConsole() { Console.Clear(); }
+        void EmptyDataFolder();
     }
 }

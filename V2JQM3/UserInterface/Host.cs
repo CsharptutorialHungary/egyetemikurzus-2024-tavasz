@@ -11,7 +11,7 @@ using V2JQM3.Infrastructure;
 
 namespace V2JQM3.UserInterface
 {
-    internal class Host:IHost
+    internal class Host : IHost
     {
         static string currentRssFilePath = string.Empty;
         static List<RSSRecord> rssRecords = new List<RSSRecord>();
@@ -33,12 +33,16 @@ namespace V2JQM3.UserInterface
 
         public void Help()
         {
-            Console.WriteLine("Available options:");
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("Available commands:");
             Console.WriteLine("download - Download RSS file");
             Console.WriteLine("display - Display last RSS file");
             Console.WriteLine("load - Load saved RSS files");
+            Console.WriteLine("clear - Clears the console");
+            Console.WriteLine("empty - Deletes the already downloaded RSS xml(s)");
             Console.WriteLine("help - Display commands");
             Console.WriteLine("exit - Exit");
+            Console.WriteLine("---------------------------------------------------");
         }
 
         public void LoadSavedRssFiles()
@@ -78,7 +82,7 @@ namespace V2JQM3.UserInterface
                     Console.WriteLine($"Error processing file {file.Name}: {e.Message}");
                 }
             }
-
+            if (records.Count == 0) {Console.WriteLine("There are no files downloaded yet.");return;}
             //LINQ
             var sortedRecords = records.OrderByDescending(r => r.Date).ToList();
             int index = 1;
@@ -193,7 +197,8 @@ namespace V2JQM3.UserInterface
                             string fileName = $"RSS_{timestamp}.xml";
                             currentRssFilePath = Path.Combine(savedItemsFolder, fileName);
                             await File.WriteAllTextAsync(currentRssFilePath, content);
-                            Console.WriteLine($"RSS file downloaded and saved successfully as {currentRssFilePath}");
+                            Console.WriteLine($"RSS file downloaded and saved successfully at:\n{currentRssFilePath}");
+                            return;
                         }
                         else
                         {
@@ -211,7 +216,38 @@ namespace V2JQM3.UserInterface
                 }
             }
         }
+        public void EmptyDataFolder()
+        {
+            string executablePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Directory.GetParent(executablePath)?.Parent?.Parent?.Parent?.FullName;
+            if (string.IsNullOrEmpty(projectRoot))
+            {
+                Console.WriteLine("Failed to determine the project root directory.");
+                return;
+            }
+            string savedItemsFolder = Path.Combine(projectRoot, "SavedItems");
 
+            try
+            {
+                DirectoryInfo di = new DirectoryInfo(savedItemsFolder);
+                if (di.Exists)
+                {
+                    foreach (FileInfo file in di.GetFiles())
+                    {
+                        file.Delete();
+                    }
+                    Console.WriteLine("All files in the SavedItems folder have been deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("SavedItems directory does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while trying to empty the SavedItems folder: {ex.Message}");
+            }
+        }
 
     }
 }
