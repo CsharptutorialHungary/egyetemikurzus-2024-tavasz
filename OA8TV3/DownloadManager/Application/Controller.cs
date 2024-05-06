@@ -8,7 +8,7 @@ namespace DownloadManager.Application
         private readonly FileSystemManager _systemManager;
         private readonly RuleSerializer _serializer;
         private readonly Logger _logger;
-        public HashSet<AbstractRule> Rules { get; }
+        private HashSet<AbstractRule> _rules { get; }
         public Mode CurrentMode { get; set; }
 
         public Controller(FileSystemManager systemManager, RuleSerializer serializer, Logger logger)
@@ -16,7 +16,7 @@ namespace DownloadManager.Application
             _systemManager = systemManager;
             _serializer = serializer;
             _logger = logger;
-            Rules = new HashSet<AbstractRule>(_serializer.DeserializeFromJson().Result);
+            _rules = new HashSet<AbstractRule>(_serializer.DeserializeFromJson().Result);
             CurrentMode = Mode.Home;
         }
 
@@ -27,7 +27,12 @@ namespace DownloadManager.Application
 
         public bool AddRule(AbstractRule rule)
         {
-            return Rules.Add(rule);
+            return _rules.Add(rule);
+        }
+
+        public void SaveRules()
+        {
+            Task.Run(() => _serializer.SerializeToJson(_rules.ToArray()));
         }
 
         public IEnumerable<string> SearchLogs()

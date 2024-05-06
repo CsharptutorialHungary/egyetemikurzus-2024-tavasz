@@ -2,7 +2,6 @@ using System.Text.Json.Serialization;
 
 namespace DownloadManager.Domain
 {
-    [JsonDerivedType(typeof(AbstractRule), typeDiscriminator: "base")]
     [JsonDerivedType(typeof(ExtensionRule), typeDiscriminator: "extension")]
     [JsonDerivedType(typeof(SizeRule), typeDiscriminator: "size")]
     [JsonDerivedType(typeof(PatternRule), typeDiscriminator: "pattern")]

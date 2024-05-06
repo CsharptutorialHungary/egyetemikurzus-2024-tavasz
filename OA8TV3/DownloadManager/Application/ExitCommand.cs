@@ -17,6 +17,8 @@ namespace DownloadManager.Application
         {
             if (args.Length == 0)
             {
+                controller.SaveRules();
+                host.WriteLine("Exiting");
                 host.Exit();
             }
             else
