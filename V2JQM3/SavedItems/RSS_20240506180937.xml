@@ -5,10 +5,66 @@
 		<link>https://prohardver.hu</link>
 		<description>PROHARDVER! - Az Online PC Magazin - hardverek, tesztek, közösség</description>
 		<language>hu</language>
-		<lastBuildDate>Sun, 05 May 2024 20:52:23 +0200</lastBuildDate>
+		<lastBuildDate>Mon, 06 May 2024 18:00:01 +0200</lastBuildDate>
 		<generator>RI/OS R7</generator>
 		<docs>http://www.rssboard.org/rss-specification</docs>
 		<ttl>10</ttl>
+		<item>
+			<title>AMD-s szerverprocesszorokhoz való, készre szerelt vízhűtés a SilverStone-tól</title>
+			<link>https://prohardver.hu/hir/silverstone_xe360-tr5_kompakt_aio_amd_hedt_cpu.html</link>
+			<description>A nyár folyamán debütáló konstrukció blokkja kényelmesen befér 1U magasságú rackekbe is.</description>
+			<pubDate>Mon, 06 May 2024 17:46:00 +0200</pubDate>
+			<category>Hűtés</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/silverstone_xe360-tr5_kompakt_aio_amd_hedt_cpu.html</guid>
+		</item>
+		<item>
+			<title>2026-ban hozhatja saját IGP-jét a Samsung</title>
+			<link>https://prohardver.hu/hir/samsung_2026_hozhatja_sajat_igp.html</link>
+			<description>Persze nagy kérdés, hogy mennyire lesz majd valóban saját tervezésű.</description>
+			<pubDate>Mon, 06 May 2024 16:16:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/samsung_2026_hozhatja_sajat_igp.html</guid>
+		</item>
+		<item>
+			<title>Még idén frissíti a ROG Ally-t az ASUS</title>
+			<link>https://prohardver.hu/hir/meg_iden_frissit_rog_ally_asus.html</link>
+			<description>A 2024-es verzió a Computexen jöhet, de hivatalosan még semmit sem tudni róla.</description>
+			<pubDate>Mon, 06 May 2024 14:56:00 +0200</pubDate>
+			<category>Életmód</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/meg_iden_frissit_rog_ally_asus.html</guid>
+		</item>
+		<item>
+			<title>Gyorsulást hoz az MSI Claw új szoftverfrissítése</title>
+			<link>https://prohardver.hu/hir/gyorsulast_hoz_msi_claw_uj_szoftverfrissites.html</link>
+			<description>Az MSI a későbbi frissítéseket is egyszerűbbé teszi az új BIOS által.</description>
+			<pubDate>Mon, 06 May 2024 13:16:00 +0200</pubDate>
+			<category>Életmód</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/gyorsulast_hoz_msi_claw_uj_szoftverfrissites.html</guid>
+		</item>
+		<item>
+			<title>Ackbar admirálist kínálja egy GeForce-on az NVIDIA</title>
+			<link>https://prohardver.hu/hir/nvidia_geforce_ackbar_admiralis_kinal.html</link>
+			<description>Nem, ez most nem csapda, tényleg meg lehet nyerni a szóban forgó VGA-t.</description>
+			<pubDate>Mon, 06 May 2024 11:46:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/nvidia_geforce_ackbar_admiralis_kinal.html</guid>
+		</item>
+		<item>
+			<title>Jelentős előnyt kínál az egységes memória az OpenFOAM keretrendszerrel</title>
+			<link>https://prohardver.hu/hir/openfoam_jelentos_elony_kinal_egyseges_memoria.html</link>
+			<description>Négyszer gyorsabb is lehet a feldolgozás, ha elkerülhetők az adatmásolások.</description>
+			<pubDate>Mon, 06 May 2024 10:06:00 +0200</pubDate>
+			<category>Egyéb</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/openfoam_jelentos_elony_kinal_egyseges_memoria.html</guid>
+		</item>
+		<item>
+			<title>Szabadon fejlesztheti az OLED tévébe szánt paneljeit a Loewe</title>
+			<link>https://prohardver.hu/hir/loewe-oled-tv-lg-panel.html</link>
+			<description>Az LG Displaytől csak nagyon alap kijelzőket vásárol a vállalat, és azokat módosítja kedvére saját németországi üzemébe.</description>
+			<pubDate>Mon, 06 May 2024 08:26:00 +0200</pubDate>
+			<category>TV &amp; Audió</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/loewe-oled-tv-lg-panel.html</guid>
+		</item>
 		<item>
 			<title>Az Apple megszerezné a klubvilágbajnokság közvetítési jogait</title>
 			<link>https://prohardver.hu/hir/apple_tv_fifa.html</link>
@@ -113,62 +169,6 @@
 			<pubDate>Tue, 30 Apr 2024 16:20:00 +0200</pubDate>
 			<category>Hűtés</category>
 			<guid isPermaLink="true">https://prohardver.hu/hir/thermaltake_astria_600_argb_cpu-huto.html</guid>
-		</item>
-		<item>
-			<title>Az USA vizsgálja a RISC-V kínai terjedésének kockázatát</title>
-			<link>https://prohardver.hu/hir/usa_vizsgal_risc-v_kina_terjedes_kockazat.html</link>
-			<description>A Kereskedelmi Minisztérium egyelőre csak felméri a helyzetet, egyelőre nem látni, hogy tudnak-e bármit is tenni.</description>
-			<pubDate>Tue, 30 Apr 2024 14:50:00 +0200</pubDate>
-			<category>Egyéb</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/usa_vizsgal_risc-v_kina_terjedes_kockazat.html</guid>
-		</item>
-		<item>
-			<title>Kicsit extrémre sikerült a Hyte belépője a készre szerelt vízhűtések világába</title>
-			<link>https://prohardver.hu/hir/hyte_thicc_q60_kompakt_vizhutes.html</link>
-			<description>A cég megoldása centralizált vezérelhetőséggel, masszív radiátorral és robusztus ventilátorokkal igyekszik vásárlásra csábítani.</description>
-			<pubDate>Tue, 30 Apr 2024 13:20:00 +0200</pubDate>
-			<category>Hűtés</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/hyte_thicc_q60_kompakt_vizhutes.html</guid>
-		</item>
-		<item>
-			<title>Egészen nagy teljesítményspektrumon fedné le a mobil piacot az AMD</title>
-			<link>https://prohardver.hu/hir/amd_strix_point_halo_teljesitmenyspektrum.html</link>
-			<description>A vállalat kétféle Strix Point dizájt tervez idénre, ezek közül a nagyobbik a dedikált GPU-k jó részét is kiválthatja.</description>
-			<pubDate>Tue, 30 Apr 2024 11:40:00 +0200</pubDate>
-			<category>Processzor</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/amd_strix_point_halo_teljesitmenyspektrum.html</guid>
-		</item>
-		<item>
-			<title>Már a Sparkle is jegyezhet fehérbe öltöztetett videokártyákat</title>
-			<link>https://prohardver.hu/hir/sparkle_intel_arc_a750_es_a770_roc_luna_oc_vga.html</link>
-			<description>A gyártó egy 8 és egy 16 GB-os, inteles modellel jelentkezett, amiket ránézésre nem igazán tudnánk megkülönböztetni egymástól.</description>
-			<pubDate>Tue, 30 Apr 2024 10:10:00 +0200</pubDate>
-			<category>Videokártya</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/sparkle_intel_arc_a750_es_a770_roc_luna_oc_vga.html</guid>
-		</item>
-		<item>
-			<title>Modern monitorokra köthető 3dfx Voodoo kártya a fészerből</title>
-			<link>https://prohardver.hu/hir/voodoox_diy_kartya_dvi-d_es_hdmi_kimenetekkel.html</link>
-			<description>Az eredeti VSA-100 lapkára épülő megoldást két hobbista fejleszti, és úgy fest, hogy hamarosan révbe érnek.</description>
-			<pubDate>Tue, 30 Apr 2024 08:40:00 +0200</pubDate>
-			<category>Videokártya</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/voodoox_diy_kartya_dvi-d_es_hdmi_kimenetekkel.html</guid>
-		</item>
-		<item>
-			<title>Egyre gyorsabban ügyködik saját HBM memóriáján Kína</title>
-			<link>https://prohardver.hu/hir/kina_egyre_gyorsabban_ugykodik_sajat_hbm_memoria.html</link>
-			<description>Konzorciumban dolgoznak a cégek a HBM2 implementálásán.</description>
-			<pubDate>Mon, 29 Apr 2024 17:59:00 +0200</pubDate>
-			<category>Memória</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/kina_egyre_gyorsabban_ugykodik_sajat_hbm_memoria.html</guid>
-		</item>
-		<item>
-			<title>A Samsung hazánkban is piacra dob idén egy friss Micro LED tévét</title>
-			<link>https://prohardver.hu/hir/samsung-micro-led_2.html</link>
-			<description>A vállalat a tervek szerint egy 83 hüvelykes óriással próbálkozik a prémium kategóriában.</description>
-			<pubDate>Mon, 29 Apr 2024 16:19:00 +0200</pubDate>
-			<category>TV &amp; Audió</category>
-			<guid isPermaLink="true">https://prohardver.hu/hir/samsung-micro-led_2.html</guid>
 		</item>
 	</channel>
 </rss>

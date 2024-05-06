@@ -5,10 +5,52 @@
 		<link>https://mobilarena.hu</link>
 		<description>Mobilarena - Telekommunikáció Online - mobilok, tesztek, közösség</description>
 		<language>hu</language>
-		<lastBuildDate>Sun, 05 May 2024 21:00:40 +0200</lastBuildDate>
+		<lastBuildDate>Mon, 06 May 2024 18:01:02 +0200</lastBuildDate>
 		<generator>RI/OS R7</generator>
 		<docs>http://www.rssboard.org/rss-specification</docs>
 		<ttl>10</ttl>
+		<item>
+			<title>Várható a HyperOS a Poco F3-ra is</title>
+			<link>https://mobilarena.hu/hir/varhato_a_hyperos_a_poco_f3-ra_is.html</link>
+			<description>Elkezdtek frissülni a Xiaomi új felületére a Redmi K40-ek, ámde Android 13 alapon megy a dolog.</description>
+			<pubDate>Mon, 06 May 2024 13:52:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/varhato_a_hyperos_a_poco_f3-ra_is.html</guid>
+		</item>
+		<item>
+			<title>Beúszott az új Black Shark GS3 Kínába</title>
+			<link>https://mobilarena.hu/hir/beuszott_az_uj_black_shark_gs3_kinaba.html</link>
+			<description>A Xiaomi márkája robosztus órának kinéző csomagolásban kínál olcsón aktivitáskövetőt.</description>
+			<pubDate>Mon, 06 May 2024 12:20:00 +0200</pubDate>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/beuszott_az_uj_black_shark_gs3_kinaba.html</guid>
+		</item>
+		<item>
+			<title>Új fülesek kísérik a Realme GT Neo 6-ot</title>
+			<link>https://mobilarena.hu/hir/uj_fulesek_kiserik_a_realme_gt_neo_6-ot.html</link>
+			<description>A készülék már előjegyezhető, bár hivatalos premier még nem volt, a Buds Air 6 és Buds Air 6 Pro viszont már bemutatkozott.</description>
+			<pubDate>Mon, 06 May 2024 11:10:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/uj_fulesek_kiserik_a_realme_gt_neo_6-ot.html</guid>
+		</item>
+		<item>
+			<title>Dobhatja a Galaxy S26 az AMD GPU-t</title>
+			<link>https://mobilarena.hu/hir/dobhatja_a_galaxy_s26_az_amd_gpu-t.html</link>
+			<description>Házi GPU-val készül a Samsung, de a jövő évi, 3 nm-es Exynos még nem kapja meg.</description>
+			<pubDate>Mon, 06 May 2024 10:33:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Üzleti negyed</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/dobhatja_a_galaxy_s26_az_amd_gpu-t.html</guid>
+		</item>
+		<item>
+			<title>Az 5G-t is kipipálja a Blackview hőkamerás mobilja</title>
+			<link>https://mobilarena.hu/hir/az_5g-t_is_kipipalja_a_blackview_hokameras_mobilja.html</link>
+			<description>A BL9000 Pro a FLiR díjnyertes Lepton 3.5 technológiáját használja.</description>
+			<pubDate>Mon, 06 May 2024 09:45:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/az_5g-t_is_kipipalja_a_blackview_hokameras_mobilja.html</guid>
+		</item>
 		<item>
 			<title>Mindent megtudtunk az új Nokia 3210-ről</title>
 			<link>https://mobilarena.hu/hir/mindent_tudunk_az_uj_nokia_3210-rol.html</link>
@@ -133,49 +175,6 @@
 			<category>Alkalmazások</category>
 			<category>Samsung Univerzum</category>
 			<guid isPermaLink="true">https://mobilarena.hu/hir/try_galaxy_alkalmazas_probald_ki_a_galaxy_ai-t.html</guid>
-		</item>
-		<item>
-			<title>Saját Redmi Note 13 Pro+ a világbajnok focicsapatnak (és indiai rajongóiknak)</title>
-			<link>https://mobilarena.hu/hir/redmi_note_13_pro_vilagbajnok_argentin_focicsapat.html</link>
-			<description>Argentína nemzeti válogatottjának mezével díszítik az új Redmi különkiadást.</description>
-			<pubDate>Tue, 30 Apr 2024 16:45:00 +0200</pubDate>
-			<category>Okostelefon</category>
-			<guid isPermaLink="true">https://mobilarena.hu/hir/redmi_note_13_pro_vilagbajnok_argentin_focicsapat.html</guid>
-		</item>
-		<item>
-			<title>Nem fogod kitalálni, mire fókuszál a Dimensity 9300+</title>
-			<link>https://mobilarena.hu/hir/nem_fogod_kitalalni_mire_fokuszal_a_dimensity_9300.html</link>
-			<description>Spoiler: az AI-ra, ami májusban még az évszakot is megváltoztatja.</description>
-			<pubDate>Tue, 30 Apr 2024 14:51:00 +0200</pubDate>
-			<category>Okostelefon</category>
-			<category>Egyéb</category>
-			<guid isPermaLink="true">https://mobilarena.hu/hir/nem_fogod_kitalalni_mire_fokuszal_a_dimensity_9300.html</guid>
-		</item>
-		<item>
-			<title>Május 7-én bulit tart a Huawei</title>
-			<link>https://mobilarena.hu/hir/majus_7-en_bulit_tart_a_huawei_dubajban.html</link>
-			<description>Méghozzá Dubajban, ahol új termékek várhatók. Ezek a Watch Fit 3 és laptopok lehetnek, a Pura 70-es telefonok maradhatnak Kínában.</description>
-			<pubDate>Tue, 30 Apr 2024 13:30:00 +0200</pubDate>
-			<category>Tablet</category>
-			<category>Tartozékok</category>
-			<category>Üzleti negyed</category>
-			<guid isPermaLink="true">https://mobilarena.hu/hir/majus_7-en_bulit_tart_a_huawei_dubajban.html</guid>
-		</item>
-		<item>
-			<title>Piacvezető tandem OLED panellel érkezik az iPad Pro</title>
-			<link>https://mobilarena.hu/hir/piacvezeto_tandem_oled_panellel_erkezik_az_ipad_pr.html</link>
-			<description>Sokat kellett várni az első OLED képernyős Apple táblagépre, állítólag megérte.</description>
-			<pubDate>Tue, 30 Apr 2024 12:15:00 +0200</pubDate>
-			<category>Tablet</category>
-			<guid isPermaLink="true">https://mobilarena.hu/hir/piacvezeto_tandem_oled_panellel_erkezik_az_ipad_pr.html</guid>
-		</item>
-		<item>
-			<title>Digitális detox a Nokiától</title>
-			<link>https://mobilarena.hu/hir/digitalis_detox_a_nokiatol.html</link>
-			<description>Három új, 4G-s készülék közül lehet választani, ha valaki, elérhetőségre, de digitális disztrakció nélküli időtöltésre vágyik.</description>
-			<pubDate>Tue, 30 Apr 2024 10:10:00 +0200</pubDate>
-			<category>Mobiltelefon</category>
-			<guid isPermaLink="true">https://mobilarena.hu/hir/digitalis_detox_a_nokiatol.html</guid>
 		</item>
 	</channel>
 </rss>

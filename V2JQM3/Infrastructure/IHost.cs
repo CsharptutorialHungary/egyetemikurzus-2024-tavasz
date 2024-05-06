@@ -13,7 +13,7 @@ namespace V2JQM3.Infrastructure
         void Write(string message);
         void Exit();
         public void Help();
-        public Task DownloadRssFile();
+        public void DownloadRssFile();
         public void DisplayLastRssFile();
         public void LoadSavedRssFiles();
         void ClearConsole() { Console.Clear(); }

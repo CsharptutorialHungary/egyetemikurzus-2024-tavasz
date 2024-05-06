@@ -5,10 +5,42 @@
 		<link>https://itcafe.hu</link>
 		<description>IT café - Informatika Pont. Az IT café egy magyar informatikai portál, napi hírekkel, elemzésekkel és az ország legnagyobb szakfórumával.</description>
 		<language>hu</language>
-		<lastBuildDate>Sun, 05 May 2024 20:50:54 +0200</lastBuildDate>
+		<lastBuildDate>Mon, 06 May 2024 18:03:08 +0200</lastBuildDate>
 		<generator>RI/OS R7</generator>
 		<docs>http://www.rssboard.org/rss-specification</docs>
 		<ttl>10</ttl>
+		<item>
+			<title>Szabadulnak a kínai eszközöktől az amerikai szolgáltatók, de ez sokba kerül</title>
+			<link>https://itcafe.hu/hir/usa_kinai_eszkozok_tilalom_tobb_penz_kell.html</link>
+			<description>Az FCC szerint sokkal több kormányzati tőkére van szükség, hogy kirakják a kínai eszközöket az amerikai telekomcégek hálózataiból.</description>
+			<pubDate>Mon, 06 May 2024 14:22:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/usa_kinai_eszkozok_tilalom_tobb_penz_kell.html</guid>
+		</item>
+		<item>
+			<title>Irányíthat-e atomfegyvereket az AI?</title>
+			<link>https://itcafe.hu/hir/ai_iranyithatja_az_atomfegyvereket.html</link>
+			<description>Az USA politikusai sürgetik Kínát és Oroszországot, hogy rögzítsék: csak ember irányíthat atomfegyvereket, AI nem.</description>
+			<pubDate>Mon, 06 May 2024 11:11:00 +0200</pubDate>
+			<category>Biztonság</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/ai_iranyithatja_az_atomfegyvereket.html</guid>
+		</item>
+		<item>
+			<title>5 év alatt 100 milliárd dollárt költött fejlesztésre az Apple, az AI a következő</title>
+			<link>https://itcafe.hu/hir/apple_ai_mi_a_nagy_terv.html</link>
+			<description>Tim Cook újfent megerősítette, hogy nagy AI-tervekkel rendelkezik az Apple. És várhatóan alacsonyabb költségekkel valósítja meg azokat, mint a riválisai.</description>
+			<pubDate>Mon, 06 May 2024 08:30:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/apple_ai_mi_a_nagy_terv.html</guid>
+		</item>
+		<item>
+			<title>Az Insta360 ellen fordítja a hatóságokat a GoPro</title>
+			<link>https://itcafe.hu/hir/gopro_vs_insta360_szabadalom.html</link>
+			<description>Az USA kivizsgálja a GoPro panaszát: a cég szerint egy kínai vállalat sérti a szabadalmaikat, ezért az Insta360 termékek importját is betiltatnák.</description>
+			<pubDate>Mon, 06 May 2024 07:03:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/gopro_vs_insta360_szabadalom.html</guid>
+		</item>
 		<item>
 			<title>Sokat fogyaszt az AI, egyre több az adatközpont, kell az atomenergia</title>
 			<link>https://itcafe.hu/hir/sokat_fogyaszt_az_ai_atomenergia_kell.html</link>
@@ -136,38 +168,6 @@
 			<pubDate>Mon, 29 Apr 2024 10:05:00 +0200</pubDate>
 			<category>Mérleg</category>
 			<guid isPermaLink="true">https://itcafe.hu/hir/papa_g7_romlott_ai_veszelyei.html</guid>
-		</item>
-		<item>
-			<title>Kínai cégek segítik ezentúl a Teslát, a Renault-t, a Hyundait és a Toyotát</title>
-			<link>https://itcafe.hu/hir/musk_kina_tesla_renault_hyundai_toyota.html</link>
-			<description>Elon Musk mindenki meglepetésére Kínába utazott. Meglátogatta őt a CATL vezetője; Musk célja pedig az lehet, hogy elindítsa az FSD-t Kínában a Baidu segítségével. Eközben a Renault-t, a Hyundai-Kiát, a Nissant és a Toyotát is kínai cégek segíthetik ezentúl.</description>
-			<pubDate>Mon, 29 Apr 2024 08:00:00 +0200</pubDate>
-			<category>Tech</category>
-			<guid isPermaLink="true">https://itcafe.hu/hir/musk_kina_tesla_renault_hyundai_toyota.html</guid>
-		</item>
-		<item>
-			<title>1000 kilométert mehetnek az EV-k az új CATL-akkuval</title>
-			<link>https://itcafe.hu/hir/catl_lfp_akku_1000_km_ev_hatotav.html</link>
-			<description>Olyan LFP-akkumulátort mutatott be a kínai CATL, amellyel egy EV már 1000 kilométeres hatótávra is képes.</description>
-			<pubDate>Mon, 29 Apr 2024 07:00:00 +0200</pubDate>
-			<category>Tech</category>
-			<guid isPermaLink="true">https://itcafe.hu/hir/catl_lfp_akku_1000_km_ev_hatotav.html</guid>
-		</item>
-		<item>
-			<title>Robotkart irányított a majom a kínai Neuralink agyi chipjével</title>
-			<link>https://itcafe.hu/hir/kinai_neuralink_robotkar_majom_agyi_chip.html</link>
-			<description>A mindezt lehetővé tévő Neucybert a Neuralink kínai riválisa, a Beijing Xinzhida Neurotechnology fejlesztette ki.</description>
-			<pubDate>Fri, 26 Apr 2024 13:01:00 +0200</pubDate>
-			<category>Tech</category>
-			<guid isPermaLink="true">https://itcafe.hu/hir/kinai_neuralink_robotkar_majom_agyi_chip.html</guid>
-		</item>
-		<item>
-			<title>Rossz üzlet az EV-kölcsönzés</title>
-			<link>https://itcafe.hu/hir/rossz_uzlet_az_ev_kolcsonzes.html</link>
-			<description>Küszködik az EV-kölcsönzés miatt a Hertz Global, még több EV-t adnak el.</description>
-			<pubDate>Fri, 26 Apr 2024 10:34:00 +0200</pubDate>
-			<category>Mérleg</category>
-			<guid isPermaLink="true">https://itcafe.hu/hir/rossz_uzlet_az_ev_kolcsonzes.html</guid>
 		</item>
 	</channel>
 </rss>
