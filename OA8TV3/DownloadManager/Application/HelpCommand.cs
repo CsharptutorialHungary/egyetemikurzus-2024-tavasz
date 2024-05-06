@@ -36,11 +36,11 @@ namespace DownloadManager.Application
                                 {
                                     host.WriteLine($"{command.Name} - {command.Description}");
                                     host.WriteLine(command.ValidModes.Length == 0
-                                        ? "Valid modes: all"
-                                        : $"Valid modes: {string.Join(", ", command.ValidModes)}");
+                                        ? "Az alábbi módokban használható: mind"
+                                        : $"Az alábbi módokban használható: {string.Join(", ", command.ValidModes)}");
                                     host.WriteLine(command.ValidArguments.Length == 0
-                                        ? "This command does not take any arguments"
-                                        : $"Valid arguments: {string.Join(", ", command.ValidArguments)}");
+                                        ? "Ennek a parancsnak nincsenek argumentumai"
+                                        : $"Az alábbi argumentumok használhatók: {string.Join(", ", command.ValidArguments)}");
                                     break;
                                 }
                             }

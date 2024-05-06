@@ -95,6 +95,11 @@ namespace DownloadManager.Application
             Task.Run(() => _serializer.SerializeToJson(_rules.ToArray()));
         }
 
+        public int SortFiles()
+        {
+            return 0;
+        }
+
         public IEnumerable<string> SearchLogs()
         {
             return _logger.GetLog();
