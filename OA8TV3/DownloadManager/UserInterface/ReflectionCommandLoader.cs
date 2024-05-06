@@ -27,6 +27,7 @@ namespace DownloadManager.UserInterface
         public ICommand[] GetCommandsByMode(Mode mode)
         {
             var filteredCommands = Commands
+                .OrderBy(command => command.Description.Length)
                 .Select(command => command)
                 .Where(command => command.ValidModes.Length == 0 || command.ValidModes.Contains(mode));
             return filteredCommands.ToArray();

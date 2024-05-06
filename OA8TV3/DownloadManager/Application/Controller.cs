@@ -8,7 +8,7 @@ namespace DownloadManager.Application
         private readonly FileSystemManager _systemManager;
         private readonly RuleSerializer _serializer;
         private readonly Logger _logger;
-        private HashSet<AbstractRule> _rules { get; }
+        private readonly HashSet<AbstractRule> _rules;
         public Mode CurrentMode { get; set; }
 
         public Controller(FileSystemManager systemManager, RuleSerializer serializer, Logger logger)

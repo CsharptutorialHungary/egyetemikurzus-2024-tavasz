@@ -7,10 +7,8 @@ namespace DownloadManager.Application
     {
         public string Name => "add";
 
-        public string Description => """
-                                     Új szabályt hoz létre a megadott típussal
-                                     Használat: add [szabály_típus] [feltétel] [célmappa]
-                                     """;
+        public string Description =>
+            "Új szabályt hoz létre a megadott típussal\n\tHasználat: add [szabály_típus] [feltétel] [célmappa]";
 
         public Mode[] ValidModes => [Mode.Rules];
         public string[] ValidArguments => ["ext", "extension", "min", "max", "pattern"];
@@ -27,7 +25,7 @@ namespace DownloadManager.Application
                         {
                             FolderName = controller.GetFolderName(args[2]), FolderPath = args[2]
                         };
-                        AbstractRule? rule;
+                        AbstractRule rule;
                         switch (args[0])
                         {
                             case "ext":

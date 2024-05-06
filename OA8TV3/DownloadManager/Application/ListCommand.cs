@@ -5,7 +5,10 @@ namespace DownloadManager.Application
     internal class ListCommand : ICommand
     {
         public string Name => "list";
-        public string Description => "Szabályokat vagy log-okat listáz";
+
+        public string Description =>
+            "Szabályokat vagy log-okat listáz\n\tHasználat: list (filter | search) [keresett_szöveg]";
+
         public Mode[] ValidModes => [Mode.Logs, Mode.Rules];
         public string[] ValidArguments => ["filter", "search"];
 
