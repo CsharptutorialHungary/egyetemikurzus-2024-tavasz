@@ -29,9 +29,14 @@ namespace DownloadManager.Application
             return new FileInfo(path).Length;
         }
 
-        public string GetName(string path)
+        public string GetFileName(string path)
         {
             return Path.GetFileNameWithoutExtension(path);
+        }
+
+        public string GetFolderName(string path)
+        {
+            return new DirectoryInfo(path).Name;
         }
 
         public bool CheckPath(string path)

@@ -49,7 +49,36 @@ namespace DownloadManager.Application
                     }
                 case Mode.Rules:
                     {
-                        host.WriteLine("mmm");
+                        switch (args.Length)
+                        {
+                            case 0:
+                                {
+                                    foreach (string rule in controller.SearchRules())
+                                    {
+                                        host.WriteLine(rule);
+                                    }
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    if (ValidArguments.Contains(args[0]))
+                                    {
+                                        foreach (string rule in controller.SearchRules(args[1]))
+                                        {
+                                            host.WriteLine(rule);
+                                        }
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidOperationException("Ismeretlen argumentum");
+                                    }
+                                }
+                            default:
+                                {
+                                    throw new InvalidOperationException("Az argumentumok száma nem megfelelő");
+                                }
+                        }
                         break;
                     }
                 default:

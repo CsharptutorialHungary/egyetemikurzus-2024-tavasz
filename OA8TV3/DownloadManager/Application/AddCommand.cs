@@ -6,10 +6,12 @@ namespace DownloadManager.Application
     internal class AddCommand : ICommand
     {
         public string Name => "add";
+
         public string Description => """
                                      Új szabályt hoz létre a megadott típussal
                                      Használat: add [szabály_típus] [feltétel] [célmappa]
                                      """;
+
         public Mode[] ValidModes => [Mode.Rules];
         public string[] ValidArguments => ["ext", "extension", "min", "max", "pattern"];
 
@@ -21,18 +23,17 @@ namespace DownloadManager.Application
                 {
                     if (controller.ValidPath(args[2]))
                     {
-                        var destinationFolder = new DestinationFolder { FolderName = "folder", FolderPath = args[2] };
+                        var destinationFolder = new DestinationFolder
+                        {
+                            FolderName = controller.GetFolderName(args[2]), FolderPath = args[2]
+                        };
                         AbstractRule? rule;
                         switch (args[0])
                         {
                             case "ext":
                             case "extension":
                                 {
-                                    rule = new ExtensionRule
-                                    {
-                                        Destination = destinationFolder,
-                                        Extension = args[1]
-                                    };
+                                    rule = new ExtensionRule { Destination = destinationFolder, Extension = args[1] };
                                     break;
                                 }
                             case "min":
