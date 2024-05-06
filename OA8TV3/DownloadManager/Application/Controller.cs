@@ -85,6 +85,11 @@ namespace DownloadManager.Application
             });
         }
 
+        public bool DeleteRule(AbstractRule rule)
+        {
+            return _rules.Remove(rule);
+        }
+
         public void SaveRules()
         {
             Task.Run(() => _serializer.SerializeToJson(_rules.ToArray()));
