@@ -1,3 +1,4 @@
+using DownloadManager.Domain;
 using DownloadManager.Infrastructure;
 
 namespace DownloadManager.Application
@@ -7,6 +8,7 @@ namespace DownloadManager.Application
         private readonly FileSystemManager _systemManager;
         private readonly RuleSerializer _serializer;
         private readonly Logger _logger;
+        public HashSet<AbstractRule> Rules { get; }
         public Mode CurrentMode { get; set; }
 
         public Controller(FileSystemManager systemManager, RuleSerializer serializer, Logger logger)
@@ -14,7 +16,18 @@ namespace DownloadManager.Application
             _systemManager = systemManager;
             _serializer = serializer;
             _logger = logger;
+            Rules = new HashSet<AbstractRule>(_serializer.DeserializeFromJson().Result);
             CurrentMode = Mode.Home;
+        }
+
+        public bool ValidPath(string path)
+        {
+            return _systemManager.CheckPath(path);
+        }
+
+        public bool AddRule(AbstractRule rule)
+        {
+            return Rules.Add(rule);
         }
 
         public IEnumerable<string> SearchLogs()
