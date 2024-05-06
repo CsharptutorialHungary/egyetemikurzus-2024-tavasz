@@ -22,7 +22,7 @@ namespace DownloadManager.Application
                         host.WriteLine("Jelenleg elérhető parancsok listája:");
                         foreach (ICommand command in validCommands)
                         {
-                            host.WriteLine($"{command.Name} - {command.Description}");
+                            host.WriteLine($"{command.Name} -\t{command.Description}");
                         }
                         break;
                     }
@@ -34,13 +34,13 @@ namespace DownloadManager.Application
                             {
                                 if (command.Name.Equals(args[0]))
                                 {
-                                    host.WriteLine($"{command.Name} - {command.Description}");
+                                    host.WriteLine($"{command.Name} -\t{command.Description}");
                                     host.WriteLine(command.ValidModes.Length == 0
-                                        ? "Az alábbi módokban használható: mind"
-                                        : $"Az alábbi módokban használható: {string.Join(", ", command.ValidModes)}");
+                                        ? "\tAz alábbi módokban használható: mind"
+                                        : $"\tAz alábbi módokban használható: {string.Join(", ", command.ValidModes)}");
                                     host.WriteLine(command.ValidArguments.Length == 0
-                                        ? "Ennek a parancsnak nincsenek argumentumai"
-                                        : $"Az alábbi argumentumok használhatók: {string.Join(", ", command.ValidArguments)}");
+                                        ? "\tEnnek a parancsnak nincsenek argumentumai"
+                                        : $"\tAz alábbi argumentumok használhatók: {string.Join(", ", command.ValidArguments)}");
                                     break;
                                 }
                             }

@@ -20,6 +20,7 @@ namespace DownloadManager.UserInterface
 
         public void Run()
         {
+            _host.WriteLine("Üdv a letöltések mappa kezelő alkalmazásban. Segítségért írd be, hogy 'help'!");
             while (true)
             {
                 _host.Write($"{_controller.CurrentMode.ToString()}: ");

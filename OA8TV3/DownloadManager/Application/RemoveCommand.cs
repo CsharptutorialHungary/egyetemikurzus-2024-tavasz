@@ -5,7 +5,7 @@ namespace DownloadManager.Application
 {
     internal class RemoveCommand : ICommand
     {
-        public string Name => "remove";
+        public string Name => "rm";
         public string Description => "Meglévő szabályt töröl\n\tHasználat: remove [szabály_típus] [feltétel]";
         public Mode[] ValidModes => [Mode.Rules];
         public string[] ValidArguments => ["ext", "extension", "min", "max", "pattern"];
