@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TruthOrDare", "FJKXGG\TruthOrDare\TruthOrDare.csproj", "{BE8A9DF7-78B6-4029-AC78-6CC3F7351059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TruthOrDare_FJKXGG_BarnaGergely", "FJKXGG\TruthOrDare\TruthOrDare_FJKXGG_BarnaGergely.csproj", "{BE8A9DF7-78B6-4029-AC78-6CC3F7351059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,5 +17,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DF84BEB-56C9-4DCA-B478-2E68793AA8C1}
 	EndGlobalSection
 EndGlobal
