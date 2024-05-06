@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
+	<channel>
+		<title>Hírek és cikkek - IT café</title>
+		<link>https://itcafe.hu</link>
+		<description>IT café - Informatika Pont. Az IT café egy magyar informatikai portál, napi hírekkel, elemzésekkel és az ország legnagyobb szakfórumával.</description>
+		<language>hu</language>
+		<lastBuildDate>Mon, 06 May 2024 18:03:08 +0200</lastBuildDate>
+		<generator>RI/OS R7</generator>
+		<docs>http://www.rssboard.org/rss-specification</docs>
+		<ttl>10</ttl>
+		<item>
+			<title>Szabadulnak a kínai eszközöktől az amerikai szolgáltatók, de ez sokba kerül</title>
+			<link>https://itcafe.hu/hir/usa_kinai_eszkozok_tilalom_tobb_penz_kell.html</link>
+			<description>Az FCC szerint sokkal több kormányzati tőkére van szükség, hogy kirakják a kínai eszközöket az amerikai telekomcégek hálózataiból.</description>
+			<pubDate>Mon, 06 May 2024 14:22:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/usa_kinai_eszkozok_tilalom_tobb_penz_kell.html</guid>
+		</item>
+		<item>
+			<title>Irányíthat-e atomfegyvereket az AI?</title>
+			<link>https://itcafe.hu/hir/ai_iranyithatja_az_atomfegyvereket.html</link>
+			<description>Az USA politikusai sürgetik Kínát és Oroszországot, hogy rögzítsék: csak ember irányíthat atomfegyvereket, AI nem.</description>
+			<pubDate>Mon, 06 May 2024 11:11:00 +0200</pubDate>
+			<category>Biztonság</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/ai_iranyithatja_az_atomfegyvereket.html</guid>
+		</item>
+		<item>
+			<title>5 év alatt 100 milliárd dollárt költött fejlesztésre az Apple, az AI a következő</title>
+			<link>https://itcafe.hu/hir/apple_ai_mi_a_nagy_terv.html</link>
+			<description>Tim Cook újfent megerősítette, hogy nagy AI-tervekkel rendelkezik az Apple. És várhatóan alacsonyabb költségekkel valósítja meg azokat, mint a riválisai.</description>
+			<pubDate>Mon, 06 May 2024 08:30:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/apple_ai_mi_a_nagy_terv.html</guid>
+		</item>
+		<item>
+			<title>Az Insta360 ellen fordítja a hatóságokat a GoPro</title>
+			<link>https://itcafe.hu/hir/gopro_vs_insta360_szabadalom.html</link>
+			<description>Az USA kivizsgálja a GoPro panaszát: a cég szerint egy kínai vállalat sérti a szabadalmaikat, ezért az Insta360 termékek importját is betiltatnák.</description>
+			<pubDate>Mon, 06 May 2024 07:03:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/gopro_vs_insta360_szabadalom.html</guid>
+		</item>
+		<item>
+			<title>Sokat fogyaszt az AI, egyre több az adatközpont, kell az atomenergia</title>
+			<link>https://itcafe.hu/hir/sokat_fogyaszt_az_ai_atomenergia_kell.html</link>
+			<description>Az AI-t kiszolgáló adatközpontok olyan nagy energiaigénnyel bírnak, hogy egyre több atomenergiára van szükség.</description>
+			<pubDate>Fri, 03 May 2024 13:25:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/sokat_fogyaszt_az_ai_atomenergia_kell.html</guid>
+		</item>
+		<item>
+			<title>Letartóztatták a bitcoin-Jézust</title>
+			<link>https://itcafe.hu/hir/letartozattak_a_bitcoin_jezust.html</link>
+			<description>Amerikai adókerülés vádjával, Spanyolországban tartóztatták le a bitcoin-Jézusként ismert Roger Vert.</description>
+			<pubDate>Fri, 03 May 2024 12:03:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/letartozattak_a_bitcoin_jezust.html</guid>
+		</item>
+		<item>
+			<title>A franciáknak elege van abból, hogy minden gyerek mobilozik</title>
+			<link>https://itcafe.hu/hir/minden_gyerek_mobilozik_eleguk_van.html</link>
+			<description>Vissza akarják szorítani a gyerekek és tinédzserek közösségi média- és okostelefon-használatát.</description>
+			<pubDate>Fri, 03 May 2024 10:01:00 +0200</pubDate>
+			<category>Közösségi média</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/minden_gyerek_mobilozik_eleguk_van.html</guid>
+		</item>
+		<item>
+			<title>Az iPadOS-re írt appokra is díjat vet ki az Apple</title>
+			<link>https://itcafe.hu/hir/apple_dij_ipados_appok_eu.html</link>
+			<description>A DMA értelmében az iPadOS-t is kapuőrnek mondta ki az Európai Bizottság, így erre is technológiai alapdíjat vet ki az Apple.</description>
+			<pubDate>Fri, 03 May 2024 08:30:00 +0200</pubDate>
+			<category>Szoftver</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/apple_dij_ipados_appok_eu.html</guid>
+		</item>
+		<item>
+			<title>Célkeresztben az OnlyFans, amiért pornót nézhetnek a gyerekek</title>
+			<link>https://itcafe.hu/hir/britek_onlyfans_porno_gyerekek.html</link>
+			<description>Az életkorhitelesítési intézkedések miatt kezdenek vizsgálatot a britek az OnlyFans ellen.</description>
+			<pubDate>Fri, 03 May 2024 07:01:00 +0200</pubDate>
+			<category>Közösségi média</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/britek_onlyfans_porno_gyerekek.html</guid>
+		</item>
+		<item>
+			<title>Kapnak egy rakás reklámot a Roblox játékosai</title>
+			<link>https://itcafe.hu/hir/roblox_jon_a_sok_reklam.html</link>
+			<description>Videohirdetésekre készülhetnek ezentúl a virtuális világokban a Roblox játékosai.</description>
+			<pubDate>Thu, 02 May 2024 14:18:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/roblox_jon_a_sok_reklam.html</guid>
+		</item>
+		<item>
+			<title>Az üzleti chatbot lehet az új fejőstehén</title>
+			<link>https://itcafe.hu/hir/uzleti_chatbot_ai_anthropic_fejostehen.html</link>
+			<description>Üzleti chatbotot indított az Anthropic, azt reméli, hogy sok pénz folyik majd be a cégektől.</description>
+			<pubDate>Thu, 02 May 2024 12:06:00 +0200</pubDate>
+			<category>Tech</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/uzleti_chatbot_ai_anthropic_fejostehen.html</guid>
+		</item>
+		<item>
+			<title>A legtöbb amerikai szerint a TikTok egy őket befolyásoló eszköz</title>
+			<link>https://itcafe.hu/hir/amerikaiak_szerint_erre_valo_a_tiktok.html</link>
+			<description>Egy felmérés szerint a legtöbb amerikai osztja azon véleményt, hogy a TikTok egy őket befolyásoló eszköz.</description>
+			<pubDate>Thu, 02 May 2024 10:04:00 +0200</pubDate>
+			<category>Közösségi média</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/amerikaiak_szerint_erre_valo_a_tiktok.html</guid>
+		</item>
+		<item>
+			<title>Mindenki AI-t akar, már 2025-re is eladták a HBM chipeket</title>
+			<link>https://itcafe.hu/hir/ai_orulet_sk_hynix_hbm_chipek_eladva.html</link>
+			<description>Az SK Hynix jelezte: akkora a terjeszkedés az AI-szolgáltatások piacán, hogy 2024-re az összes, 2025-re közel az összes HBM chipet eladták.</description>
+			<pubDate>Thu, 02 May 2024 08:00:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/ai_orulet_sk_hynix_hbm_chipek_eladva.html</guid>
+		</item>
+		<item>
+			<title>Súlyos adatvédelmi botrányba kerülhet a ChatGPT az EU-ban</title>
+			<link>https://itcafe.hu/hir/chatgpt_eu_hallucinalas_adatvedelem.html</link>
+			<description>Egyre nagyobb probléma az AI hallucinálása – most az osztrák adatvédelmi hatóság veheti elő a ChatGPT miatt az OpenAI-t, alapvetően a GDPR megsértése miatt.</description>
+			<pubDate>Tue, 30 Apr 2024 13:18:00 +0200</pubDate>
+			<category>Biztonság</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/chatgpt_eu_hallucinalas_adatvedelem.html</guid>
+		</item>
+		<item>
+			<title>Agyi chipes gyártóba fektetett a kriptocég</title>
+			<link>https://itcafe.hu/hir/kripoceg_agyi_chip.html</link>
+			<description>A Tether 200 millió dollárt fektet a Blackrock Neurotech agyi chipes vállalatba.</description>
+			<pubDate>Tue, 30 Apr 2024 10:11:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/kripoceg_agyi_chip.html</guid>
+		</item>
+		<item>
+			<title>Az Apple iPadOS-t is megrendszabályozza az EU</title>
+			<link>https://itcafe.hu/hir/eu_apple_ipados_szabalyozas.html</link>
+			<description>Az EB közölte: az Apple iPad táblagépekre írt iPadOS rendszere is kapuőrnek számít, az üzleti felhasználókra gyakorolt fontossága miatt.</description>
+			<pubDate>Tue, 30 Apr 2024 08:32:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/eu_apple_ipados_szabalyozas.html</guid>
+		</item>
+		<item>
+			<title>Augusztustól nagyot változik a Shein élete</title>
+			<link>https://itcafe.hu/hir/shein_elete_nagyot_valtozik_augusztustol.html</link>
+			<description>Onnantól kezdve lesz a platformra érvényes az EU-ban a DSA, így számos kötelezettséget vesz a vállára a Shein.</description>
+			<pubDate>Tue, 30 Apr 2024 07:00:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/shein_elete_nagyot_valtozik_augusztustol.html</guid>
+		</item>
+		<item>
+			<title>Az USA nem akarja visszafogni Kína növekedését</title>
+			<link>https://itcafe.hu/hir/usa_nem_akarja_visszafogni_kina_fejlodeset.html</link>
+			<description>Antony Blinken külügyminiszter szerint az USA a chipkorlátozásai ellenére nem akarja visszafogni Kína növekedését és fejlődését.</description>
+			<pubDate>Mon, 29 Apr 2024 14:10:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/usa_nem_akarja_visszafogni_kina_fejlodeset.html</guid>
+		</item>
+		<item>
+			<title>Ki hozhat AI-funkciókat az iPhone-ra?</title>
+			<link>https://itcafe.hu/hir/apple_iphone_ai_openai_funkciok.html</link>
+			<description>Újra egyeztet az Apple és az OpenAI az iPhone-okba szánt generatív AI-funkciók kapcsán.</description>
+			<pubDate>Mon, 29 Apr 2024 12:02:00 +0200</pubDate>
+			<category>Tech</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/apple_iphone_ai_openai_funkciok.html</guid>
+		</item>
+		<item>
+			<title>A pápa egyre jobban tart a romlott AI veszélyeitől</title>
+			<link>https://itcafe.hu/hir/papa_g7_romlott_ai_veszelyei.html</link>
+			<description>Az idei G7-csúcson is ott lesz a pápa, hogy megvitassa az AI veszélyeit, kihívásait. Az USA is lépett utóbbi kapcsán.</description>
+			<pubDate>Mon, 29 Apr 2024 10:05:00 +0200</pubDate>
+			<category>Mérleg</category>
+			<guid isPermaLink="true">https://itcafe.hu/hir/papa_g7_romlott_ai_veszelyei.html</guid>
+		</item>
+	</channel>
+</rss>

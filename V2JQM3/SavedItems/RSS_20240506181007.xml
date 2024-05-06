@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
+	<channel>
+		<title>Hírek és cikkek - GAMEPOD.hu</title>
+		<link>https://gamepod.hu</link>
+		<description>GAMEPOD.hu - A közösségi játékportál - a gamepod.hu oldalain naponta frissülő játékleírások, végigjátszások, hatalmas fórum és közösen szerkesztett tartalom vár.</description>
+		<language>hu</language>
+		<lastBuildDate>Mon, 06 May 2024 18:05:12 +0200</lastBuildDate>
+		<generator>RI/OS R7</generator>
+		<docs>http://www.rssboard.org/rss-specification</docs>
+		<ttl>10</ttl>
+		<item>
+			<title>Visions of Mana - Esélyes, hogy elkaszálták a PS4 verziót</title>
+			<link>https://gamepod.hu/hir/visions_of_mana_eselyes_hogy_elkaszaltak_a_ps4_ver.html</link>
+			<description>Egyelőre hivatalos bejelentés még nem érkezett, mindössze egy apró szóbeszédnek lehetünk tanúi.</description>
+			<pubDate>Mon, 06 May 2024 14:30:00 +0200</pubDate>
+			<category>PS4</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/visions_of_mana_eselyes_hogy_elkaszaltak_a_ps4_ver.html</guid>
+		</item>
+		<item>
+			<title>Véget is ért egyelőre a Helldivers II körül balhé</title>
+			<link>https://gamepod.hu/hir/egyre_nagyobb_a_balhe_a_helldivers_ii_korul.html</link>
+			<description>Úgy tűnik, hogy egyre több sötét felhő kezd gyűlni a játék körül a Sony döntése miatt.</description>
+			<pubDate>Mon, 06 May 2024 13:41:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/egyre_nagyobb_a_balhe_a_helldivers_ii_korul.html</guid>
+		</item>
+		<item>
+			<title>Végre Steamre tart a Sins of a Solar Empire II</title>
+			<link>https://gamepod.hu/hir/vegre_steamre_tart_a_sins_of_a_solar_empire_ii.html</link>
+			<description>A nyár folyamán véget ér az Epic Games Store exkluzivitása és a Valve rendszerében is megjelenik a teljes kiadás.</description>
+			<pubDate>Mon, 06 May 2024 13:30:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/vegre_steamre_tart_a_sins_of_a_solar_empire_ii.html</guid>
+		</item>
+		<item>
+			<title>Realm of Ink - Megjelenési dátumot kapott a korai kiadás</title>
+			<link>https://gamepod.hu/hir/realm_of_ink_megjelenesi_datumot_kapott_a_korai_ki.html</link>
+			<description>A jövő hétvégén érkező alkotás elsőként kizárólag PC-n lesz játszható.</description>
+			<pubDate>Mon, 06 May 2024 12:30:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/realm_of_ink_megjelenesi_datumot_kapott_a_korai_ki.html</guid>
+		</item>
+		<item>
+			<title>Gray Zone Warfare - Máris túl a félmillión</title>
+			<link>https://gamepod.hu/hir/gray_zone_warfare_maris_tul_a_felmillion.html</link>
+			<description>Alig pár nappal a korai kiadás premierjét követően a játék átlépett egy komoly mérföldkövet.</description>
+			<pubDate>Mon, 06 May 2024 11:00:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/gray_zone_warfare_maris_tul_a_felmillion.html</guid>
+		</item>
+		<item>
+			<title>Mortal Kombat 1 - Rövid videón Homelander</title>
+			<link>https://gamepod.hu/hir/mortal_kombat_1_rovid_videon_homelander.html</link>
+			<description>Hamarosan a The Boys karaktere is csatlakozik a sorozathoz.</description>
+			<pubDate>Mon, 06 May 2024 10:00:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/mortal_kombat_1_rovid_videon_homelander.html</guid>
+		</item>
+		<item>
+			<title>2024 - Íme a 19. héten megjelenő játékok listája</title>
+			<link>https://gamepod.hu/hir/2024_ime_a_19_heten_megjeleno_jatekok_listaja.html</link>
+			<description>Az elkövetkező napokban érkezik a V Rising és befut a King Arthur: Legion IX is.</description>
+			<pubDate>Mon, 06 May 2024 09:00:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/2024_ime_a_19_heten_megjeleno_jatekok_listaja.html</guid>
+		</item>
+		<item>
+			<title>Újabb részleteket kaptunk a Terminator: Survivors című játékról</title>
+			<link>https://gamepod.hu/hir/ujabb_reszleteket_kaptunk_a_terminator_survivors_c.html</link>
+			<description>A játékot egyedül, vagy társakkal együtt is játszhatjuk majd elsőként PC-n, később majd konzolokon.</description>
+			<pubDate>Sun, 05 May 2024 12:30:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/ujabb_reszleteket_kaptunk_a_terminator_survivors_c.html</guid>
+		</item>
+		<item>
+			<title>Mozgásban a Tails of Iron 2 - Whiskers of Winter</title>
+			<link>https://gamepod.hu/hir/mozgasban_a_tails_of_iron_2_whiskers_of_winter.html</link>
+			<description>A folytatásban északról érkezik a fenyegetés egy fosztogató denevérsereg képében.</description>
+			<pubDate>Sun, 05 May 2024 11:30:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/mozgasban_a_tails_of_iron_2_whiskers_of_winter.html</guid>
+		</item>
+		<item>
+			<title>Hamarosan indul a SERUM korai hozzáférése PC-n</title>
+			<link>https://gamepod.hu/hir/hamarosan_indul_a_serum_korai_hozzaferese_pc-n.html</link>
+			<description>A belső nézetes túlélőjáték premierje május végétől lesz elérhető.</description>
+			<pubDate>Sat, 04 May 2024 12:30:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/hamarosan_indul_a_serum_korai_hozzaferese_pc-n.html</guid>
+		</item>
+		<item>
+			<title>Senua&#039;s Saga: Hellblade II - Íme a végleges gépigény</title>
+			<link>https://gamepod.hu/hir/senua_s_saga_hellblade_ii_ime_a_vegleges_gepigeny.html</link>
+			<description>A folytatás megjelenéséig kicsivel több mint két hetet kell már csak várnunk.</description>
+			<pubDate>Sat, 04 May 2024 11:30:00 +0200</pubDate>
+			<category>PC</category>
+			<category>Xbox Series X</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/senua_s_saga_hellblade_ii_ime_a_vegleges_gepigeny.html</guid>
+		</item>
+		<item>
+			<title>Ilyen lesz a SteamWorld Heist II</title>
+			<link>https://gamepod.hu/hir/ilyen_lesz_a_steamworld_heist_ii.html</link>
+			<description>A folytatás a tervek szerint a nyár folyamán, pontosabban augusztus elején érkezik.</description>
+			<pubDate>Sat, 04 May 2024 10:30:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/ilyen_lesz_a_steamworld_heist_ii.html</guid>
+		</item>
+		<item>
+			<title>Mozgásban az F1 24</title>
+			<link>https://gamepod.hu/hir/mozgasban_az_f1_24.html</link>
+			<description>A Forma 1 versenyek rajongói hamarosan végre belevethetik magukat az idei epizódba.</description>
+			<pubDate>Fri, 03 May 2024 14:45:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/mozgasban_az_f1_24.html</guid>
+		</item>
+		<item>
+			<title>Free Play Days 2024 - 18. hét: Headbangers: Rythm Royale</title>
+			<link>https://gamepod.hu/hir/free_play_days_2024_18_het_headbangers_rythm_royal.html</link>
+			<description>Extraként a Star Wars Jedi: Survort is kipróbálhatjuk 5 óra erejéig.</description>
+			<pubDate>Fri, 03 May 2024 13:30:00 +0200</pubDate>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/free_play_days_2024_18_het_headbangers_rythm_royal.html</guid>
+		</item>
+		<item>
+			<title>MotoGP 24 - Íme a launch trailer</title>
+			<link>https://gamepod.hu/hir/motogp_24_ime_a_launch_trailer.html</link>
+			<description>A motorverseny rajongói ismét nyeregbe pattanhatnak, hogy izgalmas versenyeken vegyenek részt.</description>
+			<pubDate>Fri, 03 May 2024 12:30:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/motogp_24_ime_a_launch_trailer.html</guid>
+		</item>
+		<item>
+			<title>Rövid videón a The Forever Winter</title>
+			<link>https://gamepod.hu/hir/rovid_videon_a_the_forever_winter.html</link>
+			<description>A taktikai túlélő akció-horrorjáték megjelenési dátuma sajnos még mindig nem ismert.</description>
+			<pubDate>Fri, 03 May 2024 11:00:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/rovid_videon_a_the_forever_winter.html</guid>
+		</item>
+		<item>
+			<title>Végre megjelenési dátumot kapott az xDefiant</title>
+			<link>https://gamepod.hu/hir/vegre_megjelenesi_datumot_kapott_az_xdefiant.html</link>
+			<description>Az érdeklődők már május második felében belevethetik magukat a harcokba.</description>
+			<pubDate>Fri, 03 May 2024 10:00:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/vegre_megjelenesi_datumot_kapott_az_xdefiant.html</guid>
+		</item>
+		<item>
+			<title>Ingyenes az Epic Store-ban a Cat Quest II és az Orcs Must Die! 3</title>
+			<link>https://gamepod.hu/hir/ingyenes_az_epic_store-ban_a_cat_quest_ii_es_az_or.html</link>
+			<description>A jövő hét folyamán a Circus Electrique című alkotást kapják meg az érdeklődők.</description>
+			<pubDate>Fri, 03 May 2024 09:00:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/ingyenes_az_epic_store-ban_a_cat_quest_ii_es_az_or.html</guid>
+		</item>
+		<item>
+			<title>Nyár végén jön az idei THQ Nordic Digital Showcase</title>
+			<link>https://gamepod.hu/hir/nyar_vegen_jon_az_idei_thq_nordic_digital_showcase.html</link>
+			<description>Az új bejelentések mellett újabb részleteket kapunk a Gothic Remake-ről és a Titan Quest II-ről is.</description>
+			<pubDate>Thu, 02 May 2024 17:00:00 +0200</pubDate>
+			<category>PC</category>
+			<category>PS5</category>
+			<category>PS4</category>
+			<category>Xbox Series X</category>
+			<category>Xbox One</category>
+			<category>Switch</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/nyar_vegen_jon_az_idei_thq_nordic_digital_showcase.html</guid>
+		</item>
+		<item>
+			<title>Premier előzetest kapott a V Rising</title>
+			<link>https://gamepod.hu/hir/premier_elozetest_kapott_a_v_rising.html</link>
+			<description>Napokon belül befut a teljes PC-s kiadás, az év során pedig megkapjuk a PlayStation 5 változatot.</description>
+			<pubDate>Thu, 02 May 2024 15:20:00 +0200</pubDate>
+			<category>PC</category>
+			<guid isPermaLink="true">https://gamepod.hu/hir/premier_elozetest_kapott_a_v_rising.html</guid>
+		</item>
+	</channel>
+</rss>

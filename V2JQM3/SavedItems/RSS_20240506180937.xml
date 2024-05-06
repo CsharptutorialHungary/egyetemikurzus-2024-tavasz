@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
+	<channel>
+		<title>Hírek és cikkek - PROHARDVER!</title>
+		<link>https://prohardver.hu</link>
+		<description>PROHARDVER! - Az Online PC Magazin - hardverek, tesztek, közösség</description>
+		<language>hu</language>
+		<lastBuildDate>Mon, 06 May 2024 18:00:01 +0200</lastBuildDate>
+		<generator>RI/OS R7</generator>
+		<docs>http://www.rssboard.org/rss-specification</docs>
+		<ttl>10</ttl>
+		<item>
+			<title>AMD-s szerverprocesszorokhoz való, készre szerelt vízhűtés a SilverStone-tól</title>
+			<link>https://prohardver.hu/hir/silverstone_xe360-tr5_kompakt_aio_amd_hedt_cpu.html</link>
+			<description>A nyár folyamán debütáló konstrukció blokkja kényelmesen befér 1U magasságú rackekbe is.</description>
+			<pubDate>Mon, 06 May 2024 17:46:00 +0200</pubDate>
+			<category>Hűtés</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/silverstone_xe360-tr5_kompakt_aio_amd_hedt_cpu.html</guid>
+		</item>
+		<item>
+			<title>2026-ban hozhatja saját IGP-jét a Samsung</title>
+			<link>https://prohardver.hu/hir/samsung_2026_hozhatja_sajat_igp.html</link>
+			<description>Persze nagy kérdés, hogy mennyire lesz majd valóban saját tervezésű.</description>
+			<pubDate>Mon, 06 May 2024 16:16:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/samsung_2026_hozhatja_sajat_igp.html</guid>
+		</item>
+		<item>
+			<title>Még idén frissíti a ROG Ally-t az ASUS</title>
+			<link>https://prohardver.hu/hir/meg_iden_frissit_rog_ally_asus.html</link>
+			<description>A 2024-es verzió a Computexen jöhet, de hivatalosan még semmit sem tudni róla.</description>
+			<pubDate>Mon, 06 May 2024 14:56:00 +0200</pubDate>
+			<category>Életmód</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/meg_iden_frissit_rog_ally_asus.html</guid>
+		</item>
+		<item>
+			<title>Gyorsulást hoz az MSI Claw új szoftverfrissítése</title>
+			<link>https://prohardver.hu/hir/gyorsulast_hoz_msi_claw_uj_szoftverfrissites.html</link>
+			<description>Az MSI a későbbi frissítéseket is egyszerűbbé teszi az új BIOS által.</description>
+			<pubDate>Mon, 06 May 2024 13:16:00 +0200</pubDate>
+			<category>Életmód</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/gyorsulast_hoz_msi_claw_uj_szoftverfrissites.html</guid>
+		</item>
+		<item>
+			<title>Ackbar admirálist kínálja egy GeForce-on az NVIDIA</title>
+			<link>https://prohardver.hu/hir/nvidia_geforce_ackbar_admiralis_kinal.html</link>
+			<description>Nem, ez most nem csapda, tényleg meg lehet nyerni a szóban forgó VGA-t.</description>
+			<pubDate>Mon, 06 May 2024 11:46:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/nvidia_geforce_ackbar_admiralis_kinal.html</guid>
+		</item>
+		<item>
+			<title>Jelentős előnyt kínál az egységes memória az OpenFOAM keretrendszerrel</title>
+			<link>https://prohardver.hu/hir/openfoam_jelentos_elony_kinal_egyseges_memoria.html</link>
+			<description>Négyszer gyorsabb is lehet a feldolgozás, ha elkerülhetők az adatmásolások.</description>
+			<pubDate>Mon, 06 May 2024 10:06:00 +0200</pubDate>
+			<category>Egyéb</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/openfoam_jelentos_elony_kinal_egyseges_memoria.html</guid>
+		</item>
+		<item>
+			<title>Szabadon fejlesztheti az OLED tévébe szánt paneljeit a Loewe</title>
+			<link>https://prohardver.hu/hir/loewe-oled-tv-lg-panel.html</link>
+			<description>Az LG Displaytől csak nagyon alap kijelzőket vásárol a vállalat, és azokat módosítja kedvére saját németországi üzemébe.</description>
+			<pubDate>Mon, 06 May 2024 08:26:00 +0200</pubDate>
+			<category>TV &amp; Audió</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/loewe-oled-tv-lg-panel.html</guid>
+		</item>
+		<item>
+			<title>Az Apple megszerezné a klubvilágbajnokság közvetítési jogait</title>
+			<link>https://prohardver.hu/hir/apple_tv_fifa.html</link>
+			<description>A vállalat ezért irgalmatlan pénzt fizetne a FIFA-nak, és ezzel rajzolná át az online streaming platformok háborújában a frontvonalakat.</description>
+			<pubDate>Fri, 03 May 2024 16:53:00 +0200</pubDate>
+			<category>TV &amp; Audió</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/apple_tv_fifa.html</guid>
+		</item>
+		<item>
+			<title>Megbírságolták a Razert a Zephyr maszkok miatt</title>
+			<link>https://prohardver.hu/hir/mebirsagoltak_razert_zephyr_maszkok_miatt.html</link>
+			<description>A cég elég olcsón megússza az ügyfelei félrevezetését, de az üdvözlendő, hogy az Egyesült Államok hatóságai nem siklottak el az ügy felett.</description>
+			<pubDate>Fri, 03 May 2024 15:23:00 +0200</pubDate>
+			<category>Életmód</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/mebirsagoltak_razert_zephyr_maszkok_miatt.html</guid>
+		</item>
+		<item>
+			<title>Alacsony fogyasztású, 128 GB-os szervermemóriát kínál a Micron</title>
+			<link>https://prohardver.hu/hir/micron_alacsony_fogyasztasu_128_gb_rdimm.html</link>
+			<description>Az új RDIMM TSV technológia alkalmazása nélkül éri el a címben említett tárkapacitást.</description>
+			<pubDate>Fri, 03 May 2024 13:53:00 +0200</pubDate>
+			<category>Memória</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/micron_alacsony_fogyasztasu_128_gb_rdimm.html</guid>
+		</item>
+		<item>
+			<title>Navi 31 alapokon nyugvó VGA-óriás, ezúttal XFX köntösben</title>
+			<link>https://prohardver.hu/hir/xfx_radeon_rx_7900_xtx_phoenix_nirvana_videokartya.html</link>
+			<description>Azt egyelőre még nem tudni, hogy a 34,6 cm hosszúra nőtt, PCM hőközlő padokkal ellátott Radeon megtalálja-e az útját az európai régióba.</description>
+			<pubDate>Fri, 03 May 2024 12:03:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/xfx_radeon_rx_7900_xtx_phoenix_nirvana_videokartya.html</guid>
+		</item>
+		<item>
+			<title>Alapértelmezett konfiguráción sok Core CPU-nak lehet stabilitási gondja</title>
+			<link>https://prohardver.hu/hir/sok_core_cpu_nem_stabil_alapertelmezett_konfigurac.html</link>
+			<description>Egy tesztelő több száz processzorral elemezte a helyzetet, és a legdrágább komponensekkel nagyon siralmas a helyzet.</description>
+			<pubDate>Fri, 03 May 2024 10:33:00 +0200</pubDate>
+			<category>Processzor</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/sok_core_cpu_nem_stabil_alapertelmezett_konfigurac.html</guid>
+		</item>
+		<item>
+			<title>Kiadta a CopprLink specifikációját a PCI-SIG</title>
+			<link>https://prohardver.hu/hir/pci-sig_kiadta_copprlink_specifikacio.html</link>
+			<description>A PCI Express 5.0-s és 6.0-s szabványhoz készülő belső és külső összeköttetés az adatközpontokban találhat otthonra.</description>
+			<pubDate>Fri, 03 May 2024 09:13:00 +0200</pubDate>
+			<category>Egyéb</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/pci-sig_kiadta_copprlink_specifikacio.html</guid>
+		</item>
+		<item>
+			<title>Az NVIDIA szerint a partnereik prémium AI PC-ket kínálnak</title>
+			<link>https://prohardver.hu/hir/nvidia_szerint_premium_ai_pc_kinal.html</link>
+			<description>Megkezdődött az NPU-k elleni hadjárat, de egy fontos részletet nem említ a cég.</description>
+			<pubDate>Thu, 02 May 2024 16:42:00 +0200</pubDate>
+			<category>Videokártya</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/nvidia_szerint_premium_ai_pc_kinal.html</guid>
+		</item>
+		<item>
+			<title>Két Zen 5-ös dizájnjának mintáit is szállítja már az AMD</title>
+			<link>https://prohardver.hu/hir/ket_zen_5_dizajn_minta_szallit_amd.html</link>
+			<description>A szerverpiacra szánt Turin platform, illetve a mobil szintre nevező Strix Point érhető el a főbb partnerek számára.</description>
+			<pubDate>Thu, 02 May 2024 15:12:00 +0200</pubDate>
+			<category>Processzor</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/ket_zen_5_dizajn_minta_szallit_amd.html</guid>
+		</item>
+		<item>
+			<title>A Colorful &quot;fagyosan kompakt&quot; alkatrészekkel megy elébe a nyárnak</title>
+			<link>https://prohardver.hu/hir/colorful_igame_fn67_sf750g_c24_frozen_mini.html</link>
+			<description>A vállalat többek között egy slim profilos léghűtővel, egy helytakarékos táppal és egy ITX-es házzal adott magáról életjelet.</description>
+			<pubDate>Thu, 02 May 2024 13:32:00 +0200</pubDate>
+			<category>Ház/Táp</category>
+			<category>Hűtés</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/colorful_igame_fn67_sf750g_c24_frozen_mini.html</guid>
+		</item>
+		<item>
+			<title>A Keychron ismét egy űr betöltését vállalta magára az egerek szegmensében</title>
+			<link>https://prohardver.hu/hir/keychron_m7_konnyu_huvelykujjtamaszos_wl_eger.html</link>
+			<description>A cég újdonsága azokat célozza, akik egy nagyobb fajta, hüvelykujjtámasszal ellátott, ugyanakkor pehelysúlyú eszközt vásárolnának.</description>
+			<pubDate>Thu, 02 May 2024 11:52:00 +0200</pubDate>
+			<category>Beviteli eszköz</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/keychron_m7_konnyu_huvelykujjtamaszos_wl_eger.html</guid>
+		</item>
+		<item>
+			<title>Az átlagnál vaskosabb ventilátorok kandikáltak ki a Corsair vitorlája mögül</title>
+			<link>https://prohardver.hu/hir/corsair_rs120_max_es_rs140_max_ventilatorok.html</link>
+			<description>Az amerikai cég legfrissebb szériája kétféle méretben választható, és fél évtizedes jótállással kecsegteti leendő gazdáit.</description>
+			<pubDate>Thu, 02 May 2024 10:22:00 +0200</pubDate>
+			<category>Hűtés</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/corsair_rs120_max_es_rs140_max_ventilatorok.html</guid>
+		</item>
+		<item>
+			<title>Csatába küldte Magyarországon idei csúcs hangprojektoros szettjét a Samsung</title>
+			<link>https://prohardver.hu/hir/samsung_hw-q990d_en_soundbar.html</link>
+			<description>A HW-Q990D/EN 11.1.4 csatornás, külön mélynyomóval megtámogatott termék.</description>
+			<pubDate>Thu, 02 May 2024 08:42:00 +0200</pubDate>
+			<category>TV &amp; Audió</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/samsung_hw-q990d_en_soundbar.html</guid>
+		</item>
+		<item>
+			<title>Karácsonyfaként világíthat a Thermaltake új CPU-hűtője</title>
+			<link>https://prohardver.hu/hir/thermaltake_astria_600_argb_cpu-huto.html</link>
+			<description>Az ASTRIA 600 ARGB ráadásul a hűtési teljesítmény szempontjából sem szégyenkezhet.</description>
+			<pubDate>Tue, 30 Apr 2024 16:20:00 +0200</pubDate>
+			<category>Hűtés</category>
+			<guid isPermaLink="true">https://prohardver.hu/hir/thermaltake_astria_600_argb_cpu-huto.html</guid>
+		</item>
+	</channel>
+</rss>

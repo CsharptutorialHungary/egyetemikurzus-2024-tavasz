@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
+	<channel>
+		<title>Hírek és cikkek - Mobilarena</title>
+		<link>https://mobilarena.hu</link>
+		<description>Mobilarena - Telekommunikáció Online - mobilok, tesztek, közösség</description>
+		<language>hu</language>
+		<lastBuildDate>Mon, 06 May 2024 18:01:02 +0200</lastBuildDate>
+		<generator>RI/OS R7</generator>
+		<docs>http://www.rssboard.org/rss-specification</docs>
+		<ttl>10</ttl>
+		<item>
+			<title>Várható a HyperOS a Poco F3-ra is</title>
+			<link>https://mobilarena.hu/hir/varhato_a_hyperos_a_poco_f3-ra_is.html</link>
+			<description>Elkezdtek frissülni a Xiaomi új felületére a Redmi K40-ek, ámde Android 13 alapon megy a dolog.</description>
+			<pubDate>Mon, 06 May 2024 13:52:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/varhato_a_hyperos_a_poco_f3-ra_is.html</guid>
+		</item>
+		<item>
+			<title>Beúszott az új Black Shark GS3 Kínába</title>
+			<link>https://mobilarena.hu/hir/beuszott_az_uj_black_shark_gs3_kinaba.html</link>
+			<description>A Xiaomi márkája robosztus órának kinéző csomagolásban kínál olcsón aktivitáskövetőt.</description>
+			<pubDate>Mon, 06 May 2024 12:20:00 +0200</pubDate>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/beuszott_az_uj_black_shark_gs3_kinaba.html</guid>
+		</item>
+		<item>
+			<title>Új fülesek kísérik a Realme GT Neo 6-ot</title>
+			<link>https://mobilarena.hu/hir/uj_fulesek_kiserik_a_realme_gt_neo_6-ot.html</link>
+			<description>A készülék már előjegyezhető, bár hivatalos premier még nem volt, a Buds Air 6 és Buds Air 6 Pro viszont már bemutatkozott.</description>
+			<pubDate>Mon, 06 May 2024 11:10:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/uj_fulesek_kiserik_a_realme_gt_neo_6-ot.html</guid>
+		</item>
+		<item>
+			<title>Dobhatja a Galaxy S26 az AMD GPU-t</title>
+			<link>https://mobilarena.hu/hir/dobhatja_a_galaxy_s26_az_amd_gpu-t.html</link>
+			<description>Házi GPU-val készül a Samsung, de a jövő évi, 3 nm-es Exynos még nem kapja meg.</description>
+			<pubDate>Mon, 06 May 2024 10:33:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Üzleti negyed</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/dobhatja_a_galaxy_s26_az_amd_gpu-t.html</guid>
+		</item>
+		<item>
+			<title>Az 5G-t is kipipálja a Blackview hőkamerás mobilja</title>
+			<link>https://mobilarena.hu/hir/az_5g-t_is_kipipalja_a_blackview_hokameras_mobilja.html</link>
+			<description>A BL9000 Pro a FLiR díjnyertes Lepton 3.5 technológiáját használja.</description>
+			<pubDate>Mon, 06 May 2024 09:45:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/az_5g-t_is_kipipalja_a_blackview_hokameras_mobilja.html</guid>
+		</item>
+		<item>
+			<title>Mindent megtudtunk az új Nokia 3210-ről</title>
+			<link>https://mobilarena.hu/hir/mindent_tudunk_az_uj_nokia_3210-rol.html</link>
+			<description>Részletes képek, specifikációk és euróban megadott ár is van a legendás modell újraélesztett verziójához.</description>
+			<pubDate>Fri, 03 May 2024 16:10:00 +0200</pubDate>
+			<category>Mobiltelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/mindent_tudunk_az_uj_nokia_3210-rol.html</guid>
+		</item>
+		<item>
+			<title>Képeken az egyik kameráját elvesztő Sony Xperia 10 VI</title>
+			<link>https://mobilarena.hu/hir/kepeken_az_egyik_kamerajat_elveszto_sony_xperia_10.html</link>
+			<description>Részletes anyag került fel az internetre a Sony idei középkategóriás telefonjáról, három helyett két hátlapi kamera várható.</description>
+			<pubDate>Fri, 03 May 2024 14:58:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/kepeken_az_egyik_kamerajat_elveszto_sony_xperia_10.html</guid>
+		</item>
+		<item>
+			<title>iPaden is vége az App Store monopóliumának</title>
+			<link>https://mobilarena.hu/hir/az_ipaden_is_vege_az_app_store_monopoliumanak.html</link>
+			<description>Ősztől lehet alternatív alkalmazásboltból telepíteni az EU tagállamaiban.</description>
+			<pubDate>Fri, 03 May 2024 14:19:00 +0200</pubDate>
+			<category>Tablet</category>
+			<category>Alkalmazások</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/az_ipaden_is_vege_az_app_store_monopoliumanak.html</guid>
+		</item>
+		<item>
+			<title>A Plus modell gyengébb lett</title>
+			<link>https://mobilarena.hu/hir/a_plus_modell_gyengebb_lett.html</link>
+			<description>Újabb tabletet ad ki a HTC Oroszországban, az A101 Plus Edition viszont gyengébb hardvert kapott, mint 2022-es elődje. Hol van a plusz?</description>
+			<pubDate>Fri, 03 May 2024 13:16:00 +0200</pubDate>
+			<category>Tablet</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/a_plus_modell_gyengebb_lett.html</guid>
+		</item>
+		<item>
+			<title>A Play Áruházban is fellelhető a legjobb Samsung segédalkalmazás</title>
+			<link>https://mobilarena.hu/hir/a_play_aruhazban_is_fellelheto_a_legjobb_samsung_s.html</link>
+			<description>A Good Lock megoldás mindenre, de nem minden készülékre.</description>
+			<pubDate>Fri, 03 May 2024 12:48:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/a_play_aruhazban_is_fellelheto_a_legjobb_samsung_s.html</guid>
+		</item>
+		<item>
+			<title>Snapdragon 8-as szériával várhatók a Honor 200-ak?</title>
+			<link>https://mobilarena.hu/hir/snapdragon_8-as_szeriaval_varhatok_a_honor_200-ak.html</link>
+			<description>A Honor 200 állítólag a 8s Gen 3-at, a 200 Pro változat pedig a 8 Gen 3-at használja majd.</description>
+			<pubDate>Thu, 02 May 2024 16:55:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/snapdragon_8-as_szeriaval_varhatok_a_honor_200-ak.html</guid>
+		</item>
+		<item>
+			<title>Egyre közelebb a Poco F6 startja</title>
+			<link>https://mobilarena.hu/hir/egyre_kozelebb_a_poco_f6_startja.html</link>
+			<description>Újabb ár/érték csatát nyerhet a Xiaomi almárka.</description>
+			<pubDate>Thu, 02 May 2024 15:44:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/egyre_kozelebb_a_poco_f6_startja.html</guid>
+		</item>
+		<item>
+			<title>Újabb Samsungok telepíthetik a Galaxy AI-t</title>
+			<link>https://mobilarena.hu/hir/ujabb_samsungok_kaptak_meg_a_galaxy_ai-t.html</link>
+			<description>A Galaxy S22 és S21 család is One UI 6.1-re vált, ám eltérő AI funkciókkal.</description>
+			<pubDate>Thu, 02 May 2024 14:34:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Tablet</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/ujabb_samsungok_kaptak_meg_a_galaxy_ai-t.html</guid>
+		</item>
+		<item>
+			<title>Samsung Univerzum: Az S23-at is megbabonázta a Galaxy AI</title>
+			<link>https://mobilarena.hu/hir/samsung_univerzum_a_galaxy_s23-at_is_megbabonazta.html</link>
+			<description>Rengeteg Samsung megkapja az AI alapú nyelvi, képi és keresőfunkciókat.</description>
+			<pubDate>Thu, 02 May 2024 13:38:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<category>Alkalmazások</category>
+			<category>Samsung Univerzum</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/samsung_univerzum_a_galaxy_s23-at_is_megbabonazta.html</guid>
+		</item>
+		<item>
+			<title>Számháborút nyerne az Ulefone Armor 26 Ultra</title>
+			<link>https://mobilarena.hu/hir/szamhaborut_nyerne_az_ulefone_armor_26_ultra.html</link>
+			<description>5G, IP68/69K, 120 Hz, 120 W, 121 dB, 200 MP, 512 GB, 15 600 mAh és walkie-talkie opció – csak néhány kulcsadat.</description>
+			<pubDate>Thu, 02 May 2024 12:22:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/szamhaborut_nyerne_az_ulefone_armor_26_ultra.html</guid>
+		</item>
+		<item>
+			<title>Ennyibe kerülnek a Huawei Pura modellek Európában</title>
+			<link>https://mobilarena.hu/hir/ennyibe_kerulnek_a_huawei_pura_modellek_europaban.html</link>
+			<description>Megérkezett az újrabrandelt Pura széria, kivéve a Pura 70 Pro+-t, mert az marad Kínában.</description>
+			<pubDate>Thu, 02 May 2024 11:20:00 +0200</pubDate>
+			<category>Okostelefon</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/ennyibe_kerulnek_a_huawei_pura_modellek_europaban.html</guid>
+		</item>
+		<item>
+			<title>Termékoldal buktatta le a Huawei Watch Fit 3-at</title>
+			<link>https://mobilarena.hu/hir/termekoldal_buktatta_le_a_huawei_watch_fit_3-at.html</link>
+			<description>Az új aktivitáskövető rendkívül hasonlít egy Apple Watch-ra, de a funkcionalitás és az ár nyilván nem.</description>
+			<pubDate>Thu, 02 May 2024 10:10:00 +0200</pubDate>
+			<category>Okosóra</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/termekoldal_buktatta_le_a_huawei_watch_fit_3-at.html</guid>
+		</item>
+		<item>
+			<title>Nemzetközi piacra érkezik az Amazfit Helio Ring</title>
+			<link>https://mobilarena.hu/hir/nemzetkozi_piacra_erkezik_az_amazfit_helio_ring.html</link>
+			<description>Elsőként az Egyesült Államokban lehet majd megvásárolni a gyártó első okosgyűrűjét.</description>
+			<pubDate>Thu, 02 May 2024 09:15:00 +0200</pubDate>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/nemzetkozi_piacra_erkezik_az_amazfit_helio_ring.html</guid>
+		</item>
+		<item>
+			<title>Új Beats fej- és fülhallgatók jelentek meg</title>
+			<link>https://mobilarena.hu/hir/megerkezett_a_beats_solo_4_es_a_solo_buds.html</link>
+			<description>Frissítette a Solo termékcsaládot az Apple házi audiomárkája.</description>
+			<pubDate>Tue, 30 Apr 2024 17:45:00 +0200</pubDate>
+			<category>Tartozékok</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/megerkezett_a_beats_solo_4_es_a_solo_buds.html</guid>
+		</item>
+		<item>
+			<title>Samsung Univerzum: Így ismerhető meg a Galaxy AI bármilyen telefonon</title>
+			<link>https://mobilarena.hu/hir/try_galaxy_alkalmazas_probald_ki_a_galaxy_ai-t.html</link>
+			<description>A Try Galaxy webalkalmazás kontrollált környezetben mutatja meg, mit tud a One UI 6.1-es rendszer és a mesterséges intelligencia.</description>
+			<pubDate>Tue, 30 Apr 2024 17:10:00 +0200</pubDate>
+			<category>Alkalmazások</category>
+			<category>Samsung Univerzum</category>
+			<guid isPermaLink="true">https://mobilarena.hu/hir/try_galaxy_alkalmazas_probald_ki_a_galaxy_ai-t.html</guid>
+		</item>
+	</channel>
+</rss>
