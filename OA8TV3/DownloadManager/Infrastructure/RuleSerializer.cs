@@ -33,15 +33,22 @@ namespace DownloadManager.Infrastructure
         public async Task<AbstractRule[]> DeserializeFromJson()
         {
             Debug.Assert(ProjectDir != null, nameof(ProjectDir) + " != null");
-            using (var stream = File.OpenRead(Path.Combine(ProjectDir, "rules.json")))
+            try
             {
-                var rules = await JsonSerializer.DeserializeAsync<AbstractRule[]>(stream, ReadOptions);
-                if (rules is null)
+                await using (var stream = File.OpenRead(Path.Combine(ProjectDir, "rules.json")))
                 {
-                    Trace.WriteLine("Json deszerializáció sikertelen");
-                    return [];
+                    var rules = await JsonSerializer.DeserializeAsync<AbstractRule[]>(stream, ReadOptions);
+                    if (rules is null)
+                    {
+                        Trace.WriteLine("Json deszerializáció sikertelen");
+                        return [];
+                    }
+                    return rules;
                 }
-                return rules;
+            }
+            catch (FileNotFoundException e)
+            {
+                return [];
             }
         }
     }

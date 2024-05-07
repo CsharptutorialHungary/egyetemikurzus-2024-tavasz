@@ -21,7 +21,7 @@ namespace DownloadManager.Application
 
         public string GetExtension(string path)
         {
-            return Path.GetExtension(path);
+            return Path.GetExtension(path)[1..];
         }
 
         public long GetSize(string path)

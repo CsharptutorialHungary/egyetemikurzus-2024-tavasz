@@ -95,13 +95,58 @@ namespace DownloadManager.Application
             Task.Run(() => _serializer.SerializeToJson(_rules.ToArray()));
         }
 
+        private bool CheckRule(string filePath, AbstractRule rule)
+        {
+            switch (rule)
+            {
+                case PatternRule prule:
+                    {
+                        if (_systemManager.GetFileName(filePath).Contains(prule.Pattern) &&
+                            _systemManager.MoveFile(filePath, prule.Destination.FolderPath, "pattern"))
+                        {
+                            return true;
+                        }
+                        break;
+                    }
+                case ExtensionRule erule:
+                    {
+                        if (_systemManager.GetExtension(filePath)
+                                .Equals(erule.Extension, StringComparison.CurrentCultureIgnoreCase) &&
+                            _systemManager.MoveFile(filePath, erule.Destination.FolderPath, "extension"))
+                        {
+                            return true;
+                        }
+                        break;
+                    }
+                case SizeRule srule:
+                    {
+                        if (srule.ComparisonType == 0)
+                        {
+                            if (_systemManager.GetSize(filePath) >= srule.Value &&
+                                _systemManager.MoveFile(filePath, srule.Destination.FolderPath, "min size"))
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            if (_systemManager.GetSize(filePath) <= srule.Value &&
+                                _systemManager.MoveFile(filePath, srule.Destination.FolderPath, "max size"))
+                            {
+                                return true;
+                            }
+                        }
+                        break;
+                    }
+                default:
+                    return false;
+            }
+            return false;
+        }
+
         public int SortFiles()
         {
-            foreach (string filePath in _systemManager.GetSourceFolder())
-            {
-
-            }
-            return 0;
+            return _systemManager.GetSourceFolder().Count(filePath => _rules.Any(rule => CheckRule(filePath, rule)));
         }
 
         public IEnumerable<string> SearchLogs()
