@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace DownloadManager.Domain
 {
-    public record PatternRule : AbstractRule
+    public record PatternRule : AbstractRule, IComparable<AbstractRule>
     {
         [JsonPropertyName("pattern")]
         public required string Pattern { get; init; }
@@ -18,6 +18,15 @@ namespace DownloadManager.Domain
                 return true;
             }
             return Pattern == other.Pattern;
+        }
+
+        public override int CompareTo(AbstractRule? other)
+        {
+            if (other is PatternRule prule)
+            {
+                return String.Compare(Pattern, prule.Pattern, StringComparison.CurrentCulture);
+            }
+            return -1;
         }
 
         public override int GetHashCode()

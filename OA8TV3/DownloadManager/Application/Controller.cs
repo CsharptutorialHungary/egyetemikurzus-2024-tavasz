@@ -8,7 +8,7 @@ namespace DownloadManager.Application
         private readonly FileSystemManager _systemManager;
         private readonly RuleSerializer _serializer;
         private readonly Logger _logger;
-        private readonly HashSet<AbstractRule> _rules;
+        private readonly SortedSet<AbstractRule> _rules;
         public Mode CurrentMode { get; set; }
 
         public Controller(FileSystemManager systemManager, RuleSerializer serializer, Logger logger)
@@ -16,7 +16,7 @@ namespace DownloadManager.Application
             _systemManager = systemManager;
             _serializer = serializer;
             _logger = logger;
-            _rules = new HashSet<AbstractRule>(_serializer.DeserializeFromJson().Result);
+            _rules = new SortedSet<AbstractRule>(_serializer.DeserializeFromJson().Result);
             CurrentMode = Mode.Home;
         }
 
@@ -97,6 +97,10 @@ namespace DownloadManager.Application
 
         public int SortFiles()
         {
+            foreach (string filePath in _systemManager.GetSourceFolder())
+            {
+
+            }
             return 0;
         }
 

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace DownloadManager.Domain
 {
-    public record SizeRule : AbstractRule
+    public record SizeRule : AbstractRule, IComparable<AbstractRule>
     {
         [JsonPropertyName("comparisonType")]
         public required int ComparisonType { get; init; }
@@ -20,6 +20,15 @@ namespace DownloadManager.Domain
                 return true;
             }
             return ComparisonType == other.ComparisonType;
+        }
+
+        public override int CompareTo(AbstractRule? other)
+        {
+            if (other is SizeRule srule)
+            {
+                return ComparisonType == srule.ComparisonType ? 0 : ComparisonType < srule.ComparisonType ? -1 : 1;
+            }
+            return 1;
         }
 
         public override int GetHashCode()
