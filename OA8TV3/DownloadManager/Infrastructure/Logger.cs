@@ -16,7 +16,14 @@ namespace DownloadManager.Infrastructure
 
         public IEnumerable<string> GetLog()
         {
-            return File.ReadAllLines(Path.Combine(_logPath, "logs.txt"));
+            try
+            {
+                return File.ReadAllLines(Path.Combine(_logPath, "logs.txt"));
+            }
+            catch (Exception)
+            {
+                return [""];
+            }
         }
 
         public void DeleteLog()
