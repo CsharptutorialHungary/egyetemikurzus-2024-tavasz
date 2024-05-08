@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using XWUH14.Domain.Entities;
+﻿using XWUH14.Domain.Entities;
 using XWUH14.Domain.Interfaces;
 
 namespace XWUH14.Application
@@ -24,9 +18,9 @@ namespace XWUH14.Application
 
         public async Task StartGameAsync()
         {
-            var questions = await _questionProvider.GetQuestionsAsync();
+            var allQuestions = await _questionProvider.GetQuestionsAsync();
 
-            if (!questions.Any())
+            if (!allQuestions.Any())
             {
                 Console.WriteLine("Nincsenek elérhető kérdések, így nem tudjuk a játékot elindítani.");
                 return;
@@ -38,9 +32,11 @@ namespace XWUH14.Application
                 return;
             }
 
+            var gameQuestions = allQuestions.OrderBy(question => Guid.NewGuid()).Take(10).ToList();
+
             foreach (var player in _playerService.GetPlayers())
             {
-                foreach (var question in questions)
+                foreach (var question in gameQuestions)
                 {
                     Console.WriteLine($"{player.Name}, {question.Text}");
 
