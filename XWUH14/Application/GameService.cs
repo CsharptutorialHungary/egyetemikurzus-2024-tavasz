@@ -24,7 +24,20 @@ namespace XWUH14.Application
 
         public async Task StartGameAsync()
         {
-            throw new NotImplementedException();
+            var questions = await _questionProvider.GetQuestionsAsync();
+
+            if (!questions.Any())
+            {
+                Console.WriteLine("Nincsenek elérhető kérdések, így nem tudjuk a játékot elindítani.");
+                return;
+            }
+
+            foreach (var question in questions)
+            {
+                Console.WriteLine(question.Text);
+                Console.WriteLine($"Válasz: {question.CorrectAnswer}");
+            }   
+
         }
     }
 }
