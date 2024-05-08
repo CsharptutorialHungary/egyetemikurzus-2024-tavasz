@@ -18,7 +18,7 @@
   </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\TruthOrDare\TruthOrDare.csproj" />
+        <ProjectReference Include="..\TruthOrDare\TruthOrDare_FJKXGG_BarnaGergely.csproj" />
     </ItemGroup>
 
   <ItemGroup>

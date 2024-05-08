@@ -27,8 +27,7 @@ namespace TestTruthOrDare
                 Name = "Friends",
                 Description = "The classic game mode."
             })];
-            Assert.That(_sut.Deserialize<TruthCard>(cardJson), Is.EqualTo(cardObject));
-
+            CollectionAssert.AreEqual(_sut.Deserialize<TruthCard>(cardJson), cardObject);
         }
 
         [Test]
@@ -40,8 +39,7 @@ namespace TestTruthOrDare
         [Test]
         public void EnsureThat_Deserialize_ThrowsArgumentNullException_WhenJsonIsEmptyArray()
         {
-            IEnumerable<TruthCard> cardObject = [];
-            Assert.That(_sut.Deserialize<TruthCard>("[]"), Is.EqualTo(cardObject));
+            CollectionAssert.IsEmpty(_sut.Deserialize<TruthCard>("[]"));
         }
 
         [Test]
@@ -61,7 +59,7 @@ namespace TestTruthOrDare
         {
             using MemoryStream stream = new();
             IEnumerable<TruthCard> cardObject = [new(0, "What was the most embarrassing moment in your life?", new GameMode
-                           {
+            {
                 Id = 0,
                 Name = "Friends",
                 Description = "The classic game mode."

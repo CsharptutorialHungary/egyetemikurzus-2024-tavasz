@@ -44,7 +44,7 @@ public class UT_GameModeRepository
     [Test]
     public void EnsureThat_GetAllGameModes_WorksCorrect()
     {
-        Assert.That(_sut.GetAllGameModes(), Is.EqualTo(_gameModes));
+        CollectionAssert.AreEqual(_sut.GetAllGameModes(), _gameModes);
     }
 
     [Test]
