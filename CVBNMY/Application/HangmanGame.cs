@@ -8,7 +8,6 @@ using CVBNMY.Infrastructure;
 using CVBNMY.UserInterface;
 using CVBNMY.Domain;
 
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CVBNMY.Application
 {
@@ -19,6 +18,9 @@ namespace CVBNMY.Application
         HARD
     }
 
+    /// <summary>
+    /// This class is the core of application, containing all the required elements and details.
+    /// </summary>
     internal class HangmanGame : IRenderer
     {
         private const int EASY_GUESSES = 7;
@@ -44,18 +46,26 @@ namespace CVBNMY.Application
             {
                 throw new ListEmptyException("Unable to load words.");
             }
-            wordToGuess = WordRandomizer.PickWord(words);
-            maxGuesses = GuessesPerDifficulty[(int)difficulty];
+            WordToGuess = WordRandomizer.PickWord(words);
+            MaxGuesses = GuessesPerDifficulty[(int)difficulty];
         }
 
+        public int MaxGuesses { get; init; }
+
+        public string WordToGuess { get; init; }
+
+
+        /// <summary>
+        /// This task is responsible for handling the game logic, rendering the UI.
+        /// </summary>
         public async Task HangmanGameTask()
         {
-            var hiddenWord = string.Concat(Enumerable.Repeat("_", wordToGuess.Length));
+            var hiddenWord = string.Concat(Enumerable.Repeat("_", WordToGuess.Length));
             var charactersOfWord = WordToGuess.Distinct().ToList();
             var characterGuesses = new List<char>();
             var falseGuesses = 0;
 
-            while (falseGuesses < MaxGuesses && hiddenWord.Equals(wordToGuess) == false)
+            while (falseGuesses < MaxGuesses && hiddenWord.Equals(WordToGuess) == false)
             {
                 RenderGameState(hiddenWord, characterGuesses, MaxGuesses - falseGuesses);
 
@@ -105,17 +115,6 @@ namespace CVBNMY.Application
                 Console.WriteLine("Sajnos nem sikerült kitalálnod a szót. A szó: {0}", WordToGuess);
             }
         }
-
-        public int MaxGuesses
-        {
-            get { return maxGuesses; }
-        }
-
-        public string WordToGuess
-        {
-            get { return wordToGuess; }
-        }
-
         private static List<string> LoadWordList(Difficulty difficulty)
         {
             int difficultyValue = Convert.ToInt32(difficulty);
@@ -130,7 +129,7 @@ namespace CVBNMY.Application
             char inputCharacter;
             do
             {
-                using (var inputTask = Task.Run(() => Console.ReadKey()))
+                using (var inputTask = Task.Run(() => Console.ReadKey(true)))
                 {
                     var inputKey = await inputTask;
                     if (char.IsLetter(inputKey.KeyChar))
