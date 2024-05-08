@@ -32,12 +32,21 @@ namespace XWUH14.Application
                 return;
             }
 
-            foreach (var question in questions)
+            foreach (var player in _playerService.GetPlayers())
             {
-                Console.WriteLine(question.Text);
-                Console.WriteLine($"Válasz: {question.CorrectAnswer}");
-            }   
+                foreach (var question in questions)
+                {
+                    Console.WriteLine($"{player.Name}, {question.Text}");
 
+                    var answer = Console.ReadLine();
+
+                    if (_answerValidator.ValidateAnswer(question, new Answer(answer)))
+                    {
+                        player.IncreaseScore(1);
+                    }
+                }
+                Console.WriteLine($"{player.Name} pontszáma: {player.Score}");
+            }
         }
     }
 }
