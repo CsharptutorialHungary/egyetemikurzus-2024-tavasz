@@ -30,6 +30,18 @@ namespace DownloadManager.Application
             return _systemManager.GetFolderName(path);
         }
 
+        public string? GetPathByFolderName(string name)
+        {
+            foreach (AbstractRule rule in _rules)
+            {
+                if (rule.Destination.FolderName.Equals(name, StringComparison.CurrentCulture))
+                {
+                    return rule.Destination.FolderPath;
+                }
+            }
+            return null;
+        }
+
         public bool AddRule(AbstractRule rule)
         {
             return _rules.Add(rule);
