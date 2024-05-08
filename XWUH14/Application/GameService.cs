@@ -32,6 +32,12 @@ namespace XWUH14.Application
                 return;
             }
 
+            if(!_playerService.GetPlayers().Any())
+            {
+                Console.WriteLine("Nincsenek játékosok, így nem tudjuk a játékot elindítani.");
+                return;
+            }
+
             foreach (var player in _playerService.GetPlayers())
             {
                 foreach (var question in questions)
@@ -45,8 +51,12 @@ namespace XWUH14.Application
                         player.IncreaseScore(1);
                     }
                 }
-                Console.WriteLine($"{player.Name} pontszáma: {player.Score}");
             }
+
+            var winner = _playerService.TopPlayer();
+
+            Console.WriteLine($"A nyertes {winner.Name}, pontja: {winner.Score}");
+            return;
         }
     }
 }
