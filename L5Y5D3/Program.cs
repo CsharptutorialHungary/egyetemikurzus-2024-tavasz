@@ -7,14 +7,21 @@ Random rand = new Random();
 List<Kerdes> kerdesek = new List<Kerdes>();
 List<Valasz> valaszok = new List<Valasz>();
 
-
-
 for (int i = 0; i < 10; i++)
 {
     kerdesek.Add(new Kerdes(rand));
-
-
 }
+
+
+var rendezettkerdesek = from kerdes in kerdesek
+                    orderby kerdes.Muvelet descending
+                    select kerdes;
+
+
+/*foreach (var kerdes in rendezettkerdesek)
+{
+    Console.WriteLine(kerdes.ToString());
+}*/
 
 for (int i = 0; i < 10; i++)
 {
@@ -37,12 +44,14 @@ for (int i = 0; i < 10; i++)
     {
         Console.Error.WriteLine("Nem számot írtál be! Számot írj te troll!!");
         i--;
-    }catch(Exception e) { 
+    }
+    catch (Exception)
+    {
         Console.Error.WriteLine("Te mi a bánatot csinálsz????");
     }
 }
 
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine(valaszok[i].Valaszod);
-}
+var maxvalasz = valaszok.MaxBy(i => i.Valaszod);
+
+Console.WriteLine("A legnagyobb válaszod: "+maxvalasz.Valaszod);
+
