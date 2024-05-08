@@ -15,9 +15,22 @@ namespace XWUH14.Infrastructure
 
         public async Task<IEnumerable<Question>> GetQuestionsAsync()
         {
-            var json = await File.ReadAllTextAsync(_filePath);
-            var questions = JsonSerializer.Deserialize<List<Question>>(json);
-            return questions ?? new List<Question>();
+            try
+            {
+                var json = await File.ReadAllTextAsync(_filePath);
+                var questions = JsonSerializer.Deserialize<List<Question>>(json);
+                return questions ?? new List<Question>();
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"Nem letezik a megadott fajl: {ex.Message}");
+                return new List<Question>();
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"Problema tortent a json fajl deszerializaciojaval: {ex.Message}");
+                return new List<Question>();
+            }
 
         }
     }
