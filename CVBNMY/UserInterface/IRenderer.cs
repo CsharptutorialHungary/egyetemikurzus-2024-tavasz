@@ -8,6 +8,9 @@ using CVBNMY.Application;
 
 namespace CVBNMY.UserInterface
 {
+    /// <summary>
+    /// This interface is used to provide functions for rendering the console output.
+    /// </summary>
     internal interface IRenderer
     {
         public void RenderGameState(string currentHiddenWord, List<char> characterGuesses, int remainingGuesses);

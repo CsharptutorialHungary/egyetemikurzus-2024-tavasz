@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CVBNMY.Domain
 {
+    /// <summary>
+    /// This record represents the serialized logs of the game.
+    /// </summary>
     internal sealed record PlayerScore
     {
         public string Word { get; init; }

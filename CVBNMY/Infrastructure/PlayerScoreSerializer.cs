@@ -12,6 +12,9 @@ using CVBNMY.Domain;
 
 namespace CVBNMY.Infrastructure
 {
+    /// <summary>
+    /// This class provides static methods for serializing and deserializing player scores to a JSON file.
+    /// </summary>
     internal static class PlayerScoreSerializer
     {
 
@@ -19,6 +22,10 @@ namespace CVBNMY.Infrastructure
 
         private static readonly string _logFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), _logFileName);
 
+        /// <summary>
+        /// This function updates the "player_score.txt" file. In case the player wins, his result will be logged into the previous file.
+        /// The results are sorted alphabetticaly (by the words), then by the reached points.
+        /// </summary>
         public static void UpdatePlayerScoreJsonFile(string word, int score)
         {
             try
