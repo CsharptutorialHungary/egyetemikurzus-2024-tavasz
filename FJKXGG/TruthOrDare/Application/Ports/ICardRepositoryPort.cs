@@ -1,14 +1,14 @@
 ﻿using TruthOrDare.Domain.Entities;
 
 // DONE: Use Async Task
-// TODO: Separate the Read and Write ports
+// DONE: Separate the Read and Write ports - not required for small projects
 // TODO: document exceptions
 
 namespace TruthOrDare.Application.Ports;
 
-// TODO: Violates the Interface Segregation Principle
-// TODO: Violates the CQRS pattern
-// TODO: Violates the CQS
+// DONE: Violates the Interface Segregation Principle
+// DONE: Violates the CQRS pattern - not required for such small project
+// DONE: Violates the CQS
 
 /// <summary>
 /// Outgoing port for card database repository. The database module can implement this.

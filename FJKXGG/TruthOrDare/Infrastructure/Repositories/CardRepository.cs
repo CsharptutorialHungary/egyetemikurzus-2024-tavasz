@@ -40,7 +40,7 @@ internal class CardRepository(JsonCardLoader loader, JsonCardWriter writer) : IC
 
     public async Task<IEnumerable<T>> GetCardsByTypeAsync<T>() where T : ICard
     {
-        // TODO: use reflections to load available card types
+        // TODO: use reflection to load available card types
         if (typeof(T) == typeof(DareCard))
         {
             string dareCardsPath = Path.Combine(FolderPath, DareCardsFilePath);

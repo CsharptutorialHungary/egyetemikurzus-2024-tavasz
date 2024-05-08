@@ -34,7 +34,7 @@
 
 - Repository
 - Controller
-- Service (not needed so finnaly not used)
+- Service (not needed so finally not used)
 - Entity
 - Ports and Adapters
 
@@ -43,7 +43,7 @@
 - Result pattern
 - Better Exception handling
 - Logging
-- Usage of reflections
+- Usage of reflection
 
 ## Kérdéseim:
 
