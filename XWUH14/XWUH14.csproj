@@ -8,13 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Compile Remove="Assets\**" />
+    <EmbeddedResource Remove="Assets\**" />
+    <None Remove="Assets\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\questions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="Domain\Interfaces\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Application\" />
   </ItemGroup>
 
 </Project>
