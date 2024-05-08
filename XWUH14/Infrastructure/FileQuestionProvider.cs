@@ -15,7 +15,10 @@ namespace XWUH14.Infrastructure
 
         public async Task<IEnumerable<Question>> GetQuestionsAsync()
         {
-            throw new Exception("Not implemented");
+            var json = await File.ReadAllTextAsync(_filePath);
+            var questions = JsonSerializer.Deserialize<List<Question>>(json);
+            return questions ?? new List<Question>();
+
         }
     }
 }
