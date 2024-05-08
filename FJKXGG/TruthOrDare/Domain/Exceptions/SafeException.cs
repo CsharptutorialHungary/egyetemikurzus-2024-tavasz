@@ -1,4 +1,6 @@
-﻿namespace TruthOrDare.Domain.Exceptions;
+﻿using System.Runtime.Serialization;
+
+namespace TruthOrDare.Domain.Exceptions;
 
 // TODO: Replace Exception based flow control with Result pattern
 
@@ -9,4 +11,8 @@ public class SafeException : Exception
 {
     public SafeException() : base("Something went wrong.") { }
     public SafeException(string message) : base(message) { }
+
+    public SafeException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
 }
