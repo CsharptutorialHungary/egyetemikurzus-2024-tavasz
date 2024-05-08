@@ -41,12 +41,14 @@ namespace XWUH14.Application
                     Console.WriteLine($"{player.Name}, {question.Text}");
 
                     var answer = Console.ReadLine();
+                    Console.WriteLine("\n");
 
                     if (_answerValidator.ValidateAnswer(question, new Answer(answer)))
                     {
                         player.IncreaseScore(1);
                     }
                 }
+                Console.WriteLine("\n");
             }
 
             var winner = _playerService.TopPlayer();
