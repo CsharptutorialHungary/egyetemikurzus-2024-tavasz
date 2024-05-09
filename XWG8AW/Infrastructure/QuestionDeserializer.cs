@@ -10,42 +10,36 @@ using XWG8AW.Domain;
 
 namespace XWG8AW.Infrastructure
 {
-    internal class UserDeserialize
+    internal class QuestionDeserializer
     {
-        public async Task<User[]> UserDeserializeFromJson()
+        public async Task<Question[]> QuestionDeserializeFromJson()
         {
             string fullpath = Environment.CurrentDirectory;
             string path = fullpath.Substring(0, fullpath.Length - 16);
-            string correctPath = string.Concat(path, "playersScores.json");
+            string correctPath = string.Concat(path, "questions.json");
 
-            try
-            {
+            try {
                 using (var stream = File.OpenRead(correctPath))
                 {
-
-                    User[]? users = await JsonSerializer.DeserializeAsync<User[]>(stream, new JsonSerializerOptions
+                    Question[]? questions = await JsonSerializer.DeserializeAsync<Question[]>(stream, new JsonSerializerOptions
                     {
                         AllowTrailingCommas = true,
-                        NumberHandling = JsonNumberHandling.AllowReadingFromString
-
                     });
-                    if (users is null)
+                    if (questions is null)
                     {
                         Console.WriteLine("Deszerializációs hiba");
                         return null;
                     }
-                    /*foreach (var user in users)
+                    /*foreach (var question in questions)
                     {
-                        Console.WriteLine(user);
+                        Console.WriteLine(question);
                     }*/
 
-                    return users;
+                    return questions;
                 }
 
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("Hiba a játékosok beolvasás során!");
+            } catch (IOException ex) { 
+                Console.WriteLine("Hiba a kérdések beolvasás során!");
                 return null;
             }
         }

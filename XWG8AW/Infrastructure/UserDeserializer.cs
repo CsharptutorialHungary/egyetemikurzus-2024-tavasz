@@ -10,36 +10,42 @@ using XWG8AW.Domain;
 
 namespace XWG8AW.Infrastructure
 {
-    internal class QuestionDeserialize
+    internal class UserDeserializer
     {
-        public async Task<Question[]> QuestionDeserializeFromJson()
+        public async Task<List<User>> UserDeserializeFromJson()
         {
             string fullpath = Environment.CurrentDirectory;
             string path = fullpath.Substring(0, fullpath.Length - 16);
-            string correctPath = string.Concat(path, "questions.json");
+            string correctPath = string.Concat(path, "playersScores.json");
 
-            try {
+            try
+            {
                 using (var stream = File.OpenRead(correctPath))
                 {
-                    Question[]? questions = await JsonSerializer.DeserializeAsync<Question[]>(stream, new JsonSerializerOptions
+
+                    List<User>? users = await JsonSerializer.DeserializeAsync<List<User>>(stream, new JsonSerializerOptions
                     {
                         AllowTrailingCommas = true,
+                        NumberHandling = JsonNumberHandling.AllowReadingFromString
+
                     });
-                    if (questions is null)
+                    if (users is null)
                     {
                         Console.WriteLine("Deszerializációs hiba");
                         return null;
                     }
-                    foreach (var question in questions)
+                    /*foreach (var user in users)
                     {
-                        Console.WriteLine(question);
-                    }
+                        Console.WriteLine(user);
+                    }*/
 
-                    return questions;
+                    return users;
                 }
 
-            } catch (IOException ex) { 
-                Console.WriteLine("Hiba a kérdések beolvasás során!");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Hiba a játékosok beolvasás során!");
                 return null;
             }
         }
