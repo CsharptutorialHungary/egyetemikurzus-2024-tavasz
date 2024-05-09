@@ -27,19 +27,18 @@ namespace BKYZSA.Commands
             var chat = api.Chat.CreateConversation();
 
             chat.Model = Model.GPT4_Turbo;
-
-            string input = "";
-
-            while (!input.Equals("exit"))
+            while (true)
             {
-                Console.Out.Write("Felhasználó >> ");
-                input = Console.ReadLine();
-                if(input == null)
+                await Console.Out.WriteLineAsync("[Felhasználó]");
+                string? input = Console.ReadLine();
+                if (input == null)
                     continue;
+                if (input.Equals("exit"))
+                    break;
 
                 chat.AppendUserInput(input);
 
-                Console.Out.Write("Modell << ");
+                Console.Out.WriteLine("[Modell]");
                 await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
                 {
                     Console.Write(res);
@@ -47,6 +46,7 @@ namespace BKYZSA.Commands
                 Console.Out.WriteLine("\n");
             }
             Ui.ModelRunning = false;
+            await Console.Out.WriteLineAsync($"{Ui.ModelRunning}");
 
             //TODO: conversation fájlba mentés 
         }

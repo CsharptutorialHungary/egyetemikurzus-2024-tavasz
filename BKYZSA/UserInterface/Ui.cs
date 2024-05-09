@@ -38,9 +38,9 @@ namespace BKYZSA.UserInterface
                 {
                     try
                     {
-                        command.Execute(splittedInput);
                         if (command.Name.Equals("startinstance", StringComparison.CurrentCultureIgnoreCase))
                             ModelRunning = true;
+                        command.Execute(splittedInput);
                     }
                     catch (Exception ex) 
                     {
