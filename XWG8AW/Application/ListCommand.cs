@@ -14,8 +14,12 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            QuestionDeserialize a = new QuestionDeserialize();
-            a.QuestionDeserializeFromJson();
+
+            /*UserDeserialize a = new UserDeserialize();
+            a.UserDeserializeFromJson();*/
+            
+            QuestionDeserialize b = new QuestionDeserialize();
+            b.QuestionDeserializeFromJson();
         }
     }
 }
