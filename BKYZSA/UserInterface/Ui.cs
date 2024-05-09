@@ -12,6 +12,7 @@ namespace BKYZSA.UserInterface
     internal class Ui
     {
         private readonly CommandLoader _commandLoader;
+        public static bool ModelRunning = false;
 
         public Ui(CommandLoader commandLoader)
         {
@@ -25,6 +26,9 @@ namespace BKYZSA.UserInterface
                 "parancsokról.");
             while (true)
             {
+                if(ModelRunning)
+                    continue;
+
                 Console.Write("> ");
                 string? input = Console.ReadLine();
                 string[] splittedInput = input.Split(' ');
@@ -35,6 +39,8 @@ namespace BKYZSA.UserInterface
                     try
                     {
                         command.Execute(splittedInput);
+                        if (command.Name.Equals("startinstance", StringComparison.CurrentCultureIgnoreCase))
+                            ModelRunning = true;
                     }
                     catch (Exception ex) 
                     {
