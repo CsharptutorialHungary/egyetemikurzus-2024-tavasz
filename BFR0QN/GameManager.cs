@@ -12,9 +12,10 @@ namespace BFR0QN
     {
         int szint;
         List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
-        Dictionary<string, int> mentesekLista = BeolvasJson.Betolt();
-        public void Betolt()
+        Dictionary<string, int> mentesekLista;
+        public async Task Betolt()
         {
+            mentesekLista = await BeolvasJson.Betolt();
             Console.WriteLine("Siti Hamburgerezője!");
             Console.WriteLine("Új játék (uj) Meglévő betöltése (be)");
             string beolvas = Console.ReadLine();

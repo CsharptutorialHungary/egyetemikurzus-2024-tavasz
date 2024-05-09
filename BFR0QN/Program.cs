@@ -7,12 +7,12 @@ namespace BFR0QN;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         
         GameManager g = new GameManager();
         Console.WriteLine(g.AtlagKcal());
-        g.Betolt();
+        await g.Betolt();
         
         int szint = g.getSzint();
         string beolvasSzoveg="";

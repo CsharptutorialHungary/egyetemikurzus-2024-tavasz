@@ -32,14 +32,14 @@ namespace BFR0QN
             }
             return burgers;
         }
-        public static Dictionary<string, int> Betolt()
+        public static async Task<Dictionary<string, int>> Betolt()
         {
             var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "mentesek.json");
             if (!File.Exists(filePath))
             {
                 return new Dictionary<string, int>();
             }
-            var mentesekJson = File.ReadAllText(filePath);
+            var mentesekJson = await File.ReadAllTextAsync(filePath);
             Dictionary<string, int> mentesek = JsonSerializer.Deserialize<Dictionary<string, int>>(mentesekJson);
             return mentesek;
         }
