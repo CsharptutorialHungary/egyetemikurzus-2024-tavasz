@@ -11,12 +11,21 @@ internal class CardSerializer
     {
         PropertyNamingPolicy = JsonNamingPolicy.KebabCaseLower
     };
-    internal void Serialize<T>(Stream target, IEnumerable<T> instance) where T : ICard
-    {
+    
+    internal void Serialize<T>(Stream target, IEnumerable<T> instance) where T : ICard =>
         JsonSerializer.Serialize(target, instance, _jsonSerializerOptions);
-    }
 
     internal IEnumerable<T> Deserialize<T>(string json) where T : ICard =>
         JsonSerializer.Deserialize<IEnumerable<T>>(json, _jsonSerializerOptions)
+        ?? throw new ArgumentNullException();
+
+
+
+    // TODO: violates something, because return type is changed
+    internal string Serialize(IEnumerable<ICard> instance) => 
+        JsonSerializer.Serialize<ICard>(instance, _jsonSerializerOptions);
+
+    internal IEnumerable<ICard> Deserialize(string json) =>
+        JsonSerializer.Deserialize<IEnumerable<ICard>>(json, _jsonSerializerOptions)
         ?? throw new ArgumentNullException();
 }
