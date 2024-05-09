@@ -14,7 +14,8 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            throw new NotImplementedException();
+            QuestionDeserialize a = new QuestionDeserialize();
+            a.QuestionDeserializeFromJson();
         }
     }
 }
