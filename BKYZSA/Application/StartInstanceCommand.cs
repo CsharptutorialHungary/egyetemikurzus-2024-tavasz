@@ -47,6 +47,8 @@ namespace BKYZSA.Commands
                 Console.Out.WriteLine("\n");
             }
             Ui.ModelRunning = false;
+
+            //TODO: conversation fájlba mentés 
         }
     }
 }
