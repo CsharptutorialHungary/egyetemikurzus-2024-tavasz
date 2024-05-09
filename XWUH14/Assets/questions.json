@@ -1,0 +1,82 @@
+[
+  {
+    "Text": "Mi a legelterjedtebb backend keretrendszer Pythonban?",
+    "CorrectAnswer": "Django"
+  },
+  {
+    "Text": "Melyik a legnepszerubb adatbazis-kezelo rendszer JavaScriptben?",
+    "CorrectAnswer": "MongoDB"
+  },
+  {
+    "Text": "Mi a legelterjedtebb keresesi algoritmus?",
+    "CorrectAnswer": "Binary"
+  },
+  {
+    "Text": "Melyik a legnepszerubb fejlesztoi kornyezet JavaScriptben?",
+    "CorrectAnswer": "Visual Studio Code"
+  },
+  {
+    "Text": "Mi a legnepszerubb programozasi paradigmaja JavaScriptnek?",
+    "CorrectAnswer": "Funkcionalis"
+  },
+  {
+    "Text": "Melyik a legnepszerubb frontend keretrendszer Pythonban?",
+    "CorrectAnswer": "Flask"
+  },
+  {
+    "Text": "Mi a legelterjedtebb adatbazis-kezelo rendszer PHP-ban?",
+    "CorrectAnswer": "MySQL"
+  },
+  {
+    "Text": "Melyik a legnepszerubb verziokezelo rendszer SVN-hez hasonloan?",
+    "CorrectAnswer": "Git"
+  },
+  {
+    "Text": "Mi a legnepszerubb programozasi nyelv Microsoft altal fejlesztett rendszerekhez?",
+    "CorrectAnswer": "C#"
+  },
+  {
+    "Text": "Melyik a legnepszerubb feladatkezelo rendszer JavaScriptben?",
+    "CorrectAnswer": "npm"
+  },
+  {
+    "Text": "Mi a legelterjedtebb programozasi nyelv a webfejlesztéshez?",
+    "CorrectAnswer": "JavaScript"
+  },
+  {
+    "Text": "Melyik a legnepszerubb adatbazis-kezelo rendszer Ruby-ban?",
+    "CorrectAnswer": "SQLite"
+  },
+  {
+    "Text": "Mi a legnepszerubb frontend keretrendszer Java-hoz?",
+    "CorrectAnswer": "Spring"
+  },
+  {
+    "Text": "Melyik a legelterjedtebb adatbazis-kezelo rendszer Java-hoz?",
+    "CorrectAnswer": "Hibernate"
+  },
+  {
+    "Text": "Mi a legnepszerubb fejlesztoi kornyezet Java-hoz?",
+    "CorrectAnswer": "IntelliJ IDEA"
+  },
+  {
+    "Text": "Melyik a legnepszerubb backend keretrendszer Java-hoz?",
+    "CorrectAnswer": "Spring Boot"
+  },
+  {
+    "Text": "Mi a legelterjedtebb programozasi nyelv adatbanyaszathoz?",
+    "CorrectAnswer": "Python"
+  },
+  {
+    "Text": "Melyik a legnepszerubb verziokezelo rendszer Java-hoz?",
+    "CorrectAnswer": "Git"
+  },
+  {
+    "Text": "Mi a legelterjedtebb adatbazis-kezelo rendszer adatbanyaszathoz?",
+    "CorrectAnswer": "MySQL"
+  },
+  {
+    "Text": "Melyik a legnepszerubb fejlesztoi kornyezet Python-hoz?",
+    "CorrectAnswer": "PyCharm"
+  }
+]
