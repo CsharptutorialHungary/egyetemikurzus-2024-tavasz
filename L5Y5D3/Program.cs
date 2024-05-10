@@ -48,7 +48,7 @@ for (int i = 0; i < 10; i++)
     catch (Exception)
     {
         Console.Error.WriteLine("Te mi a bánatot csinálsz????");
-        i--
+        i--;
     }
 }
 
