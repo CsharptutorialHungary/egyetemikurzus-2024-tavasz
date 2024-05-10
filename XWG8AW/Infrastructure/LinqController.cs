@@ -16,7 +16,7 @@ namespace XWG8AW.Infrastructure
 
             List<User> allUser = await allUserJson.UserDeserializeFromJson();
 
-            var bestScore = allUser.Where(x => x.UserName == user).GroupBy(x => x.UserName).OrderBy(x => x).FirstOrDefault();
+            var bestScore = allUser.Where(x => x.UserName == user).OrderByDescending(x => x.Score).FirstOrDefault();
 
             if (bestScore != null)
             {

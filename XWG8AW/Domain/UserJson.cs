@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace XWG8AW.Domain
 {
-    public class UserJson
+    public sealed record class UserJson
     {
 
-
         [JsonPropertyName("userName")]
-        public string UserName { get; set; }
+        public string UserName { get; init; }
 
         [JsonPropertyName("score")]
-        public int Score { get; set; }
+        public int Score { get; init; }
 
 
     }

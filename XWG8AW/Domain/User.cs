@@ -22,5 +22,10 @@ namespace XWG8AW.Domain
         public string UserName { get; set; }
 
         public int Score { get; set; }
+
+        public override string ToString()
+        {
+            return "Játékos név: " + $"{UserName}" + " Eredménye: " + $"{Score}";
+        }
     }
 }

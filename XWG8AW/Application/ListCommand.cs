@@ -25,8 +25,8 @@ namespace XWG8AW.Application
             User user = new User("dsa", 99);
 
 
-            UserSerializer c = new UserSerializer();
-            c.UseSerializeToJson(user);
+            /*UserSerializer c = new UserSerializer();
+            c.UseSerializeToJson(user);*/
         }
     }
 }
