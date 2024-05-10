@@ -12,7 +12,7 @@ namespace XWG8AW.Infrastructure
 {
     internal class QuestionDeserializer
     {
-        public async Task<List<Question>> QuestionDeserializeFromJson()
+        public async Task<List<QuestionJson>> QuestionDeserializeFromJson()
         {
             string fullpath = Environment.CurrentDirectory;
             string path = fullpath.Substring(0, fullpath.Length - 16);
@@ -21,7 +21,7 @@ namespace XWG8AW.Infrastructure
             try {
                 using (var stream = File.OpenRead(correctPath))
                 {
-                    List<Question>? questions = await JsonSerializer.DeserializeAsync<List<Question>>(stream, new JsonSerializerOptions
+                    List<QuestionJson>? questions = await JsonSerializer.DeserializeAsync<List<QuestionJson>>(stream, new JsonSerializerOptions
                     {
                         AllowTrailingCommas = true,
                     });

@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace XWG8AW.Domain
 {
-    internal class User
+    public class UserJson
     {
-        public User() { }
 
-        public User(string username) { }
 
-        public User(string userName, int score)
-        {
-            this.UserName = userName;
-            this.Score = score;
-        }
-
+        [JsonPropertyName("userName")]
         public string UserName { get; set; }
 
+        [JsonPropertyName("score")]
         public int Score { get; set; }
+
+
     }
 }

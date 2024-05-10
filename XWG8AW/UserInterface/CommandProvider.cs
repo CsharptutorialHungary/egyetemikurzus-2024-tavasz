@@ -23,6 +23,11 @@ namespace XWG8AW.UserInterface
                 {
                     new ExitCommand(),
                     new RunCommand(),
+                    new BestCommand(),
+                    new ClearCommand(),
+                    new HelpCommand(),
+                    new StartCommand(),
+                    new ListCommand(),
                 };
         }
     }

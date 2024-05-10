@@ -23,9 +23,8 @@ namespace XWG8AW.Infrastructure
                 using (var stream = File.OpenRead(correctPath))
                 {
 
-                    List<User>? users = await JsonSerializer.DeserializeAsync<List<User>>(stream, new JsonSerializerOptions
+                    List<UserJson>? users = await JsonSerializer.DeserializeAsync<List<UserJson>>(stream, new JsonSerializerOptions
                     {
-                        AllowTrailingCommas = true,
                         NumberHandling = JsonNumberHandling.AllowReadingFromString
 
                     });
@@ -39,7 +38,14 @@ namespace XWG8AW.Infrastructure
                         Console.WriteLine(user);
                     }*/
 
-                    return users;
+                    List<User> allUser = new List<User>();
+
+                    foreach (UserJson userJson in users)
+                    {
+                        allUser.Add(new User(userJson.UserName, userJson.Score));
+                    }
+
+                    return allUser;
                 }
 
             }

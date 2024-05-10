@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using XWG8AW.Domain;
 using XWG8AW.Infrastructure;
 
 namespace XWG8AW.Application
@@ -21,8 +22,11 @@ namespace XWG8AW.Application
             /*QuestionDeserializer b = new QuestionDeserializer();
             b.QuestionDeserializeFromJson();*/
 
-            UserSerializer a = new UserSerializer();
-            a.UseSerializeToJson();
+            User user = new User("dsa", 99);
+
+
+            UserSerializer c = new UserSerializer();
+            c.UseSerializeToJson(user);
         }
     }
 }

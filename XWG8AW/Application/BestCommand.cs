@@ -14,7 +14,15 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            throw new NotImplementedException();
+            host.WriteLine("Adja meg a játékos nevét!");
+
+            LinqController controller = new LinqController();
+
+            string user = host.ReadLine();
+
+            var bestScore = controller.BestScore(user);
+
+            host.WriteLine(bestScore.Result);
         }
     }
 }

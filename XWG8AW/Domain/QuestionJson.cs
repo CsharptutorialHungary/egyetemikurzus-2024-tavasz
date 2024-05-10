@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XWG8AW.Domain
 {
-    public sealed record class Question
+    public sealed record class QuestionJson
     {
 
         [JsonPropertyName("name")]

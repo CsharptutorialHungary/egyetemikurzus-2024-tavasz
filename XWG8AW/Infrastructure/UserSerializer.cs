@@ -12,7 +12,7 @@ namespace XWG8AW.Infrastructure
 {
     internal class UserSerializer
     {
-        public async void UseSerializeToJson()
+        public async void UseSerializeToJson(User user)
         {
             string fullpath = Environment.CurrentDirectory;
             string path = fullpath.Substring(0, fullpath.Length - 16);
@@ -25,10 +25,7 @@ namespace XWG8AW.Infrastructure
 
                 File.Delete(correctPath);
 
-                User a = new User("asd");
-                a.Score = 999;
-
-                allUser.Add(a);
+                allUser.Add(user);
 
                 using (var stream = File.OpenWrite(correctPath))
                 {
@@ -37,8 +34,6 @@ namespace XWG8AW.Infrastructure
                     {
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                     });
-
-
                 }
 
             }
