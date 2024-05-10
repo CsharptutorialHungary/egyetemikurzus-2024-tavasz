@@ -15,18 +15,21 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
+            LinqController linqController = new LinqController();
 
-            /*UserDeserializer a = new UserDeserializer();
-            a.UserDeserializeFromJson();*/
+            Task<IOrderedEnumerable<User>> scores = linqController.AllScore();
 
-            /*QuestionDeserializer b = new QuestionDeserializer();
-            b.QuestionDeserializeFromJson();*/
+            if (scores == null )
+            {
+                host.WriteLine("Nincs még egy eredmény se!");
+                return;
+            }
 
-            User user = new User("dsa", 99);
+            foreach ( var score in scores.Result ) {
+                host.WriteLine(score.ToString());
+            }
+            host.WriteLine("");
 
-
-            /*UserSerializer c = new UserSerializer();
-            c.UseSerializeToJson(user);*/
         }
     }
 }

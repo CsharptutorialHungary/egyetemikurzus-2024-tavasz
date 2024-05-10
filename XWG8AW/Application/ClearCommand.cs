@@ -15,7 +15,6 @@ namespace XWG8AW.Application
         public void Execute(IHost host, string[] args)
         {
             Console.Clear();
-            host.WriteLine("Adj meg egy parancsot:\t(help)");
         }
     }
 }

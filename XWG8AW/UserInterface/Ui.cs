@@ -26,14 +26,10 @@ namespace XWG8AW.UserInterface
 
             while (true)
             {
-                string input = "run";
 
-                if(firstStart != 0)
-                {
-                    input = _host.ReadLine();
-                }
+                _host.WriteLine("Adj meg egy parancsot:\t(help)");
 
-                firstStart++;
+                string input = _host.ReadLine();
 
 
                 string[] splittedInput = input.Split(' ');

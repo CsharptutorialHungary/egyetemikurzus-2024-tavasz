@@ -16,13 +16,13 @@ namespace XWG8AW.Application
         {
             host.WriteLine("Adja meg a játékos nevét!");
 
-            LinqController controller = new LinqController();
+            LinqController linqController = new LinqController();
 
             string user = host.ReadLine();
 
-            var bestScore = controller.BestScore(user);
+            var bestScore = linqController.BestScoreByPlayer(user);
 
-            host.WriteLine(bestScore.Result);
+            host.WriteLine(bestScore.Result+"\n");
         }
     }
 }

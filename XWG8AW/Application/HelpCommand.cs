@@ -19,7 +19,7 @@ namespace XWG8AW.Application
                             "start\t-\tÚj játék indítása\n" +
                             "exit\t-\tKilépés a programból\n" +
                             "best\t-\tKiírja a megadott játékos legjobb eredményét\n" +
-                            "clear\t-\tKiüríti a konzolt");
+                            "clear\t-\tKiüríti a konzolt\n");
         }
     }
 }

@@ -22,7 +22,6 @@ namespace XWG8AW.UserInterface
             Commands = new IShellCommand[]
                 {
                     new ExitCommand(),
-                    new RunCommand(),
                     new BestCommand(),
                     new ClearCommand(),
                     new HelpCommand(),

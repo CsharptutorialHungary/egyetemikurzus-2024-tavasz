@@ -10,10 +10,10 @@ namespace XWG8AW.Infrastructure
 {
     internal class LinqController
     {
-        public async Task<String> BestScore(string user)
-        {
-            UserDeserializer allUserJson = new UserDeserializer();
+        UserDeserializer allUserJson = new UserDeserializer();
 
+        public async Task<String> BestScoreByPlayer(string user)
+        {
             List<User> allUser = await allUserJson.UserDeserializeFromJson();
 
             var bestScore = allUser.Where(x => x.UserName == user).OrderByDescending(x => x.Score).FirstOrDefault();
@@ -24,6 +24,20 @@ namespace XWG8AW.Infrastructure
             }
 
             return "Nem található ilyen játékos!";
+        }
+
+        public async Task<IOrderedEnumerable<User>> AllScore()
+        {
+            List<User> allUser = await allUserJson.UserDeserializeFromJson();
+
+            IOrderedEnumerable<User> allScore = allUser.OrderByDescending(x => x.Score);
+
+            if (allScore != null)
+            {
+                return allScore;
+            }
+
+            return null;
         }
     }
 }
