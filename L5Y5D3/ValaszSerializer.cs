@@ -11,7 +11,7 @@ namespace L5Y5D3
     {
         public void SerializeToJson(Stream target, List<Valasz> instance)
         {
-            JsonSerializer.Serialize(target, instance, new JsonSerializerOptions
+            JsonSerializer.SerializeAsync(target, instance, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });

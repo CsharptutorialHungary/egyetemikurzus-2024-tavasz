@@ -22,41 +22,52 @@ var rendezettkerdesek = from kerdes in kerdesek
 {
     Console.WriteLine(kerdes.ToString());
 }*/
+int helyesek = 0;
+foreach (var kerdes in rendezettkerdesek){
 
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine(kerdesek[i].ToString());
+
     Console.WriteLine("Mennyivel egyenlő az alábbi egyenlet?");
-    Console.Write($"({kerdesek[i].A}) {kerdesek[i].Muvelet} ({kerdesek[i].B}) = ");
-
-    try
+    Console.Write($"({kerdes.A}) {kerdes.Muvelet} ({kerdes.B}) = ");
+    for(int i = 0;i < 1; i++)
     {
-        int valasz = Convert.ToInt32(Console.ReadLine());
-        valaszok.Add(new Valasz(kerdesek[i], valasz));
-        Console.WriteLine(valaszok[i].Helyesseg);
+        try
+        {
+            int valasz = Convert.ToInt32(Console.ReadLine());
+            valaszok.Add(new Valasz(kerdes, valasz));
+            if (valaszok.Last<Valasz>().Helyesseg)
+            {
+                Console.WriteLine("Helyes! :D");
+                helyesek++;
+            }
+            else
+            {
+                Console.WriteLine("Menni fog ez még jobban...");
+            }
+        }
+        catch (OverflowException)
+        {
+            Console.Error.WriteLine("Túl nagy szám, írd újra!");
+            i--;
+        }
+        catch (FormatException)
+        {
+            Console.Error.WriteLine("Nem számot írtál be! Számot írj te troll!!");
+            i--;
+        }
+        catch (Exception)
+        {
+            Console.Error.WriteLine("Te mi a bánatot csinálsz????");
+            i--;
+        }
     }
-    catch (OverflowException)
-    {
-        Console.Error.WriteLine("Túl nagy szám, írd újra!");
-        i--;
-    }
-    catch (FormatException)
-    {
-        Console.Error.WriteLine("Nem számot írtál be! Számot írj te troll!!");
-        i--;
-    }
-    catch (Exception)
-    {
-        Console.Error.WriteLine("Te mi a bánatot csinálsz????");
-        i--;
-    }
+    
 }
+Console.WriteLine(helyesek +" helyes megoldásod volt.");
 
 var maxvalasz = valaszok.MaxBy(i => i.Valaszod);
-
 Console.WriteLine("A legnagyobb válaszod: " + maxvalasz.Valaszod);
 
-string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"test.json");
+string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"valaszok.json");
 
 using (var stream = File.Create(path))
 {
