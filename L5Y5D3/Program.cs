@@ -48,10 +48,25 @@ for (int i = 0; i < 10; i++)
     catch (Exception)
     {
         Console.Error.WriteLine("Te mi a bánatot csinálsz????");
+        i--
     }
 }
 
 var maxvalasz = valaszok.MaxBy(i => i.Valaszod);
 
-Console.WriteLine("A legnagyobb válaszod: "+maxvalasz.Valaszod);
+Console.WriteLine("A legnagyobb válaszod: " + maxvalasz.Valaszod);
 
+string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"test.json");
+
+using (var stream = File.Create(path))
+{
+    try
+    {
+        var serializer = new ValaszSerializer();
+        serializer.SerializeToJson(stream, valaszok);
+    }
+    catch (IOException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
