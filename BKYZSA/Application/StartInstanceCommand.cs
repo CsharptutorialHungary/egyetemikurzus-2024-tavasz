@@ -64,21 +64,18 @@ namespace BKYZSA.Commands
             Ui.ModelRunning = false;
 
             // Conversation fájlba mentés 
-            var messages = new List<MessageEntry>();
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 $"messages-{timestamp}.json");
 
-            for (int i = 0; i < chat.Messages.Count; i++)
+            int index = 1;
+
+            var messages = chat.Messages.Select(entry => new MessageEntry 
             {
-                messages.Add(new MessageEntry
-                {
-                    // A beszélgetést mindig az user kezdi, ezért a páratlan üzeneteket az user küldi, a párosakat a modell
-                    // i + 1, mert 0-tól indexelünk
-                    Sender = (i + 1) % 2 != 0 ? "User": "Assistant",
-                    Message = chat.Messages[i].TextContent
-                });
-            }
+                // A beszélgetést mindig az user kezdi, ezért a páratlan üzeneteket az user küldi, a párosakat a modell
+                Sender = index++ % 2 == 0 ? "Assistant" : "User",
+                Message = entry.TextContent
+            }).ToList();
 
             SaveToFile(path, messages);
         }
