@@ -13,7 +13,7 @@ namespace BKYZSA.Infrastructure
 {
     internal class MessageEntrySerializer
     {
-        public void SerializeToJson(Stream target, List<MessageEntry> messageEntries)
+        public static void SerializeToJson(Stream target, List<MessageEntry> messageEntries)
         {
             JsonSerializer.Serialize(target, messageEntries, new JsonSerializerOptions
             {
@@ -23,5 +23,19 @@ namespace BKYZSA.Infrastructure
                                                    UnicodeRanges.LatinExtendedA)
             });
         }
+
+        public static List<MessageEntry>? DeserializeFromJson(Stream source)
+        {
+            var messages = JsonSerializer.Deserialize<List<MessageEntry>>(source, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin,
+                                                   UnicodeRanges.Latin1Supplement,
+                                                   UnicodeRanges.LatinExtendedA)
+            });
+
+            return messages;
+        }
+        
     }
 }

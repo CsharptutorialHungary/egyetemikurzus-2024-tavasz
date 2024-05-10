@@ -24,16 +24,16 @@ namespace BKYZSA.Commands
 
         public async void Execute(string[] args)
         {
-            await Console.Out.WriteLineAsync("Elindítottál egy párbeszédet a GPT-vel! Ha végeztél a beszélgetéssel" +
+            Console.Out.WriteLine("Elindítottál egy párbeszédet a GPT-vel! Ha végeztél a beszélgetéssel" +
                 "írd be, hogy \"exit\".\n");
 
             OpenAIAPI api = new();
             var chat = api.Chat.CreateConversation();
-
             chat.Model = Model.GPT4_Turbo;
+
             while (true)
             {
-                Console.Out.WriteLine("[Felhasználó]");
+                Console.Out.WriteLine("[User]");
                 string? input = Console.ReadLine();
                 if (input == null)
                     continue;
@@ -42,12 +42,24 @@ namespace BKYZSA.Commands
 
                 chat.AppendUserInput(input);
 
-                Console.Out.WriteLine("[Modell]");
-                await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
+                Console.Out.WriteLine("[Assistant]");
+                try
                 {
-                    Console.Write(res);
+                    await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
+                    {
+                        Console.Write(res);
+                    }
+                    Console.Out.WriteLine("\n");
+                } catch (System.Security.Authentication.AuthenticationException ex)
+                {
+                    Console.Out.WriteLine(ex.Message + "\n");
+                    Ui.ModelRunning = false;
+                    return;
                 }
-                Console.Out.WriteLine("\n");
+                catch (Exception ex)
+                {
+                    Console.Out.WriteLine("Hiba történt: " + ex.Message + "\n");
+                }
             }
             Ui.ModelRunning = false;
 
@@ -63,7 +75,7 @@ namespace BKYZSA.Commands
                 {
                     // A beszélgetést mindig az user kezdi, ezért a páratlan üzeneteket az user küldi, a párosakat a modell
                     // i + 1, mert 0-tól indexelünk
-                    Type = (i + 1) % 2 != 0 ? "User": "Assistant",
+                    Sender = (i + 1) % 2 != 0 ? "User": "Assistant",
                     Message = chat.Messages[i].TextContent
                 });
             }
@@ -77,8 +89,7 @@ namespace BKYZSA.Commands
             {
                 try
                 {
-                    var serializer = new MessageEntrySerializer();
-                    serializer.SerializeToJson(stream, messages);
+                    MessageEntrySerializer.SerializeToJson(stream, messages);
                 }
                 catch (IOException ex)
                 {

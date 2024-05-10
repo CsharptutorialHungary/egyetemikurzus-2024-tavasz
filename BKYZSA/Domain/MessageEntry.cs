@@ -9,7 +9,7 @@ namespace BKYZSA.Domain
 
     public record class MessageEntry
     {
-        public required string Type { get; init; }
+        public required string Sender { get; init; }
         public required string Message { get; init; }
 
     }
