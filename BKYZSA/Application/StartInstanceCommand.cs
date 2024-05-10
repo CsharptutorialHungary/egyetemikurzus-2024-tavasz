@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BKYZSA.Domain;
+using BKYZSA.Infrastructure;
 using BKYZSA.UserInterface;
 
 using OpenAI_API;
+using OpenAI_API.Chat;
 using OpenAI_API.Models;
 
 namespace BKYZSA.Commands
@@ -29,7 +33,7 @@ namespace BKYZSA.Commands
             chat.Model = Model.GPT4_Turbo;
             while (true)
             {
-                await Console.Out.WriteLineAsync("[Felhasználó]");
+                Console.Out.WriteLine("[Felhasználó]");
                 string? input = Console.ReadLine();
                 if (input == null)
                     continue;
@@ -46,9 +50,41 @@ namespace BKYZSA.Commands
                 Console.Out.WriteLine("\n");
             }
             Ui.ModelRunning = false;
-            await Console.Out.WriteLineAsync($"{Ui.ModelRunning}");
 
-            //TODO: conversation fájlba mentés 
+            // Conversation fájlba mentés 
+            var messages = new List<MessageEntry>();
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                $"messages-{timestamp}.json");
+
+            for (int i = 0; i < chat.Messages.Count; i++)
+            {
+                messages.Add(new MessageEntry
+                {
+                    // A beszélgetést mindig az user kezdi, ezért a páratlan üzeneteket az user küldi, a párosakat a modell
+                    // i + 1, mert 0-tól indexelünk
+                    Type = (i + 1) % 2 != 0 ? "User": "Assistant",
+                    Message = chat.Messages[i].TextContent
+                });
+            }
+
+            SaveToFile(path, messages);
+        }
+
+        public static void SaveToFile(string path, List<MessageEntry> messages)
+        {
+            using (var stream = File.Create(path))
+            {
+                try
+                {
+                    var serializer = new MessageEntrySerializer();
+                    serializer.SerializeToJson(stream, messages);
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"Hiba történt a beszélgetés elmentése során: {ex.Message}");
+                }
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BKYZSA.Commands
+namespace BKYZSA.Infrastructure
 {
     internal interface ICommand
     {

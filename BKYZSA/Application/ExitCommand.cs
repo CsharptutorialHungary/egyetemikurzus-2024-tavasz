@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BKYZSA.Infrastructure;
+
 namespace BKYZSA.Commands
 {
     internal class ExitCommand : ICommand

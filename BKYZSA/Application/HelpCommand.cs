@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BKYZSA.Infrastructure;
 using BKYZSA.UserInterface;
 
 namespace BKYZSA.Commands
@@ -23,7 +24,7 @@ namespace BKYZSA.Commands
             {
                 Console.WriteLine($">>> [{command.Name}] - {command.Description}");
             }
-
+            Console.WriteLine();
         }
     }
 }
