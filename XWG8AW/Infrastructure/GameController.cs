@@ -13,24 +13,26 @@ namespace XWG8AW.Infrastructure
     {
 
         Host host = new Host();
-        User user = new User();
+        public User User = new User();
 
         public void ReadUserName()
         {
             host.WriteLine("Adja meg a játékos nevét!");
-            user.UserName = host.ReadLine();
-            user.Score = 0;
+            User.UserName = host.ReadLine();
+            User.Score = 0;
 
-            while(user.UserName == null)
+            while(User.UserName == null)
             {
                 host.WriteLine("Érvénytelen név adjon meg egy másikat");
-                user.UserName = host.ReadLine();
+                User.UserName = host.ReadLine();
             }
         }
 
         public void Gamestart()
         {
             host.WriteLine("A játék hamarosan indul 10 feladatot kapsz sok sikert!");
+            host.WriteLine("A kérdésre csak az 'A', 'B', 'C' vagy 'D' betűk megadásával válaszolj!");
+            host.WriteLine("Más válasz megadása helytelen megoldást eredményez!");
             host.Write("A játék hamarosan kezdődik.");
 
             for (int i = 0; i < 3; i++)
@@ -57,13 +59,14 @@ namespace XWG8AW.Infrastructure
                 if(answer.ToLower().Equals(question.Correct))
                 {
                     host.WriteLine("A válaszod helyes!");
-                    user.Score++;
+                    User.Score++;
                 }
                 else
                 {
                     host.WriteLine("A válaszod helytelen!");
                 }
                 Thread.Sleep(1500);
+                Console.Clear();
             }
             GameEnd();
 
@@ -71,9 +74,11 @@ namespace XWG8AW.Infrastructure
 
         public void GameEnd()
         {
-            host.WriteLine("Köszönjük a játékot" +(user.UserName)+" !");
-            host.WriteLine("Hamarosan visszaírányítunk a kezdőállapotra.!");
+            host.WriteLine("Köszönjük a játékot "+(User.UserName)+"!");
+            host.WriteLine("A pontszámod: "+(User.Score));
+            host.WriteLine("Hamarosan visszaírányítunk a kezdőállapotra.");
             Thread.Sleep(3000);
+            Console.Clear();
 
         }
 
@@ -83,13 +88,30 @@ namespace XWG8AW.Infrastructure
 
             List<QuestionJson> randomQuestions = new List<QuestionJson>();
 
-            int questionCount = 10;
+            int questionCount = 3;
 
             for (int i = 0; i < questionCount; i++)
             {
-                int randomNumber = new Random().Next(1, questionList.Result.Count);
+                int randomNumber = new Random().Next(0, questionList.Result.Count);
 
-                randomQuestions.Add(questionList.Result[randomNumber]);
+                if(i == 0)
+                {
+                    randomQuestions.Add(questionList.Result[randomNumber]);
+                    continue;
+                }
+
+                for (int j = 0; j < randomQuestions.Count; j++)
+                {
+                    if (!(randomQuestions[j].Name.Equals(questionList.Result[randomNumber].Name)))
+                    {
+                        randomQuestions.Add(questionList.Result[randomNumber]);
+                        break;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
             }
 
             return randomQuestions;

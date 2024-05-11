@@ -22,6 +22,9 @@ namespace XWG8AW.Application
             
             gameController.Gamestart();
             gameController.InGame(gameController.RandomQuestionsGenerator(questionDeserializer));
+
+            UserSerializer userSerializer = new UserSerializer();
+            userSerializer.UseSerializeToJson(gameController.User);
         }
     }
 }
