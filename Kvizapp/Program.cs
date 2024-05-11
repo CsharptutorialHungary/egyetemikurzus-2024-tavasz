@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Text.Json;
 
 namespace Kvizapp;
 
@@ -7,7 +8,10 @@ class Kviz {
 
     static public void Main(String[] args)
     {
+
+        
         Player player = new Player();
+        Console.WriteLine(Directory.GetCurrentDirectory());
         Console.WriteLine("Please add your player's name!");
         
         try
@@ -23,9 +27,8 @@ class Kviz {
         {
             Console.WriteLine(e.Message);
         }
-
-        List<Question> questions = generateTriviaQuestions();
-
+        List<Question> questions = loadQuestions();
+        
         for (int i = 0; i < questions.Count; i++)
         {
             Console.WriteLine(questions[i].question);
@@ -57,6 +60,7 @@ class Kviz {
     };
 
     public record Question(
+        String category,
         String question,
         String aChoice,
         String bChoice,
@@ -70,22 +74,16 @@ class Kviz {
     {
         return answer == question.answer;
     }
-    
-    static List<Question> generateTriviaQuestions()
+
+
+    static public List<Question> loadQuestions()
     {
-        List<Question> questions = new List<Question>
-        {
-            new Question("What is the capital of France?", "Paris", "Madrid", "Moscow", "Kiev", "a" , 10),
-            new Question("Who has scored against the most teams?", "Luis Suarez", "Zlatan Ibrahimovic", "Cristiano Ronaldo", "Lionel Messi", "b", 10),
-            new Question("Who earned the most olympic gold medals?", "Michael Phelps", "Carl Lewis", "Mark Spitz", "Larisa Latynina", "a", 10),
-            new Question("What currency did Austria use before the euro?", "Pound", "Dollar", "Schilling", "Mark", "c", 10),
-            new Question("What is Germany's domain name?", ".ge", ".ne", ".de", ".gr", "c", 10),
-            new Question("What sides fought during the battle of Marathon?", "romans and persians", "greeks and persians", "greeks and romans", "romans and puns", "b", 10),
-            new Question("What color is sulfur?", "Blue", "Yellow", "Red", "White", "b", 10),
-            new Question("How wide is a football goal?", "6,5 meters", "3 meters", "8 meters", "7,32 meters", "d", 10),
-            new Question("What color is NOT in the olympic flag?", "Blue", "Black", "Orange", "Red", "c", 10),
-            new Question("What country is ice cream originally from?", "Russia", "USA", "Germany", "China", "d", 10)
-        };
-        return questions;
+        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "questions.json");
+        
+        string json = File.ReadAllText(jsonFilePath);
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        var triviaData = JsonSerializer.Deserialize<Question>(json, options);
+
+        return null;
     }
 }
