@@ -23,7 +23,7 @@ namespace BKYZSA.UserInterface
         {
             Console.WriteLine("Üdvözöllek a ConsoleGPT Playgroundban!\n" +
                 "Első lépésként használd a \"help\" parancsot és tájékozódj az elérhető " +
-                "parancsokról.");
+                "parancsokról.\n");
             while (true)
             {
                 if(ModelRunning)
@@ -50,7 +50,7 @@ namespace BKYZSA.UserInterface
                 }
                 else
                 {
-                    Console.WriteLine("Nincs ilyen parancs. Használd a \"help\" parancsot a további információkért.");
+                    Console.WriteLine("Nincs ilyen parancs. Használd a \"help\" parancsot a további információkért.\n");
                 }
 
             }
@@ -58,14 +58,7 @@ namespace BKYZSA.UserInterface
 
         private ICommand? FindCommand(string v)
         {
-            foreach(var command in _commandLoader.Commands)
-            {
-                if(command.Name.Equals(v, StringComparison.CurrentCultureIgnoreCase)) {
-                    return command;
-                }
-            }
-
-            return null;
+            return _commandLoader.Commands.FirstOrDefault(command => command.Name.Equals(v, StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

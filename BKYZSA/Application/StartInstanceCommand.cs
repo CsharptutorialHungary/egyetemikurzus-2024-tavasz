@@ -19,7 +19,6 @@ namespace BKYZSA.Commands
     {
         public string Name => "startinstance";
 
-        // maybe válaszható modell, ha marad idő
         public string Description => "Elindít egy beszélgetést GPT-4 Turbo modellel.";
 
         public async void Execute(string[] args)
@@ -50,6 +49,7 @@ namespace BKYZSA.Commands
                 } catch (System.Security.Authentication.AuthenticationException ex)
                 {
                     Console.WriteLine(ex.Message + "\n");
+
                     Ui.ModelRunning = false;
                     return;
                 }

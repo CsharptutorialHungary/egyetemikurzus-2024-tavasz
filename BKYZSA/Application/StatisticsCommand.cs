@@ -52,8 +52,10 @@ namespace BKYZSA.Application
                 int index = 1;
                 foreach (var dialogue in dialogues.OrderByDescending(dialogue => dialogue.UsedToken))
                 {
-                    Console.WriteLine($"#{index++} - {dialogue.FileName} ({dialogue.UsedToken} tokens)\n");
+                    Console.WriteLine($"#{index++} - {dialogue.FileName} ({dialogue.UsedToken} tokens)"
+                        + (index - 1 == dialogues.Count ? "\n" : "") ); // isten lássa lelkem, de bűnöm ne lássa hatalom
                 }
+
             }
             else if (args[1].Equals("avg", StringComparison.CurrentCultureIgnoreCase))
             {

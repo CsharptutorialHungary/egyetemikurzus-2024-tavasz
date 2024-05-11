@@ -22,14 +22,14 @@ namespace BKYZSA.Application
 
             if(files == null)
             {
-                Console.WriteLine("Még nincs visszanézhető beszélgetésed a modellel!");
+                Console.WriteLine("Még nincs visszanézhető beszélgetésed a modellel!\n");
                 return;
             } 
 
             if (args.Length == 1)
             {
                 FileUtility.ListFiles(files);
-                Console.WriteLine("A visszanézéshez használd így a \"view\" parancsot: view <id>");
+                Console.WriteLine("A visszanézéshez használd így a \"view\" parancsot: view <id>\n");
             }
             else
             {
