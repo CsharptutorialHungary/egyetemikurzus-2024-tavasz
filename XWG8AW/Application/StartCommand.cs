@@ -19,8 +19,9 @@ namespace XWG8AW.Application
             QuestionDeserializer questionDeserializer = new QuestionDeserializer();
 
             gameController.ReadUserName();
-            gameController.RandomQuestion(questionDeserializer);
+            
             gameController.Gamestart();
+            gameController.InGame(gameController.RandomQuestionsGenerator(questionDeserializer));
         }
     }
 }

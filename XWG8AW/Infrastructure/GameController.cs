@@ -42,12 +42,42 @@ namespace XWG8AW.Infrastructure
             Console.Clear();
         }
 
-        public void InGame()
+        public void InGame(List<QuestionJson> questions)
         {
+            foreach (QuestionJson question in questions)
+            {
+                host.WriteLine(question.Name);
+                host.WriteLine(question.Answer_A);
+                host.WriteLine(question.Answer_B);
+                host.WriteLine(question.Answer_C);
+                host.WriteLine(question.Answer_D);
+
+                string answer = host.ReadLine();
+
+                if(answer.ToLower().Equals(question.Correct))
+                {
+                    host.WriteLine("A válaszod helyes!");
+                    user.Score++;
+                }
+                else
+                {
+                    host.WriteLine("A válaszod helytelen!");
+                }
+                Thread.Sleep(1500);
+            }
+            GameEnd();
 
         }
 
-        public List<QuestionJson> RandomQuestion(QuestionDeserializer questionDeserializer)
+        public void GameEnd()
+        {
+            host.WriteLine("Köszönjük a játékot" +(user.UserName)+" !");
+            host.WriteLine("Hamarosan visszaírányítunk a kezdőállapotra.!");
+            Thread.Sleep(3000);
+
+        }
+
+        public List<QuestionJson> RandomQuestionsGenerator(QuestionDeserializer questionDeserializer)
         {
             Task<List<QuestionJson>> questionList =  questionDeserializer.QuestionDeserializeFromJson();
 
