@@ -24,7 +24,7 @@ namespace BKYZSA.Commands
 
         public async void Execute(string[] args)
         {
-            Console.Out.WriteLine("Elindítottál egy párbeszédet a GPT-vel! Ha végeztél a beszélgetéssel" +
+            Console.WriteLine("Elindítottál egy párbeszédet a GPT-vel! Ha végeztél a beszélgetéssel" +
                 "írd be, hogy \"exit\".\n");
 
             OpenAIAPI api = new();
@@ -33,7 +33,7 @@ namespace BKYZSA.Commands
 
             while (true)
             {
-                Console.Out.WriteLine("[User]");
+                Console.WriteLine("[User]");
                 string? input = Console.ReadLine();
                 if (input == null)
                     continue;
@@ -42,24 +42,22 @@ namespace BKYZSA.Commands
 
                 chat.AppendUserInput(input);
 
-                Console.Out.WriteLine("[Assistant]");
+                Console.WriteLine("[Assistant]");
                 try
                 {
-                    await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
-                    {
-                        Console.Write(res);
-                    }
-                    Console.Out.WriteLine("\n");
+                    Console.Write(await chat.GetResponseFromChatbotAsync());
+                    Console.WriteLine("\n");
                 } catch (System.Security.Authentication.AuthenticationException ex)
                 {
-                    Console.Out.WriteLine(ex.Message + "\n");
+                    Console.WriteLine(ex.Message + "\n");
                     Ui.ModelRunning = false;
                     return;
                 }
                 catch (Exception ex)
                 {
-                    Console.Out.WriteLine("Hiba történt: " + ex.Message + "\n");
+                    Console.WriteLine("Hiba történt: " + ex.Message + "\n");
                 }
+                Console.WriteLine(chat.MostRecentApiResult.Usage.TotalTokens);
             }
             Ui.ModelRunning = false;
 
@@ -77,16 +75,21 @@ namespace BKYZSA.Commands
                 Message = entry.TextContent
             }).ToList();
 
-            SaveToFile(path, messages);
+            var dialogue = new Dialogue {
+                Messages = messages,
+                UsedToken = chat.MostRecentApiResult.Usage.TotalTokens
+            };
+
+            SaveToFile(path, dialogue);
         }
 
-        public static void SaveToFile(string path, List<MessageEntry> messages)
+        public static async void SaveToFile(string path, Dialogue dialogue)
         {
             using (var stream = File.Create(path))
             {
                 try
                 {
-                    MessageEntrySerializer.SerializeToJson(stream, messages);
+                    await DialogueSerializer.SerializeToJson(stream, dialogue);
                 }
                 catch (IOException ex)
                 {

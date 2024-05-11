@@ -11,11 +11,11 @@ using BKYZSA.Domain;
 
 namespace BKYZSA.Infrastructure
 {
-    internal class MessageEntrySerializer
+    internal class DialogueSerializer
     {
-        public static void SerializeToJson(Stream target, List<MessageEntry> messageEntries)
+        public async static Task SerializeToJson(Stream target, Dialogue dialogue)
         {
-            JsonSerializer.Serialize(target, messageEntries, new JsonSerializerOptions
+            await JsonSerializer.SerializeAsync(target, dialogue, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin,
@@ -24,9 +24,9 @@ namespace BKYZSA.Infrastructure
             });
         }
 
-        public static List<MessageEntry>? DeserializeFromJson(Stream source)
+        public static Dialogue? DeserializeFromJson(Stream source)
         {
-            var messages = JsonSerializer.Deserialize<List<MessageEntry>>(source, new JsonSerializerOptions
+            var messages = JsonSerializer.Deserialize<Dialogue>(source, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin,

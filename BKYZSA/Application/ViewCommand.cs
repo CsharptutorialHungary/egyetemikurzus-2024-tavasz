@@ -49,12 +49,16 @@ namespace BKYZSA.Application
 
         public static void PrintMessages(FileInfo[] files, int index)
         {
-            Console.WriteLine(files[index].FullName);
             using (var stream = new FileStream(files[index].FullName, FileMode.Open, FileAccess.Read))
             {
-                var dialogue = MessageEntrySerializer.DeserializeFromJson(stream) ?? new List<MessageEntry>();
+                var dialogue = DialogueSerializer.DeserializeFromJson(stream);
+                if(dialogue == null)
+                {
+                    Console.WriteLine("A párbeszéd megnyitása nem sikerült.");
+                    return;
+                }
 
-                foreach(var message in dialogue)
+                foreach(var message in dialogue.Messages)
                 {
                     Console.WriteLine($"[{message.Sender}]");
                     Console.WriteLine(message.Message + "\n");
