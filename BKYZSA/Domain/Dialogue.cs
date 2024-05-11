@@ -8,6 +8,7 @@ namespace BKYZSA.Domain
 {
     public record class Dialogue
     {
+        public required string FileName { get; init; }
         public required List<MessageEntry> Messages { get; init; }
         public required int UsedToken { get; init; }
     }

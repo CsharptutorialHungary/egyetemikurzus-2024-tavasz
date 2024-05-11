@@ -63,8 +63,9 @@ namespace BKYZSA.Commands
 
             // Conversation fájlba mentés 
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+            string filename = $"messages-{timestamp}.json";
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                $"messages-{timestamp}.json");
+                filename);
 
             int index = 1;
 
@@ -76,6 +77,7 @@ namespace BKYZSA.Commands
             }).ToList();
 
             var dialogue = new Dialogue {
+                FileName = filename,
                 Messages = messages,
                 UsedToken = chat.MostRecentApiResult.Usage.TotalTokens
             };

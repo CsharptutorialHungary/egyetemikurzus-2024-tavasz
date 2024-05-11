@@ -18,26 +18,17 @@ namespace BKYZSA.Application
 
         public void Execute(string[] args)
         {
-            string pattern = "messages-????-??-??_??-??-??.json";
+            var files = FileUtility.GetFilesByPattern("messages-????-??-??_??-??-??.json");
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
-
-            FileInfo[] files = directoryInfo.GetFiles(pattern);
+            if(files == null)
+            {
+                Console.WriteLine("Még nincs visszanézhető beszélgetésed a modellel!");
+                return;
+            } 
 
             if (args.Length == 1)
             {
-                Console.WriteLine("A visszanézhető beszélgetéseid:");
-                if(files.Length == 0)
-                {
-                    Console.WriteLine("Még nincs visszanézhető beszélgetésed a modellel!");
-                    return;
-                }
-
-                // TODO: listázza a beszélgetés jsonokat + vmi id
-                for (int i = 0; i < files.Length; i++)
-                {
-                    Console.WriteLine($"[{i}] - {files[i].Name}");
-                }
+                FileUtility.ListFiles(files);
                 Console.WriteLine("A visszanézéshez használd így a \"view\" parancsot: view <id>");
             }
             else
