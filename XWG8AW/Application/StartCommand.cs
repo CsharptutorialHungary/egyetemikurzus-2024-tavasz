@@ -14,7 +14,13 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            throw new NotImplementedException();
+            GameController gameController = new GameController();
+
+            QuestionDeserializer questionDeserializer = new QuestionDeserializer();
+
+            gameController.ReadUserName();
+            gameController.RandomQuestion(questionDeserializer);
+            gameController.Gamestart();
         }
     }
 }

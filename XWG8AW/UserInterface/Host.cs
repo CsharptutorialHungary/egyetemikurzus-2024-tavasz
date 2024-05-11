@@ -18,5 +18,8 @@ namespace XWG8AW.UserInterface
 
         public void WriteLine(string message)
             => Console.WriteLine(message);
+
+        public void Write(string meassage)
+            => Console.Write(meassage);
     }
 }
