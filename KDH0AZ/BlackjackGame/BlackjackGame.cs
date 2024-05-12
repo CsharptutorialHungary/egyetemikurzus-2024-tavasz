@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.Text.Json;
 
 public class BlackjackGame
 {
@@ -47,7 +48,54 @@ public class BlackjackGame
         }
         else
         {
+            if (player.Money > 0) {
+                DataUpload();
+            }
+        }
+    }
+
+    public void DataUpload()
+    {
+        var playerData = new
+        {
+            Name = player.Name,
+            Money = player.Money
+        };
+
+        string filePath = "F:\\Alkfejlesztes charp\\KDH0AZ\\BlackjackGame\\data.json";
+
+        try
+        {
+            bool fileExists = File.Exists(filePath);
+
+            string jsonData = string.Empty;
+
+            if (fileExists)
+            {
+                jsonData = File.ReadAllText(filePath);
+            }
+
+            List<object> dataList = new List<object>();
+
+            if (!string.IsNullOrEmpty(jsonData))
+            {
+                dataList = JsonSerializer.Deserialize<List<object>>(jsonData);
+            }
+
+            dataList.Add(playerData);
+
+            string finalJson = JsonSerializer.Serialize(dataList, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+            File.WriteAllText(filePath, finalJson);
+
             Console.Clear();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Hiba történt a fájl mentésekor: {ex.Message}");
         }
     }
 
@@ -214,6 +262,8 @@ public class BlackjackGame
         else 
         {
             Console.Write("\nSajnálom, de elfogyott a pénzed! ");
+            Console.ReadKey(true);
+            Console.Clear();
             return false;
         }
         
@@ -243,7 +293,7 @@ public class BlackjackGame
 
             dealerHandValue = CalculateHandValue(dealer.Hand);
 
-            if (dealerHandValue > 21)
+            if (dealerHandValue > 21 || dealerHandValue > playerHandValue)
             {
                 break;
             }

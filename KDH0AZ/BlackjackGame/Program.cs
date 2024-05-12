@@ -75,6 +75,16 @@ class Program
 
     static void ViewResults()
     {
-        Console.WriteLine("Eredmények megtekintése...");
+        Statistics statistics = new Statistics();
+        statistics.DisplayTopPlayersTable(5);
+        ReturnToMainMenu();
     }
+
+    static void ReturnToMainMenu()
+    {
+        Console.WriteLine("\nNyomj meg egy gombot a főmenübe való visszatéréshez...");
+        Console.ReadKey(true);
+        Console.Clear();
+    }
+
 }
