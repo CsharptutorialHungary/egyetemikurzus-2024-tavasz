@@ -23,6 +23,11 @@ namespace XWG8AW.Infrastructure
                 UserDeserializer currentJson = new UserDeserializer();
                 List<User> allUser = await currentJson.UserDeserializeFromJson();
 
+                if(allUser is null)
+                {
+                    return;
+                }
+
                 File.Delete(correctPath);
 
                 allUser.Add(user);

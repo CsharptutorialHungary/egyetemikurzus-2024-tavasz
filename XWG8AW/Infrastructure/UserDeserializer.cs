@@ -49,10 +49,24 @@ namespace XWG8AW.Infrastructure
                 }
 
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Hiba a jatekosok beolvasas soran!");
-                return null;
+
+                if (ex is IOException)
+                {
+                    Console.WriteLine("A playersScores.json fajl nem talalhato!\n");
+                    return null;
+                }
+                else if (ex is JsonException)
+                {
+                    Console.WriteLine("Hiba a jatekosok beolvasasa soran!\nRossz JSON formatum!\n");
+                    return null;
+                }
+                else
+                {
+                    Console.WriteLine("Ismeretlen hiba a kerdesek beolvasasa soran!\n");
+                    return null;
+                }
             }
         }
     }

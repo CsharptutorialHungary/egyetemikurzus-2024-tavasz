@@ -43,7 +43,7 @@ namespace XWG8AW.UserInterface
                     }
                     catch (Exception ex)
                     {
-                        _host.WriteLine("Hiba tortent");
+                        _host.WriteLine("Hiba tortent: "+ex);
                         Trace.WriteLine(ex, "commandexception");
                     }
                 }

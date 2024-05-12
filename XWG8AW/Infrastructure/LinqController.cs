@@ -16,6 +16,11 @@ namespace XWG8AW.Infrastructure
         {
             List<User> allUser = await allUserJson.UserDeserializeFromJson();
 
+            if (allUser is null)
+            {
+                return null;
+            }
+
             var bestScore = allUser.Where(x => x.UserName == user).OrderByDescending(x => x.Score).FirstOrDefault();
 
             if (bestScore != null)
@@ -23,12 +28,17 @@ namespace XWG8AW.Infrastructure
                 return bestScore.ToString();
             }
 
-            return "Nem talalhato ilyen jatekos!";
+            return "Nem talalhato ilyen jatkos!";
         }
 
         public async Task<IOrderedEnumerable<User>> AllScore()
         {
             List<User> allUser = await allUserJson.UserDeserializeFromJson();
+
+            if(allUser is null)
+            {
+                return null;
+            }
 
             IOrderedEnumerable<User> allScore = allUser.OrderByDescending(x => x.Score);
 

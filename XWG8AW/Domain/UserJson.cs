@@ -11,10 +11,10 @@ namespace XWG8AW.Domain
     {
 
         [JsonPropertyName("userName")]
-        public string UserName { get; init; }
+        public required string UserName { get; init; }
 
         [JsonPropertyName("score")]
-        public int Score { get; init; }
+        public required int Score { get; init; }
 
 
     }

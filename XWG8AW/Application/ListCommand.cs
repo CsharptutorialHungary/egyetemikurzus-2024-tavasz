@@ -19,9 +19,8 @@ namespace XWG8AW.Application
 
             Task<IOrderedEnumerable<User>> scores = linqController.AllScore();
 
-            if (scores == null )
+            if (scores.Result == null )
             {
-                host.WriteLine("Nincs meg egy eredmeny se!");
                 return;
             }
 

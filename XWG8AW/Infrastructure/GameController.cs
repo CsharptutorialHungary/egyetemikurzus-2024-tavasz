@@ -46,6 +46,13 @@ namespace XWG8AW.Infrastructure
 
         public void InGame(List<QuestionJson> questions)
         {
+            if(questions is null)
+            {
+                Thread.Sleep(2000);
+                Console.Clear();
+                return;
+            }
+
             foreach (QuestionJson question in questions)
             {
                 host.WriteLine("Kerdes: "+question.Name);
@@ -88,11 +95,20 @@ namespace XWG8AW.Infrastructure
 
             List<QuestionJson> randomQuestions = new List<QuestionJson>();
 
-            int questionCount = 3;
+            int questionCount = 10;
 
             for (int i = 0; i < questionCount; i++)
             {
-                int randomNumber = new Random().Next(0, questionList.Result.Count);
+                int randomNumber = 0;
+
+                try
+                {
+                    randomNumber = new Random().Next(0, questionList.Result.Count);
+                }
+                catch (NullReferenceException e)
+                {
+                    return null;
+                }
 
                 if(i == 0)
                 {

@@ -38,9 +38,23 @@ namespace XWG8AW.Infrastructure
                     return questions;
                 }
 
-            } catch (IOException ex) { 
-                Console.WriteLine("Hiba a kerdesek beolvasss soran!");
-                return null;
+            } catch (Exception ex) { 
+
+                if(ex is IOException)
+                {
+                    Console.WriteLine("A questions.json fajl nem talalhato!\n");
+                    return null;
+                }
+                else if(ex is JsonException)
+                {
+                    Console.WriteLine("Hiba a kerdesek beolvasasa soran!\nRossz JSON formatum!\n");
+                    return null;
+                }
+                else
+                {
+                    Console.WriteLine("Ismeretlen hiba a kerdesek beolvasasa soran!\n");
+                    return null;
+                }
             }
         }
     }
