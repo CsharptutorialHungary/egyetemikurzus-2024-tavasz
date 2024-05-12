@@ -20,7 +20,7 @@ public class BlackjackGame
     {
         if (firstGame)
         {
-            Console.WriteLine($"\n\nÜdvözöllek, {player.Name}! Egyenleged: ${player.Money}");
+            Console.WriteLine($"Üdvözöllek, {player.Name}! Egyenleged: ${player.Money}");
             firstGame = false;
         }
         else
@@ -47,59 +47,8 @@ public class BlackjackGame
         }
         else
         {
-            Console.WriteLine("\nKöszönjük a játékot! Viszlát!");
+            Console.Clear();
         }
-    }
-
-    private bool PlayAgain()
-    {
-        int playerMoney = player.Money;
-        if (playerMoney > 0)
-        {
-            while (true)
-            {
-                Console.Write("\nSzeretnél új játékot játszani? (igen/nem): ");
-                string answer = Console.ReadLine()?.ToLower() ?? "";
-
-                if (answer == "igen")
-                {
-                    return true;
-                }
-                else if (answer == "nem")
-                {
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("Hibás válasz. Kérem, adj meg érvényes választ (igen/nem).");
-                }
-            }
-        }
-        else 
-        {
-            Console.Write("\nSajnálom, de elfogyott a pénzed! ");
-            return false;
-        }
-        
-    }
-
-    private void ResetGame()
-    {
-        player.ResetHand();
-        dealer.ResetHand();
-        deck = new Deck().GetShuffledDeck();
-    }
-
-
-    public void DisplayingTabs()
-    {
-        Console.WriteLine("\nA kezedben van:");
-        foreach (var card in player.Hand)
-        {
-            Console.WriteLine($"{card.Rank} {card.Suit}");
-        }
-        Console.WriteLine("\nAz Osztó kezében lévõ elsõ lap:");
-        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit}");
     }
 
     public void PlaceBet()
@@ -110,8 +59,8 @@ public class BlackjackGame
 
             if (betAmount > 0)
             {
+                Console.Clear();
                 player.PlaceBet(betAmount);
-                Console.WriteLine($"Pénzed: ${player.Money}, tét: ${player.Bet}");
             }
             else
             {
@@ -140,7 +89,19 @@ public class BlackjackGame
         deck.RemoveAt(0);
     }
 
-    public void PlayPlayerTurn() 
+    public void DisplayingTabs()
+    {
+        Console.WriteLine($"Pénzed: ${player.Money}, tét: ${player.Bet}\n");
+        Console.WriteLine("A kezedben van:");
+        foreach (var card in player.Hand)
+        {
+            Console.WriteLine($"{card.Rank} {card.Suit}");
+        }
+        Console.WriteLine("\nAz Osztó kezében lévõ elsõ lap:");
+        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit}");
+    }
+
+    public void PlayPlayerTurn()
     {
         bool continuePlaying = true;
         while (continuePlaying)
@@ -148,8 +109,9 @@ public class BlackjackGame
             Console.Write("\nKérsz még egy lapot? (igen/nem): ");
             string? answer = Console.ReadLine()?.ToLower();
 
-            if (answer == "igen")
+            if (answer == "igen" || answer == "i" || answer == "yes" || answer == "y")
             {
+                Console.Clear();
                 HitPlayer();
                 DisplayingTabs();
 
@@ -157,54 +119,30 @@ public class BlackjackGame
 
                 if (playerHandValue > 21)
                 {
-                    Console.WriteLine("Túl sok lett a lapok összege (több, mint 21)!");
                     continuePlaying = false;
+                    Console.Clear();
                 }
             }
-            else if (answer == "nem")
+            else if (answer == "nem" || answer == "n" || answer == "no")
             {
-                Console.WriteLine("Megálltál.");
                 PlayDealerTurn();
                 continuePlaying = false;
+                Console.Clear();
             }
             else
             {
                 Console.WriteLine("Hibás válasz. Kérem, adj meg érvényes választ (igen/nem).");
             }
         }
+
     }
-
-    private void PlayDealerTurn()
-    {
-        foreach (var card in dealer.Hand)
-        {
-            Console.WriteLine($"{card.Rank} {card.Suit}");
-        }
-
-        int dealerHandValue = CalculateHandValue(dealer.Hand);
-        int playerHandValue = CalculateHandValue(player.Hand);
-
-        while (dealerHandValue < 17)
-        {
-            dealer.Hand.Add(deck.First());
-            deck.RemoveAt(0);
-
-            dealerHandValue = CalculateHandValue(dealer.Hand);
-
-            if (dealerHandValue > 21)
-            {
-                break;
-            }
-        }
-    }
-
 
     private void EndGame()
     {
         int playerHandValue = CalculateHandValue(player.Hand);
         int dealerHandValue = CalculateHandValue(dealer.Hand);
 
-        Console.WriteLine("\nVégeredmény:");
+        Console.WriteLine("Végeredmény:");
 
         Console.WriteLine($"A játékos lapjai:");
         foreach (var card in player.Hand)
@@ -247,6 +185,70 @@ public class BlackjackGame
         Console.WriteLine($"Játékos új egyenlege: ${player.Money}");
     }
 
+
+    private bool PlayAgain()
+    {
+        int playerMoney = player.Money;
+        if (playerMoney > 0)
+        {
+            while (true)
+            {
+                Console.Write("\nSzeretnél új játékot játszani? (igen/nem): ");
+                string answer = Console.ReadLine()?.ToLower() ?? "";
+
+                if (answer == "igen" || answer == "i" || answer == "yes" || answer == "y")
+                {
+                    Console.Clear();
+                    return true;
+                }
+                else if (answer == "nem" || answer == "n" || answer == "no")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Hibás válasz. Kérem, adj meg érvényes választ (igen/nem).");
+                }
+            }
+        }
+        else 
+        {
+            Console.Write("\nSajnálom, de elfogyott a pénzed! ");
+            return false;
+        }
+        
+    }
+
+    private void ResetGame()
+    {
+        player.ResetHand();
+        dealer.ResetHand();
+        deck = new Deck().GetShuffledDeck();
+    }
+
+    private void PlayDealerTurn()
+    {
+        foreach (var card in dealer.Hand)
+        {
+            Console.WriteLine($"{card.Rank} {card.Suit}");
+        }
+
+        int dealerHandValue = CalculateHandValue(dealer.Hand);
+        int playerHandValue = CalculateHandValue(player.Hand);
+
+        while (dealerHandValue < 17)
+        {
+            dealer.Hand.Add(deck.First());
+            deck.RemoveAt(0);
+
+            dealerHandValue = CalculateHandValue(dealer.Hand);
+
+            if (dealerHandValue > 21)
+            {
+                break;
+            }
+        }
+    }
 
     private void HitPlayer()
     {
