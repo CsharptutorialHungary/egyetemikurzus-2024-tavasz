@@ -4,10 +4,15 @@ namespace Filemanager.Model{
     public sealed record class FolderDef{
 
     [JsonPropertyName("name")]
-    private string Name {get; init;}
+    public string Name {get; init;}
 
     [JsonPropertyName("types")]
 
-    private string[] Types {get; init;}
+    public string[] Types {get; set;}
+
+    public FolderDef(string name, string[] types){
+        this.Name=name;
+        this.Types=types;
+    }
 }
 }

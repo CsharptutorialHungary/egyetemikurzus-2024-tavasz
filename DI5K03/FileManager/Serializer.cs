@@ -9,12 +9,12 @@ namespace Filemanager{
         public async Task<FolderDef[]> DeserializeFromJson(Stream from)
         {
             FolderDef[]? folders = await JsonSerializer.DeserializeAsync<FolderDef[]>(from,new JsonSerializerOptions{AllowTrailingCommas=true});
-            return folders == null ? ([]) : folders;
+            return folders ?? ([]);
         }
 
-        public void SerializeToJson(Stream target, FolderDef[] folderDefs)
+        public async Task SerializeToJson(Stream target, FolderDef[] folderDefs)
         {
-            throw new NotImplementedException();
+            await JsonSerializer.SerializeAsync<FolderDef[]>(target,folderDefs);
         }
     }
 }

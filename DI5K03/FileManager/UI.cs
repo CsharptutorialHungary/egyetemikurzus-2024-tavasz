@@ -6,7 +6,7 @@ namespace Filemanager{
         private  readonly ICommandProvider _commandProvider;
         private readonly IHost _host;
 
-        private Cache _cache;
+        private readonly Cache _cache;
 
         public UI(ICommandProvider commandProvider, IHost host){
             _commandProvider = commandProvider;
@@ -20,7 +20,7 @@ namespace Filemanager{
             while(true){
                 _host.WriteLine("> ");
                 string[] input = _host.ReadLine().Split(" ");
-                ICommand? commandToExecute = findCommandByName(input[0]);
+                ICommand? commandToExecute = FindCommandByName(input[0]);
                 if(commandToExecute != null){
                     commandToExecute.Execute(_host,input,_cache);
                 } else {
@@ -29,7 +29,7 @@ namespace Filemanager{
             }
         }
 
-        private ICommand? findCommandByName(String name){
+        private ICommand? FindCommandByName(string name){
             foreach (ICommand command in _commandProvider.Commands){
                 if(command.Name.Equals(name)){
                     return command;

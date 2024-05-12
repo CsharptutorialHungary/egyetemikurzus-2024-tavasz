@@ -6,7 +6,7 @@ namespace Filemanager.Commands{
     {
         public string Name => "setdir";
 
-        public void Execute(IHost host, string[] args, Cache cache)
+        public async void Execute(IHost host, string[] args, Cache cache)
         {
             if(args.Length<2)
             {
@@ -21,7 +21,18 @@ namespace Filemanager.Commands{
                     if(!File.Exists(file_path))
                     {
                         host.WriteLine("... creating fm_config.json");
-                        File.Create(file_path);
+                        using (FileStream config_stream = File.OpenWrite(file_path))
+                        {
+                            Serializer serializer = new();
+                            await serializer.SerializeToJson(config_stream,[]);
+                            cache.Stored_folderdefs=[];
+                        }
+                    } else {
+                        using (FileStream config_stream = File.OpenRead(file_path))
+                        {
+                            Serializer serializer = new();
+                            cache.Stored_folderdefs = await serializer.DeserializeFromJson(config_stream);
+                        }
                     }
                 } else {
                     host.WriteLine("Error: the given directory does not exist");
