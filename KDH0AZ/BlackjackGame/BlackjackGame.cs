@@ -23,6 +23,7 @@ public class BlackjackGame
         DealerDealInitialCards();
         DisplayingTabs();
         PlayPlayerTurn();
+        EndGame();
     }
 
     public void DisplayingTabs()
@@ -84,6 +85,7 @@ public class BlackjackGame
                 DisplayingTabs();
 
                 int playerHandValue = CalculateHandValue(player.Hand);
+
                 if (playerHandValue > 21)
                 {
                     Console.WriteLine("Túl sok lett a lapok összege (több, mint 21)!");
@@ -93,7 +95,7 @@ public class BlackjackGame
             else if (answer == "nem")
             {
                 Console.WriteLine("Megálltál.");
-
+                PlayDealerTurn();
                 continuePlaying = false;
             }
             else
@@ -102,6 +104,81 @@ public class BlackjackGame
             }
         }
     }
+
+    private void PlayDealerTurn()
+    {
+        foreach (var card in dealer.Hand)
+        {
+            Console.WriteLine($"{card.Rank} {card.Suit}");
+        }
+
+        int dealerHandValue = CalculateHandValue(dealer.Hand);
+        int playerHandValue = CalculateHandValue(player.Hand);
+
+        if (dealerHandValue < playerHandValue) {
+            while (dealerHandValue < 17 || dealerHandValue < playerHandValue)
+            {
+                dealer.Hand.Add(deck.First());
+                deck.RemoveAt(0);
+
+                dealerHandValue = CalculateHandValue(dealer.Hand);
+
+                if (dealerHandValue > 21)
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+    private void EndGame()
+    {
+        int playerHandValue = CalculateHandValue(player.Hand);
+        int dealerHandValue = CalculateHandValue(dealer.Hand);
+
+        Console.WriteLine("\nVégeredmény:");
+
+        Console.WriteLine($"A játékos lapjai:");
+        foreach (var card in player.Hand)
+        {
+            Console.WriteLine($"{card.Rank} {card.Suit}");
+        }
+        Console.WriteLine($"Játékos lapjainak összértéke: {playerHandValue}");
+
+        Console.WriteLine($"\nAz osztó lapjai:");
+        foreach (var card in dealer.Hand)
+        {
+            Console.WriteLine($"{card.Rank} {card.Suit}");
+        }
+        Console.WriteLine($"Osztó lapjainak összértéke: {dealerHandValue}\n");
+
+        if (playerHandValue > 21)
+        {
+            Console.WriteLine("Játékos vesztett! Túllépte a 21-et.");
+        }
+        else if (dealerHandValue > 21)
+        {
+            Console.WriteLine("Játékos nyert! Az osztó túllépte a 21-et.");
+            player.AddMoney(player.Bet * 2);
+        }
+        else if (playerHandValue > dealerHandValue)
+        {
+            Console.WriteLine("Játékos nyert! Nagyobb értékû lapokkal rendelkezik.");
+            player.AddMoney(player.Bet * 2);
+        }
+        else if (playerHandValue < dealerHandValue)
+        {
+            Console.WriteLine("Játékos vesztett! Az osztó lapjai értékesebbek.");
+        }
+        else
+        {
+            Console.WriteLine("Döntetlen! Egyenlõ értékû lapok.");
+            player.AddMoney(player.Bet);
+        }
+
+        Console.WriteLine($"Játékos új egyenlege: ${player.Money}");
+    }
+
 
     private void HitPlayer()
     {

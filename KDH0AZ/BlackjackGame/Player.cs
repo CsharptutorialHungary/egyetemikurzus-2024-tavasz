@@ -16,7 +16,7 @@ public class Player
         Bet = 0;
     }
 
-    public void ModifyMoney(int amount)
+    public void AddMoney(int amount)
     { 
         Money += amount;
     }
