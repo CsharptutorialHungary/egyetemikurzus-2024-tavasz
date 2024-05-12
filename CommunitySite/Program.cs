@@ -9,11 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+//adatbázis regisztrálása
 builder.Services.RegisterDatabaseContexts(builder.Configuration);
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddServerSideBlazor();
 
+//snackbar konfiguráció
 builder.Services.AddMudServices(config =>
 {
     config.SnackbarConfiguration.VisibleStateDuration = 3000;
@@ -24,6 +26,7 @@ builder.Services.AddMudServices(config =>
 });
 
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
+//saját szerviz osztályok regisztrálása
 builder.Services.RegisterApplicationServices();
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
@@ -36,11 +39,9 @@ var app = builder.Build();
 
 app.UsePathBase($"/{baseHref}/");
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

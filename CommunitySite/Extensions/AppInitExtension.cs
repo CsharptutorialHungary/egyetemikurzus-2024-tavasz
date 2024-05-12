@@ -6,6 +6,11 @@ namespace CommunitySite.Extensions
 {
     public static class AppInitExtension
     {
+        /// <summary>
+        ///     A program futásának az elején migrálja az adatbázist
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public static async Task MigrateDatabases(this IServiceProvider provider)
         {
             try

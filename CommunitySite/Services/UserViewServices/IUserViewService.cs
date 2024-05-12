@@ -4,6 +4,10 @@ namespace CommunitySite.Services.UserViewServices
 {
     public interface IUserViewService
     {
-        Task CreateUserDialog(UserViewModel user);
+        /// <summary>
+        ///     felhasználó módosításához szükséges dialógusablak megnyitása
+        /// </summary>
+        /// <param name="user">A módosítandó felhasználó</param>
+        Task UpdateUserDialog(UserViewModel user);
     }
 }

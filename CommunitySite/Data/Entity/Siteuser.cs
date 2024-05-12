@@ -19,7 +19,7 @@ public partial class Siteuser
 
     public string? School { get; set; }
 
-    public string? BirthDate { get; set; }
+    public string? Userbirthdate { get; set; }
 
     public Guid Usertechnicalname { get; set; }
 

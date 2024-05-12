@@ -3,6 +3,9 @@ using FluentValidation;
 
 namespace CommunitySite.Extensions.Validators
 {
+    /// <summary>
+    ///     Felhasználó adatainak validálása
+    /// </summary>
     public class UserValidator : AbstractValidator<UserViewModel>
     {
         public UserValidator()
