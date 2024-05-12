@@ -22,17 +22,18 @@ public class BlackjackGame
         PlayerDealInitialCards();
         DealerDealInitialCards();
         DisplayingTabs();
+        PlayPlayerTurn();
     }
 
     public void DisplayingTabs()
     {
-        Console.WriteLine("A kezedben van:");
+        Console.WriteLine("\nA kezedben van:");
         foreach (var card in player.Hand)
         {
-            Console.WriteLine($"{card.Rank} {card.Suit}");
+            Console.WriteLine($"{card.Rank} {card.Suit} {card.Value}");
         }
         Console.WriteLine("\nAz Osztó kezében lévõ elsõ lap:");
-        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit}");
+        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit} {dealer.Hand[0].Value}");
     }
 
     public void PlaceBet() 
@@ -67,6 +68,69 @@ public class BlackjackGame
         deck.RemoveAt(0);
         dealer.Hand.Add(deck.First());
         deck.RemoveAt(0);
+    }
+
+    public void PlayPlayerTurn() 
+    {
+        bool continuePlaying = true;
+        while (continuePlaying)
+        {
+            Console.Write("\nKérsz még egy lapot? (igen/nem): ");
+            string answer = Console.ReadLine()?.ToLower();
+
+            if (answer == "igen")
+            {
+                HitPlayer();
+                DisplayingTabs();
+
+                int playerHandValue = CalculateHandValue(player.Hand);
+                if (playerHandValue > 21)
+                {
+                    Console.WriteLine("Túl sok lett a lapok összege (több, mint 21)!");
+                    continuePlaying = false;
+                }
+            }
+            else if (answer == "nem")
+            {
+                Console.WriteLine("Megálltál.");
+
+                continuePlaying = false;
+            }
+            else
+            {
+                Console.WriteLine("Hibás válasz. Kérem, adj meg érvényes választ (igen/nem).");
+            }
+        }
+    }
+
+    private void HitPlayer()
+    {
+        player.Hand.Add(deck.First());
+        deck.RemoveAt(0);
+    }
+
+    private int CalculateHandValue(List<Card> hand)
+    {
+        int value = 0;
+        int aceCount = 0;
+
+        foreach (var card in hand)
+        {
+            value += card.Value;
+
+            if (card.Rank == "Ace")
+            {
+                aceCount++;
+            }
+        }
+
+        while (aceCount > 0 && value > 21)
+        {
+            value -= 10;
+            aceCount--;
+        }
+
+        return value;
     }
 
     static int GetValidBetAmount(int availableMoney)

@@ -7,17 +7,39 @@ public class Deck
     public Deck()
     {
         cards = new List<Card>();
+        InitializeDeck();
+    }
+
+    private void InitializeDeck()
+    {
         string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
-        string[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+        Dictionary<string, int> rankValues = new Dictionary<string, int>
+        {
+            { "2", 2 },
+            { "3", 3 },
+            { "4", 4 },
+            { "5", 5 },
+            { "6", 6 },
+            { "7", 7 },
+            { "8", 8 },
+            { "9", 9 },
+            { "10", 10 },
+            { "Jack", 10 },
+            { "Queen", 10 },
+            { "King", 10 },
+            { "Ace", 11 }
+        };
 
         foreach (var suit in suits)
         {
-            foreach (var rank in ranks)
+            foreach (var rank in rankValues.Keys)
             {
-                cards.Add(new Card(suit, rank));
+                int value = rankValues[rank];
+                cards.Add(new Card(suit, rank, value));
             }
         }
     }
+
 
     public List<Card> GetShuffledDeck()
     {
