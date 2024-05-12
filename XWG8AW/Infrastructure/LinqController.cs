@@ -23,7 +23,7 @@ namespace XWG8AW.Infrastructure
                 return bestScore.ToString();
             }
 
-            return "Nem található ilyen játékos!";
+            return "Nem talalhato ilyen jatekos!";
         }
 
         public async Task<IOrderedEnumerable<User>> AllScore()

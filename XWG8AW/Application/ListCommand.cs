@@ -21,7 +21,7 @@ namespace XWG8AW.Application
 
             if (scores == null )
             {
-                host.WriteLine("Nincs még egy eredmény se!");
+                host.WriteLine("Nincs meg egy eredmeny se!");
                 return;
             }
 

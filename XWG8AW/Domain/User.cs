@@ -25,7 +25,7 @@ namespace XWG8AW.Domain
 
         public override string ToString()
         {
-            return "Játékos név: " + $"{UserName}" + " Eredménye: " + $"{Score}";
+            return "Jatekos nev: " + $"{UserName}" + " Eredmenye: " + $"{Score}";
         }
     }
 }

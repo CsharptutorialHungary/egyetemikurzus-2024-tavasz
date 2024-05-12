@@ -39,7 +39,7 @@ namespace XWG8AW.Infrastructure
             }
             catch (IOException ex)
             {
-                Console.WriteLine("Hiba a játékosok kiírása során!");
+                Console.WriteLine("Hiba a jatekosok kiirasa soran!");
             }
         }
 

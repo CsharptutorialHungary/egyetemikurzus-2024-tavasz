@@ -30,7 +30,7 @@ namespace XWG8AW.Infrastructure
                     });
                     if (users is null)
                     {
-                        Console.WriteLine("Deszerializációs hiba");
+                        Console.WriteLine("Deszerializacios hiba");
                         return null;
                     }
                     /*foreach (var user in users)
@@ -51,7 +51,7 @@ namespace XWG8AW.Infrastructure
             }
             catch (IOException ex)
             {
-                Console.WriteLine("Hiba a játékosok beolvasás során!");
+                Console.WriteLine("Hiba a jatekosok beolvasas soran!");
                 return null;
             }
         }

@@ -14,12 +14,12 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            host.WriteLine( "help\t-\tKiírja az összes parancsot.\n" +
-                            "list\t-\tListázza az eddig elmentet játékokat (Játékos/Eredmény)\n" +
-                            "start\t-\tÚj játék indítása\n" +
-                            "exit\t-\tKilépés a programból\n" +
-                            "best\t-\tKiírja a megadott játékos legjobb eredményét\n" +
-                            "clear\t-\tKiüríti a konzolt\n");
+            host.WriteLine( "help\t-\tKiirja az osszes parancsot.\n" +
+                            "list\t-\tListazza az eddig elmentet jatekokat csokkeno sorrendben (Jatekos/Eredmeny)\n" +
+                            "start\t-\tU jatek inditasa\n" +
+                            "exit\t-\tKilepes a programbol\n" +
+                            "best\t-\tKiirja a megadott jatekos legjobb eredmenyet\n" +
+                            "clear\t-\tKiuriti a konzolt\n");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace XWG8AW.Application
 
         public void Execute(IHost host, string[] args)
         {
-            host.WriteLine("Adja meg a játékos nevét!");
+            host.WriteLine("Adja meg a jatekos nevet!");
 
             LinqController linqController = new LinqController();
 

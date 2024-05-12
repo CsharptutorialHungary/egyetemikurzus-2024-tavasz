@@ -17,23 +17,23 @@ namespace XWG8AW.Infrastructure
 
         public void ReadUserName()
         {
-            host.WriteLine("Adja meg a játékos nevét!");
+            host.WriteLine("Adja meg a jatekos nevet!");
             User.UserName = host.ReadLine();
             User.Score = 0;
 
-            while(User.UserName == null)
+            while(User.UserName == "" || User.UserName == null)
             {
-                host.WriteLine("Érvénytelen név adjon meg egy másikat");
+                host.WriteLine("Ervenytelen nev adjon meg egy masikat");
                 User.UserName = host.ReadLine();
             }
         }
 
         public void Gamestart()
         {
-            host.WriteLine("A játék hamarosan indul 10 feladatot kapsz sok sikert!");
-            host.WriteLine("A kérdésre csak az 'A', 'B', 'C' vagy 'D' betűk megadásával válaszolj!");
-            host.WriteLine("Más válasz megadása helytelen megoldást eredményez!");
-            host.Write("A játék hamarosan kezdődik.");
+            host.WriteLine("A jaték hamarosan indul 10 kerdest kapsz sok sikert!");
+            host.WriteLine("A kerdesre csak az 'A', 'B', 'C' vagy 'D' betuk megadasaval valaszolj!");
+            host.WriteLine("Mas valasz megadasa helytelen megoldast eredmenyez!");
+            host.Write("A jatek hamarosan kezdodik.");
 
             for (int i = 0; i < 3; i++)
             {
@@ -48,22 +48,22 @@ namespace XWG8AW.Infrastructure
         {
             foreach (QuestionJson question in questions)
             {
-                host.WriteLine(question.Name);
-                host.WriteLine(question.Answer_A);
-                host.WriteLine(question.Answer_B);
-                host.WriteLine(question.Answer_C);
-                host.WriteLine(question.Answer_D);
+                host.WriteLine("Kerdes: "+question.Name);
+                host.WriteLine("A: "+question.Answer_A);
+                host.WriteLine("B: "+question.Answer_B);
+                host.WriteLine("C: "+question.Answer_C);
+                host.WriteLine("D: "+question.Answer_D);
 
                 string answer = host.ReadLine();
 
                 if(answer.ToLower().Equals(question.Correct))
                 {
-                    host.WriteLine("A válaszod helyes!");
+                    host.WriteLine("A valaszod helyes!");
                     User.Score++;
                 }
                 else
                 {
-                    host.WriteLine("A válaszod helytelen!");
+                    host.WriteLine("A valaszod helytelen!");
                 }
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -74,9 +74,9 @@ namespace XWG8AW.Infrastructure
 
         public void GameEnd()
         {
-            host.WriteLine("Köszönjük a játékot "+(User.UserName)+"!");
-            host.WriteLine("A pontszámod: "+(User.Score));
-            host.WriteLine("Hamarosan visszaírányítunk a kezdőállapotra.");
+            host.WriteLine("Koszonjuk a jatekot "+(User.UserName)+"!");
+            host.WriteLine("A pontszamod: "+(User.Score));
+            host.WriteLine("Hamarosan visszairanyitunk a kezdoallapotra.");
             Thread.Sleep(3000);
             Console.Clear();
 
@@ -110,6 +110,7 @@ namespace XWG8AW.Infrastructure
                     else
                     {
                         i--;
+                        break;
                     }
                 }
             }

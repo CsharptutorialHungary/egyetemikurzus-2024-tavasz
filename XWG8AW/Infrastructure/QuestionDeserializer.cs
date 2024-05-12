@@ -27,7 +27,7 @@ namespace XWG8AW.Infrastructure
                     });
                     if (questions is null)
                     {
-                        Console.WriteLine("Deszerializációs hiba");
+                        Console.WriteLine("Deszerializacios hiba");
                         return null;
                     }
                     /*foreach (var question in questions)
@@ -39,7 +39,7 @@ namespace XWG8AW.Infrastructure
                 }
 
             } catch (IOException ex) { 
-                Console.WriteLine("Hiba a kérdések beolvasás során!");
+                Console.WriteLine("Hiba a kerdesek beolvasss soran!");
                 return null;
             }
         }
