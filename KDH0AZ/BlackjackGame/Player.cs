@@ -34,4 +34,9 @@ public class Player
         }
     }
 
+    public void ResetHand()
+    {
+        Hand.Clear();
+    }
+
 }

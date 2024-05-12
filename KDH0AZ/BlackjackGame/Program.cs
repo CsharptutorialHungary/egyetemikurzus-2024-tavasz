@@ -21,16 +21,24 @@
     {
         while (true)
         {
-            Console.Write("Kérlek, add meg a neved: ");
-            string? playerName = Console.ReadLine()?.Trim();
-
-            if (!string.IsNullOrEmpty(playerName))
+            try
             {
-                return playerName;
-            }
+                Console.Write("Kérlek, add meg a neved: ");
+                string? playerName = Console.ReadLine()?.Trim();
 
-            Console.WriteLine("Hibas bemenet. Kerlek, adj meg ervenyes nevet.");
+                if (!string.IsNullOrEmpty(playerName))
+                {
+                    return playerName;
+                }
+
+                throw new ArgumentException("Hibás bemenet. Kérlek, adj meg érvényes nevet.");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
+
 
 }

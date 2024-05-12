@@ -17,42 +17,76 @@ public class BlackjackGame
 
     public void Start()
     {
-        Console.WriteLine($"\n\nUdvozollek, {player.Name}! Kezdo penzosszeged: ${player.Money}");
+        Console.WriteLine($"\n\nÜdvözöllek, {player.Name}! Kezdo egyenleged: ${player.Money}");
+        PlayRound();
+    }
+
+    private void PlayRound()
+    {
         PlaceBet();
         PlayerDealInitialCards();
         DealerDealInitialCards();
         DisplayingTabs();
         PlayPlayerTurn();
         EndGame();
+
+        if (PlayAgain())
+        {
+            ResetGame();
+            Start();
+        }
+        else
+        {
+            Console.WriteLine("Köszönjük a játékot! Viszlát!");
+        }
     }
+
+    private bool PlayAgain()
+    {
+        Console.Write("\nSzeretnél új játékot játszani? (igen/nem): ");
+        string answer = Console.ReadLine()?.ToLower();
+        return answer == "igen";
+    }
+
+    private void ResetGame()
+    {
+        player.ResetHand();
+        dealer.ResetHand();
+        deck = new Deck().GetShuffledDeck();
+    }
+
 
     public void DisplayingTabs()
     {
         Console.WriteLine("\nA kezedben van:");
         foreach (var card in player.Hand)
         {
-            Console.WriteLine($"{card.Rank} {card.Suit} {card.Value}");
+            Console.WriteLine($"{card.Rank} {card.Suit}");
         }
         Console.WriteLine("\nAz Osztó kezében lévõ elsõ lap:");
-        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit} {dealer.Hand[0].Value}");
+        Console.WriteLine($"{dealer.Hand[0].Rank} {dealer.Hand[0].Suit}");
     }
 
-    public void PlaceBet() 
+    public void PlaceBet()
     {
-        int betAmount = GetValidBetAmount(player.Money);
-
-        if (betAmount > 0)
+        try
         {
-            player.PlaceBet(betAmount);
+            int betAmount = GetValidBetAmount(player.Money);
 
-            Console.WriteLine($"Pénzed: ${player.Money}, tét: ${player.Bet}");
-
+            if (betAmount > 0)
+            {
+                player.PlaceBet(betAmount);
+                Console.WriteLine($"Pénzed: ${player.Money}, tét: ${player.Bet}");
+            }
+            else
+            {
+                Console.WriteLine("Hibás tétösszeg. A játék nem indul el.");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine("Hibás tétösszeg. A játék nem indul el.");
+            Console.WriteLine($"Hiba történt a tét megadásakor: {ex.Message}");
         }
-
     }
 
     public void PlayerDealInitialCards()
