@@ -35,9 +35,9 @@ namespace XWG8AW.Infrastructure
             host.WriteLine("Mas valasz megadasa helytelen megoldast eredmenyez!");
             host.Write("A jatek hamarosan kezdodik.");
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Thread.Sleep(900);
+                Thread.Sleep(1000);
                 host.Write(".");
             }
 
@@ -100,18 +100,13 @@ namespace XWG8AW.Infrastructure
                     continue;
                 }
 
-                for (int j = 0; j < randomQuestions.Count; j++)
+                if (!(randomQuestions.Contains(questionList.Result[randomNumber]))) 
                 {
-                    if (!(randomQuestions[j].Name.Equals(questionList.Result[randomNumber].Name)))
-                    {
-                        randomQuestions.Add(questionList.Result[randomNumber]);
-                        break;
-                    }
-                    else
-                    {
-                        i--;
-                        break;
-                    }
+                    randomQuestions.Add(questionList.Result[randomNumber]);
+                }
+                else
+                {
+                    i--;
                 }
             }
 
