@@ -1,13 +1,17 @@
 using Filemanager.Infrastructure;
+using Filemanager.Model;
 
 namespace Filemanager{
     internal class UI{
         private  readonly ICommandProvider _commandProvider;
         private readonly IHost _host;
 
+        private Cache _cache;
+
         public UI(ICommandProvider commandProvider, IHost host){
             _commandProvider = commandProvider;
             _host = host;
+            _cache = new Cache();
             
         }
 
@@ -18,7 +22,7 @@ namespace Filemanager{
                 string[] input = _host.ReadLine().Split(" ");
                 ICommand? commandToExecute = findCommandByName(input[0]);
                 if(commandToExecute != null){
-                    commandToExecute.Execute(_host,input);
+                    commandToExecute.Execute(_host,input,_cache);
                 } else {
                     _host.WriteLine("No such command");
                 }
