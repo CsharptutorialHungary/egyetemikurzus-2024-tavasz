@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Kvizapp;
 
@@ -11,7 +12,6 @@ class Kviz {
 
         
         Player player = new Player();
-        Console.WriteLine(Directory.GetCurrentDirectory());
         Console.WriteLine("Please add your player's name!");
         
         try
@@ -39,9 +39,13 @@ class Kviz {
 
             String answer = Console.ReadLine();
 
-            if (answer != questions[i].answer)
+            if (answer != questions[i].correct)
             {
                 Console.WriteLine("Incorrect answer!");
+                break;
+            } else if (answer == "quit")
+            {
+                Console.WriteLine("Your points: " + player.points);
                 break;
             }
             else
@@ -58,23 +62,31 @@ class Kviz {
         public String name = "";
         public int points = 0;
     };
-
-    public record Question(
-        String category,
-        String question,
-        String aChoice,
-        String bChoice,
-        String cChoice,
-        String dChoice,
-        String answer,
-        int points
-    );
-
+    
     bool checkAnswer(String answer, Question question)
     {
-        return answer == question.answer;
+        return answer == question.correct;
     }
 
+    public record Question
+    {
+        [JsonPropertyName("category")]
+        public string category { get; set; }
+        [JsonPropertyName("question")]
+        public string question { get; set; }
+        [JsonPropertyName("a")]
+        public string aChoice { get; set; }
+        [JsonPropertyName("b")]
+        public string bChoice { get; set; }
+        [JsonPropertyName("c")]
+        public string cChoice { get; set; }
+        [JsonPropertyName("d")]
+        public string dChoice { get; set; }
+        [JsonPropertyName("correct")]
+        public string correct { get; set; }
+        [JsonPropertyName("points")]
+        public int points { get; set; }
+    }
 
     static public List<Question> loadQuestions()
     {
@@ -82,8 +94,8 @@ class Kviz {
         
         string json = File.ReadAllText(jsonFilePath);
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var triviaData = JsonSerializer.Deserialize<Question>(json, options);
+        var triviaData = JsonSerializer.Deserialize<List<Question>>(json, options);
 
-        return null;
+        return triviaData;
     }
 }
