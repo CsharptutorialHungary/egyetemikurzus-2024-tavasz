@@ -186,7 +186,6 @@ public class BlackjackGame
 
         while (dealerHandValue < 17)
         {
-            Console.WriteLine(dealerHandValue);
             dealer.Hand.Add(deck.First());
             deck.RemoveAt(0);
 
@@ -264,16 +263,22 @@ public class BlackjackGame
         {
             value += card.Value;
 
-            if (card.Rank == "Ace")
+            if (card.Rank == "Ász")
             {
                 aceCount++;
             }
         }
 
-        while (aceCount > 0 && value > 21)
+        for (int i = 0; i < aceCount; i++)
         {
-            value -= 10;
-            aceCount--;
+            if (value > 21 && aceCount > 1 && i == aceCount - 1)
+            {
+                value -= 10;
+            }
+            else if (value > 21 && aceCount == 1)
+            {
+                value -= 10;
+            }
         }
 
         return value;
