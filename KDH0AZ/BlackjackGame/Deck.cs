@@ -12,7 +12,7 @@ public class Deck
 
     private void InitializeDeck()
     {
-        string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
+        string[] suits = { "Kör", "Káró", "Treff", "Pikk" };
         Dictionary<string, int> rankValues = new Dictionary<string, int>
         {
             { "2", 2 },
@@ -24,10 +24,10 @@ public class Deck
             { "8", 8 },
             { "9", 9 },
             { "10", 10 },
-            { "Jack", 10 },
-            { "Queen", 10 },
-            { "King", 10 },
-            { "Ace", 11 }
+            { "Bubi", 10 },
+            { "Dáma", 10 },
+            { "Király", 10 },
+            { "Ász", 11 }
         };
 
         foreach (var suit in suits)

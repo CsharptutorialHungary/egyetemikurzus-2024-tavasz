@@ -7,6 +7,7 @@ public class BlackjackGame
     private Player player;
     private Dealer dealer;
     private List<Card> deck;
+    private bool firstGame = true;
 
     public BlackjackGame(string playerName)
     {
@@ -17,7 +18,16 @@ public class BlackjackGame
 
     public void Start()
     {
-        Console.WriteLine($"\n\nÜdvözöllek, {player.Name}! Kezdo egyenleged: ${player.Money}");
+        if (firstGame)
+        {
+            Console.WriteLine($"\n\nÜdvözöllek, {player.Name}! Egyenleged: ${player.Money}");
+            firstGame = false;
+        }
+        else
+        {
+            Console.WriteLine($"Egyenleged: ${player.Money}");
+        }
+     
         PlayRound();
     }
 
@@ -37,15 +47,40 @@ public class BlackjackGame
         }
         else
         {
-            Console.WriteLine("Köszönjük a játékot! Viszlát!");
+            Console.WriteLine("\nKöszönjük a játékot! Viszlát!");
         }
     }
 
     private bool PlayAgain()
     {
-        Console.Write("\nSzeretnél új játékot játszani? (igen/nem): ");
-        string answer = Console.ReadLine()?.ToLower();
-        return answer == "igen";
+        int playerMoney = player.Money;
+        if (playerMoney > 0)
+        {
+            while (true)
+            {
+                Console.Write("\nSzeretnél új játékot játszani? (igen/nem): ");
+                string answer = Console.ReadLine()?.ToLower() ?? "";
+
+                if (answer == "igen")
+                {
+                    return true;
+                }
+                else if (answer == "nem")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Hibás válasz. Kérem, adj meg érvényes választ (igen/nem).");
+                }
+            }
+        }
+        else 
+        {
+            Console.Write("\nSajnálom, de elfogyott a pénzed! ");
+            return false;
+        }
+        
     }
 
     private void ResetGame()
@@ -111,7 +146,7 @@ public class BlackjackGame
         while (continuePlaying)
         {
             Console.Write("\nKérsz még egy lapot? (igen/nem): ");
-            string answer = Console.ReadLine()?.ToLower();
+            string? answer = Console.ReadLine()?.ToLower();
 
             if (answer == "igen")
             {
