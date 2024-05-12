@@ -14,8 +14,9 @@ namespace XWG8AW.Infrastructure
     {
         public async Task<List<QuestionJson>> QuestionDeserializeFromJson()
         {
+            int debugFolderLength = 16;
             string fullpath = Environment.CurrentDirectory;
-            string path = fullpath.Substring(0, fullpath.Length - 16);
+            string path = fullpath.Substring(0, fullpath.Length - debugFolderLength);
             string correctPath = string.Concat(path, "questions.json");
 
             try {

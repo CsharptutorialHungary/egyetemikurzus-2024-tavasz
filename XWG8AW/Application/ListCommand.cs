@@ -19,7 +19,7 @@ namespace XWG8AW.Application
 
             Task<IOrderedEnumerable<User>> scores = linqController.AllScore();
 
-            if (scores.Result == null )
+            if (scores.Result is null )
             {
                 return;
             }

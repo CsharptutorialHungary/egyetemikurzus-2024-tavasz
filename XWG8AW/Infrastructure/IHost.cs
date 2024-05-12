@@ -10,8 +10,7 @@ namespace XWG8AW.Infrastructure
     {
         string ReadLine();
         void WriteLine(string message);
-        void Write(string message)
-            => Console.Write(message);
+        void Write(string message);
         void Exit();
     }
 }

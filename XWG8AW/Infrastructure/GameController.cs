@@ -35,7 +35,9 @@ namespace XWG8AW.Infrastructure
             host.WriteLine("Mas valasz megadasa helytelen megoldast eredmenyez!");
             host.Write("A jatek hamarosan kezdodik.");
 
-            for (int i = 0; i < 5; i++)
+            int waitSec = 5;
+
+            for (int i = 0; i < waitSec; i++)
             {
                 Thread.Sleep(1000);
                 host.Write(".");
@@ -72,7 +74,7 @@ namespace XWG8AW.Infrastructure
                 {
                     host.WriteLine("A valaszod helytelen!");
                 }
-                Thread.Sleep(1500);
+                Thread.Sleep(2000);
                 Console.Clear();
             }
             GameEnd();

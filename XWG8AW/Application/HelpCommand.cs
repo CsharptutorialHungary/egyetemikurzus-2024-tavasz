@@ -16,7 +16,7 @@ namespace XWG8AW.Application
         {
             host.WriteLine( "help\t-\tKiirja az osszes parancsot.\n" +
                             "list\t-\tListazza az eddig elmentet jatekokat csokkeno sorrendben (Jatekos/Eredmeny)\n" +
-                            "start\t-\tU jatek inditasa\n" +
+                            "start\t-\tUj jatek inditasa\n" +
                             "exit\t-\tKilepes a programbol\n" +
                             "best\t-\tKiirja a megadott jatekos legjobb eredmenyet\n" +
                             "clear\t-\tKiuriti a konzolt\n");
