@@ -1,0 +1,24 @@
+﻿<MudPaper Class="pa-4">
+    <MudStack Spacing="2">
+        <MudButton OnClick="OnExpandCollapseClick">Users</MudButton>
+        <MudDivider />
+        <MudCollapse Expanded="_expanded">
+            @foreach (var user in allusers)
+            {
+                <MudStack Class="ma-4" Justify="Justify.Center" AlignItems="AlignItems.Center">
+                    <MudPaper Style="height:fit-content" Class="ma-4" Width="100%">
+                        <MudStack Row Justify="Justify.FlexStart" AlignItems="AlignItems.Center">
+                            @if (user.Photos.Count != 0)
+                            {
+                                <MudImage Height="50" Width="50" ObjectFit="ObjectFit.Cover" Src="@(string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(user.Photos.Where(x => x.PhotoType == "Profile").FirstOrDefault().PhotoInByte)))"></MudImage>
+                            }
+                            <MudText>@($"{user.SurName} {user.LastName}")</MudText>
+                            <MudSpacer></MudSpacer>
+                            <MudNavLink IconSize="Size.Small" Icon="@Icons.Material.Filled.Details" OnClick="@(() => OpenUserProfile(user.Usertechnicalname.ToString()))">Open profile</MudNavLink>
+                        </MudStack>
+                    </MudPaper>
+                </MudStack>
+            }
+        </MudCollapse>
+    </MudStack>
+</MudPaper>

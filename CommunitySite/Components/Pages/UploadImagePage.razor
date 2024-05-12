@@ -1,0 +1,26 @@
+﻿@page "/UploadImage"
+
+<MudFileUpload T="IBrowserFile" Accept=".png, .jpg" FilesChanged="UploadFiles2" MaximumFileCount="100">
+    <ButtonTemplate>
+        <MudButton HtmlTag="label"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.CloudUpload"
+                   for="@context.Id">
+            Only image files
+        </MudButton>
+    </ButtonTemplate>
+</MudFileUpload>
+
+<MudGrid Justify="Justify.FlexStart">
+    @if (Photos.Count != 0 && imageDataUrls.Count != 0)
+    {
+        @foreach (var image in imageDataUrls)
+        {
+            <MudItem>
+                <MudImage ObjectFit="ObjectFit.Cover" Height="200" Width="300" Src="@image" 
+                          Elevation="25" Class="rounded-lg" />
+            </MudItem>
+        }
+    }
+</MudGrid>

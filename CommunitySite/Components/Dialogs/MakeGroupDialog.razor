@@ -1,0 +1,14 @@
+﻿<MudDialog>
+    <DialogContent>
+        <MudForm @ref="@groupForm" Model="@groupViewModel" Validation="@(validationRules.ValidateValue)">
+            <MudTextField @bind-Value="groupViewModel.Name"
+                          Label="Group name"
+                          Immediate="true">
+            </MudTextField>
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Save</MudButton>
+    </DialogActions>
+</MudDialog>

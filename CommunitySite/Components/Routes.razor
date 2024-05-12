@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using CommunitySite.Components.Pages
+
+<CascadingAuthenticationState>
+    <Error>
+        <Router AppAssembly="typeof(App).Assembly">
+            <Found Context="routeData">
+                <RouteView RouteData="@routeData" DefaultLayout="typeof(CommunitySite.Components.Layout.MainLayout)" />
+            </Found>
+        </Router>
+    </Error>
+</CascadingAuthenticationState>
+
+
+
