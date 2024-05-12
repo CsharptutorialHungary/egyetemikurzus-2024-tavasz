@@ -8,9 +8,10 @@
 
         if (playerName != null)
         {
+
             BlackjackGame game = new BlackjackGame(playerName);
 
-            game.DealInitialCards();
+            game.Start();
 
         }
 
