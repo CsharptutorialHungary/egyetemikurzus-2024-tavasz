@@ -1,1 +1,42 @@
-[{"userName":"John Doe","score":6},{"userName":"Jane Smith","score":9},{"userName":"asd","score":999},{"userName":"asd","score":1000},{"userName":"Tam\u00E1s","score":4},{"userName":"Tam\u00E1s","score":0},{"userName":"Tam\u00E1s","score":2},{"userName":"Tam\u00E1s","score":3},{"userName":"Akos","score":3},{"userName":"Akos","score":3}]
+[
+  {
+    "userName": "Bela",
+    "score": 6
+  },
+  {
+    "userName": "Bela",
+    "score": 9
+  },
+  {
+    "userName": "Tamas",
+    "score": 9
+  },
+  {
+    "userName": "Akos",
+    "score": 8
+  },
+  {
+    "userName": "Tamas",
+    "score": 10
+  },
+  {
+    "userName": "Akos",
+    "score": 3
+  },
+  {
+    "userName": "Tamas",
+    "score": 2
+  },
+  {
+    "userName": "Tamas",
+    "score": 3
+  },
+  {
+    "userName": "Akos",
+    "score": 9
+  },
+  {
+    "userName": "Akos",
+    "score": 5
+  }
+]
