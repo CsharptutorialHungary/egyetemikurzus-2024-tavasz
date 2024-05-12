@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Hány országgal határos Horvátország?",
+    "answer_a": "5",
+    "answer_b": "3",
+    "answer_c": "6",
+    "answer_d": "4",
+    "correct": "a"
+  },
+  {
+    "name": "Kinek a festménye a Napraforgók?",
+    "answer_a": "Auguste Renoir",
+    "answer_b": "Vincent van Gogh",
+    "answer_c": "Correggio",
+    "answer_d": "Bartolomé Murillo",
+    "correct": "b"
+  },
+  {
+    "name": "Melyik tudományág foglalkozik Jézus Krisztussal, mint megváltóval?",
+    "answer_a": "ortográfia",
+    "answer_b": "fiziológia",
+    "answer_c": "hematológia",
+    "answer_d": "krisztológia",
+    "correct": "d"
+  },
+  {
+    "name": "Hol használják a párizsi pont kifejezést?",
+    "answer_a": "nyomdászatban",
+    "answer_b": "éttermek minőségjelzésénél",
+    "answer_c": "cipőméretek meghatározásánál",
+    "answer_d": "teniszmérkőzéseken",
+    "correct": "c"
+  },
+  {
+    "name": "Hol van a köbcsont?",
+    "answer_a": "koponya",
+    "answer_b": "lábfej",
+    "answer_c": "térd",
+    "answer_d": "csukló",
+    "correct": "b"
+  },
+  {
+    "name": "Melyik ország volt a címvédő a 2010-es dél-afrikai VB-n?",
+    "answer_a": "Brazília",
+    "answer_b": "Franciaország",
+    "answer_c": "Olaszország",
+    "answer_d": "Németország",
+    "correct": "c"
+  },
+  {
+    "name": "Melyik betegség ellen nincs életkorhoz köthető kötelező védőoltás",
+    "answer_a": "kanyaró",
+    "answer_b": "rózsahimlő",
+    "answer_c": "hepatitis A",
+    "answer_d": "mumpsz",
+    "correct": "c"
+  },
+  {
+    "name": "Mit jelent az, ha egy sorozat konvergens?",
+    "answer_a": "van határértéke",
+    "answer_b": "korlátos",
+    "answer_c": "van véges határértéke",
+    "answer_d": "csak pozitív tagokból áll",
+    "correct": "a"
+  },
+  {
+    "name": "Hány percig tartott a teremtés a Biblia szerint?",
+    "answer_a": "7000",
+    "answer_b": "8640",
+    "answer_c": "3525",
+    "answer_d": "8600",
+    "correct": "b"
+  },
+  {
+    "name": "Melyik fa nem tipikus tűzifa?",
+    "answer_a": "akác",
+    "answer_b": "tölgy",
+    "answer_c": "gyertyán",
+    "answer_d": "fűzfa",
+    "correct": "d"
+  },
+  {
+    "name": "Hány gramm heroin birtoklásáért jár halálbüntetés Szingapúrban (2022-ben)?",
+    "answer_a": "5",
+    "answer_b": "100",
+    "answer_c": "15",
+    "answer_d": "1",
+    "correct": "c"
+  },
+  {
+    "name": "Hány fős csoportokban vonulnak a darvak általában?",
+    "answer_a": "100-150",
+    "answer_b": "60-80",
+    "answer_c": "20-30",
+    "answer_d": "35-50",
+    "correct": "a"
+  },
+  {
+    "name": "Melyik együttes játszotta a Smoke on the water című dalt?",
+    "answer_a": "Led Zeppelin",
+    "answer_b": "AC/DC",
+    "answer_c": "Deep purple",
+    "answer_d": "Pink Floyd",
+    "correct": "c"
+  },
+  {
+    "name": "Milyen állat a kék akara?",
+    "answer_a": "madár",
+    "answer_b": "rovar",
+    "answer_c": "hüllő",
+    "answer_d": "hal",
+    "correct": "d"
+  },
+  {
+    "name": "Melyik divatházat alapították korábban?",
+    "answer_a": "Gucci",
+    "answer_b": "Giorgio Armani",
+    "answer_c": "Nina Ricci",
+    "answer_d": "Valentino",
+    "correct": "a"
+  },
+  {
+    "name": "A filozófia melyik ága az axiológia?",
+    "answer_a": "a művészet tanulmányozása",
+    "answer_b": "értékelmélet",
+    "answer_c": "kizárólagosságot hirdető tan",
+    "answer_d": "okoskodás és érvelés",
+    "correct": "b"
+  },
+  {
+    "name": "Melyik béke zárta le az 1859-es szárd-francia-osztrák háborút?",
+    "answer_a": "rijswijki béke",
+    "answer_b": "utrechti béke",
+    "answer_c": "simonoszeki béke",
+    "answer_d": "zürichi béke",
+    "correct": "d"
+  },
+  {
+    "name": "Testhosszának hányszorosát tudja megugrani a dél-afrikai hegyesorrú béka (világcsúcs)?",
+    "answer_a": "55",
+    "answer_b": "45",
+    "answer_c": "40",
+    "answer_d": "50",
+    "correct": "c"
+  },
+  {
+    "name": "Hány km-re van Budapesttől Rijeka közúton?",
+    "answer_a": "502",
+    "answer_b": "487",
+    "answer_c": "515",
+    "answer_d": "402",
+    "correct": "a"
+  },
+  {
+    "name": "Milyen katonai fokozata volt Farkas Bertalannak az 1980-as űrrepülése idején?",
+    "answer_a": "ezredes",
+    "answer_b": "őrnagy",
+    "answer_c": "főhadnagy",
+    "answer_d": "százados",
+    "correct": "d"
+  },
+  {
+    "name": "Az alábbiak közül melyik a helyes megjelölés?",
+    "answer_a": "2013. évi 5. törvény",
+    "answer_b": "2013: 5. sz. tv.",
+    "answer_c": "5/2013. (V.10) törvény",
+    "answer_d": "2013. évi V. törvény",
+    "correct": "d"
+  },
+  {
+    "name": "Mi volt Paul Gauguin francia festő eredeti foglalkozása?",
+    "answer_a": "ügyvéd",
+    "answer_b": "banktisztviselő",
+    "answer_c": "kőfaragó",
+    "answer_d": "sörfőzde-tulajdonos",
+    "correct": "b"
+  },
+  {
+    "name": "Főként melyik gyümölcsöt használja az albán konyha?",
+    "answer_a": "narancs",
+    "answer_b": "füge",
+    "answer_c": "citrom",
+    "answer_d": "olajbogyó",
+    "correct": "d"
+  },
+  {
+    "name": "Az alábbi sportolók közül ki (volt) a jégkorong jeles képviselőse?",
+    "answer_a": "Szollás László",
+    "answer_b": "Gerd Müller",
+    "answer_c": "Ivan Hlinka",
+    "answer_d": "Hugo Sánchez Márquez",
+    "correct": "c"
+  }
+]
