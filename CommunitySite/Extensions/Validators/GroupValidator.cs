@@ -3,6 +3,9 @@ using FluentValidation;
 
 namespace CommunitySite.Extensions.Validators
 {
+    /// <summary>
+    /// Csoportnév validálása
+    /// </summary>
     public class GroupValidator : AbstractValidator<GroupViewModel>
     {
         public GroupValidator()

@@ -44,7 +44,7 @@ namespace CommunitySite.Components.Accessories
 
         private async Task OpenProfileEditDialog()
         {
-            await UserViewService.CreateUserDialog(currentUserViewModel);
+            await UserViewService.UpdateUserDialog(currentUserViewModel);
             currentUserViewModel = await GetUser(currentUserViewModel.Username);
         }
 

@@ -13,7 +13,7 @@ namespace CommunitySite.Services.UserViewServices
             _dialogService = dialogService;
         }
 
-        public async Task CreateUserDialog(UserViewModel user)
+        public async Task UpdateUserDialog(UserViewModel user)
         {
             var parameters = new DialogParameters
             {

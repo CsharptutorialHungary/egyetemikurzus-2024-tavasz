@@ -1,4 +1,6 @@
-﻿using CommunitySite.Data.Entity;
+﻿#nullable enable
+
+using CommunitySite.Data.Entity;
 
 namespace CommunitySite.Data.ViewModels
 {

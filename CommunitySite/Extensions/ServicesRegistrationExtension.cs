@@ -19,6 +19,12 @@ namespace CommunitySite.Extensions
 {
     public static class ServicesRegistrationExtension
     {
+        /// <summary>
+        ///     Regisztrálja az Oracle adatbázist a szolgáltatások közé
+        /// </summary>
+        /// <param name="services">ASP.NET szervíz osztályok kollekciója</param>
+        /// <param name="configuration">appsettings.json</param>
+        /// <returns>ASP.NET szervíz osztályok kollekciója</returns>
         public static IServiceCollection RegisterDatabaseContexts(this IServiceCollection services, IConfiguration configuration)
         {
             var defaultConns = configuration.GetConnectionString("default");
@@ -30,6 +36,11 @@ namespace CommunitySite.Extensions
             return services;
         }
 
+        /// <summary>
+        ///     Regisztrálja a saját szervíz osztályokat
+        /// </summary>
+        /// <param name="services">ASP.NET szervíz osztályok kollekciója</param>
+        /// <returns>ASP.NET szervíz osztályok kollekciója</returns>
         public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
         {
             services.AddMemoryCache();
