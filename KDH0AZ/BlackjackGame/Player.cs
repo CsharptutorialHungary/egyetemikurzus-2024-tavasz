@@ -31,7 +31,6 @@ public class Player
         {
             Bet = amount;
             Money -= amount;
-            Console.WriteLine($"{Name} feladta a ${Bet} tétet.");
         }
     }
 
