@@ -184,21 +184,21 @@ public class BlackjackGame
         int dealerHandValue = CalculateHandValue(dealer.Hand);
         int playerHandValue = CalculateHandValue(player.Hand);
 
-        if (dealerHandValue < playerHandValue) {
-            while (dealerHandValue < 17 || dealerHandValue < playerHandValue)
+        while (dealerHandValue < 17)
+        {
+            Console.WriteLine(dealerHandValue);
+            dealer.Hand.Add(deck.First());
+            deck.RemoveAt(0);
+
+            dealerHandValue = CalculateHandValue(dealer.Hand);
+
+            if (dealerHandValue > 21)
             {
-                dealer.Hand.Add(deck.First());
-                deck.RemoveAt(0);
-
-                dealerHandValue = CalculateHandValue(dealer.Hand);
-
-                if (dealerHandValue > 21)
-                {
-                    break;
-                }
+                break;
             }
         }
     }
+
 
     private void EndGame()
     {
