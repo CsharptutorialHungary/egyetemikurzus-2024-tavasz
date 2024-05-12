@@ -7,6 +7,7 @@ namespace Filemanager.Model
 
         public Cache(){
             Target_dir = "";
+            Stored_folderdefs = [];
         }
     }
 }

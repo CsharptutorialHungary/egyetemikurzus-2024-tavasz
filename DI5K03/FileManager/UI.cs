@@ -22,7 +22,7 @@ namespace Filemanager{
                 string[] input = _host.ReadLine().Split(" ");
                 ICommand? commandToExecute = FindCommandByName(input[0]);
                 if(commandToExecute != null){
-                    commandToExecute.Execute(_host,input,_cache);
+                    commandToExecute.ExecuteAsync(_host,input,_cache);
                 } else {
                     _host.WriteLine("No such command");
                 }

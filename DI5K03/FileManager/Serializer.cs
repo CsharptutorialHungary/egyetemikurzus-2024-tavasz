@@ -8,13 +8,13 @@ namespace Filemanager{
     {
         public async Task<FolderDef[]> DeserializeFromJson(Stream from)
         {
-            FolderDef[]? folders = await JsonSerializer.DeserializeAsync<FolderDef[]>(from,new JsonSerializerOptions{AllowTrailingCommas=true});
+            FolderDef[]? folders = await JsonSerializer.DeserializeAsync<FolderDef[]>(from);
             return folders ?? ([]);
         }
 
         public async Task SerializeToJson(Stream target, FolderDef[] folderDefs)
         {
-            await JsonSerializer.SerializeAsync<FolderDef[]>(target,folderDefs);
+            await JsonSerializer.SerializeAsync<FolderDef[]>(target,folderDefs, new JsonSerializerOptions { AllowTrailingCommas = true, WriteIndented = true});
         }
     }
 }

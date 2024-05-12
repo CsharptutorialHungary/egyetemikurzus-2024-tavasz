@@ -6,7 +6,7 @@ namespace Filemanager.Commands{
     {
         public string Name => "cache";
 
-        public void Execute(IHost host, string[] args, Cache cache)
+        public void ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             host.WriteLine("target_dir: "+cache.Target_dir);
             foreach(FolderDef folderDef in cache.Stored_folderdefs){

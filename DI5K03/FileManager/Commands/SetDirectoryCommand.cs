@@ -6,7 +6,7 @@ namespace Filemanager.Commands{
     {
         public string Name => "setdir";
 
-        public async void Execute(IHost host, string[] args, Cache cache)
+        public async void ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             if(args.Length<2)
             {

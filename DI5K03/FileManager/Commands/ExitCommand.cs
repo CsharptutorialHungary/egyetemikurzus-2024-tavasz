@@ -6,7 +6,7 @@ namespace Filemanager.Commands{
     {
         public string Name => "exit";
 
-        public void Execute(IHost host, string[] args, Cache cache)
+        public void ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             host.Exit("<< Goodbye >>");
         }
