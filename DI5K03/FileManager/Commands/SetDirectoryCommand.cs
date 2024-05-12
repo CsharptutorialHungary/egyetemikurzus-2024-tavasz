@@ -9,6 +9,9 @@ namespace Filemanager.Commands{
         {
             if(args.Length<2){
                 host.WriteLine("Missing one argument: target_dir_path");
+            } else {
+                string path = args[1]
+                if(System.IO.Exists())
             }
         }
     }
