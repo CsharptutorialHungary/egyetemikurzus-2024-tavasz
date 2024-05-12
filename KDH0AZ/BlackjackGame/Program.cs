@@ -1,5 +1,7 @@
 ﻿using System;
 
+using Blackjack.Game;
+
 class Program
 {
     static void Main(string[] args)
