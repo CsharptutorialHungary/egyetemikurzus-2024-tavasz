@@ -38,13 +38,16 @@ class Kviz {
             Console.WriteLine("D. " + questions[i].dChoice);
 
             String answer = Console.ReadLine();
-
+            
+            if (answer == "quit")
+            {
+                Console.WriteLine("You quit!");
+                Console.WriteLine("Your points: " + player.points);
+                break;
+            }
             if (answer != questions[i].correct)
             {
                 Console.WriteLine("Incorrect answer!");
-                break;
-            } else if (answer == "quit")
-            {
                 Console.WriteLine("Your points: " + player.points);
                 break;
             }
@@ -73,19 +76,19 @@ class Kviz {
         [JsonPropertyName("category")]
         public string category { get; set; }
         [JsonPropertyName("question")]
-        public string question { get; set; }
+        public required string question { get; set; }
         [JsonPropertyName("a")]
-        public string aChoice { get; set; }
+        public required string aChoice { get; set; }
         [JsonPropertyName("b")]
-        public string bChoice { get; set; }
+        public required string bChoice { get; set; }
         [JsonPropertyName("c")]
-        public string cChoice { get; set; }
+        public required string cChoice { get; set; }
         [JsonPropertyName("d")]
-        public string dChoice { get; set; }
+        public required string dChoice { get; set; }
         [JsonPropertyName("correct")]
-        public string correct { get; set; }
+        public required string correct { get; set; }
         [JsonPropertyName("points")]
-        public int points { get; set; }
+        public required int points { get; set; }
     }
 
     static public List<Question> loadQuestions()
