@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Text.Json;
 
 using IF5W4R.Models;
 
 namespace IF5W4R.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private List<Product> products;
+        private readonly string filePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Resources", "products.json");
+        private readonly IFileService fileService;
+        private readonly IProductDisplayService productDisplayService;
 
-        public ProductService()
+        public ProductService(IFileService fileService, IProductDisplayService productDisplayService)
         {
+            this.fileService = fileService;
+            this.productDisplayService = productDisplayService;
             products = new List<Product>();
         }
 
@@ -19,36 +23,38 @@ namespace IF5W4R.Services
             products.AddRange(productList);
         }
 
-        public void DisplayProducts()
+        public void AddProduct(string name, string category, int quantity, decimal price)
         {
-            Console.WriteLine("Products:");
-            DisplayTableHeader();
-            foreach (var product in products)
+            products.Add(new Product(name, category, quantity, price));
+            SaveProductsToFile();
+        }
+
+        public void SaveProductsToFile()
+        {
+            string json = JsonSerializer.Serialize(products, new JsonSerializerOptions
             {
-                DisplayProductRow(product);
+                WriteIndented = true
+            });
+            File.WriteAllText(filePath, json);
+        }
+
+        public void ListAllProducts()
+        {
+            productDisplayService.DisplayProducts(products);
+        }
+
+        public void ListProductsByCategory(string category)
+        {
+            var filteredProducts = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (filteredProducts.Any())
+            {
+                Console.WriteLine($"Products in category '{category}':");
+                productDisplayService.DisplayProducts(filteredProducts);
             }
-        }
-
-        private void DisplayTableHeader()
-        {
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine("|              Name              |    Category    | Quantity |      Price      |");
-            Console.WriteLine("--------------------------------------------------------------------------------");
-        }
-
-        private void DisplayProductRow(Product product)
-        {
-            string formattedName = FormatString(product.Name, 30);
-            string formattedCategory = FormatString(product.Category, 14);
-            string formattedQuantity = string.Format("{0,8}", product.Quantity);
-            string formattedPrice = string.Format("{0,15:C}", product.Price);
-
-            Console.WriteLine($"| {formattedName} | {formattedCategory} | {formattedQuantity} | {formattedPrice} |");
-        }
-
-        private string FormatString(string input, int width)
-        {
-            return input.PadRight(width).Substring(0, width);
+            else
+            {
+                Console.WriteLine($"No products found in category '{category}'.");
+            }
         }
     }
 }

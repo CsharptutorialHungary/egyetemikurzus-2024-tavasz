@@ -28,5 +28,23 @@
     "Category": "Processor",
     "Quantity": 30,
     "Price": 500.00
+  },
+  {
+    "Name": "Test",
+    "Category": "Test",
+    "Quantity": 10,
+    "Price": 10
+  },
+  {
+    "Name": "Test2",
+    "Category": "Test2",
+    "Quantity": 10,
+    "Price": 10
+  },
+  {
+    "Name": "Test3",
+    "Category": "Test3",
+    "Quantity": 10,
+    "Price": 10
   }
 ]
