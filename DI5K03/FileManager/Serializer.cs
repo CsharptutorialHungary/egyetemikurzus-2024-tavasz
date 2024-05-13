@@ -9,7 +9,7 @@ namespace Filemanager{
         public async Task<List<FolderDef>> DeserializeFromJson(Stream from)
         {
             FolderDef[]? folders = await JsonSerializer.DeserializeAsync<FolderDef[]>(from);
-            return folders == null ? new List<FolderDef>(folders) : ([]);
+            return folders != null ? new List<FolderDef>(folders) : ([]);
 
 
         }

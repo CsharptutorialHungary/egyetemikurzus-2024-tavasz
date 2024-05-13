@@ -38,9 +38,11 @@ namespace Filemanager.Commands
                         {
                             if (folderdef.Name.Equals(foldername))
                             {
-                                if (!folderdef.Types.Contains<string>(extension))
+                                if (!folderdef.Types.Contains(extension))
                                 {
-                                    folderdef.Types = [.. folderdef.Types, extension];
+                                    FolderDef new_folder_def =new(folderdef.Name,[.. folderdef.Types, extension]); 
+                                    cache.Stored_folderdefs.Remove(folderdef);
+                                    cache.Stored_folderdefs.Add(new_folder_def);
                                     cache_was_modified = true;
                                 }
                                 folderdef_exists = true;
