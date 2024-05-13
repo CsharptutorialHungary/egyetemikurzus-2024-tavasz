@@ -1,8 +1,12 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OA8TV3", "OA8TV3", "{3E484869-DD23-4DC1-A7D3-AC0A1434F534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadManager", "OA8TV3\DownloadManager\DownloadManager.csproj", "{1246E4B5-F7AB-4812-B9BC-3CA0712379AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +14,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1246E4B5-F7AB-4812-B9BC-3CA0712379AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1246E4B5-F7AB-4812-B9BC-3CA0712379AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1246E4B5-F7AB-4812-B9BC-3CA0712379AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1246E4B5-F7AB-4812-B9BC-3CA0712379AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1246E4B5-F7AB-4812-B9BC-3CA0712379AE} = {3E484869-DD23-4DC1-A7D3-AC0A1434F534}
 	EndGlobalSection
 EndGlobal
