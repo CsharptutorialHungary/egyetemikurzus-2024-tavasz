@@ -9,8 +9,8 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        
-        GameManager g = new GameManager();
+
+        GameManager g = GameManager.Instance;
         Console.WriteLine(g.AtlagKcal());
         await g.Betolt();
         
@@ -18,18 +18,18 @@ class Program
         string beolvasSzoveg="";
         while (beolvasSzoveg != "k")
         {
-            Hamburger burger = g.KovetkezoSzint(szint);
-           String[] aktualisBurger = burger.Ingredients.ToArray();
+            Etel etel = g.KovetkezoSzint(szint);
+           String[] aktualisBurger = etel.Ingredients.ToArray();
             int i = 0;
             Console.Clear();
-            Console.WriteLine("Anita - Szeretnék kérni egy " + burger.Name);
+            Console.WriteLine("Anita - Szeretnék kérni egy " + etel.Name);
             Console.WriteLine("hozzávalok: ");
             g.help(aktualisBurger);
             while (i < aktualisBurger.Length)
             {
                 Console.Write("{0}. elem:", i + 1);
                 beolvasSzoveg = Console.ReadLine();
-                if (beolvasSzoveg == ("?Burger"))
+                if (beolvasSzoveg == ("?etel"))
                 {
                     g.help(aktualisBurger);
                 }

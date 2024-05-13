@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using BFR0QN.Etelek;
@@ -10,13 +10,31 @@ namespace BFR0QN
 {
     public class GameManager
     {
-        int szint;
-        List<Hamburger> burgerek = BeolvasJson.ReadJsonFile("Etelek.json");
-        Dictionary<string, int> mentesekLista;
+        private static GameManager instance;
+        private int szint;
+        private List<Etel> etelek;
+        private Dictionary<string, int> mentesekLista;
+        private GameManager()
+        {
+            etelek = BeolvasJson.ReadJsonFile("Etelek.json");
+        }
+
+        // A Singleton példány lekérdezése
+        public static GameManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameManager();
+                }
+                return instance;
+            }
+        }
         public async Task Betolt()
         {
             mentesekLista = await BeolvasJson.Betolt();
-            Console.WriteLine("Siti Hamburgerezője!");
+            Console.WriteLine("Siti Étteremje!");
             Console.WriteLine("Új játék (uj) Meglévő betöltése (be)");
             string beolvas = Console.ReadLine();
             if (beolvas == "uj")
@@ -70,13 +88,13 @@ namespace BFR0QN
         }
         public void Bevezetes()
         {
-            Console.WriteLine("Ebben a játékban burgereket\nfogsz elkészíteni kérésekre. " +
-                              "Mindig fog jönni egy vásárló, kér egy burgert\n" +
+            Console.WriteLine("Ebben a játékban ételeket\nfogsz elkészíteni kérésekre. " +
+                              "Mindig fog jönni egy vásárló, kér egy kaját\n" +
                               "és neked azt pontosan el kell\n" +
                               "tudnod készsíteni. Alapvetőn szavakat kell beütnöd egyesével," +
-                              "ha nem tudod az adott burger felépítését,\n" +
-                              "akkor használhatsz segítséget ?burgerNeve commanddal\n" +
-                              "ami 3 mp megjeleníti az adott burger elkészítését\n" +
+                              "ha nem tudod az adott éltel felépítését,\n" +
+                              "akkor használhatsz segítséget ?etel commanddal\n" +
+                              "ami 3 mp megjeleníti az adott étel összetevőit\n" +
                               "Ok? Nyomj meg egy gombot...");
             string s = Console.ReadLine();
             if (s != null)
@@ -84,16 +102,16 @@ namespace BFR0QN
                 Console.Clear();
             }
         }
-        public Hamburger KovetkezoSzint(int szint)
+        public Etel KovetkezoSzint(int szint)
         {
-            Hamburger aktualisBurger = burgerek.FirstOrDefault(x => x.Level == szint);
+            Etel aktualisBurger = etelek.FirstOrDefault(x => x.Level == szint);
             return aktualisBurger;
         }
         public double AtlagKcal()
         {
-            int[] tomb=new int[burgerek.Count];
+            int[] tomb=new int[etelek.Count];
             int i = 0;
-            foreach (var item in burgerek)
+            foreach (var item in etelek)
             {
                 tomb[i]=item.Kcal; i++;
             }

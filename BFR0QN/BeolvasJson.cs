@@ -10,13 +10,13 @@ namespace BFR0QN
 {
     public static class BeolvasJson
     {
-        public static List<Hamburger> ReadJsonFile(string jsonFileName)
+        public static List<Etel> ReadJsonFile(string jsonFileName)
         {
-            List<Hamburger> burgers = new List<Hamburger>();
+            List<Etel> burgers = new List<Etel>();
             try
             {
                 string jsonText = File.ReadAllText(jsonFileName);
-                burgers = JsonSerializer.Deserialize<List<Hamburger>>(jsonText,new JsonSerializerOptions(JsonSerializerDefaults.Web));
+                burgers = JsonSerializer.Deserialize<List<Etel>>(jsonText,new JsonSerializerOptions(JsonSerializerDefaults.Web));
             }
             catch (FileNotFoundException ex)
             {

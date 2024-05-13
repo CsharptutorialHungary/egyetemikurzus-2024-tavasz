@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BFR0QN.Etelek
 {
-    public class Hamburger
+    public class Etel
     {
         public string Name { get; }
         public string Type { get; }
@@ -14,7 +14,7 @@ namespace BFR0QN.Etelek
         public int Level { get; }
         public List<string> Ingredients { get; }
 
-        public Hamburger(string name, string type, int kcal, int level, List<string> ingredients)
+        public Etel(string name, string type, int kcal, int level, List<string> ingredients)
         {
             Name = name;
             Type = type;
