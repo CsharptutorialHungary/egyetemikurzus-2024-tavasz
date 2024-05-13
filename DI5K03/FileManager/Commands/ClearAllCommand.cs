@@ -19,7 +19,7 @@ namespace Filemanager.Commands
                 {
                     string file_path = cache.Target_dir + "/fm_config.json";
                     cache.Stored_folderdefs = [];
-                    using (FileStream config_stream = File.OpenWrite(file_path))
+                    using (FileStream config_stream = File.Open(file_path,FileMode.Truncate))
                     {
                         Serializer serializer = new();
                         await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);

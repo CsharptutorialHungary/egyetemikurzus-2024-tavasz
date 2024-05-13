@@ -59,7 +59,7 @@ namespace Filemanager.Commands
 
                         if (cache_was_modified)
                         {
-                            using (FileStream config_stream = File.OpenWrite(target))
+                            using (FileStream config_stream = File.Open(target,FileMode.Truncate))
                             {
                                 Serializer serializer = new();
                                 await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
