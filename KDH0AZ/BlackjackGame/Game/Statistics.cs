@@ -10,7 +10,7 @@ namespace Blackjack.Game
 {
     public class Statistics
     {
-        private const string FilePath = "F:\\Alkfejlesztes charp\\KDH0AZ\\BlackjackGame\\data.json";
+        private const string FilePath = "data.json";
 
         public void DisplayTopPlayersTable(int count)
         {

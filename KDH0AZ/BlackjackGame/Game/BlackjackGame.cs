@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 
 using Blackjack.Models;
+using System.IO;
 
 namespace Blackjack.Game
 {
@@ -59,32 +60,39 @@ namespace Blackjack.Game
             }
         }
 
+        public record class PlayerData
+        {
+            public string Name { get; set; }
+            public int Money { get; set; }
+        }
+
         public void DataUpload()
         {
-            var playerData = new
+            var playerData = new PlayerData
             {
                 Name = player.Name,
                 Money = player.Money
             };
 
-            string filePath = "F:\\Alkfejlesztes charp\\KDH0AZ\\BlackjackGame\\data.json";
+            string filePath = "data.json";
 
             try
             {
-                bool fileExists = File.Exists(filePath);
-
-                string jsonData = string.Empty;
-
-                if (fileExists)
+                if (!File.Exists(filePath))
                 {
-                    jsonData = File.ReadAllText(filePath);
+                    List<PlayerData> initialDataList = new List<PlayerData>();
+                    string initialJson = JsonSerializer.Serialize(initialDataList);
+
+                    File.WriteAllText(filePath, initialJson);
                 }
 
-                List<object> dataList = new List<object>();
+                string jsonData = File.ReadAllText(filePath);
 
-                if (!string.IsNullOrEmpty(jsonData))
+                List<PlayerData> dataList = JsonSerializer.Deserialize<List<PlayerData>>(jsonData);
+
+                if (dataList == null)
                 {
-                    dataList = JsonSerializer.Deserialize<List<object>>(jsonData);
+                    dataList = new List<PlayerData>();
                 }
 
                 dataList.Add(playerData);
@@ -101,6 +109,8 @@ namespace Blackjack.Game
             catch (Exception ex)
             {
                 Console.WriteLine($"Hiba történt a fájl mentésekor: {ex.Message}");
+                Console.ReadKey(true);
+                Console.Clear();
             }
         }
 
