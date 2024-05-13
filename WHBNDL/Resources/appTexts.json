@@ -1,0 +1,6 @@
+{
+  "Welcome": "Welcome to the Quiz Game!\nType \"help\" for more information.\n",
+  "Help": "\nHere are some instructions regarding the application: \n start: start the quiz, \n exit: exit the application, \n description: short description of the application, \n\n list: listing results \n bestresult: best result listing.\n",
+  "Description": "This quiz game tests your knowledge on various topics.\n",
+  "End": "Thanks for trying my game. Have a nice day!\n"
+}
