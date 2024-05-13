@@ -1,5 +1,6 @@
 ﻿using System.Data.SQLite;
 using WHBNDL.Domain;
+using System.Linq;
 
 namespace WHBNDL.Database
 {
@@ -54,7 +55,7 @@ namespace WHBNDL.Database
             }
         }
 
-        public async Task<List<QuizResult>> ListQuizResultsAsync()
+        public async Task<Dictionary<int, List<QuizResult>>> ListQuizResultsAsync()
         {
             List<QuizResult> results = new List<QuizResult>();
 
@@ -75,13 +76,18 @@ namespace WHBNDL.Database
                 }
             }
 
-            return results;
+            var orderedGroupedResults = results
+                .GroupBy(r => r.CorrectAnswers)
+                .OrderByDescending(g => g.Key)
+                .ToDictionary(g => g.Key, g => g.ToList());
+
+            return orderedGroupedResults;
         }
         public async Task<QuizResult> GetBestQuizResultAsync()
         {
             string selectQuery = @"
-        SELECT * FROM QuizResults;
-    ";
+                SELECT * FROM QuizResults;
+                ";
 
             List<QuizResult> quizResults = new List<QuizResult>();
 
@@ -106,7 +112,6 @@ namespace WHBNDL.Database
             }
 
             var bestResult = quizResults
-                .Where(q => q.TotalQuestions > 0)
                 .OrderByDescending(q => (double)q.CorrectAnswers / q.TotalQuestions)
                 .FirstOrDefault();
 

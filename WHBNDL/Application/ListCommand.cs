@@ -18,10 +18,21 @@ namespace WHBNDL.Application
         {
             try
             {
-                var results = await _database.ListQuizResultsAsync();
-                foreach (var result in results)
+                var groupedResults = await _database.ListQuizResultsAsync();
+                if (groupedResults.Count == 0)
                 {
-                    Console.WriteLine($"Correct Answers: {result.CorrectAnswers}, Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}");
+                    Console.WriteLine("No quiz results found.");
+                }
+                else
+                {
+                    foreach (var group in groupedResults)
+                    {
+                        Console.WriteLine($"Correct Answers: {group.Key}");
+                        foreach (var result in group.Value)
+                        {
+                            Console.WriteLine($"  Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}");
+                        }
+                    }
                 }
             }
             catch (Exception ex)
