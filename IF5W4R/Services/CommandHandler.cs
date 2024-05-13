@@ -11,33 +11,52 @@
 
         public void HandleCommand(string command)
         {
-            switch (command)
+            if (command.StartsWith("list"))
             {
-                case "add":
-                    AddProduct();
-                    break;
-                case "list":
+                string[] commandParts = command.Split(' ');
+                if (commandParts.Length == 3)
+                {
+                    string field = commandParts[1];
+                    string order = commandParts[2];
+                    _productService.ListProducts(field, order);
+                }
+                else if (commandParts.Length == 1 && command == "list")
+                {
                     _productService.ListAllProducts();
-                    break;
-                case "help":
-                    Console.WriteLine("Commands:");
-                    Console.WriteLine("add - Add a new product");
-                    Console.WriteLine("list - List all products");
-                    Console.WriteLine("list <Category> - List products by category");
-                    break;
-                default:
-                    if (command.StartsWith("list "))
-                    {
-                        string categoryParam = command.Substring(5);
-                        _productService.ListProductsByCategory(categoryParam);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid command. Type 'help' for available commands.");
-                    }
-                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid command. Type 'help' for available commands.");
+                }
+            }
+            else if (command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            else if (command == "add")
+            {
+                AddProduct();
+            }
+            else if (command == "help" || command == "h")
+            {
+                Console.WriteLine("Commands:");
+                Console.WriteLine("\tadd - Add a new product");
+                Console.WriteLine("\tlist - List all products");
+                Console.WriteLine("\tlist -n/-c/-q/-p -asc/-desc - List products ordered by field (name, category, quantity, price) in order (asc for ascending, desc for descending)");
+                Console.WriteLine("\tfilter <Category> - List products by category");
+                Console.WriteLine("\texit - Exit the program");
+            }
+            else if (command.StartsWith("filter "))
+            {
+                string categoryParam = command.Substring(7);
+                _productService.FilterByCategory(categoryParam);
+            }
+            else
+            {
+                Console.WriteLine("Invalid command. Type 'help' for available commands.");
             }
         }
+
 
         private void AddProduct()
         {

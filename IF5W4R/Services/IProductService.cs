@@ -7,6 +7,7 @@ namespace IF5W4R.Services
         void LoadProducts(List<Product> productList);
         void AddProduct(string name, string category, int quantity, decimal price);
         void ListAllProducts();
-        void ListProductsByCategory(string category);
+        void FilterByCategory(string category);
+        void ListProducts(string field, string order);
     }
 }

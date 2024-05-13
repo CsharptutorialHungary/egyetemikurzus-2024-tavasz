@@ -17,7 +17,7 @@ namespace IF5W4R
                 List<Product> productList = await fileService.ReadFromJsonFileAsync<List<Product>>(filePath);
                 productService.LoadProducts(productList);
                 Console.WriteLine("Product registry application loaded!");
-                Console.WriteLine("For help please write: help");
+                Console.WriteLine("For help please write: help or h");
                 while (true)
                 {
                     Console.Write("Enter command: ");

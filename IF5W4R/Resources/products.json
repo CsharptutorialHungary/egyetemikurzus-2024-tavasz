@@ -3,48 +3,30 @@
     "Name": "Asus ROG Strix G15",
     "Category": "Laptop",
     "Quantity": 10,
-    "Price": 2500.00
+    "Price": 700000.00
   },
   {
     "Name": "Dell XPS 13",
     "Category": "Laptop",
     "Quantity": 15,
-    "Price": 1800.00
+    "Price": 320000.00
   },
   {
     "Name": "Logitech G Pro X Superlight",
     "Category": "Mouse",
     "Quantity": 20,
-    "Price": 99.99
+    "Price": 34990.00
   },
   {
     "Name": "Samsung Odyssey G9",
     "Category": "Monitor",
     "Quantity": 5,
-    "Price": 1800.00
+    "Price": 449000.00
   },
   {
     "Name": "AMD Ryzen 9 5900X",
     "Category": "Processor",
     "Quantity": 30,
-    "Price": 500.00
-  },
-  {
-    "Name": "Test",
-    "Category": "Test",
-    "Quantity": 10,
-    "Price": 10
-  },
-  {
-    "Name": "Test2",
-    "Category": "Test2",
-    "Quantity": 10,
-    "Price": 10
-  },
-  {
-    "Name": "Test3",
-    "Category": "Test3",
-    "Quantity": 10,
-    "Price": 10
+    "Price": 115000.00
   }
 ]
