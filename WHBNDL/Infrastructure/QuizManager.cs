@@ -24,7 +24,8 @@ namespace WHBNDL.Infrastructure
 
         public void StartQuiz()
         {
-            Console.WriteLine("Kezdődik a quiz! Nyomd meg az E gombot a kilépéshez, vagy az R gombot az újrakezdéshez.");
+            Console.Clear();
+            Console.WriteLine("The quiz begins! Press E to exit or R to start over.");
             QuizMain();
         }
 
@@ -55,6 +56,7 @@ namespace WHBNDL.Infrastructure
 
         private void DisplayQuestion(Question question)
         {
+
             Console.WriteLine(question.QuestionText);
 
 

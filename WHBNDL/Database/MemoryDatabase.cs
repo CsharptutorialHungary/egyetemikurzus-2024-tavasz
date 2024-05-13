@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-
 using WHBNDL.Domain;
 
 namespace WHBNDL.Database
@@ -81,8 +80,8 @@ namespace WHBNDL.Database
         public async Task<QuizResult> GetBestQuizResultAsync()
         {
             string selectQuery = @"
-                SELECT * FROM QuizResults;
-            ";
+        SELECT * FROM QuizResults;
+    ";
 
             List<QuizResult> quizResults = new List<QuizResult>();
 
@@ -101,7 +100,15 @@ namespace WHBNDL.Database
                 }
             }
 
-            var bestResult = quizResults.OrderByDescending(q => (double)q.CorrectAnswers / q.TotalQuestions).FirstOrDefault();
+            if (!quizResults.Any())
+            {
+                return new QuizResult("No quiz results found.");
+            }
+
+            var bestResult = quizResults
+                .Where(q => q.TotalQuestions > 0)
+                .OrderByDescending(q => (double)q.CorrectAnswers / q.TotalQuestions)
+                .FirstOrDefault();
 
             return bestResult;
         }
