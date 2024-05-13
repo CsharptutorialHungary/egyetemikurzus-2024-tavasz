@@ -33,7 +33,7 @@ namespace WHBNDL.Application
                 }
                 else
                 {
-                    Console.WriteLine($"\nBest result: Correct Answers: {result.CorrectAnswers}, Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}\n");
+                    Console.WriteLine($"\nBest result: Correct Answers: {result.CorrectAnswers}, Timestamp: {result.Timestamp}\n");
                 }
             }
             catch (Exception ex)

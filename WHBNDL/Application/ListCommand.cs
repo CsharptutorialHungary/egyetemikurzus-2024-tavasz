@@ -31,7 +31,7 @@ namespace WHBNDL.Application
                         Console.WriteLine($"Correct Answers: {group.Key}");
                         foreach (var result in group.Value)
                         {
-                            Console.WriteLine($"  Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}");
+                            Console.WriteLine($" Timestamp: {result.Timestamp}");
                         }
                     }
                     Console.WriteLine();
