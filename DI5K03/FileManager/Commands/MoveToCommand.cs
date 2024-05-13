@@ -40,7 +40,7 @@ namespace Filemanager.Commands
                             {
                                 if (!folderdef.Types.Contains<string>(extension))
                                 {
-                                    folderdef.Types=[..folderdef.Types,extension];
+                                    folderdef.Types = [.. folderdef.Types, extension];
                                     cache_was_modified = true;
                                 }
                                 folderdef_exists = true;
@@ -51,7 +51,7 @@ namespace Filemanager.Commands
                         if (!folderdef_exists)
                         {
                             FolderDef folderDef = new(foldername, [extension]);
-                            cache.Stored_folderdefs=[..cache.Stored_folderdefs,folderDef];
+                            cache.Stored_folderdefs = [.. cache.Stored_folderdefs, folderDef];
                             cache_was_modified = true;
                         }
 
@@ -59,10 +59,18 @@ namespace Filemanager.Commands
 
                         if (cache_was_modified)
                         {
-                            using (FileStream config_stream = File.Open(target,FileMode.Truncate))
+                            try
                             {
-                                Serializer serializer = new();
-                                await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
+                                using (FileStream config_stream = File.Open(target, FileMode.Truncate))
+                                {
+                                    Serializer serializer = new();
+                                    await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
+                                }
+                                host.WriteLine("Config file cleared");
+                            }
+                            catch (Exception file_exception)
+                            {
+                                host.WriteLine("Exception occured while trying to open fm_config.json: " + file_exception.Message);
                             }
                         }
 

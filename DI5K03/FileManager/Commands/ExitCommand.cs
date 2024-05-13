@@ -1,7 +1,8 @@
 using Filemanager.Infrastructure;
 using Filemanager.Model;
 
-namespace Filemanager.Commands{
+namespace Filemanager.Commands
+{
     internal class ExitCommand : ICommand
     {
         public string Name => "exit";
