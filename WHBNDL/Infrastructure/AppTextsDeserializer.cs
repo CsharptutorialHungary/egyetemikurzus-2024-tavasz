@@ -8,7 +8,8 @@ namespace WHBNDL.Infrastructure
     {
         public static Texts Deserialize()
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "appTexts.json");
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\", "Resources", "appTexts.json");
+
             string jsonString = File.ReadAllText(path);
             TextReader reader = new StringReader(jsonString);
             JsonSerializerOptions options = new JsonSerializerOptions

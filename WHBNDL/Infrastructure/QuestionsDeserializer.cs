@@ -8,7 +8,7 @@ namespace WHBNDL.Infrastructure
     {
         public static Question[] Deserialize()
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "questions.json");
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\", "Resources", "questions.json");
             string jsonString = File.ReadAllText(path);
             TextReader reader = new StringReader(jsonString);
             JsonSerializerOptions options = new JsonSerializerOptions

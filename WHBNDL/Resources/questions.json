@@ -1,0 +1,248 @@
+[
+  {
+    "QuestionText": "What is the capital of France?",
+    "Answers": {
+      "CorrectAnswer": "Paris",
+      "WrongAnswers": [ "London", "Berlin", "Rome" ]
+    }
+  },
+  {
+    "QuestionText": "Who wrote 'Romeo and Juliet'?",
+    "Answers": {
+      "CorrectAnswer": "William Shakespeare",
+      "WrongAnswers": [ "Jane Austen", "Charles Dickens", "Leo Tolstoy" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for water?",
+    "Answers": {
+      "CorrectAnswer": "H2O",
+      "WrongAnswers": [ "CO2", "NaCl", "CH4" ]
+    }
+  },
+  {
+    "QuestionText": "What is the largest ocean in the world?",
+    "Answers": {
+      "CorrectAnswer": "Pacific Ocean",
+      "WrongAnswers": [ "Atlantic Ocean", "Indian Ocean", "Arctic Ocean" ]
+    }
+  },
+  {
+    "QuestionText": "Who painted the Mona Lisa?",
+    "Answers": {
+      "CorrectAnswer": "Leonardo da Vinci",
+      "WrongAnswers": [ "Vincent van Gogh", "Pablo Picasso", "Michelangelo" ]
+    }
+  },
+  {
+    "QuestionText": "What is the tallest mountain in the world?",
+    "Answers": {
+      "CorrectAnswer": "Mount Everest",
+      "WrongAnswers": [ "K2", "Kangchenjunga", "Lhotse" ]
+    }
+  },
+  {
+    "QuestionText": "What is the capital of Japan?",
+    "Answers": {
+      "CorrectAnswer": "Tokyo",
+      "WrongAnswers": [ "Kyoto", "Osaka", "Seoul" ]
+    }
+  },
+  {
+    "QuestionText": "Who discovered penicillin?",
+    "Answers": {
+      "CorrectAnswer": "Alexander Fleming",
+      "WrongAnswers": [ "Louis Pasteur", "Marie Curie", "Albert Einstein" ]
+    }
+  },
+  {
+    "QuestionText": "What year did the Titanic sink?",
+    "Answers": {
+      "CorrectAnswer": "1912",
+      "WrongAnswers": [ "1908", "1915", "1920" ]
+    }
+  },
+  {
+    "QuestionText": "Who is known as the 'Father of Geometry'?",
+    "Answers": {
+      "CorrectAnswer": "Euclid",
+      "WrongAnswers": [ "Pythagoras", "Archimedes", "Aristotle" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for gold?",
+    "Answers": {
+      "CorrectAnswer": "Au",
+      "WrongAnswers": [ "Ag", "Cu", "Fe" ]
+    }
+  },
+  {
+    "QuestionText": "Which planet is known as the 'Red Planet'?",
+    "Answers": {
+      "CorrectAnswer": "Mars",
+      "WrongAnswers": [ "Jupiter", "Venus", "Saturn" ]
+    }
+  },
+  {
+    "QuestionText": "Who invented the telephone?",
+    "Answers": {
+      "CorrectAnswer": "Alexander Graham Bell",
+      "WrongAnswers": [ "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi" ]
+    }
+  },
+  {
+    "QuestionText": "What is the longest river in the world?",
+    "Answers": {
+      "CorrectAnswer": "Nile",
+      "WrongAnswers": [ "Amazon", "Yangtze", "Mississippi" ]
+    }
+  },
+  {
+    "QuestionText": "Who is known as the 'Father of Modern Physics'?",
+    "Answers": {
+      "CorrectAnswer": "Albert Einstein",
+      "WrongAnswers": [ "Isaac Newton", "Galileo Galilei", "Niels Bohr" ]
+    }
+  },
+  {
+    "QuestionText": "Who is the author of 'To Kill a Mockingbird'?",
+    "Answers": {
+      "CorrectAnswer": "Harper Lee",
+      "WrongAnswers": [ "John Steinbeck", "F. Scott Fitzgerald", "Mark Twain" ]
+    }
+  },
+  {
+    "QuestionText": "What is the capital of Canada?",
+    "Answers": {
+      "CorrectAnswer": "Ottawa",
+      "WrongAnswers": [ "Toronto", "Vancouver", "Montreal" ]
+    }
+  },
+  {
+    "QuestionText": "What is the largest mammal in the world?",
+    "Answers": {
+      "CorrectAnswer": "Blue Whale",
+      "WrongAnswers": [ "African Elephant", "Giraffe", "Grizzly Bear" ]
+    }
+  },
+  {
+    "QuestionText": "Who painted 'Starry Night'?",
+    "Answers": {
+      "CorrectAnswer": "Vincent van Gogh",
+      "WrongAnswers": [ "Pablo Picasso", "Leonardo da Vinci", "Claude Monet" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for oxygen?",
+    "Answers": {
+      "CorrectAnswer": "O2",
+      "WrongAnswers": [ "O3", "CO2", "H2O" ]
+    }
+  },
+  {
+    "QuestionText": "What is the currency of Japan?",
+    "Answers": {
+      "CorrectAnswer": "Yen",
+      "WrongAnswers": [ "Dollar", "Euro", "Pound" ]
+    }
+  },
+  {
+    "QuestionText": "Who wrote '1984'?",
+    "Answers": {
+      "CorrectAnswer": "George Orwell",
+      "WrongAnswers": [ "Aldous Huxley", "J.R.R. Tolkien", "Ray Bradbury" ]
+    }
+  },
+  {
+    "QuestionText": "What is the diameter of Earth?",
+    "Answers": {
+      "CorrectAnswer": "12,742 kilometers",
+      "WrongAnswers": [ "10,000 kilometers", "15,000 kilometers", "20,000 kilometers" ]
+    }
+  },
+  {
+    "QuestionText": "Who discovered gravity?",
+    "Answers": {
+      "CorrectAnswer": "Isaac Newton",
+      "WrongAnswers": [ "Albert Einstein", "Galileo Galilei", "Nikola Tesla" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for sodium?",
+    "Answers": {
+      "CorrectAnswer": "Na",
+      "WrongAnswers": [ "Sn", "Mg", "Ca" ]
+    }
+  },
+  {
+    "QuestionText": "Who is known as the 'Father of Computer Science'?",
+    "Answers": {
+      "CorrectAnswer": "Alan Turing",
+      "WrongAnswers": [ "Charles Babbage", "Ada Lovelace", "Tim Berners-Lee" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for iron?",
+    "Answers": {
+      "CorrectAnswer": "Fe",
+      "WrongAnswers": [ "Ir", "In", "I" ]
+    }
+  },
+  {
+    "QuestionText": "What is the largest desert in the world?",
+    "Answers": {
+      "CorrectAnswer": "Antarctica",
+      "WrongAnswers": [ "Sahara", "Arabian", "Gobi" ]
+    }
+  },
+  {
+    "QuestionText": "Who painted 'The Persistence of Memory'?",
+    "Answers": {
+      "CorrectAnswer": "Salvador Dalí",
+      "WrongAnswers": [ "Pablo Picasso", "Vincent van Gogh", "Leonardo da Vinci" ]
+    }
+  },
+  {
+    "QuestionText": "What is the capital of Australia?",
+    "Answers": {
+      "CorrectAnswer": "Canberra",
+      "WrongAnswers": [ "Sydney", "Melbourne", "Perth" ]
+    }
+  },
+  {
+    "QuestionText": "Who is the author of 'The Great Gatsby'?",
+    "Answers": {
+      "CorrectAnswer": "F. Scott Fitzgerald",
+      "WrongAnswers": [ "Ernest Hemingway", "John Steinbeck", "William Faulkner" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for silver?",
+    "Answers": {
+      "CorrectAnswer": "Ag",
+      "WrongAnswers": [ "Si", "Au", "Al" ]
+    }
+  },
+  {
+    "QuestionText": "What is the largest planet in our solar system?",
+    "Answers": {
+      "CorrectAnswer": "Jupiter",
+      "WrongAnswers": [ "Saturn", "Neptune", "Uranus" ]
+    }
+  },
+  {
+    "QuestionText": "Who composed 'Symphony No. 9'?",
+    "Answers": {
+      "CorrectAnswer": "Ludwig van Beethoven",
+      "WrongAnswers": [ "Wolfgang Amadeus Mozart", "Johann Sebastian Bach", "Pyotr Ilyich Tchaikovsky" ]
+    }
+  },
+  {
+    "QuestionText": "What is the chemical symbol for carbon?",
+    "Answers": {
+      "CorrectAnswer": "C",
+      "WrongAnswers": [ "Co", "Ca", "Cr" ]
+    }
+  }
+]
+

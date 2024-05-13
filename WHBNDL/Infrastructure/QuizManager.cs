@@ -13,6 +13,7 @@ namespace WHBNDL.Infrastructure
         private int _correctAnswersCount = 0;
         private char _currentCorrectAnswer = 'A'; // Lényegtelen, csak hogy ne legyen hiba
         private bool _gameOver = false;
+        private bool _restarted = false;
         private readonly MemoryDatabase _database;
 
         public QuizManager(Question[] questions, MemoryDatabase database)
@@ -24,6 +25,11 @@ namespace WHBNDL.Infrastructure
         public void StartQuiz()
         {
             Console.WriteLine("Kezdődik a quiz! Nyomd meg az E gombot a kilépéshez, vagy az R gombot az újrakezdéshez.");
+            QuizMain();
+        }
+
+        public void QuizMain()
+        {
             foreach (var question in _questions)
             {
                 if (_gameOver)
@@ -33,6 +39,15 @@ namespace WHBNDL.Infrastructure
                 EvaluateAnswer(question);
                 Console.WriteLine();
             }
+            if(!_restarted)
+            {
+                EndQuiz();
+            }
+            _restarted = false;
+        }
+
+        public void EndQuiz()
+        {
 
             Console.WriteLine($"You got {_correctAnswersCount} out of {_questions.Length} questions correct.");
             _ = _database.SaveQuizResultAsync(_correctAnswersCount, _questions.Length);
@@ -75,7 +90,8 @@ namespace WHBNDL.Infrastructure
                         break;
                     case "R":
                         _correctAnswersCount = 0;
-                        StartQuiz();
+                        _restarted = true;
+                        QuizMain();
                         break;
                     default:
                         Console.WriteLine("Invalid input!\nGive a valid input!");
