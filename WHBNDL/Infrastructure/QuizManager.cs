@@ -98,7 +98,6 @@ namespace WHBNDL.Infrastructure
                         break;
                     case "R":
                         _correctAnswersCount = 0;
-                        EndQuiz();
                         _questions = [];
                         _restarted= true;
                         Console.Clear();
