@@ -24,9 +24,21 @@
                 {
                     _productService.ListAllProducts();
                 }
+                else if (commandParts.Length == 2)
+                {
+                    if (commandParts[1] == "-n" || commandParts[1] == "-c" || commandParts[1] == "-q" || commandParts[1] == "-p") 
+                    {
+                        Console.WriteLine("Invalid number of arguments. Type 'help' for available commands.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid field. Type 'help' for available commands.");
+                    }
+                    
+                }
                 else
                 {
-                    Console.WriteLine("Invalid command. Type 'help' for available commands.");
+                    Console.WriteLine("Invalid number of arguments. Type 'help' for available commands.");
                 }
             }
             else if (command == "exit")
@@ -42,7 +54,7 @@
                 Console.WriteLine("Commands:");
                 Console.WriteLine("\tadd - Add a new product");
                 Console.WriteLine("\tlist - List all products");
-                Console.WriteLine("\tlist -n/-c/-q/-p -asc/-desc - List products ordered by field (name, category, quantity, price) in order (asc for ascending, desc for descending)");
+                Console.WriteLine("\tlist <-n/c/q/p> <-asc/desc> - List products ordered by field (name, category, quantity, price) in order (asc for ascending, desc for descending)");
                 Console.WriteLine("\tfilter <Category> - List products by category");
                 Console.WriteLine("\texit - Exit the program");
             }
