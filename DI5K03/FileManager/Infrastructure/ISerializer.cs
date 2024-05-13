@@ -2,8 +2,8 @@ using Filemanager.Model;
 
 namespace Filemanager.Infrastructure{
     internal interface ISerializer{
-        public Task SerializeToJson(Stream target, FolderDef[] folderDefs);
+        public Task SerializeToJson(Stream target, List<FolderDef> folderDefs);
 
-        public Task<FolderDef[]> DeserializeFromJson(Stream from);
+        public Task<List<FolderDef>> DeserializeFromJson(Stream from);
     }
 }

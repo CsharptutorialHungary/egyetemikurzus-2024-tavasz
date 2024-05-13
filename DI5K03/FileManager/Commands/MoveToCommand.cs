@@ -66,7 +66,6 @@ namespace Filemanager.Commands
                                     Serializer serializer = new();
                                     await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
                                 }
-                                host.WriteLine("Config file cleared");
                             }
                             catch (Exception file_exception)
                             {

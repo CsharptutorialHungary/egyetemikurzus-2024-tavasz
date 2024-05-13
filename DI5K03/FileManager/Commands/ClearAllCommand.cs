@@ -15,7 +15,7 @@ namespace Filemanager.Commands
             }
             else
             {
-                if (cache.Stored_folderdefs.Length != 0)
+                if (cache.Stored_folderdefs.Count != 0)
                 {
                     string file_path = cache.Target_dir + "/fm_config.json";
                     cache.Stored_folderdefs = [];
@@ -24,7 +24,7 @@ namespace Filemanager.Commands
                         using (FileStream config_stream = File.Open(file_path, FileMode.Truncate))
                         {
                             Serializer serializer = new();
-                            await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
+                            await serializer.SerializeToJson(config_stream, [.. cache.Stored_folderdefs]);
                         }
                         host.WriteLine("Config file cleared");
                     }
