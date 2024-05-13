@@ -8,7 +8,7 @@ namespace WHBNDL.Infrastructure
 {
     internal class QuizManager
     {
-        private readonly Question[] _questions;
+        private Question[] _questions;
         private readonly char[] _answerOptions = ['A', 'B', 'C', 'D'];
         private int _correctAnswersCount = 0;
         private char _currentCorrectAnswer = 'A'; // Lényegtelen, csak hogy ne legyen hiba
@@ -25,7 +25,7 @@ namespace WHBNDL.Infrastructure
         public void StartQuiz()
         {
             Console.Clear();
-            Console.WriteLine("The quiz begins! Press E to exit or R to start over.");
+            Console.WriteLine("The quiz begins! Press E to exit or R to start over.\n");
             QuizMain();
         }
 
@@ -33,24 +33,30 @@ namespace WHBNDL.Infrastructure
         {
             foreach (var question in _questions)
             {
-                if (_gameOver)
+                if (_gameOver || _restarted)
                     break;
 
                 DisplayQuestion(question);
                 EvaluateAnswer(question);
                 Console.WriteLine();
+
             }
-            if(!_restarted)
+
+            if (!_restarted)
             {
                 EndQuiz();
             }
-            _restarted = false;
+            else
+            {
+                _restarted = false;
+                QuizMain();
+            }
         }
 
         public void EndQuiz()
         {
 
-            Console.WriteLine($"You got {_correctAnswersCount} out of {_questions.Length} questions correct.");
+            Console.WriteLine($"You got {_correctAnswersCount} out of {_questions.Length} questions correct.\n");
             _ = _database.SaveQuizResultAsync(_correctAnswersCount, _questions.Length);
         }
 
@@ -92,8 +98,11 @@ namespace WHBNDL.Infrastructure
                         break;
                     case "R":
                         _correctAnswersCount = 0;
-                        _restarted = true;
-                        QuizMain();
+                        EndQuiz();
+                        _questions = [];
+                        _restarted= true;
+                        Console.Clear();
+                        _questions = QuestionsDeserializer.Deserialize();
                         break;
                     default:
                         Console.WriteLine("Invalid input!\nGive a valid input!");

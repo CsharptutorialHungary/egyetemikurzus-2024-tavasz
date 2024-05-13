@@ -21,10 +21,11 @@ namespace WHBNDL.Application
                 var groupedResults = await _database.ListQuizResultsAsync();
                 if (groupedResults.Count == 0)
                 {
-                    Console.WriteLine("No quiz results found.");
+                    Console.WriteLine("\nNo quiz results found.\n");
                 }
                 else
                 {
+                    Console.WriteLine();
                     foreach (var group in groupedResults)
                     {
                         Console.WriteLine($"Correct Answers: {group.Key}");
@@ -33,11 +34,12 @@ namespace WHBNDL.Application
                             Console.WriteLine($"  Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}");
                         }
                     }
+                    Console.WriteLine();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while listing quiz results: {ex.Message}");
+                Console.WriteLine($"\nAn error occurred while listing quiz results: {ex.Message}\n");
             }
         }
     }

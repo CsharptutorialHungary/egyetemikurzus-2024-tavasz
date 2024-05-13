@@ -27,16 +27,18 @@ namespace WHBNDL.Application
                 var result = await _database.GetBestQuizResultAsync();
                 if (result.Message != null)
                 {
+                    Console.WriteLine(" ");
                     Console.WriteLine(result.Message);
+                    Console.WriteLine(" ");
                 }
                 else
                 {
-                    Console.WriteLine($"Best result: Correct Answers: {result.CorrectAnswers}, Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}");
+                    Console.WriteLine($"\nBest result: Correct Answers: {result.CorrectAnswers}, Total Questions: {result.TotalQuestions}, Timestamp: {result.Timestamp}\n");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while getting the best quiz result: {ex.Message}");
+                Console.WriteLine($"\nAn error occurred while getting the best quiz result: {ex.Message}\n");
             }
         }
 

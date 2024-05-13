@@ -1,6 +1,6 @@
 {
-  "Welcome": "Welcome to the Quiz Game!",
-  "Help": "Here are some instructions regarding the application: \n start: start the quiz, \n exit: exit the application, \n description: short description of the application.",
-  "Description": "This quiz game tests your knowledge on various topics.",
-  "End": "Thanks for trying my game. Have a nice day!"
+  "Welcome": "Welcome to the Quiz Game!\n",
+  "Help": "\nHere are some instructions regarding the application: \nstart: start the quiz, \nexit: exit the application, \ndescription: short description of the application, \n\nlist: listing results \nbestresult: best result listing.\n",
+  "Description": "This quiz game tests your knowledge on various topics.\n",
+  "End": "Thanks for trying my game. Have a nice day!\n"
 }
