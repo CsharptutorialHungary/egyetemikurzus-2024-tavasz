@@ -3,13 +3,13 @@ using Filemanager.Model;
 
 namespace Filemanager.Commands
 {
-    internal class ExitCommand : ICommand
+    internal class ExitCommand : AbstractSynchronousCommand
     {
-        public string Name => "exit";
+        public override string Name => "exit";
 
-        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
+        public override void Execute(IHost host, string[] args, Cache cache)
         {
-            await Task.Factory.StartNew(() => host.Exit("<< Goodbye >>"));
+            host.Exit("<< Goodbye >>");
         }
     }
 }

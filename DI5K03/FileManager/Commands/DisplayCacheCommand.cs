@@ -3,11 +3,11 @@ using Filemanager.Model;
 
 namespace Filemanager.Commands
 {
-    internal class DisplayCacheCommand : ICommand
+    internal class DisplayCacheCommand : AbstractSynchronousCommand
     {
-        public string Name => "cache";
+        public override string Name => "cache";
 
-        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
+        public override void Execute(IHost host, string[] args, Cache cache)
         {
             host.WriteLine("target_dir: " + cache.Target_dir);
             foreach (FolderDef folderDef in cache.Stored_folderdefs)
@@ -15,7 +15,7 @@ namespace Filemanager.Commands
                 host.WriteLine("Folder " + folderDef.Name);
                 foreach (string extension in folderDef.Types)
                 {
-                    await Task.Factory.StartNew(() => host.WriteLine("    *." + extension));
+                    host.WriteLine("    *." + extension);
                 }
             }
         }

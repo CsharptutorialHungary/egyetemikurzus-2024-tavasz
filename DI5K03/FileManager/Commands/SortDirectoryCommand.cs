@@ -5,11 +5,11 @@ using Filemanager.Model;
 
 namespace Filemanager.Commands
 {
-    internal class SortDirectoryCommand : ICommand
+    internal class SortDirectoryCommand : AbstractSynchronousCommand
     {
-        public string Name => "sortdir";
+        public override string Name => "sortdir";
 
-        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
+        public override void Execute(IHost host, string[] args, Cache cache)
         {
             if (cache.Target_dir.Equals(""))
             {
@@ -41,7 +41,7 @@ namespace Filemanager.Commands
                     }
                 }
             }
-            await Task.Factory.StartNew(() => host.WriteLine("The target directory is sorted."));
+            host.WriteLine("The target directory is sorted.");
         }
     }
 }
