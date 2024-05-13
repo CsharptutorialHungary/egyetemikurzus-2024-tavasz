@@ -12,7 +12,7 @@ namespace Blackjack.Game
     {
         private const string FilePath = "data.json";
 
-        public void DisplayTopPlayersTable(int count)
+        public async Task DisplayTopPlayersTable(int count)
         {
             if (!File.Exists(FilePath))
             {
