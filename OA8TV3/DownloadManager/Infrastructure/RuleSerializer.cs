@@ -21,12 +21,12 @@ namespace DownloadManager.Infrastructure
             AllowTrailingCommas = true, NumberHandling = JsonNumberHandling.AllowReadingFromString
         };
 
-        public async Task SerializeToJson(AbstractRule[] rules)
+        public void SerializeToJson(AbstractRule[] rules)
         {
             Debug.Assert(ProjectDir != null, nameof(ProjectDir) + " != null");
             using (var stream = File.Create(Path.Combine(ProjectDir, "rules.json")))
             {
-                await JsonSerializer.SerializeAsync(stream, rules, WriteOptions);
+                JsonSerializer.Serialize(stream, rules, WriteOptions);
             }
         }
 

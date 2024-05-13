@@ -17,7 +17,14 @@ namespace DownloadManager.Application
         {
             if (args.Length == 0)
             {
-                controller.SaveRules();
+                try
+                {
+                    controller.SaveRules();
+                }
+                catch (Exception e)
+                {
+                    host.WriteLine("A szabályok mentése sikertelen volt az alábbi okból: " + e.Message);
+                }
                 host.WriteLine("Exiting");
                 host.Exit();
             }

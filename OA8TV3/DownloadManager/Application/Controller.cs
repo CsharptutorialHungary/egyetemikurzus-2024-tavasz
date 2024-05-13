@@ -104,7 +104,7 @@ namespace DownloadManager.Application
 
         public void SaveRules()
         {
-            Task.Run(() => _serializer.SerializeToJson(_rules.ToArray()));
+            _serializer.SerializeToJson(_rules.ToArray());
         }
 
         private bool CheckRule(string filePath, AbstractRule rule)
