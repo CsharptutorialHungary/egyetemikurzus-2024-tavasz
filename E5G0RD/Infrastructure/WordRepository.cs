@@ -18,7 +18,7 @@ namespace E5G0RD.Infrastructure
             {
                 var json = await File.ReadAllTextAsync(path);
                 var words = JsonSerializer.Deserialize<List<Word>>(json);
-                return words;
+                return words.Where(word => word.Value.Length == 5).ToList();
             }
             catch (Exception ex)
             {
