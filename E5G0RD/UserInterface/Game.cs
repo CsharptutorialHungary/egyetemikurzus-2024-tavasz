@@ -11,7 +11,7 @@ namespace E5G0RD.UserInterface
     public class Game
     {
         private readonly List<Word> _words;
-        private readonly Word _secretWord;
+        private Word _secretWord;
         private readonly List<Guess> _guesses;
 
         public Game(List<Word> words)
@@ -60,29 +60,64 @@ namespace E5G0RD.UserInterface
 
         public void Start()
         {
-            Console.WriteLine("Welcome to the game!");
-            Console.WriteLine("Guess the secret word with the least tries!");
-            Console.WriteLine("(the secret word is 5 chars long and your guesses should be too)");
-            Console.WriteLine();
-
             while (true)
             {
-                if (_guesses.Count() > 0)
+                Console.WriteLine("Welcome to the game!");
+                Console.WriteLine("Guess the secret word with the least tries!");
+                Console.WriteLine("(the secret word is 5 chars long and your guesses should be too)");
+                Console.WriteLine();
+                Console.WriteLine("By writing help, you get the first letter of the secret word");
+                Console.WriteLine("By writing give up, the game ends and you get the secret word");
+                Console.WriteLine();
+
+                while (true)
                 {
-                    Console.WriteLine($"Number of guesses so far: {_guesses.Count()}");
+                    if (_guesses.Count() > 0)
+                    {
+                        Console.WriteLine($"Number of guesses so far: {_guesses.Count()}");
+                    }
+
+                    Console.Write("Your guess: ");
+                    string word = Console.ReadLine();
+
+                    if (word.ToLower() == "help")
+                    {
+                        Console.WriteLine($"Hint: The first letter of the secret word is: {_secretWord.Value[0]}\n");
+                        continue;
+                    }
+
+                    if (word.ToLower() == "give up")
+                    {
+                        Console.WriteLine($"You gave up! The secret word was: {_secretWord.Value}\n");
+                        break;
+                    }
+
+                    string feedback = MakeGuess(word);
+
+                    Console.WriteLine($"Result: {feedback}\n");
+
+                    if (feedback.Equals(_secretWord.Value))
+                    {
+                        Console.WriteLine($"Congratulations, you guessed the secret word with {_guesses.Count()} guesses!");
+                        break;
+                    }
                 }
 
-                Console.Write("Your guess: ");
-                string word = Console.ReadLine();
-                string feedback = MakeGuess(word);
+                Console.Write("Press 'n' to start a new game or 'q' to quit: ");
+                string input = Console.ReadLine().ToLower();
 
-                Console.WriteLine($"Result: {feedback}\n");
-
-                if (feedback.Equals(_secretWord.Value))
+                if (input == "q")
                 {
-                    Console.WriteLine($"Congratulations, you guessed the secret word with {_guesses.Count()} guesses!");
                     break;
                 }
+                else if (input == "n")
+                {
+                    _guesses.Clear();
+                    _secretWord = GetRandomWord();
+                }
+
+                Console.WriteLine();
+
             }
         }
 
