@@ -22,7 +22,12 @@ namespace Filemanager{
                 string[] input = _host.ReadLine().Split(" ");
                 ICommand? commandToExecute = FindCommandByName(input[0]);
                 if(commandToExecute != null){
-                    await commandToExecute.ExecuteAsync(_host,input,_cache);
+                    try{
+                        await commandToExecute.ExecuteAsync(_host,input,_cache);
+                    } catch (Exception exception){
+                        _host.WriteLine("Exception occured while executing command "+commandToExecute.Name+": "+exception.Message);
+                    }
+                    
                 } else {
                     _host.WriteLine("No such command");
                 }

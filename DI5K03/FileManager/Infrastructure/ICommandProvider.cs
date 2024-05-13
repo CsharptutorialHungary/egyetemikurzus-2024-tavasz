@@ -1,5 +1,7 @@
-namespace Filemanager.Infrastructure{
-    internal interface ICommandProvider{
-        ICommand[] Commands {get;}
+namespace Filemanager.Infrastructure
+{
+    internal interface ICommandProvider
+    {
+        ICommand[] Commands { get; }
     }
 }

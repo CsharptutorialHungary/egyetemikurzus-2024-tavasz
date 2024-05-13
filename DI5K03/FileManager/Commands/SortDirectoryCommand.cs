@@ -41,7 +41,7 @@ namespace Filemanager.Commands
                     }
                 }
             }
-            await Task.Factory.StartNew(()=>host.WriteLine("The target directory is sorted."));
+            await Task.Factory.StartNew(() => host.WriteLine("The target directory is sorted."));
         }
     }
 }

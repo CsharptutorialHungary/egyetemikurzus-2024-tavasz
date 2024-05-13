@@ -1,3 +1,0 @@
-namespace Filemanager.Infrastructure{
-    
-}

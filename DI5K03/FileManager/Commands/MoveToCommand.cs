@@ -40,7 +40,7 @@ namespace Filemanager.Commands
                             {
                                 if (!folderdef.Types.Contains(extension))
                                 {
-                                    FolderDef new_folder_def =new(folderdef.Name,[.. folderdef.Types, extension]); 
+                                    FolderDef new_folder_def = new(folderdef.Name, [.. folderdef.Types, extension]);
                                     cache.Stored_folderdefs.Remove(folderdef);
                                     cache.Stored_folderdefs.Add(new_folder_def);
                                     cache_was_modified = true;
@@ -61,7 +61,7 @@ namespace Filemanager.Commands
 
                         if (cache_was_modified)
                         {
-                           await ConfigManager.WriteCachedFolderDefsIntoConfig(host,cache,target);
+                            await ConfigManager.WriteCachedFolderDefsIntoConfig(host, cache, target);
                         }
 
                     }

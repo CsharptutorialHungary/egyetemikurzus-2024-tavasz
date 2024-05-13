@@ -15,7 +15,7 @@ namespace Filemanager.Commands
                 host.WriteLine("Folder " + folderDef.Name);
                 foreach (string extension in folderDef.Types)
                 {
-                   await Task.Factory.StartNew(()=>host.WriteLine("    *." + extension));
+                    await Task.Factory.StartNew(() => host.WriteLine("    *." + extension));
                 }
             }
         }

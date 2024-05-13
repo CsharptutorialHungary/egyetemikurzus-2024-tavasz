@@ -25,11 +25,11 @@ namespace Filemanager.Commands
                     {
                         host.WriteLine("... creating fm_config.json");
                         cache.Stored_folderdefs = [];
-                        await ConfigManager.WriteCachedFolderDefsIntoConfig(host,cache,file_path);
+                        await ConfigManager.WriteCachedFolderDefsIntoConfig(host, cache, file_path);
                     }
                     else
                     {
-                        await ConfigManager.LoadFolderDefsFromConfigFile(host,cache,file_path);
+                        await ConfigManager.LoadFolderDefsFromConfigFile(host, cache, file_path);
                     }
                 }
                 else

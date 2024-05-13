@@ -1,6 +1,7 @@
 using Filemanager.Infrastructure;
 
-namespace Filemanager{
+namespace Filemanager
+{
     internal class Host : IHost
     {
         public void Exit(string exitMsg)

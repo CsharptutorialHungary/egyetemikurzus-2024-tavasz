@@ -19,7 +19,7 @@ namespace Filemanager.Commands
                 {
                     string file_path = cache.Target_dir + "/fm_config.json";
                     cache.Stored_folderdefs = [];
-                    await ConfigManager.WriteCachedFolderDefsIntoConfig(host,cache,file_path);
+                    await ConfigManager.WriteCachedFolderDefsIntoConfig(host, cache, file_path);
 
                 }
                 else
