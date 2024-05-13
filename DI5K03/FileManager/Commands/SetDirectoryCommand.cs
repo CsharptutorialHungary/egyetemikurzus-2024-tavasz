@@ -24,20 +24,12 @@ namespace Filemanager.Commands
                     if (!File.Exists(file_path))
                     {
                         host.WriteLine("... creating fm_config.json");
-                        using (FileStream config_stream = File.OpenWrite(file_path))
-                        {
-                            Serializer serializer = new();
-                            await serializer.SerializeToJson(config_stream, []);
-                            cache.Stored_folderdefs = [];
-                        }
+                        cache.Stored_folderdefs = [];
+                        await ConfigManager.WriteCachedFolderDefsIntoConfig(host,cache,file_path);
                     }
                     else
                     {
-                        using (FileStream config_stream = File.OpenRead(file_path))
-                        {
-                            Serializer serializer = new();
-                            cache.Stored_folderdefs = await serializer.DeserializeFromJson(config_stream);
-                        }
+                        await ConfigManager.LoadFolderDefsFromConfigFile(host,cache,file_path);
                     }
                 }
                 else

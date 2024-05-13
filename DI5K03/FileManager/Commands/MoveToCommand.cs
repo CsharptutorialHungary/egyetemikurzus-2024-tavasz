@@ -61,18 +61,7 @@ namespace Filemanager.Commands
 
                         if (cache_was_modified)
                         {
-                            try
-                            {
-                                using (FileStream config_stream = File.Open(target, FileMode.Truncate))
-                                {
-                                    Serializer serializer = new();
-                                    await serializer.SerializeToJson(config_stream, cache.Stored_folderdefs);
-                                }
-                            }
-                            catch (Exception file_exception)
-                            {
-                                host.WriteLine("Exception occured while trying to open fm_config.json: " + file_exception.Message);
-                            }
+                           await ConfigManager.WriteCachedFolderDefsIntoConfig(host,cache,target);
                         }
 
                     }
