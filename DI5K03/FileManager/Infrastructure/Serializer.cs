@@ -1,11 +1,19 @@
 using System.Text.Json;
 
-using Filemanager.Infrastructure;
 using Filemanager.Model;
 
-namespace Filemanager{
+namespace Filemanager.Infrastructure
+{
     internal class Serializer : ISerializer
     {
+        public static readonly Serializer Instance = new();
+
+        private readonly JsonSerializerOptions _options;
+
+        private Serializer()
+        {
+            _options = new JsonSerializerOptions { AllowTrailingCommas = true, WriteIndented = true };
+        }
         public async Task<List<FolderDef>> DeserializeFromJson(Stream from)
         {
             FolderDef[]? folders = await JsonSerializer.DeserializeAsync<FolderDef[]>(from);
@@ -16,7 +24,7 @@ namespace Filemanager{
 
         public async Task SerializeToJson(Stream target, List<FolderDef> folderDefs)
         {
-            await JsonSerializer.SerializeAsync<FolderDef[]>(target,[..folderDefs], new JsonSerializerOptions { AllowTrailingCommas = true, WriteIndented = true});
+            await JsonSerializer.SerializeAsync<FolderDef[]>(target, [.. folderDefs], _options);
         }
     }
 }
