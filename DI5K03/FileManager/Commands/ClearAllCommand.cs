@@ -7,7 +7,7 @@ namespace Filemanager.Commands
     {
         public string Name => "clear-all";
 
-        public async void ExecuteAsync(IHost host, string[] args, Cache cache)
+        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             if (cache.Target_dir.Equals(""))
             {

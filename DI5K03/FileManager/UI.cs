@@ -15,14 +15,14 @@ namespace Filemanager{
             
         }
 
-        public void Run(){
+        public async Task RunAsync(){
             _host.WriteLine("FileManager is running.");
             while(true){
                 _host.WriteLine("> ");
                 string[] input = _host.ReadLine().Split(" ");
                 ICommand? commandToExecute = FindCommandByName(input[0]);
                 if(commandToExecute != null){
-                    commandToExecute.ExecuteAsync(_host,input,_cache);
+                    await commandToExecute.ExecuteAsync(_host,input,_cache);
                 } else {
                     _host.WriteLine("No such command");
                 }

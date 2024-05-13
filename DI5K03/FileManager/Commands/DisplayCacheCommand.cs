@@ -7,7 +7,7 @@ namespace Filemanager.Commands
     {
         public string Name => "cache";
 
-        public void ExecuteAsync(IHost host, string[] args, Cache cache)
+        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             host.WriteLine("target_dir: " + cache.Target_dir);
             foreach (FolderDef folderDef in cache.Stored_folderdefs)
@@ -15,7 +15,7 @@ namespace Filemanager.Commands
                 host.WriteLine("Folder " + folderDef.Name);
                 foreach (string extension in folderDef.Types)
                 {
-                    host.WriteLine("    *." + extension);
+                   await Task.Factory.StartNew(()=>host.WriteLine("    *." + extension));
                 }
             }
         }

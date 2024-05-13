@@ -7,7 +7,7 @@ namespace Filemanager.Commands
     {
         public string Name => "move";
 
-        public async void ExecuteAsync(IHost host, string[] args, Cache cache)
+        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             string valid_format = "move <extension> to <folder_name>";
             if (args.Length < 4)

@@ -9,7 +9,7 @@ namespace Filemanager.Commands
     {
         public string Name => "sortdir";
 
-        public void ExecuteAsync(IHost host, string[] args, Cache cache)
+        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
         {
             if (cache.Target_dir.Equals(""))
             {
@@ -41,7 +41,7 @@ namespace Filemanager.Commands
                     }
                 }
             }
-            host.WriteLine("The target directory is sorted.");
+            await Task.Factory.StartNew(()=>host.WriteLine("The target directory is sorted."));
         }
     }
 }

@@ -7,9 +7,9 @@ namespace Filemanager.Commands
     {
         public string Name => "exit";
 
-        public void ExecuteAsync(IHost host, string[] args, Cache cache)
+        public async Task ExecuteAsync(IHost host, string[] args, Cache cache)
         {
-            host.Exit("<< Goodbye >>");
+            await Task.Factory.StartNew(()=>host.Exit("<< Goodbye >>"));
         }
     }
 }
