@@ -66,7 +66,10 @@ namespace E5G0RD.UserInterface
                 Console.WriteLine("Guess the secret word with the least tries!");
                 Console.WriteLine("(the secret word is 5 chars long and your guesses should be too)");
                 Console.WriteLine();
-                Console.WriteLine("By writing help, you get the first letter of the secret word");
+                Console.WriteLine("_ indicates that the char is not in the secret word");
+                Console.WriteLine("* means that the char is in the secret word, but in another position");
+                Console.WriteLine();
+                Console.WriteLine("By writing help, you recieve a hint");
                 Console.WriteLine("By writing give up, the game ends and you get the secret word");
                 Console.WriteLine();
 
@@ -82,7 +85,7 @@ namespace E5G0RD.UserInterface
 
                     if (word.ToLower() == "help")
                     {
-                        Console.WriteLine($"Hint: The first letter of the secret word is: {_secretWord.Value[0]}\n");
+                        Console.WriteLine($"Hint: {_secretWord.Hint}\n");
                         continue;
                     }
 

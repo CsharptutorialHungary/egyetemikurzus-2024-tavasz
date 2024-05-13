@@ -8,11 +8,6 @@ public class Program
         var wordRepository = new WordRepository();
         var words = await wordRepository.LoadWordsAsync("words.json");
 
-        foreach (var word in words)
-        {
-            Console.WriteLine(word.Value);
-        }
-
         var game = new Game(words);
         game.Start();
     }
