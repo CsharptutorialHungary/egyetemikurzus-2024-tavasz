@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Asus ROG Strix G15",
+    "Category": "Laptop",
+    "Quantity": 10,
+    "Price": 2500.00
+  },
+  {
+    "Name": "Dell XPS 13",
+    "Category": "Laptop",
+    "Quantity": 15,
+    "Price": 1800.00
+  },
+  {
+    "Name": "Logitech G Pro X Superlight",
+    "Category": "Mouse",
+    "Quantity": 20,
+    "Price": 99.99
+  },
+  {
+    "Name": "Samsung Odyssey G9",
+    "Category": "Monitor",
+    "Quantity": 5,
+    "Price": 1800.00
+  },
+  {
+    "Name": "AMD Ryzen 9 5900X",
+    "Category": "Processor",
+    "Quantity": 30,
+    "Price": 500.00
+  }
+]
