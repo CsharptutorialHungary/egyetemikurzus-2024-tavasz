@@ -7,7 +7,7 @@ using DDUFSL.XmlManager;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    async private static Task Main(string[] args)
     {
         XmlManager xmlManager = new XmlManager();
 
@@ -27,6 +27,6 @@ internal class Program
         }
 
         FileOrganizer fileOrganizer = new FileOrganizer(folderPath, filteredFiles);
-        //fileOrganizer.Organize();
+        await fileOrganizer.Organize();
     }
 }
