@@ -67,6 +67,7 @@ namespace Pacman
                     continue;
                 }
 
+                MonsterAi();
 
                 PlayerMovement();
 
@@ -97,7 +98,8 @@ namespace Pacman
             Console.Write("|  PRESS P TO PAUSE  |");
             Console.SetCursorPosition(40, GameHeight - 6);
             Console.Write("|  PRESS ESC TO EXIT |");
-            Console.SetCursorPosition(40, GameHeight - 4);
+            Console.SetCursorPosition(40, GameHeight - 5);
+
             Console.Write("{0}", new string('-', 22));
         }
 
@@ -115,6 +117,37 @@ namespace Pacman
                 Console.ForegroundColor = monster.GetColor();
                 Console.SetCursorPosition(monster.GetPosX(), monster.GetPosY());
                 Console.Write(monster.GetSymbol());
+            }
+
+        }
+
+        static void MoveMonster()
+        {
+            foreach (var monster in monsterList)
+            {
+
+                Console.ForegroundColor = monster.GetColor();
+                Console.SetCursorPosition(monster.GetPosX(), monster.GetPosY());
+                Console.Write(monster.GetSymbol());
+                Console.ForegroundColor = ConsoleColor.White;
+                if (monster.GetPosX() != monster.prevPosX || monster.GetPosY() != monster.prevPosY)
+                {
+                    if (border[monster.prevPosY, monster.prevPosX] == " ")
+                    {
+                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
+                        Console.Write(' ');
+                    }
+                    else if (border[monster.prevPosY, monster.prevPosX] == ".")
+                    {
+                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
+                        Console.Write('.');
+                    }
+                    else if (border[monster.prevPosY, monster.prevPosX] == "*")
+                    {
+                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
+                        Console.Write('*');
+                    }
+                }
             }
 
         }
@@ -148,6 +181,8 @@ namespace Pacman
                 }
             }
         }
+
+
 
 
         static void SetGamePaused()
@@ -303,12 +338,81 @@ namespace Pacman
             }
         }
 
+        static void MonsterAi()
+        {
+            for (int i = 0; i < monsterList.Length; i++)
+            {
+                if (random.Next(0, 2) != 0)
+                {
+                    monsterList[i].Direction = Monster.possibleDirections[random.Next(0, Monster.possibleDirections.Length)];
+                }
+                switch (monsterList[i].Direction)
+                {
+                    case "left":
+                        if (monsterList[i].CheckLeftCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
+                        {
+                            monsterList[i].MoveLeft();
+                            //MoveMonster();
+                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
+                            {
+                                pacman.LoseLife();
+                                MovePlayer("reset");
+                                LoadGUI();
+                            }
+                        }
+                        break;
+                    case "right":
+                        if (monsterList[i].CheckRightCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
+                        {
+                            monsterList[i].MoveRight();
+                            //MoveMonster();
+                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
+                            {
+                                pacman.LoseLife();
+                                MovePlayer("reset");
+                                LoadGUI();
+                            }
+                        }
+                        break;
+                    case "up":
+                        if (monsterList[i].CheckUpCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
+                        {
+                            monsterList[i].MoveUp();
+                            //MoveMonster();
+                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
+                            {
+                                pacman.LoseLife();
+                                MovePlayer("reset");
+                                LoadGUI();
+                            }
+                        }
+                        break;
+                    case "down":
+                        if (monsterList[i].CheckDownCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
+                        {
+                            monsterList[i].MoveDown();
+                            //MoveMonster();
+                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
+                            {
+                                pacman.LoseLife();
+                                MovePlayer("reset");
+                                LoadGUI();
+                            }
+                        }
+                        break;
+
+                }
+            }
+
+            MoveMonster();
+        }
+
         static void CheckScore()
         {
             if (pacman.GetScore() == 684)
             {
                 continueLoop = false;
-                WinGame();
+
             }
         }
 
@@ -317,6 +421,7 @@ namespace Pacman
             if (pacman.Lives() < 0)
             {
                 continueLoop = false;
+
             }
 
         }
@@ -342,7 +447,6 @@ namespace Pacman
 
         static void ShowWelcomeMenu()
         {
-
             RedrawBoard();
 
             int horizontalPos = GameHeight / 2 - 2;
@@ -376,44 +480,7 @@ namespace Pacman
             }
         }
 
-        static void WinGame()
-        {
-            Console.Clear();
-            RedrawBoard();
 
-            int horizontalPos = GameHeight / 2 - 2;
-            int verticalPos = GameWidth / 2 - 15;
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(verticalPos, horizontalPos);
-            Console.Write("|{0}|", new string('-', 27));
-            Console.SetCursorPosition(verticalPos, horizontalPos + 1);
-            Console.Write("||        YOU WON!         ||");
-            Console.SetCursorPosition(verticalPos, horizontalPos + 2);
-            Console.Write("||                         ||");
-            Console.SetCursorPosition(verticalPos, horizontalPos + 3);
-            int score = pacman.GetScore();
-            Console.Write("||       SCORE: {0}{1}  ||", score, new string(' ', 9 - score.ToString().Length));
-            Console.SetCursorPosition(verticalPos, horizontalPos + 4);
-            Console.Write("||                         ||");
-            Console.SetCursorPosition(verticalPos, horizontalPos + 5);
-            Console.Write("||    PRESS ESC TO EXIT    ||");
-            Console.SetCursorPosition(verticalPos, horizontalPos + 6);
-            Console.Write("|{0}|", new string('-', 27));
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(0, GameHeight - 1);
-
-            ConsoleKeyInfo keyPressed = Console.ReadKey(true);
-            while (true)
-            {
-                if (keyPressed.Key == ConsoleKey.Escape)
-                {
-                    Environment.Exit(0);
-                }
-
-                keyPressed = Console.ReadKey(true);
-            }
-        }
 
     }
 }

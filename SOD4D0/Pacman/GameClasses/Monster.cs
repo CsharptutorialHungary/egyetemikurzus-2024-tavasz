@@ -36,6 +36,10 @@ namespace Pacman.GameClasses
             this.prevPosY = y;
         }
 
+        public void ResetMonster()
+        {
+            this.monsterPos.ResetPosition(prevPosX, prevPosY);
+        }
 
         public bool CheckLeftCell(Monster[] monsterList, int x, int y, string[,] border)
         {

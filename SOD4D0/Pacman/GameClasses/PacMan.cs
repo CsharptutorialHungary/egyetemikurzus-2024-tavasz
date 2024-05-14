@@ -40,7 +40,6 @@ namespace Pacman.GameClasses
 
         public PacMan(GameBoard gameBoard)
         {
-
             this.pacManPos = new Position(17, 20);
             this.score = 0;
             this.lives = 3;
@@ -258,8 +257,6 @@ namespace Pacman.GameClasses
 
             return false;
         }
-
-
 
 
     }
