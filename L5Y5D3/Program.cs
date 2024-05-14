@@ -67,6 +67,7 @@ Console.WriteLine(helyesek +" helyes megoldásod volt.");
 var maxvalasz = valaszok.MaxBy(i => i.Valaszod);
 Console.WriteLine("A legnagyobb válaszod: " + maxvalasz.Valaszod);
 
+
 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"valaszok.json");
 
 using (var stream = File.Create(path))
