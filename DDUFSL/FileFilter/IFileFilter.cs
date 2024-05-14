@@ -8,6 +8,6 @@ namespace DDUFSL.FileFilter
 {
     internal interface IFileFilter
     {
-        public List<string> Filter(string directoryFilter);
+        public List<Dictionary<string, string>> Filter(string directoryFilter);
     }
 }

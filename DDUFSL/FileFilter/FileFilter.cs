@@ -9,7 +9,7 @@ namespace DDUFSL.FileFilter
 {
     internal class FileFilter : IFileFilter
     {
-        public List<string> fileTypes { get; set; }
+        public List<Dictionary<string, string>> fileTypes { get; set; }
         public long maxFileSize { get; set; }
 
         public FileFilter()
@@ -29,7 +29,7 @@ namespace DDUFSL.FileFilter
                 return;
             }
 
-            fileTypes = new List<string>();
+            fileTypes = new List<Dictionary<string, string>>();
             XmlNodeList? typeNodes = document.DocumentElement?.SelectNodes("/FilterConfig/FileTypes/FileType");
             if (typeNodes == null || typeNodes.Count == 0)
             {
@@ -40,16 +40,20 @@ namespace DDUFSL.FileFilter
                 Console.WriteLine("Talált filterek:");
                 foreach (XmlNode node in typeNodes)
                 {
-                    fileTypes.Add(node.InnerText);
+                    fileTypes.Add(new Dictionary<string, string>
+                    {
+                        {"Extension", node.SelectSingleNode("Extension").InnerText },
+                        {"Path", node.SelectSingleNode("Path").InnerText }
+                    });
                     Console.WriteLine($"-{node.ChildNodes.Item(0).InnerText}");
                 }
             }
 
         }
 
-        public List<string> Filter(string directoryPath)
+        public List<Dictionary<string, string>> Filter(string directoryPath)
         {
-            List<string> filteredFiles = new List<string>();
+            List<Dictionary<string, string>> filteredFiles = new List<Dictionary<string, string>>();
             try
             {
                 string[] files = Directory.GetFiles(directoryPath);
@@ -57,17 +61,24 @@ namespace DDUFSL.FileFilter
                 foreach (string file in files)
                 {
                     string extension = Path.GetExtension(file);
-                    if (fileTypes.Contains(extension))
+                    foreach (var type in fileTypes)
                     {
-                        filteredFiles.Add(file);
-
+                        if (type["Extension"].Equals(extension))
+                        {
+                            filteredFiles.Add(new Dictionary<string, string>
+                        {
+                            { "filePath", file },
+                            { "newPath",  type["Extension"]}
+                        });
+                        }
                     }
                 }
+                    
                     return filteredFiles;
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new List<string>();
+                return new List<Dictionary<string, string>>();
             }
         }
     }
