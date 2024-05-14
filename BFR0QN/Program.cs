@@ -7,8 +7,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
-
-        GameManager gameManager = GameManager.Instance;
+       GameManager gameManager = GameManager.Instance;
         Console.WriteLine(gameManager.AvarageFood());
         await gameManager.Load();
         
