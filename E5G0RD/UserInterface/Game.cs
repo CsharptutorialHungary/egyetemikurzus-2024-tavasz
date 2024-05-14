@@ -94,7 +94,7 @@ namespace E5G0RD.UserInterface
                     }
 
                     Console.Write("Your guess: ");
-                    string word = Console.ReadLine();
+                    string word = Console.ReadLine().ToLower();
 
                     if (word.ToLower() == "help")
                     {
@@ -119,8 +119,13 @@ namespace E5G0RD.UserInterface
                     }
                 }
 
-                Console.Write("Press 'n' to start a new game or 'q' to quit: ");
-                string input = Console.ReadLine().ToLower();
+                string input = "";
+
+                while(input != "q" && input != "n")
+                {
+                    Console.Write("Press 'n' to start a new game or 'q' to quit: ");
+                    input = Console.ReadLine().ToLower();
+                }
 
                 if (input == "q")
                 {
@@ -128,6 +133,7 @@ namespace E5G0RD.UserInterface
                 }
                 else if (input == "n")
                 {
+                    Console.Clear();
                     _guesses.Clear();
                     _secretWord = GetRandomWord();
                 }
