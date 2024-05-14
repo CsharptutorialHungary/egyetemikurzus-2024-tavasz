@@ -24,7 +24,7 @@ namespace Shell.Application
             var strings = from element in elements
                           orderby element descending
                           select ToFizzbuzz(element);
-
+            
             //Lambda syntax
             var strings2 = elements
                 .Select(element =>

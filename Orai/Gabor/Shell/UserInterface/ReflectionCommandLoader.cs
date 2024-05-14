@@ -35,6 +35,10 @@ namespace Shell.UserInterface
                     }
                 }
             }
+            foreach (var command in commands)
+            {
+                Console.WriteLine(command.Name);
+            }
             Commands = commands.ToArray();
         }
     }
