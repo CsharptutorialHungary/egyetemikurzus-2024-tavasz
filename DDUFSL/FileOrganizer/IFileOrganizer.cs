@@ -8,6 +8,6 @@ namespace DDUFSL.FileOrganizer
 {
     internal interface IFileOrganizer
     {
-        public void Organize();
+        public Task Organize();
     }
 }
