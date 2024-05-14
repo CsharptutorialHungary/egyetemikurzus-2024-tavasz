@@ -75,10 +75,10 @@ class Program
         }
     }
 
-    static void ViewResults()
+    static async Task ViewResults()
     {
         Statistics statistics = new Statistics();
-        statistics.DisplayTopPlayersTable(5);
+        await statistics.DisplayTopPlayersTable(5);
         ReturnToMainMenu();
     }
 
