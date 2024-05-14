@@ -25,7 +25,8 @@ namespace IF5W4R.Services
 
         public void AddProduct(string name, string category, int quantity, decimal price)
         {
-            products.Add(new Product(name, category, quantity, price));
+            int id = products.Count > 0 ? products.Max(p => p.ID) + 1 : 1;
+            products.Add(new Product(id, name, category, quantity, price));
             SaveProductsToFile();
         }
 
@@ -94,5 +95,19 @@ namespace IF5W4R.Services
             }
         }
 
+        public void DeleteProduct(int id)
+        {
+            var product = products.FirstOrDefault(p => p.ID == id);
+            if (product != null)
+            {
+                products.Remove(product);
+                SaveProductsToFile();
+                Console.WriteLine($"Product with ID {id} deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine($"Product with ID {id} not found.");
+            }
+        }
     }
 }

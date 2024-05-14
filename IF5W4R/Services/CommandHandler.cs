@@ -55,13 +55,25 @@
                 Console.WriteLine("\tadd - Add a new product");
                 Console.WriteLine("\tlist - List all products");
                 Console.WriteLine("\tlist <-n/c/q/p> <-asc/desc> - List products ordered by field (name, category, quantity, price) in order (asc for ascending, desc for descending)");
-                Console.WriteLine("\tfilter <Category> - List products by category");
+                Console.WriteLine("\tfilter [Category] - List products by category");
+                Console.WriteLine("\tdelete [ID] - Delete a product by ID");
                 Console.WriteLine("\texit - Exit the program");
             }
             else if (command.StartsWith("filter "))
             {
                 string categoryParam = command.Substring(7);
                 _productService.FilterByCategory(categoryParam);
+            }
+            else if (command.StartsWith("delete "))
+            {
+                if (int.TryParse(command.Substring(7), out int id))
+                {
+                    _productService.DeleteProduct(id);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ID format. Please enter a valid number.");
+                }
             }
             else
             {

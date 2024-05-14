@@ -9,5 +9,6 @@ namespace IF5W4R.Services
         void ListAllProducts();
         void FilterByCategory(string category);
         void ListProducts(string field, string order);
+        void DeleteProduct(int id);
     }
 }
