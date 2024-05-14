@@ -68,7 +68,7 @@ namespace DDUFSL.FileFilter
                             filteredFiles.Add(new Dictionary<string, string>
                         {
                             { "filePath", file },
-                            { "newPath",  type["Extension"]}
+                            { "newPath",  type["Path"]}
                         });
                         }
                     }
