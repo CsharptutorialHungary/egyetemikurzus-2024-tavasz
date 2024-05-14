@@ -1,16 +1,15 @@
-﻿
-using System;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Kvizapp;
 
 class Kviz {
 
-    static public void Main(String[] args)
+    static public async Task Main(String[] args)
     {
 
-        
+        List<Question> questions = await loadQuestions();
+
         Player player = new Player();
         Console.WriteLine("Please add your player's name!");
         
@@ -20,14 +19,14 @@ class Kviz {
 
             if (player.name.Length == 0)
             {
-                throw new ArgumentException("No valid name given!");
+                Console.Error.WriteLine("No valid name given"); 
+                return;
             }
         }
         catch (ArgumentException e)
         {
-            Console.WriteLine(e.Message);
+            throw new ArgumentException(e.Message);
         }
-        List<Question> questions = loadQuestions();
         
         for (int i = 0; i < questions.Count; i++)
         {
@@ -60,7 +59,7 @@ class Kviz {
         }
     }
 
-    public record Player
+    public record Player 
     {
         public String name = "";
         public int points = 0;
@@ -91,11 +90,11 @@ class Kviz {
         public required int points { get; set; }
     }
 
-    static public List<Question> loadQuestions()
+    static async Task<List<Question>> loadQuestions()
     {
         string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "questions.json");
         
-        string json = File.ReadAllText(jsonFilePath);
+        string json = await File.ReadAllTextAsync(jsonFilePath);
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var triviaData = JsonSerializer.Deserialize<List<Question>>(json, options);
 
