@@ -2,28 +2,16 @@
 using System.Xml;
 
 using DDUFSL.FileFilter;
+using DDUFSL.FileOrganizer;
+using DDUFSL.XmlManager;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        XmlDocument document = new XmlDocument();
-        try
-        {
-            document.Load("config.xml");
-        }
-        catch (FileNotFoundException e)
-        {
-            Console.WriteLine(e.Message);
-            return;
-        }
-        catch (XmlException e)
-        {
-            Console.WriteLine(e.Message);
-            return;
-        }
+        XmlManager xmlManager = new XmlManager();
 
-        string? folderPath = document.DocumentElement.SelectSingleNode("Folder").InnerText;
+        string? folderPath = xmlManager.getDirectoryPath();
         if (folderPath == null)
         {
             Console.WriteLine("Nincs workng directory megadva!");
@@ -31,13 +19,14 @@ internal class Program
         }
 
         FileFilter fileFilter = new FileFilter();
-        List<string> filteredFiles = fileFilter.Filter(folderPath);
+        List<Dictionary<string, string>> filteredFiles = fileFilter.Filter(folderPath);
         if (filteredFiles.Count == 0)
         {
             Console.WriteLine("Nincs a filterek alapján rendezhető file.");
             return;
         }
 
-
+        FileOrganizer fileOrganizer = new FileOrganizer(folderPath, filteredFiles);
+        //fileOrganizer.Organize();
     }
 }
