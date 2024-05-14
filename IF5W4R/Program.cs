@@ -20,7 +20,9 @@ namespace IF5W4R
                 Console.WriteLine("For help please write: help or h");
                 while (true)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("Enter command: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
                     string input = Console.ReadLine()?.Trim().ToLower();
                     commandHandler.HandleCommand(input);
                 }

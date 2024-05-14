@@ -10,5 +10,7 @@ namespace IF5W4R.Services
         void FilterByCategory(string category);
         void ListProducts(string field, string order);
         void DeleteProduct(int id);
+        Product GetProductById(int id);
+        void UpdateProduct(int id, string name, string category, int quantity, decimal price);
     }
 }

@@ -100,9 +100,44 @@ namespace IF5W4R.Services
             var product = products.FirstOrDefault(p => p.ID == id);
             if (product != null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Are you sure you want to delete the product with ID {id}? (yes/no)");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                string confirmation = Console.ReadLine()?.Trim().ToLower();
+
+                if (confirmation != "yes")
+                {
+                    Console.WriteLine("Product deletion cancelled.");
+                    return;
+                }
+                else
+                {
+                    products.Remove(product);
+                    SaveProductsToFile();
+                    Console.WriteLine($"Product with ID {id} deleted successfully.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Product with ID {id} not found.");
+            }
+        }
+
+        public Product GetProductById(int id)
+        {
+            return products.FirstOrDefault(p => p.ID == id);
+        }
+
+        public void UpdateProduct(int id, string name, string category, int quantity, decimal price)
+        {
+            var product = products.FirstOrDefault(p => p.ID == id);
+            if (product != null)
+            {
                 products.Remove(product);
+                products.Add(new Product(id, name, category, quantity, price));
                 SaveProductsToFile();
-                Console.WriteLine($"Product with ID {id} deleted successfully.");
+                Console.WriteLine($"Product with ID {id} updated successfully.");
             }
             else
             {
