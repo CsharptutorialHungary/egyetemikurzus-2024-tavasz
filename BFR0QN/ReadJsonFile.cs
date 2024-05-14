@@ -4,19 +4,17 @@ using System.Globalization;
 using System.IO;
 using System.Text.Json;
 
-using BFR0QN.Etelek;
-
 namespace BFR0QN
 {
-    public static class BeolvasJson
+    public static class ReadJsonFile
     {
-        public static List<Etel> ReadJsonFile(string jsonFileName)
+        public static List<Food> ReadJsonFileToList(string jsonFileName)
         {
-            List<Etel> burgers = new List<Etel>();
+            List<Food> foods = new List<Food>();
             try
             {
                 string jsonText = File.ReadAllText(jsonFileName);
-                burgers = JsonSerializer.Deserialize<List<Etel>>(jsonText,new JsonSerializerOptions(JsonSerializerDefaults.Web));
+                foods = JsonSerializer.Deserialize<List<Food>>(jsonText,new JsonSerializerOptions(JsonSerializerDefaults.Web));
             }
             catch (FileNotFoundException ex)
             {
@@ -30,18 +28,18 @@ namespace BFR0QN
             {
                 Console.WriteLine($"Hiba történt: {ex.Message}");
             }
-            return burgers;
+            return foods;
         }
-        public static async Task<Dictionary<string, int>> Betolt()
+        public static async Task<Dictionary<string, int>> LoadTheGame()
         {
             var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "mentesek.json");
             if (!File.Exists(filePath))
             {
                 return new Dictionary<string, int>();
             }
-            var mentesekJson = await File.ReadAllTextAsync(filePath);
-            Dictionary<string, int> mentesek = JsonSerializer.Deserialize<Dictionary<string, int>>(mentesekJson);
-            return mentesek;
+            var savesInJson = await File.ReadAllTextAsync(filePath);
+            Dictionary<string, int> convertTheSavesInJsonToDictionary = JsonSerializer.Deserialize<Dictionary<string, int>>(savesInJson);
+            return convertTheSavesInJsonToDictionary;
         }
     }
 }

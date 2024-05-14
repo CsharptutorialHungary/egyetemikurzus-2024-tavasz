@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BFR0QN.Etelek
+namespace BFR0QN
 {
-    public class Etel
+    public class Food
     {
         public string Name { get; }
         public string Type { get; }
@@ -14,7 +14,7 @@ namespace BFR0QN.Etelek
         public int Level { get; }
         public List<string> Ingredients { get; }
 
-        public Etel(string name, string type, int kcal, int level, List<string> ingredients)
+        public Food(string name, string type, int kcal, int level, List<string> ingredients)
         {
             Name = name;
             Type = type;

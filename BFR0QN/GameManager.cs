@@ -4,89 +4,78 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using BFR0QN.Etelek;
-
 namespace BFR0QN
 {
     public class GameManager
     {
-        private static GameManager instance;
-        private int szint;
-        private List<Etel> etelek;
-        private Dictionary<string, int> mentesekLista;
+        private static GameManager _instance;
+        private int _level;
+        private List<Food> foods;
+        private Dictionary<string, int> saveList;
         private GameManager()
         {
-            etelek = BeolvasJson.ReadJsonFile("Etelek.json");
+            foods = ReadJsonFile.ReadJsonFileToList("Etelek.json");
         }
-
-        // A Singleton példány lekérdezése
         public static GameManager Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new GameManager();
+                    _instance = new GameManager();
                 }
-                return instance;
+                return _instance;
             }
         }
-        public async Task Betolt()
+        public int Level {get{ return _level;} }
+        public async Task Load()
         {
-            mentesekLista = await BeolvasJson.Betolt();
+            saveList = await ReadJsonFile.LoadTheGame();
             Console.WriteLine("Siti Étteremje!");
             Console.WriteLine("Új játék (uj) Meglévő betöltése (be)");
-            string beolvas = Console.ReadLine();
-            if (beolvas == "uj")
+            string read = Console.ReadLine();
+            if (read == "uj")
             {
-                szint = 1;
-                UjJatek();
+                _level = 1;
+                Presentation();
             }
-            else if (beolvas == "be")
+            else if (read == "be")
             {
-                MeglevoBeolvasasa();
+                LoadSavedGame();
             }
             else
             {
                 Console.WriteLine("Rossz kifejezés");
-                Betolt();
+                Load();
             }
         }
-        public void MeglevoBeolvasasa()
+        public void LoadSavedGame()
         {
-            if (mentesekLista.Count > 0)
+            if (saveList.Count > 0)
             {
-                foreach (var mentes in mentesekLista)
+                foreach (var save in saveList)
                 {
-                    Console.WriteLine(mentes.Key);
+                    Console.WriteLine(save.Key);
                 }
                 Console.Write("Az alábbiak közül melyiket szeretnéd betölteni? : ");
                 string nev = Console.ReadLine();
-                if (mentesekLista.Keys.Contains(nev))
+                if (saveList.Keys.Contains(nev))
                 {
-                    szint = mentesekLista[nev];
+                    _level = saveList[nev];
                 }
                 else
                 {
                     Console.WriteLine("Nem megfelelően írtad be!");
-                    MeglevoBeolvasasa();
+                    LoadSavedGame();
                 }
             }
             else
             {
                 Console.WriteLine("Jelenleg nincs megkezdett játék!");
-                Betolt();
+                Load();
             }
         }
-        public int getSzint()
-        {
-            return szint;
-        }
-        public void UjJatek()
-        {
-            Bevezetes();
-        }
-        public void Bevezetes()
+        public void Presentation()
         {
             Console.WriteLine("Ebben a játékban ételeket\nfogsz elkészíteni kérésekre. " +
                               "Mindig fog jönni egy vásárló, kér egy kaját\n" +
@@ -102,55 +91,56 @@ namespace BFR0QN
                 Console.Clear();
             }
         }
-        public Etel KovetkezoSzint(int szint)
+        public Food NextLevel(int level)
         {
-            Etel aktualisBurger = etelek.FirstOrDefault(x => x.Level == szint);
-            return aktualisBurger;
+            Food currentFood = foods.FirstOrDefault(x => x.Level == level);
+            return currentFood;
         }
-        public double AtlagKcal()
+        public String AvarageFood()
         {
-            int[] tomb=new int[etelek.Count];
+            int[] foodArray=new int[foods.Count];
             int i = 0;
-            foreach (var item in etelek)
+            foreach (var food in foods)
             {
-                tomb[i]=item.Kcal; i++;
+                foodArray[i]=food.Kcal; i++;
             }
-            double atlag=tomb.Average();
-            return atlag;
+            double avarage=foodArray.Average();
+            String summaryAvarageFood = $"Az ételek átlagosan {avarage} kalóriával rendelkeznek";
+            return summaryAvarageFood;
         }
-        public void help(String[] aktualisBurger)
+        public void Help(String[] currentFood)
         {
-            for (int k = 0; k < aktualisBurger.Length; k++)
+            for (int k = 0; k < currentFood.Length; k++)
             {
-                int utolsoElemE = k + 1;
-                if (utolsoElemE == aktualisBurger.Length)
+                int isLastFood = k + 1;
+                if (isLastFood == currentFood.Length)
                 {
-                    Console.Write(aktualisBurger[k]);
+                    Console.Write(currentFood[k]);
                 }
                 else
                 {
-                    Console.Write(aktualisBurger[k] + " ");
+                    Console.Write(currentFood[k] + " ");
                 }
             }
             Thread.Sleep(3000);
             Console.Clear();
         }
-        public bool Mentes(string mentesNeve, int aktualisSzint)
+        public bool IsSave(string saveName, int currentLevel)
         {
-            string Szoveg = mentesNeve.Trim();
-            if (Szoveg == null || Szoveg.Length == 0)
+            string name = saveName.Trim();
+            if (name == null || name.Length == 0)
             {
                 Console.WriteLine("Nem adtál meg nevet");
                 return false;
 
             }
-            if (mentesekLista.Keys.Contains(mentesNeve))
+            if (saveList.Keys.Contains(saveName))
             {
                 Console.Write("Van már ilyen mentés, Szeretnéd felülirni? igen (i), nem (n) : ");
-                string beovasottSzoveg = Console.ReadLine();
-                if (beovasottSzoveg == "i")
+                string doYouWantToOverride = Console.ReadLine();
+                if (doYouWantToOverride == "i")
                 {
-                    mentesekLista[mentesNeve] = aktualisSzint;
+                    saveList[saveName] = currentLevel;
                     return true;
                 }
                 else
@@ -160,12 +150,12 @@ namespace BFR0QN
             }
             else
             {
-                mentesekLista.Add(mentesNeve, aktualisSzint); 
+                saveList.Add(saveName, currentLevel); 
                 return true;
             }
         }
-        public void JsonFileLetrehoz() {
-            MentesJson.Mentes(mentesekLista);
+        public void CreateJsonFileToSaveTheGame() {
+            SaveTheGameToJson.Save(saveList);
         }
     }
 }

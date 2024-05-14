@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-using BFR0QN.Etelek;
-
 namespace BFR0QN;
 
 class Program
@@ -10,42 +8,42 @@ class Program
     static async Task Main(string[] args)
     {
 
-        GameManager g = GameManager.Instance;
-        Console.WriteLine(g.AtlagKcal());
-        await g.Betolt();
+        GameManager gameManager = GameManager.Instance;
+        Console.WriteLine(gameManager.AvarageFood());
+        await gameManager.Load();
         
-        int szint = g.getSzint();
-        string beolvasSzoveg="";
-        while (beolvasSzoveg != "k")
+        int level = gameManager.Level;
+        string readConsole="";
+        while (readConsole != "0")
         {
-            Etel etel = g.KovetkezoSzint(szint);
-           String[] aktualisBurger = etel.Ingredients.ToArray();
+            Food currentFood = gameManager.NextLevel(level);
+           String[] currentFoodToString = currentFood.Ingredients.ToArray();
             int i = 0;
             Console.Clear();
-            Console.WriteLine("Anita - Szeretnék kérni egy " + etel.Name);
+            Console.WriteLine("Anita - Szeretnék kérni egy " + currentFood.Name);
             Console.WriteLine("hozzávalok: ");
-            g.help(aktualisBurger);
-            while (i < aktualisBurger.Length)
+            gameManager.Help(currentFoodToString);
+            while (i < currentFoodToString.Length)
             {
                 Console.Write("{0}. elem:", i + 1);
-                beolvasSzoveg = Console.ReadLine();
-                if (beolvasSzoveg == ("?etel"))
+                readConsole = Console.ReadLine();
+                if (readConsole == ("?etel"))
                 {
-                    g.help(aktualisBurger);
+                    gameManager.Help(currentFoodToString);
                 }
-                else if (beolvasSzoveg == aktualisBurger[i])
+                else if (readConsole == currentFoodToString[i])
                 {
                     i++;
                     Console.WriteLine("\n");
                 }
-                else if (beolvasSzoveg == "mentés")
+                else if (readConsole == "mentes")
                 {
                     Console.Write("Mentés neve: ");
-                    string mentesNeve = Console.ReadLine();
-                    if (g.Mentes(mentesNeve,szint))
+                    string saveName = Console.ReadLine();
+                    if (gameManager.IsSave(saveName,level))
                     {
                         Console.WriteLine("Sikeres mentés");
-                        g.JsonFileLetrehoz();
+                        gameManager.CreateJsonFileToSaveTheGame();
                     }
                     else
                     {
@@ -54,13 +52,13 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Elbasztad");
+                    Console.WriteLine("Nem teljesen! Próbáld újra. Ha kell segítség, írd be, hogy ?etel");
                 }
             }
             Console.Clear();
-            Console.WriteLine("Hurrá, Sikeresen teljesítetted a "+szint+". szintet!\n Jöhet a kövi?");
+            Console.WriteLine("Hurrá, Sikeresen teljesítetted a "+level+". szintet!\n Jöhet a kövi?");
             Console.ReadKey();
-            szint++;
+            level++;
         }
     }
 }
