@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 using Blackjack.Models;
 
@@ -65,12 +66,6 @@ namespace Blackjack.Game
             {
                 Console.WriteLine($"Hiba történt az adatok betöltésekor: {ex.Message}");
             }
-        }
-
-        private class PlayerData
-        {
-            public string Name { get; set; }
-            public int Money { get; set; }
         }
     }
 }

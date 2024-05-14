@@ -60,12 +60,6 @@ namespace Blackjack.Game
             }
         }
 
-        public record class PlayerData
-        {
-            public string Name { get; set; }
-            public int Money { get; set; }
-        }
-
         public void DataUpload()
         {
             var playerData = new PlayerData
