@@ -64,7 +64,6 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GameClasses\GameBoard.cs" />
-    <Compile Include="GameClasses\MapLoader.cs" />
     <Compile Include="GameClasses\Monster.cs" />
     <Compile Include="GameClasses\PacMan.cs" />
     <Compile Include="GameClasses\Position.cs" />

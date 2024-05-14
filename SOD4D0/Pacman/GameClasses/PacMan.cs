@@ -58,6 +58,7 @@ namespace Pacman.GameClasses
         public void LoseLife()
         {
             this.lives--;
+            DeathPlayerMusic();
             Thread.Sleep(600);
         }
 
@@ -258,6 +259,12 @@ namespace Pacman.GameClasses
             return false;
         }
 
+
+        public void DeathPlayerMusic()
+        {
+            SoundPlayer death = new SoundPlayer(Pacman.PacManMusic.pacman_death);
+            death.Play();
+        }
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Media;
 using System.Threading;
+using System.Linq;
 
 namespace Pacman
 {
@@ -36,6 +37,8 @@ namespace Pacman
         const int GameWidth = 70;
         const int GameHeight = 29;
 
+        static int totalMonsters;
+
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
@@ -45,6 +48,10 @@ namespace Pacman
             Console.WindowHeight = GameHeight;
             Console.BufferHeight = GameHeight;
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+
+            // Aggregáció (Count): Például számoljuk meg, hány szörny van összesen
+            totalMonsters = monsterList.Count();
 
             ShowWelcomeMenu();
 
@@ -91,7 +98,10 @@ namespace Pacman
             Console.SetCursorPosition(40, 6);
             Console.Write("Lives: {0}", pacman.Lives());
             Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(40, 8);
+            Console.Write("Szörnyek száma: {0}", totalMonsters);
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(40, GameHeight - 8);
             Console.Write("{0}", new string('-', 22));
             Console.SetCursorPosition(40, GameHeight - 7);
@@ -99,7 +109,8 @@ namespace Pacman
             Console.SetCursorPosition(40, GameHeight - 6);
             Console.Write("|  PRESS ESC TO EXIT |");
             Console.SetCursorPosition(40, GameHeight - 5);
-
+            Console.Write("|  PRESS R TO RESET  |");
+            Console.SetCursorPosition(40, GameHeight - 4);
             Console.Write("{0}", new string('-', 22));
         }
 
@@ -120,7 +131,6 @@ namespace Pacman
             }
 
         }
-
         static void MoveMonster()
         {
             foreach (var monster in monsterList)
@@ -161,6 +171,7 @@ namespace Pacman
                 {
                     case ConsoleKey.Escape:
                         continueLoop = false;
+                        GameOver();
                         break;
                     case ConsoleKey.P:
                         SetGamePaused();
@@ -177,9 +188,45 @@ namespace Pacman
                     case ConsoleKey.RightArrow:
                         pacman.NextDirection = "right";
                         break;
-
+                    case ConsoleKey.R:
+                        ResetGame();
+                        break;
                 }
             }
+        }
+
+        static void ResetGame()
+        {
+
+            // Játék újrakezdése
+            continueLoop = true;
+
+            // Konzol tartalmának törlése
+            Console.Clear();
+
+            // A játékos pontszámának, életének és szintjének nullázása
+            pacman.ResetScore();
+            pacman.ResetLives();
+            pacman.ResetLevel();
+
+            // Pacman pozíciójának visszaállítása
+            pacman.ResetPacMan();
+
+
+            // Szellemek visszaállítása
+            foreach (var monster in monsterList)
+            {
+                monster.ResetMonster();
+            }
+
+
+            board = new GameBoard();
+            border = board.GetBoard;
+
+
+            // A játéktér újrarajzolása
+            RedrawBoard();
+
         }
 
 
@@ -412,7 +459,7 @@ namespace Pacman
             if (pacman.GetScore() == 684)
             {
                 continueLoop = false;
-
+                WinGame();
             }
         }
 
@@ -421,7 +468,7 @@ namespace Pacman
             if (pacman.Lives() < 0)
             {
                 continueLoop = false;
-
+                GameOver();
             }
 
         }
@@ -447,6 +494,7 @@ namespace Pacman
 
         static void ShowWelcomeMenu()
         {
+            PlayMusic();
             RedrawBoard();
 
             int horizontalPos = GameHeight / 2 - 2;
@@ -480,7 +528,92 @@ namespace Pacman
             }
         }
 
+        static void GameOver()
+        {
+            Console.Clear();
+            RedrawBoard();
+
+            int horizontalPos = GameHeight / 2 - 2;
+            int verticalPos = GameWidth / 2 - 15;
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(verticalPos, horizontalPos);
+            Console.Write("|{0}|", new string('-', 27));
+            Console.SetCursorPosition(verticalPos, horizontalPos + 1);
+            Console.Write("||        GAME OVER        ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 2);
+            Console.Write("||                         ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 3);
+            int score = pacman.GetScore();
+            Console.Write("||       SCORE: {0}{1}  ||", score, new string(' ', 9 - score.ToString().Length));
+            Console.SetCursorPosition(verticalPos, horizontalPos + 4);
+            Console.Write("|{0}|", new string('-', 27));
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(0, GameHeight - 1);
+
+            ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+            while (true)
+            {
+                if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0);
+                }
 
 
+                keyPressed = Console.ReadKey(true);
+            }
+        }
+
+        static void WinGame()
+        {
+            Console.Clear();
+            RedrawBoard();
+
+            int horizontalPos = GameHeight / 2 - 2;
+            int verticalPos = GameWidth / 2 - 15;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(verticalPos, horizontalPos);
+            Console.Write("|{0}|", new string('-', 27));
+            Console.SetCursorPosition(verticalPos, horizontalPos + 1);
+            Console.Write("||        YOU WON!         ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 2);
+            Console.Write("||                         ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 3);
+            int score = pacman.GetScore();
+            Console.Write("||       SCORE: {0}{1}  ||", score, new string(' ', 9 - score.ToString().Length));
+            Console.SetCursorPosition(verticalPos, horizontalPos + 4);
+            Console.Write("||                         ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 5);
+            Console.Write("||    PRESS ESC TO EXIT    ||");
+            Console.SetCursorPosition(verticalPos, horizontalPos + 6);
+            Console.Write("|{0}|", new string('-', 27));
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(0, GameHeight - 1);
+
+            ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+            while (true)
+            {
+                if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0);
+                }
+
+                keyPressed = Console.ReadKey(true);
+            }
+        }
+
+        public static void PlayMusic()
+        {
+            Task.Factory.StartNew(() => Music());
+        }
+
+        public static void Music()
+        {
+
+            SoundPlayer PacManMusic = new SoundPlayer(Pacman.PacManMusic.pacman_beginning);
+            PacManMusic.Play();
+
+        }
     }
 }

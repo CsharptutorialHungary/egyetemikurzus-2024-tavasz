@@ -50,6 +50,7 @@ namespace Pacman.GameClasses
 
     }
 
+    // immutable
     public enum BoardElements
     {
         Wall,
