@@ -1,0 +1,190 @@
+[
+  {
+    "Value": "apple",
+    "Hint": "A fruit that keeps the doctor away"
+  },
+  {
+    "Value": "bunny",
+    "Hint": "A fluffy hopper with long ears"
+  },
+  {
+    "Value": "clown",
+    "Hint": "A performer known for making people laugh"
+  },
+  {
+    "Value": "ducky",
+    "Hint": "A cute waterbird or a child's bath toy"
+  },
+  {
+    "Value": "eagle",
+    "Hint": "A majestic bird known for its sharp eyesight"
+  },
+  {
+    "Value": "fairy",
+    "Hint": "A tiny magical being with wings"
+  },
+  {
+    "Value": "goose",
+    "Hint": "A bird that honks and can be in a 'gaggle'"
+  },
+  {
+    "Value": "horse",
+    "Hint": "A strong animal known for galloping"
+  },
+  {
+    "Value": "igloo",
+    "Hint": "A dome-shaped house made of snow"
+  },
+  {
+    "Value": "jelly",
+    "Hint": "A wobbly dessert often paired with peanut butter"
+  },
+  {
+    "Value": "kitty",
+    "Hint": "A young cat"
+  },
+  {
+    "Value": "lemon",
+    "Hint": "A sour yellow citrus fruit"
+  },
+  {
+    "Value": "mouse",
+    "Hint": "A small animal or a computer accessory"
+  },
+  {
+    "Value": "nylon",
+    "Hint": "A type of synthetic fabric"
+  },
+  {
+    "Value": "puppy",
+    "Hint": "A young dog"
+  },
+  {
+    "Value": "quack",
+    "Hint": "The sound a duck makes"
+  },
+  {
+    "Value": "robot",
+    "Hint": "A machine that can perform tasks automatically"
+  },
+  {
+    "Value": "sheep",
+    "Hint": "An animal known for its wool"
+  },
+  {
+    "Value": "train",
+    "Hint": "A mode of transport that runs on tracks"
+  },
+  {
+    "Value": "vocal",
+    "Hint": "Related to the voice or singing"
+  },
+  {
+    "Value": "whale",
+    "Hint": "A large sea mammal"
+  },
+  {
+    "Value": "yummy",
+    "Hint": "Another word for delicious"
+  },
+  {
+    "Value": "zebra",
+    "Hint": "An animal with black and white stripes"
+  },
+  {
+    "Value": "beach",
+    "Hint": "A sandy shore by the ocean"
+  },
+  {
+    "Value": "candy",
+    "Hint": "Sweet treats enjoyed by kids"
+  },
+  {
+    "Value": "daisy",
+    "Hint": "A common white and yellow flower"
+  },
+  {
+    "Value": "earth",
+    "Hint": "The planet we live on"
+  },
+  {
+    "Value": "flute",
+    "Hint": "A musical instrument played by blowing"
+  },
+  {
+    "Value": "grape",
+    "Hint": "A small, juicy fruit used to make wine"
+  },
+  {
+    "Value": "honey",
+    "Hint": "A sweet substance made by bees"
+  },
+  {
+    "Value": "joker",
+    "Hint": "A playing card or a person who jokes"
+  },
+  {
+    "Value": "koala",
+    "Hint": "An animal that lives in Australia"
+  },
+  {
+    "Value": "lunch",
+    "Hint": "A meal eaten in the middle of the day"
+  },
+  {
+    "Value": "mango",
+    "Hint": "A tropical stone fruit"
+  },
+  {
+    "Value": "night",
+    "Hint": "The time of day when it is dark"
+  },
+  {
+    "Value": "ocean",
+    "Hint": "A large body of salt water"
+  },
+  {
+    "Value": "piano",
+    "Hint": "A large musical instrument with keys"
+  },
+  {
+    "Value": "queen",
+    "Hint": "A female monarch"
+  },
+  {
+    "Value": "river",
+    "Hint": "A large natural stream of water"
+  },
+  {
+    "Value": "sugar",
+    "Hint": "A sweet crystalline substance"
+  },
+  {
+    "Value": "tiger",
+    "Hint": "A large cat with stripes"
+  },
+  {
+    "Value": "uncle",
+    "Hint": "Your parent's brother"
+  },
+  {
+    "Value": "toolongword",
+    "Hint": "A word that shouldn't feature in the game"
+  },
+  {
+    "Value": "value",
+    "Hint": "The importance or worth of something"
+  },
+  {
+    "Value": "wheat",
+    "Hint": "A grain used to make bread"
+  },
+  {
+    "Value": "youth",
+    "Hint": "The time of life when one is young"
+  },
+  {
+    "Value": "shoe",
+    "Hint": "Another word that shouldn't feature in the game"
+  }
+]
