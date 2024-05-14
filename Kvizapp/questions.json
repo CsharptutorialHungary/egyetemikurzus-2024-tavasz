@@ -1,0 +1,202 @@
+[
+    {
+      "category": "Science",
+      "question": "What is the chemical symbol for water?",
+      "a": "H2O",
+      "b": "CO2",
+      "c": "O2",
+      "d": "N2",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "Which planet is known as the Red Planet?",
+      "a": "Mars",
+      "b": "Jupiter",
+      "c": "Venus",
+      "d": "Saturn",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the process by which plants make their food?",
+      "a": "Respiration",
+      "b": "Photosynthesis",
+      "c": "Digestion",
+      "d": "Fermentation",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the unit of measurement for force?",
+      "a": "Kilogram",
+      "b": "Meter",
+      "c": "Newton",
+      "d": "Joule",
+      "correct": "c",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "Which gas do plants use in photosynthesis?",
+      "a": "Carbon Dioxide",
+      "b": "Oxygen",
+      "c": "Nitrogen",
+      "d": "Hydrogen",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the powerhouse of the cell?",
+      "a": "Nucleus",
+      "b": "Ribosome",
+      "c": "Mitochondria",
+      "d": "Endoplasmic Reticulum",
+      "correct": "c",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the chemical symbol for gold?",
+      "a": "Go",
+      "b": "Au",
+      "c": "Ag",
+      "d": "Au2",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the largest organ in the human body?",
+      "a": "Brain",
+      "b": "Skin",
+      "c": "Liver",
+      "d": "Heart",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the chemical formula for table salt?",
+      "a": "NaCl",
+      "b": "H2O",
+      "c": "CaCO3",
+      "d": "CO2",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "Science",
+      "question": "What is the primary function of the kidneys?",
+      "a": "Digestion",
+      "b": "Excretion",
+      "c": "Respiration",
+      "d": "Circulation",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Who was the first President of the United States?",
+      "a": "Thomas Jefferson",
+      "b": "Abraham Lincoln",
+      "c": "George Washington",
+      "d": "John Adams",
+      "correct": "c",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Which war was fought between the North and South regions of the United States?",
+      "a": "World War I",
+      "b": "Civil War",
+      "c": "Revolutionary War",
+      "d": "World War II",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Who wrote the 'I Have a Dream' speech?",
+      "a": "Martin Luther King Jr.",
+      "b": "Malcolm X",
+      "c": "Abraham Lincoln",
+      "d": "John F. Kennedy",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Which country was the first to circumnavigate the globe?",
+      "a": "Spain",
+      "b": "Portugal",
+      "c": "England",
+      "d": "France",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Who was the first female Prime Minister of the United Kingdom?",
+      "a": "Margaret Thatcher",
+      "b": "Theresa May",
+      "c": "Angela Merkel",
+      "d": "Indira Gandhi",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "In which year did the Titanic sink?",
+      "a": "1912",
+      "b": "1920",
+      "c": "1905",
+      "d": "1910",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Who was the first man to step on the moon?",
+      "a": "Buzz Aldrin",
+      "b": "Neil Armstrong",
+      "c": "Yuri Gagarin",
+      "d": "Alan Shepard",
+      "correct": "b",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
+      "a": "Mayflower",
+      "b": "Santa Maria",
+      "c": "Nina",
+      "d": "Victoria",
+      "correct": "a",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "Who painted the Mona Lisa?",
+      "a": "Vincent van Gogh",
+      "b": "Pablo Picasso",
+      "c": "Leonardo da Vinci",
+      "d": "Michelangelo",
+      "correct": "c",
+      "points": 10
+    },
+    {
+      "category": "History",
+      "question": "What was the primary language spoken by people in ancient Rome?",
+      "a": "Greek",
+      "b": "Latin",
+      "c": "Arabic",
+      "d": "Romanian",
+      "correct": "b",
+      "points": 10
+    }
+]
