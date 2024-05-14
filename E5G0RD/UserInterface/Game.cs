@@ -96,13 +96,13 @@ namespace E5G0RD.UserInterface
                     Console.Write("Your guess: ");
                     string word = Console.ReadLine().ToLower();
 
-                    if (word.ToLower() == "help")
+                    if (word == "help")
                     {
                         Console.WriteLine($"Hint: {_secretWord.Hint}\n");
                         continue;
                     }
 
-                    if (word.ToLower() == "give up")
+                    if (word == "give up")
                     {
                         Console.WriteLine($"You gave up! The secret word was: {_secretWord.Value}\n");
                         break;
