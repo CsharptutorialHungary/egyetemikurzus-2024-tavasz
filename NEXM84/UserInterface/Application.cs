@@ -25,6 +25,7 @@ namespace NEXM84.UserInterface
         {
             _uiController.writeLine($"CLR Version: {Environment.Version}");
             _uiController.writeLine("Hi! Type [help] for further instructions!");
+            _uiController.writeLine("This is a simple password manager and encrypter/decrypter.\nYou can save your passwords into json files with encrypted passwords");
             while (true)
             {
                 IUiController.DrawWaitTag();
