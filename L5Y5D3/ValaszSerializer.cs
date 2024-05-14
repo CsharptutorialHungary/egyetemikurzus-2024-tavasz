@@ -9,7 +9,7 @@ namespace L5Y5D3
 {
     internal class ValaszSerializer
     {
-        public async void SerializeToJson(Stream target, List<Valasz> instance)
+        public static async Task SerializeToJson(Stream target, List<Valasz> instance)
         {
 
             await JsonSerializer.SerializeAsync(target, instance, new JsonSerializerOptions

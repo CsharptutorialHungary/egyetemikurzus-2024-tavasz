@@ -8,10 +8,10 @@ namespace L5Y5D3
 {
     internal sealed record class Valasz
     {
-        public Kerdes Kerdesed { get; set; }
-        public int Valaszod {  get; set; }
+        public Kerdes Kerdesed { get;  }
+        public int Valaszod {  get;  }
 
-        public bool Helyesseg {  get; set; }
+        public bool Helyesseg {  get;  }
 
         
         public Valasz(Kerdes kerdes,int valasz)

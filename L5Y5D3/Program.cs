@@ -18,10 +18,7 @@ var rendezettkerdesek = from kerdes in kerdesek
                     select kerdes;
 
 
-/*foreach (var kerdes in rendezettkerdesek)
-{
-    Console.WriteLine(kerdes.ToString());
-}*/
+
 int helyesek = 0;
 foreach (var kerdes in rendezettkerdesek){
 
@@ -75,7 +72,7 @@ using (var stream = File.Create(path))
     try
     {
         var serializer = new ValaszSerializer();
-        serializer.SerializeToJson(stream, valaszok);
+        await ValaszSerializer.SerializeToJson(stream, valaszok);
     }
     catch (IOException ex)
     {
