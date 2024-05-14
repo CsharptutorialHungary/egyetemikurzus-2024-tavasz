@@ -12,11 +12,15 @@ namespace E5G0RD.Infrastructure
     public class WordRepository
     {
 
-        public async Task<List<Word>> LoadWordsAsync(string path)
+        public async Task<List<Word>> LoadWordsAsync(string fileName)
         {
             try
             {
-                var json = await File.ReadAllTextAsync(path);
+                string rootDirectory = Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName;
+                string resourcesPath = Path.Combine(rootDirectory, "Resources");
+                string filePath = Path.Combine(resourcesPath, fileName);
+
+                var json = await File.ReadAllTextAsync(filePath);
                 var words = JsonSerializer.Deserialize<List<Word>>(json);
                 return words.Where(word => word.Value.Length == 5).ToList();
             }

@@ -25,7 +25,14 @@ namespace E5G0RD.UserInterface
         {
             var random = new Random();
             int index = random.Next(_words.Count);
-            return _words[index];
+            try
+            {
+                return _words[index];
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public string MakeGuess(string word)
@@ -60,6 +67,12 @@ namespace E5G0RD.UserInterface
 
         public void Start()
         {
+
+            if(_secretWord == null)
+            {
+                return;
+            }
+
             while (true)
             {
                 Console.WriteLine("Welcome to the game!");
