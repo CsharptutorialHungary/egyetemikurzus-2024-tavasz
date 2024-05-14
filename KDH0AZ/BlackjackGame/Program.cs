@@ -4,7 +4,7 @@ using Blackjack.Game;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         bool exitRequested = false;
 
@@ -27,7 +27,7 @@ class Program
                     break;
                 case "2":
                     Console.Clear();
-                    ViewResults();
+                    await ViewResults();
                     break;
                 case "3":
                     exitRequested = true;

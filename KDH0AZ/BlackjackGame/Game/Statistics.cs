@@ -22,7 +22,7 @@ namespace Blackjack.Game
 
             try
             {
-                string jsonData = File.ReadAllText(FilePath);
+                string jsonData = await File.ReadAllTextAsync(FilePath);
 
                 if (string.IsNullOrWhiteSpace(jsonData))
                 {
@@ -30,7 +30,7 @@ namespace Blackjack.Game
                     return;
                 }
 
-                var playerDataList = JsonSerializer.Deserialize<List<PlayerData>>(jsonData);
+                var playerDataList = await Task.Run(() => JsonSerializer.Deserialize<List<PlayerData>>(jsonData));
 
                 if (playerDataList == null || playerDataList.Count == 0)
                 {
