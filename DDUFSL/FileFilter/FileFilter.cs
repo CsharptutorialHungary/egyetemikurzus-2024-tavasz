@@ -30,24 +30,45 @@ namespace DDUFSL.FileFilter
             }
 
             fileTypes = new List<string>();
-            XmlNodeList? typeNodes = document.DocumentElement.SelectNodes("/FilterConfig/FileTypes/FileType");
+            XmlNodeList? typeNodes = document.DocumentElement?.SelectNodes("/FilterConfig/FileTypes/FileType");
             if (typeNodes == null || typeNodes.Count == 0)
             {
                 Console.WriteLine("Nincs tipus szures");
                 return;
             } else
             {
+                Console.WriteLine("Talált filterek:");
                 foreach (XmlNode node in typeNodes)
                 {
                     fileTypes.Add(node.InnerText);
+                    Console.WriteLine($"-{node.ChildNodes.Item(0).InnerText}");
                 }
             }
 
         }
 
-        public void Filter()
+        public List<string> Filter(string directoryPath)
         {
-            throw new NotImplementedException();
+            List<string> filteredFiles = new List<string>();
+            try
+            {
+                string[] files = Directory.GetFiles(directoryPath);
+
+                foreach (string file in files)
+                {
+                    string extension = Path.GetExtension(file);
+                    if (fileTypes.Contains(extension))
+                    {
+                        filteredFiles.Add(file);
+
+                    }
+                }
+                    return filteredFiles;
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return new List<string>();
+            }
         }
     }
 }
