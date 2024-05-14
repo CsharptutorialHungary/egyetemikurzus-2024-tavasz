@@ -49,6 +49,7 @@ namespace Shell.UserInterface
         {
             foreach (var command in _commandProvider.Commands) 
             { 
+                
                 if (command.Name.Equals(commandName, StringComparison.CurrentCultureIgnoreCase))
                 {
                     return command;
