@@ -14,14 +14,20 @@ namespace Pacman
         static Random random = new Random();
         static bool gamePaused = false;
         static bool pausedTextIsShown = false;
-        static bool continueLoop = true;
+        public static bool continueLoop = true;
 
         // Game Board
         static GameBoard board = new GameBoard();
         static string[,] border = board.GetBoard;
 
         // Player
-        static PacMan pacman = new PacMan(board);
+        public static PacMan pacman = new PacMan(board);
+
+        public static bool IsTestEnvironment { get; set; } = false;
+
+        public delegate ConsoleKey GetKeyDelegate();
+        public static GetKeyDelegate GetKey { get; set; } = () => Console.ReadKey(true).Key;
+
 
         // Monsters
         static Monster[] monsterList =
@@ -162,11 +168,11 @@ namespace Pacman
 
         }
 
-        static void ReadUserKey()
+        public static void ReadUserKey()
         {
-            if (Console.KeyAvailable)
+            if (IsTestEnvironment || Console.KeyAvailable)
             {
-                ConsoleKey key = Console.ReadKey(true).Key;
+                ConsoleKey key = GetKey();
                 switch (key)
                 {
                     case ConsoleKey.Escape:
@@ -195,14 +201,18 @@ namespace Pacman
             }
         }
 
-        static void ResetGame()
+
+        public static void ResetGame()
         {
 
             // Játék újrakezdése
             continueLoop = true;
 
             // Konzol tartalmának törlése
-            Console.Clear();
+            if (!IsTestEnvironment)
+            {
+                Console.Clear();
+            }
 
             // A játékos pontszámának, életének és szintjének nullázása
             pacman.ResetScore();
@@ -281,7 +291,7 @@ namespace Pacman
             }
         }
 
-        static void PlayerMovement()
+        public static void PlayerMovement()
         {
             switch (pacman.CheckCell(border, pacman.NextDirection, monsterList))
             {
@@ -454,7 +464,7 @@ namespace Pacman
             MoveMonster();
         }
 
-        static void CheckScore()
+        public static void CheckScore()
         {
             if (pacman.GetScore() == 684)
             {
@@ -463,7 +473,8 @@ namespace Pacman
             }
         }
 
-        static void CheckIfNoLives()
+
+        public static void CheckIfNoLives()
         {
             if (pacman.Lives() < 0)
             {
@@ -476,7 +487,10 @@ namespace Pacman
         static void RedrawBoard()
         {
             // Előző játékmezők törlése
-            Console.Clear();
+            if (!IsTestEnvironment)
+            {
+                Console.Clear();
+            }
 
             for (int i = 0; i < board.GetBoard.GetLength(0); i++)
             {
@@ -494,7 +508,7 @@ namespace Pacman
 
         static void ShowWelcomeMenu()
         {
-            PlayMusic();
+            PlayMusicAsync();
             RedrawBoard();
 
             int horizontalPos = GameHeight / 2 - 2;
@@ -606,6 +620,11 @@ namespace Pacman
         public static void PlayMusic()
         {
             Task.Factory.StartNew(() => Music());
+        }
+
+        public static async Task PlayMusicAsync()
+        {
+            await Task.Run(() => Music());
         }
 
         public static void Music()

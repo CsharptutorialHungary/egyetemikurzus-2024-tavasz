@@ -21,12 +21,18 @@ namespace Pacman.GameClasses
         public string Direction = "right";
         public string NextDirection = "right";
 
+
+
         private GameBoard gameBoard;
 
         public int GetScore()
         {
             return this.score;
         }
+
+        public void IncreaseScore(int points) => score += points;
+
+        public int Score => score;
 
         public int Lives()
         {
