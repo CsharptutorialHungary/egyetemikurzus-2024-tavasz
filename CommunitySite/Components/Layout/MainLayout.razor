@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ISnackbar Snackbar
+@inject ProtectedSessionStorage ProtectedSessionStore
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<style>
+    body {
+        background-color: lightgray;
+    }
+</style>
+
+<MudLayout>
+    <AppBar></AppBar>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
