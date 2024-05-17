@@ -1,32 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pacman.GameClasses
 {
     class Monster
     {
-
         private Position monsterPos;
         public int prevPosX;
         public int prevPosY;
 
-        private string symbol = ((char)9787).ToString();
-        private ConsoleColor color;
+        private readonly string symbol = ((char)9787).ToString();
+        private readonly ConsoleColor color;
         public string Direction = "up";
 
-        public static string[] possibleDirections =
-        {
-            "up",
-            "down",
-            "left",
-            "right"
-        };
-        //private static string direction = possibleDirections[random.Next(0, possibleDirections.Length)];
-        public static Random random = new Random();
-
+        public static readonly string[] possibleDirections = { "up", "down", "left", "right" };
+        public static readonly Random random = new Random();
 
         public Monster(ConsoleColor color, int x, int y)
         {
@@ -41,141 +29,66 @@ namespace Pacman.GameClasses
             this.monsterPos.ResetPosition(prevPosX, prevPosY);
         }
 
-        public bool CheckLeftCell(Monster[] monsterList, int x, int y, string[,] border)
+        public bool CheckCell(Monster[] monsterList, int x, int y, string[,] border)
         {
-            bool isEmpty = true;
-            foreach (var monster in monsterList)
+            if (monsterList.Any(monster => x == monster.GetPosX() && y == monster.GetPosY()) || border[y, x] == "#")
             {
-                if (x - 1 == monster.GetPosX() && y == monster.GetPosY())
-                {
-                    isEmpty = false;
-                    break;
-                }
+                return false;
             }
-
-            if (border[y, x - 1] == "#")
-            {
-                isEmpty = false;
-            }
-
-            return isEmpty;
+            return true;
         }
-        public bool CheckRightCell(Monster[] monsterList, int x, int y, string[,] border)
-        {
-            bool isEmpty = true;
-            foreach (var monster in monsterList)
-            {
-                if (x + 1 == monster.GetPosX() && y == monster.GetPosY())
-                {
-                    isEmpty = false;
-                    break;
-                }
-            }
 
-            if (border[y, x + 1] == "#")
-            {
-                isEmpty = false;
-            }
+        public string GetSymbol() => this.symbol;
+        public int GetPosX() => this.monsterPos.X;
+        public int GetPosY() => this.monsterPos.Y;
+        public ConsoleColor GetColor() => this.color;
 
-
-            return isEmpty;
-        }
-        public bool CheckUpCell(Monster[] monsterList, int x, int y, string[,] border)
-        {
-            bool isEmpty = true;
-            foreach (var monster in monsterList)
-            {
-                if (x == monster.GetPosX() && y - 1 == monster.GetPosY())
-                {
-                    isEmpty = false;
-                    break;
-                }
-            }
-
-            if (border[y - 1, x] == "#")
-            {
-                isEmpty = false;
-            }
-
-            return isEmpty;
-        }
-        public bool CheckDownCell(Monster[] monsterList, int x, int y, string[,] border)
-        {
-            bool isEmpty = true;
-            foreach (var monster in monsterList)
-            {
-                if (x == monster.GetPosX() && y + 1 == monster.GetPosY())
-                {
-                    isEmpty = false;
-                }
-            }
-
-            if (border[y + 1, x] == "#")
-            {
-                isEmpty = false;
-            }
-
-            return isEmpty;
-        }
-        public string GetSymbol()
-
-        {
-            return this.symbol;
-        }
-        public int GetPosX()
-        {
-            return this.monsterPos.X;
-
-        }
-        public int GetPosY()
-        {
-            return this.monsterPos.Y;
-        }
-        public ConsoleColor GetColor()
-        {
-            return this.color;
-        }
         public void EraseMonster()
         {
             Console.SetCursorPosition(prevPosX, prevPosY);
             Console.Write(' ');
         }
+
         public void MoveRight()
         {
             if (monsterPos.X + 1 < 34)
             {
-                prevPosX = monsterPos.X;
-                prevPosY = monsterPos.Y;
+                UpdatePreviousPosition();
                 monsterPos.X++;
             }
         }
+
         public void MoveLeft()
         {
             if (monsterPos.X - 1 > 0)
             {
-                prevPosX = monsterPos.X;
-                prevPosY = monsterPos.Y;
+                UpdatePreviousPosition();
                 monsterPos.X--;
             }
         }
+
         public void MoveDown()
         {
             if (monsterPos.Y + 1 < 28)
             {
-                prevPosX = monsterPos.X;
-                prevPosY = monsterPos.Y;
+                UpdatePreviousPosition();
                 monsterPos.Y++;
             }
         }
+
         public void MoveUp()
         {
             if (monsterPos.Y - 1 > 0)
             {
-                prevPosX = monsterPos.X;
-                prevPosY = monsterPos.Y;
+                UpdatePreviousPosition();
                 monsterPos.Y--;
             }
         }
 
+        private void UpdatePreviousPosition()
+        {
+            prevPosX = monsterPos.X;
+            prevPosY = monsterPos.Y;
+        }
     }
 }

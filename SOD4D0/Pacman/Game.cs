@@ -9,18 +9,14 @@ namespace Pacman
 {
     class Game
     {
-        // Global Declarations
-
         static Random random = new Random();
         static bool gamePaused = false;
         static bool pausedTextIsShown = false;
         public static bool continueLoop = true;
 
-        // Game Board
         static GameBoard board = new GameBoard();
         static string[,] border = board.GetBoard;
 
-        // Player
         public static PacMan pacman = new PacMan(board);
 
         public static bool IsTestEnvironment { get; set; } = false;
@@ -28,18 +24,14 @@ namespace Pacman
         public delegate ConsoleKey GetKeyDelegate();
         public static GetKeyDelegate GetKey { get; set; } = () => Console.ReadKey(true).Key;
 
-
-        // Monsters
         static Monster[] monsterList =
         {
             new Monster(ConsoleColor.Red,15,8),
             new Monster(ConsoleColor.Cyan,16,12),
             new Monster(ConsoleColor.Magenta,17,12),
             new Monster(ConsoleColor.DarkCyan,18,12),
-
         };
 
-        // Console Settings
         const int GameWidth = 70;
         const int GameHeight = 29;
 
@@ -55,8 +47,6 @@ namespace Pacman
             Console.BufferHeight = GameHeight;
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-
-            // Aggregáció (Count): Például számoljuk meg, hány szörny van összesen
             totalMonsters = monsterList.Count();
 
             ShowWelcomeMenu();
@@ -64,16 +54,11 @@ namespace Pacman
             RedrawBoard();
             LoadGUI();
 
-            LoadPlayer();
-
-            LoadMonsters();
 
             while (continueLoop)
             {
-
                 ReadUserKey();
 
-                // Check if paused
                 if (gamePaused)
                 {
                     BlinkPausedText();
@@ -82,7 +67,13 @@ namespace Pacman
 
                 MonsterAi();
 
+                LoadPlayer();
+
                 PlayerMovement();
+
+
+                LoadGUI();
+
 
                 CheckIfNoLives();
 
@@ -90,6 +81,12 @@ namespace Pacman
 
                 Thread.Sleep(200);
             }
+
+        }
+
+        static int CalculateDistance(int x1, int y1, int x2, int y2)
+        {
+            return Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
         }
 
         static void LoadGUI()
@@ -99,13 +96,32 @@ namespace Pacman
             Console.Write("Level: {0}", pacman.GetLevel());
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(40, 4);
-            Console.Write("Score: {0}", pacman.GetScore());
+            Console.Write("Score: {0}", pacman.Score);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(40, 6);
             Console.Write("Lives: {0}", pacman.Lives());
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(40, 8);
-            Console.Write("Szörnyek száma: {0}", totalMonsters);
+            Console.Write("Total Monsters: {0}", totalMonsters);
+
+            Console.SetCursorPosition(40, 10);
+            Console.Write($"PacMan Position: ({pacman.GetPosX()}, {pacman.GetPosY()})");
+
+            var nearbyMonsters = monsterList
+                .Where(monster => CalculateDistance(pacman.GetPosX(), pacman.GetPosY(), monster.GetPosX(), monster.GetPosY()) <= 5)
+                .ToList();
+
+            Console.SetCursorPosition(40, 12);
+            Console.Write("Monsters within 5 steps: {0}", nearbyMonsters.Count);
+
+            Console.SetCursorPosition(40, 14);
+            Console.Write("Monster Positions: ");
+            for (int i = 0; i < monsterList.Length; i++)
+            {
+                Console.SetCursorPosition(40, 15 + i);
+                Console.Write($"Monster {monsterList[i].GetColor()}: ({monsterList[i].GetPosX()}, {monsterList[i].GetPosY()})");
+
+            }
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(40, GameHeight - 8);
@@ -135,37 +151,6 @@ namespace Pacman
                 Console.SetCursorPosition(monster.GetPosX(), monster.GetPosY());
                 Console.Write(monster.GetSymbol());
             }
-
-        }
-        static void MoveMonster()
-        {
-            foreach (var monster in monsterList)
-            {
-
-                Console.ForegroundColor = monster.GetColor();
-                Console.SetCursorPosition(monster.GetPosX(), monster.GetPosY());
-                Console.Write(monster.GetSymbol());
-                Console.ForegroundColor = ConsoleColor.White;
-                if (monster.GetPosX() != monster.prevPosX || monster.GetPosY() != monster.prevPosY)
-                {
-                    if (border[monster.prevPosY, monster.prevPosX] == " ")
-                    {
-                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
-                        Console.Write(' ');
-                    }
-                    else if (border[monster.prevPosY, monster.prevPosX] == ".")
-                    {
-                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
-                        Console.Write('.');
-                    }
-                    else if (border[monster.prevPosY, monster.prevPosX] == "*")
-                    {
-                        Console.SetCursorPosition(monster.prevPosX, monster.prevPosY);
-                        Console.Write('*');
-                    }
-                }
-            }
-
         }
 
         public static void ReadUserKey()
@@ -204,43 +189,29 @@ namespace Pacman
 
         public static void ResetGame()
         {
-
-            // Játék újrakezdése
             continueLoop = true;
 
-            // Konzol tartalmának törlése
             if (!IsTestEnvironment)
             {
                 Console.Clear();
             }
 
-            // A játékos pontszámának, életének és szintjének nullázása
             pacman.ResetScore();
             pacman.ResetLives();
             pacman.ResetLevel();
 
-            // Pacman pozíciójának visszaállítása
             pacman.ResetPacMan();
 
-
-            // Szellemek visszaállítása
             foreach (var monster in monsterList)
             {
                 monster.ResetMonster();
             }
 
-
             board = new GameBoard();
             border = board.GetBoard;
 
-
-            // A játéktér újrarajzolása
             RedrawBoard();
-
         }
-
-
-
 
         static void SetGamePaused()
         {
@@ -294,6 +265,9 @@ namespace Pacman
         public static void PlayerMovement()
         {
             switch (pacman.CheckCell(border, pacman.NextDirection, monsterList))
+
+
+
             {
                 case BoardElements.Dot:
                     MovePlayer(pacman.NextDirection);
@@ -310,6 +284,8 @@ namespace Pacman
                 case BoardElements.Empty:
                     MovePlayer(pacman.NextDirection);
                     pacman.Direction = pacman.NextDirection;
+
+
                     break;
                 case BoardElements.Monster:
                     pacman.LoseLife();
@@ -397,76 +373,55 @@ namespace Pacman
 
         static void MonsterAi()
         {
-            for (int i = 0; i < monsterList.Length; i++)
+            foreach (var monster in monsterList)
             {
-                if (random.Next(0, 2) != 0)
+                Console.SetCursorPosition(monster.GetPosX(), monster.GetPosY());
+                if (border[monster.GetPosY(), monster.GetPosX()] == " ")
                 {
-                    monsterList[i].Direction = Monster.possibleDirections[random.Next(0, Monster.possibleDirections.Length)];
+                    Console.Write(' ');
                 }
-                switch (monsterList[i].Direction)
+                else if (border[monster.GetPosY(), monster.GetPosX()] == ".")
                 {
-                    case "left":
-                        if (monsterList[i].CheckLeftCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
-                        {
-                            monsterList[i].MoveLeft();
-                            //MoveMonster();
-                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
-                            {
-                                pacman.LoseLife();
-                                MovePlayer("reset");
-                                LoadGUI();
-                            }
-                        }
-                        break;
-                    case "right":
-                        if (monsterList[i].CheckRightCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
-                        {
-                            monsterList[i].MoveRight();
-                            //MoveMonster();
-                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
-                            {
-                                pacman.LoseLife();
-                                MovePlayer("reset");
-                                LoadGUI();
-                            }
-                        }
-                        break;
+                    Console.Write('.');
+                }
+                else if (border[monster.GetPosY(), monster.GetPosX()] == "*")
+                {
+                    Console.Write('*');
+                }
+
+                monster.Direction = Monster.possibleDirections[Monster.random.Next(0, Monster.possibleDirections.Length)];
+
+                switch (monster.Direction)
+                {
                     case "up":
-                        if (monsterList[i].CheckUpCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
-                        {
-                            monsterList[i].MoveUp();
-                            //MoveMonster();
-                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
-                            {
-                                pacman.LoseLife();
-                                MovePlayer("reset");
-                                LoadGUI();
-                            }
-                        }
+                        if (monster.CheckCell(monsterList, monster.GetPosX(), monster.GetPosY() - 1, border))
+                            monster.MoveUp();
                         break;
                     case "down":
-                        if (monsterList[i].CheckDownCell(monsterList, monsterList[i].GetPosX(), monsterList[i].GetPosY(), border))
-                        {
-                            monsterList[i].MoveDown();
-                            //MoveMonster();
-                            if (monsterList[i].GetPosX() == pacman.GetPosX() && monsterList[i].GetPosY() == pacman.GetPosY())
-                            {
-                                pacman.LoseLife();
-                                MovePlayer("reset");
-                                LoadGUI();
-                            }
-                        }
+                        if (monster.CheckCell(monsterList, monster.GetPosX(), monster.GetPosY() + 1, border))
+                            monster.MoveDown();
                         break;
-
+                    case "left":
+                        if (monster.CheckCell(monsterList, monster.GetPosX() - 1, monster.GetPosY(), border))
+                            monster.MoveLeft();
+                        break;
+                    case "right":
+                        if (monster.CheckCell(monsterList, monster.GetPosX() + 1, monster.GetPosY(), border))
+                            monster.MoveRight();
+                        break;
                 }
             }
 
-            MoveMonster();
+
+            LoadMonsters();
         }
+
+
+
 
         public static void CheckScore()
         {
-            if (pacman.GetScore() == 684)
+            if (pacman.Score == 684)
             {
                 continueLoop = false;
                 WinGame();
@@ -476,7 +431,7 @@ namespace Pacman
 
         public static void CheckIfNoLives()
         {
-            if (pacman.Lives() < 0)
+            if (pacman.Lives() <= 0)
             {
                 continueLoop = false;
                 GameOver();
@@ -486,12 +441,13 @@ namespace Pacman
 
         static void RedrawBoard()
         {
-            // Előző játékmezők törlése
+
             if (!IsTestEnvironment)
             {
                 Console.Clear();
             }
 
+            Console.ForegroundColor = ConsoleColor.White;
             for (int i = 0; i < board.GetBoard.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetBoard.GetLength(1); j++)
@@ -501,10 +457,13 @@ namespace Pacman
                 Console.WriteLine();
             }
         }
+
         static void ChangeBoard()
         {
             border[pacman.GetPosY(), pacman.GetPosX()] = " ";
         }
+
+
 
         static void ShowWelcomeMenu()
         {
@@ -541,6 +500,7 @@ namespace Pacman
                 keyPressed = Console.ReadKey(true);
             }
         }
+
 
         static void GameOver()
         {
@@ -594,7 +554,7 @@ namespace Pacman
             Console.SetCursorPosition(verticalPos, horizontalPos + 2);
             Console.Write("||                         ||");
             Console.SetCursorPosition(verticalPos, horizontalPos + 3);
-            int score = pacman.GetScore();
+            int score = pacman.Score;
             Console.Write("||       SCORE: {0}{1}  ||", score, new string(' ', 9 - score.ToString().Length));
             Console.SetCursorPosition(verticalPos, horizontalPos + 4);
             Console.Write("||                         ||");

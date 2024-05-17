@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Media;
 
+
+
 namespace Pacman.GameClasses
 {
+
+
     class PacMan
     {
 
@@ -28,11 +32,17 @@ namespace Pacman.GameClasses
         public int GetScore()
         {
             return this.score;
+
+
+
+
         }
 
         public void IncreaseScore(int points) => score += points;
 
         public int Score => score;
+
+
 
         public int Lives()
         {
@@ -107,6 +117,9 @@ namespace Pacman.GameClasses
         public void ResetScore()
         {
             this.score = 0;
+
+
+
         }
 
         public void ResetLives()
@@ -246,8 +259,10 @@ namespace Pacman.GameClasses
         public void MoveRight()
         {
             if (gameBoard.GetBoard[this.pacManPos.Y, this.pacManPos.X + 1] != "#")
+
             {
                 this.pacManPos.X += 1;
+
             }
         }
 
@@ -259,6 +274,7 @@ namespace Pacman.GameClasses
                 {
                     return true;
                 }
+
 
             }
 
@@ -274,5 +290,3 @@ namespace Pacman.GameClasses
 
     }
 }
-
-
