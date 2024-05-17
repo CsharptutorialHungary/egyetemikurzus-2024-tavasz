@@ -1,8 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio 2022
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacman", "SOD4D0\Pacman\Pacman.csproj", "{67180C45-5ACA-422E-82A6-80F801BD8024}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacman", "Pacman\Pacman.csproj", "{67180C45-5ACA-422E-82A6-80F801BD8024}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
