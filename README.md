@@ -1,3 +1,5 @@
+**My application is in the [FJKXGG folder](https://github.com/BarnaGergely/egyetemikurzus-2024-tavasz/tree/master/FJKXGG)!**
+
 # SZTE egyetemi kurzus, 2024 tavaszi félév házi feleadat repó
 
 Git gyorstalpaló: https://github.com/CsharptutorialHungary/egyetemikurzus-2024-tavasz/tree/master/GitTutorial
